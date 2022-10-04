@@ -1,0 +1,22 @@
+website:
+  sidebar:
+    - title: "Materials"
+      contents:
+        - materials.md
+        # Only edit from this line down
+        - section: "Basics"
+          contents:
+            - materials/01-basics/01-unix_overview.md
+            - materials/01-basics/02-files_directories.md
+            - materials/01-basics/03-text_manipulation.md
+            - materials/01-basics/04-combining_commands.md
+        - section: "Programming"
+          contents:
+            - materials/02-programming/01-scripts.md
+            - materials/02-programming/02-loops.md
+        - section: "Miscellaneous"
+          contents:
+            - materials/03-misc/01-sed.md
+        - section: "Appendix"
+          contents:
+            - materials/99-extras/01-cheatsheet.md
