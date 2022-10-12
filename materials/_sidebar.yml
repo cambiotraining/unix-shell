@@ -17,11 +17,11 @@ website:
             - materials/02-programming/02-loops.md
         - section: "Remote Work"
           contents: 
-            - materials/03-remote/01-ssh_scp.md
-            - materials/03-remote/02-remote_files.md
+            - materials/03-remotes/01-ssh_scp.md
+            - materials/03-remotes/02-remote_files.md
         - section: "Miscellaneous"
           contents:
-            - materials/03-misc/01-sed.md
+            - materials/04-misc/01-sed.md
         - section: "Appendix"
           contents:
             - materials/99-extras/01-cheatsheet.md
