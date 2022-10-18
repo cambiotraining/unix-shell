@@ -70,20 +70,22 @@ training@remote_machine:~$
 
 You should now have a prompt very similar to the one you started with but with a new username and computer hostname. 
 Take a look around with the `ls` command and you should see that your new session has its own completely independent filesystem. 
-Unfortunately, none of the files are particularly relevant to us. 
-Let's change that, but first we need to go back to our original computer's shell. 
-Use the key combination `Ctrl+D` on an empty command prompt to log out.
+In this case we have some files from a sequencing experiment on the model organism _Drosophila_.  
+Let's say we wanted to copy these files to our local computer. 
+To do this, first we need to go back to our original computer's shell. 
+Use the key combination `Ctrl+D` on an empty command prompt to log out (or alternatively the command `exit`).
 
 
 ## Moving files
 
-`ssh` has a simple file copying counterpart called `scp` which uses all the same methods for authentication and encryption but focuses on moving files between computers in a similar manner to the `cp` command we learnt about before.
+`ssh` has a simple file copying counterpart called `scp` which uses all the same methods for authentication and encryption but focuses on copying files between computers in a similar manner to the `cp` command we learnt about before. 
+Let's see an example of copying a small file from our local computer to the remote server.
 
-Making sure we're in the `data-shell` directory let's copy the `notes.txt` file to the remote machine:
+Making sure we're in the `data-shell` directory let's copy the `README.txt` file to the remote machine:
 
 ```bash
 $ cd ~/Desktop/data-shell
-$ scp notes.txt training@remote-machine:/home/training
+$ scp README.txt training@remote-machine:/home/training
 ```
 
 The format of the command should be quite familiar when comparing to the `cp` command for local copying. 
@@ -92,7 +94,7 @@ The difference comes in that any remote locations involved in the copy must be p
 The first half tells scp how to access the computer and the second half tells it where in the filesystem to operate, these two segments are separated by a `:`.
 
 ```
-notes.txt                                     100%   86   152.8KB/s   00:00
+README.txt                                    100%  563     1.2MB/s   00:00
 ```
 
 Now it looks like we've copied the file, but we should check.
@@ -102,11 +104,13 @@ Instead we can tell `ssh` all the commands it needs to run at the same time we c
 `ssh` will automatically disconnect after it completes the full command string.
 
 ```bash
-$ ssh training@remote-machine "ls /home/training/*.txt"
+$ ssh training@remote-machine "ls /home/training/"
 ```
 
 ```
-notes.txt
+README.txt
+drosophila
+drosophila_samples.csv
 ```
 
 Success!
@@ -160,7 +164,23 @@ $ scp -r training@remote-machine:drosophila ~/Desktop/data-shell/
 ```
 
 ```
-TODO
+drosophila_genome.fa                          100%  139MB 311.7MB/s   00:00    
+SRR307030_1.fastq.gz                          100%  441KB 177.3MB/s   00:00    
+SRR307026_2.fastq.gz                          100%  323KB 215.2MB/s   00:00    
+SRR307029_1.fastq.gz                          100%  444KB 199.4MB/s   00:00    
+SRR307027_1.fastq.gz                          100%  413KB 204.2MB/s   00:00    
+SRR307025_1.fastq.gz                          100%  414KB 219.9MB/s   00:00    
+SRR307027_2.fastq.gz                          100%  426KB 186.3MB/s   00:00    
+SRR307024_1.fastq.gz                          100%  389KB 162.0MB/s   00:00    
+SRR307025_2.fastq.gz                          100%  323KB 173.5MB/s   00:00    
+SRR307028_2.fastq.gz                          100%  419KB 204.1MB/s   00:00    
+SRR307030_2.fastq.gz                          100%  453KB 225.2MB/s   00:00    
+SRR307023_2.fastq.gz                          100%  328KB 199.3MB/s   00:00    
+SRR307028_1.fastq.gz                          100%  399KB 193.1MB/s   00:00    
+SRR307029_2.fastq.gz                          100%  461KB 229.3MB/s   00:00    
+SRR307024_2.fastq.gz                          100%  323KB 219.9MB/s   00:00    
+SRR307026_1.fastq.gz                          100%  408KB 197.7MB/s   00:00    
+SRR307023_1.fastq.gz                          100%  408KB 228.2MB/s   00:00 
 ```
 
 And we can run `ls` on our local computer to confirm the directory has been copied successfully. 
