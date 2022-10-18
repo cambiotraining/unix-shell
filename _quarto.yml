@@ -47,7 +47,7 @@ website:
         href: materials.md
     right:
       - icon: github
-        href: https://github.com/cambiotraining/
+        href: https://github.com/cambiotraining/unix-shell
         aria-label: Bioinformatics Training Facility GitHub
       - icon: twitter
         href: https://twitter.com/bioinfocambs
