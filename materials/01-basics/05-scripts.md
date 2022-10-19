@@ -102,6 +102,8 @@ However, saving our commands in a script has some advantages: it serves as a **r
 
 ## Summary 
 
+![](images/scripts.png){fig-alt="Diagram summarising how a shell script is organised, including the shebang, comments and code."}
+
 ::: {.callout-tip}
 #### Key Points
 

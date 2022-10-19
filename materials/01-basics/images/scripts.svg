@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="262.72137mm"
+   height="90.384827mm"
+   viewBox="0 0 262.72137 90.384827"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="scripts.svg"
+   inkscape:export-filename="scripts.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.2938725"
+     inkscape:cx="732.29782"
+     inkscape:cy="483.04606"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="370.52988"
+       y="320.79797"
+       width="410.97119"
+       height="25.139194"
+       id="rect16103" />
+    <rect
+       x="53.90794"
+       y="154.57474"
+       width="266.64142"
+       height="169.45255"
+       id="rect4416" />
+    <rect
+       x="155.73405"
+       y="139.11726"
+       width="483.4325"
+       height="318.42395"
+       id="rect186" />
+    <rect
+       x="53.90794"
+       y="154.57474"
+       width="299.875"
+       height="94.097374"
+       id="rect7570" />
+    <rect
+       x="370.52988"
+       y="320.79797"
+       width="410.97119"
+       height="25.139194"
+       id="rect16217" />
+    <rect
+       x="53.90794"
+       y="154.57474"
+       width="299.875"
+       height="94.097374"
+       id="rect19263" />
+    <rect
+       x="53.90794"
+       y="154.57474"
+       width="266.64142"
+       height="169.45255"
+       id="rect19756" />
+    <rect
+       x="370.52988"
+       y="320.79797"
+       width="410.97119"
+       height="25.139194"
+       id="rect24442" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-15.639757,-30.420295)">
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke-width:0.499999;stroke-linecap:round"
+       id="rect1119"
+       width="103.57393"
+       height="44.510151"
+       x="95.189865"
+       y="48.464008" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,55.314409,12.167125)"
+       id="text184"
+       style="font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect186);display:inline;fill:#c2c2c2;stroke-width:1.88976;stroke-linecap:round"><tspan
+         x="155.73438"
+         y="155.31383"
+         id="tspan26594"><tspan
+           style="fill:#3bc120"
+           id="tspan26592">#!/bin/bash
+</tspan></tspan><tspan
+         x="155.73438"
+         y="178.64721"
+         id="tspan26598"><tspan
+           style="fill:#3bc120"
+           id="tspan26596">
+</tspan></tspan><tspan
+         x="155.73438"
+         y="201.98058"
+         id="tspan26602"><tspan
+   style="fill:#3bc120"
+   id="tspan26600"># print message to the user</tspan>
+</tspan><tspan
+         x="155.73438"
+         y="225.31395"
+         id="tspan26608"><tspan
+   style="fill:#4836f6"
+   id="tspan26604">echo</tspan> <tspan
+   style="fill:#f3bf20"
+   id="tspan26606">&quot;Processing file&quot;</tspan>
+</tspan><tspan
+         x="155.73438"
+         y="248.64733"
+         id="tspan26610">
+</tspan><tspan
+         x="155.73438"
+         y="271.9807"
+         id="tspan26614"><tspan
+   style="fill:#3bc120"
+   id="tspan26612"># count ATOMS in PDB file</tspan>
+</tspan><tspan
+         x="155.73438"
+         y="295.31408"
+         id="tspan26622"><tspan
+   style="fill:#4836f6"
+   id="tspan26616">cat</tspan> methane.pdb | <tspan
+   style="fill:#4836f6"
+   id="tspan26618">grep</tspan> &quot;ATOM&quot; | <tspan
+   style="fill:#4836f6"
+   id="tspan26620">wc -l</tspan></tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.499999;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 87.598495,50.73902 c -0.0342,0.145651 -0.07796,0.289226 -0.149704,0.421453 -0.02319,0.04274 -0.05165,0.08243 -0.07953,0.122278 -0.133736,0.191154 -0.250072,0.318197 -0.438244,0.4674 -0.03472,0.02756 -0.07547,0.04654 -0.113992,0.06847 -0.07482,0.04258 -0.15459,0.07778 -0.227042,0.124185 -0.0014,8.84e-4 0.0023,-0.002 0.0034,-0.0029 0.0091,-0.0079 0.0166,-0.01827 0.02738,-0.02361 0.02182,-0.01076 0.04495,-0.02026 0.06903,-0.02373 0.04028,-0.0058 0.08136,-0.0054 0.122029,-0.0038 0.155613,0.006 0.298912,0.03966 0.433133,0.121735 0.198038,0.121092 0.391679,0.261872 0.55119,0.431625 0.07016,0.07462 0.133773,0.155133 0.200659,0.2327 0.09934,0.115209 0.198691,0.230418 0.298036,0.345627"
+       id="path4015" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0.56810756,7.8371374)"
+       id="text4414"
+       style="font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect4416);display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="253.13977"
+       y="0"><tspan
+         x="241.44322"
+         y="171.00923"
+         id="tspan26628"><tspan
+           style="text-align:end;text-anchor:end;fill:#da53b2"
+           id="tspan26624">shebang</tspan><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26626">
+</tspan></tspan><tspan
+         x="98.517177"
+         y="194.58098"
+         id="tspan26632"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26630">is used to indicate the </tspan></tspan><tspan
+         x="79.950738"
+         y="218.15273"
+         id="tspan26636"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26634">program that should be </tspan></tspan><tspan
+         x="62.93378"
+         y="241.72447"
+         id="tspan26640"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26638">used to execute the script.
+</tspan></tspan><tspan
+         x="56.425956"
+         y="265.29622"
+         id="tspan26644"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26642">You can usually just copy/</tspan></tspan><tspan
+         x="75.439011"
+         y="288.86797"
+         id="tspan26648"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26646">paste this to your scripts</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,188.69291,23.158222)"
+       id="text7568"
+       style="font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect7570);display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="253.13977"
+       y="0"><tspan
+         x="53.908203"
+         y="171.00923"
+         id="tspan26654"><tspan
+           style="fill:#da53b2"
+           id="tspan26650">commands</tspan><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26652"> that you would </tspan></tspan><tspan
+         x="53.908203"
+         y="194.58098"
+         id="tspan26658"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26656">usually run on the terminal </tspan></tspan><tspan
+         x="53.908203"
+         y="218.15273"
+         id="tspan26662"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26660">go in the body of the script</tspan></tspan></text>
+    <path
+       style="fill:#da53b2;fill-opacity:1;stroke:#565656;stroke-width:0.499999;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 94.504036,51.735841 c -7.089105,0 -7.089105,0 -7.089105,0"
+       id="path7971" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 200.56586,91.297067 c 2.22382,-3.667257 0.0256,-9.745016 0.58791,-16.910921 0,0 0.25561,-13.117201 -1.45699,-13.580877"
+       id="path10608"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.9389px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';text-align:end;text-anchor:end;fill:#da53b2;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="162.80145"
+       y="116.46568"
+       id="text14647"><tspan
+         sodipodi:role="line"
+         id="tspan14645"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:'Consolas Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="162.80145"
+         y="116.46568">$ bash count_atoms.sh</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-0.5623457,19.170196)"
+       id="text16101"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:'Consolas Bold';text-align:start;white-space:pre;shape-inside:url(#rect16103);display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="-141.1487"
+       y="0"><tspan
+         x="370.5293"
+         y="337.23836"
+         id="tspan26666"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script Bold';fill:#4c50f1"
+           id="tspan26664">Running the script:</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.9389px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';text-align:end;text-anchor:end;fill:#da53b2;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="161.77901"
+       y="42.390079"
+       id="text16211"><tspan
+         sodipodi:role="line"
+         id="tspan16209"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:'Consolas Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="161.77901"
+         y="42.390079">$ nano count_atoms.sh</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-1.5847932,-54.90543)"
+       id="text16215"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:'Consolas Bold';text-align:start;white-space:pre;shape-inside:url(#rect16217);display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="-141.1487"
+       y="0"><tspan
+         x="370.5293"
+         y="337.23836"
+         id="tspan26670"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script Bold';fill:#4c50f1"
+           id="tspan26668">Editing the script:</tspan></tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 168.65912,37.022526 c 0.0164,-0.148718 0.0593,-0.329318 0.11463,-0.469208 0.0179,-0.0452 0.0414,-0.08802 0.0642,-0.13096 0.10976,-0.205854 0.20996,-0.345979 0.3788,-0.516744 0.0311,-0.03154 0.0694,-0.05529 0.10496,-0.08168 0.0691,-0.05127 0.14409,-0.09582 0.21045,-0.150608 8.9e-4,-0.001 -0.002,0.0023 -0.003,0.0033 -0.008,0.009 -0.0144,0.02007 -0.0244,0.02672 -0.0203,0.01331 -0.0422,0.02553 -0.0657,0.03185 -0.0393,0.01061 -0.0802,0.01516 -0.12072,0.01844 -0.15521,0.01277 -0.30151,-0.0034 -0.44464,-0.06872 -0.21115,-0.09643 -0.42032,-0.212855 -0.59913,-0.362157 -0.0786,-0.06562 -0.15146,-0.137909 -0.22719,-0.206859 -0.11244,-0.102424 0.12787,0.121201 0.0154,0.01877"
+       id="path19123"
+       sodipodi:nodetypes="ccccscscscccsc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 168.89719,35.87376 c -2.24124,0.506085 -5.85728,0.748569 -6.92848,2.562835"
+       id="path19125"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.21593672,0,0,0.21593672,159.08959,-0.87240458)"
+       id="text19261"
+       style="font-size:22.8719px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect19263);display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.31549;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="253.13977"
+       y="0"><tspan
+         x="53.908203"
+         y="174.71168"
+         id="tspan26676"><tspan
+           style="fill:#da53b2"
+           id="tspan26672">.sh</tspan><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26674"> is the standard file </tspan></tspan><tspan
+         x="53.908203"
+         y="203.59362"
+         id="tspan26680"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26678">format for shell scripts</tspan></tspan></text>
+    <g
+       id="g19760"
+       transform="matrix(0.76545029,0,0,1,22.191454,0)"
+       style="stroke-width:1.14299">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.571494;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 85.435713,93.771695 c -0.106499,-0.105093 -0.253663,-0.218227 -0.384807,-0.291926 -0.04239,-0.0238 -0.08762,-0.04221 -0.132404,-0.06117 -0.214989,-0.09059 -0.381108,-0.136172 -0.619828,-0.162268 -0.04403,-0.0049 -0.08873,8.41e-4 -0.132964,0.0028 -0.08596,0.0038 -0.172257,0.01647 -0.258308,0.01578 -0.0013,-2.06e-4 0.003,4.87e-4 0.0044,6.15e-4 0.01189,0.0019 0.02383,0.0065 0.03579,0.0054 0.02415,-0.0025 0.04886,-0.0068 0.07107,-0.0167 0.03719,-0.01654 0.07181,-0.0388 0.105329,-0.0618 0.128523,-0.08795 0.231888,-0.192738 0.301804,-0.333679 0.103098,-0.207975 0.192048,-0.430225 0.236707,-0.658851 0.01963,-0.100494 0.03061,-0.202538 0.04592,-0.303804 0.0227,-0.150394 -0.02284,0.174696 -1.26e-4,0.02428"
+         id="path19740"
+         sodipodi:nodetypes="ccccscscscccsc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.571494;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 84.665888,93.020352 c 3.361854,-1.192916 6.940164,-7.873151 9.8884,-9.391351"
+         id="path19742"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0.56810756,49.348505)"
+       id="text19754"
+       style="font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect19756);display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="253.13977"
+       y="0"><tspan
+         x="223.30516"
+         y="171.00923"
+         id="tspan26686"><tspan
+           style="text-align:end;text-anchor:end;fill:#da53b2"
+           id="tspan26682">comments</tspan><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26684">
+</tspan></tspan><tspan
+         x="98.407802"
+         y="194.58098"
+         id="tspan26690"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26688">start with a # and are </tspan></tspan><tspan
+         x="57.164238"
+         y="218.15273"
+         id="tspan26694"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26692">ignored by Bash (not run).
+</tspan></tspan><tspan
+         x="83.049701"
+         y="241.72447"
+         id="tspan26698"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26696">They are super useful to </tspan></tspan><tspan
+         x="94.506753"
+         y="265.29622"
+         id="tspan26702"><tspan
+           style="font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';fill:#3b3b3b;stroke:none"
+           id="tspan26700">write notes to yourself!</tspan></tspan></text>
+  </g>
+</svg>
