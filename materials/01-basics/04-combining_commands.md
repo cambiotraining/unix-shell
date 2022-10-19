@@ -238,6 +238,8 @@ clade
 We can see that now the output is de-duplicated, so only unique values are returned. 
 And so, with a few simple commands, we've answered a very useful question from our data: what are the unique variants in our collection of samples?
 
+![Illustration of the `sort` + `uniq` commands by [Julia Evans](https://wizardzines.com/comics/sort-uniq/)](https://wizardzines.com/comics/sort-uniq/sort-uniq.png)
+
 ### Exercise: Sort & Count
 
 Let's continue working on our command: 

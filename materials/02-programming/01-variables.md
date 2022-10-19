@@ -173,7 +173,7 @@ echo "${ORIGINAL}_copy.pdb"
 
 In conclusion: **always include `{}` when using your variables in scripts**. 
 
-:::
+![Illustration of Bash variables by [Julia Evans](https://wizardzines.com/comics/variables/)](https://wizardzines.com/comics/variables/variables.png)
 
 
 ## Summary 

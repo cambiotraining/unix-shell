@@ -296,13 +296,18 @@ ATOM     16  H           1       0.472   0.494  -2.315  1.00  0.00
 
 We can see the result is all the lines that matched this word pattern. 
 
+`grep` has many other options available, which can be useful depending on the result you want to get. 
+Some of the more useful ones are illustrated below. 
+
+![Illustration of the `grep` command by [Julia Evans](https://wizardzines.com/comics/grep/)](https://wizardzines.com/comics/grep/grep.png)
+
 ### Exercise: Pattern Matching
 
 In the directory `coronavirus/variants/`, there are several CSV files with information about SARS-CoV-2 virus samples that were classified according to clades (these are also commonly known as _coronavirus variants_). 
 
 1. Combine all files into a new file called `all_countries.csv`.  
   <details><summary>Hint</summary>You can use `cat` to combine multiple text files. You can use `>` to _redirect_ the output of a command to a new file.</details>
-3. Create another file called `alpha.tsv` that contains only the Alpha variant samples.  
+3. Create another file called `alpha.csv` that contains only the Alpha variant samples.  
   <details><summary>Hint</summary>You can use `grep` to find a pattern in a file. You can use `>` to _redirect_ the output of a command to a new file.</details>
 1. How many Alpha samples are there in total?
 
@@ -324,7 +329,7 @@ We can use `grep` to find a pattern in our text file and use `>` to save the out
 $ grep "Alpha" all_countries.csv > alpha.csv
 ```
 
-We could investigate the output of our command using `less alpha.tsv`.
+We could investigate the output of our command using `less alpha.csv`.
 
 ----
 
