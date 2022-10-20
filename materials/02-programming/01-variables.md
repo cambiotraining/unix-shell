@@ -57,7 +57,7 @@ This is a much more flexible script, as the input can now be specified by the us
 
 ### Exercise: Customising Scripts
 
-(Go back to the `data-unix` folder for this exercise.)
+(Go back to the `data-shell` folder for this exercise.)
 
 Write a shell script called `longest.sh` that takes two inputs: the name of a directory and a file extension.  
 The script should then return the name of the file with the most lines in that directory with that extension. For example:
