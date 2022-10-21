@@ -27,13 +27,14 @@ The most widely used way to interact with personal computers is called a **graph
 With a GUI, we give instructions by clicking a mouse and using menu-driven interactions.
 
 While the visual aid of a GUI makes it intuitive to learn, this way of delivering instructions to a computer scales very poorly.
-Imagine the following task: for a literature search, you have to copy the third line of one thousand text files in one thousand different directories and paste it into a single file.  
+Imagine the following task: for a literature search, you have to extract the author's list contained in the third line of thousands of text files and count how many publications each author has.  
 Using a GUI, you would not only be clicking at your desk for several hours, but you could potentially also commit an error in the process of completing this repetitive task.
 This is where we take advantage of the Unix shell.
 
 The Unix shell is both a **command-line interface** (CLI) and a **scripting language**, allowing such repetitive tasks to be done automatically and fast. 
 With the proper commands, the shell can repeat tasks with or without some modification as many times as we want. 
 Using the shell, the task in the literature example can be accomplished in seconds. 
+See more motivating examples in the following article: [Five reasons why researchers should learn to love the command line](https://doi.org/10.1038/d41586-021-00263-0).
 
 ![An example of listing some files from a command line interface (the Unix terminal, on the left) and the same files shown on a graphical user interface (in this example a file browser, on the right). TODO](images/gui_vs_cli.png){#fig-gui-cli fig-alt="Screenshots of a terminal and the file explorer both displaying the same files and folders on an example directory"}
 

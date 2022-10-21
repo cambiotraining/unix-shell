@@ -8,10 +8,7 @@ date: today
 
 ## Overview 
 
-The **Unix shell** (aka command line) is a powerful and essential tool for modern scientific research. 
-In this course we will explore the basic structure of the Unix operating system and how we can interact with it using a basic set of commands. 
-Applying this, we will learn how to navigate the filesystem, manipulate text-based data and structure simple pipelines out of these commands. 
-We will also cover how to build scripts, use programmatic techniques to automate task repetition, and communicate with remote servers (such as High Performance Computing servers).
+The **Unix shell** (aka command line) is a powerful and essential tool for researchers, in particular those working in computational disciplines such as bioinformatics and large-scale data analysis. In this course we will explore the basic structure of the Unix operating system and how we can interact with it using a basic set of commands. You will learn how to navigate the filesystem, manipulate text-based data and combine multiple commands to quickly extract information from large data files. You will also learn how to write scripts, use programmatic techniques to automate task repetition, and communicate with remote servers (such as High Performance Computing servers).
 
 ::: {.callout-tip}
 ### Learning Objectives
@@ -23,7 +20,7 @@ We will also cover how to build scripts, use programmatic techniques to automate
 - Combine multiple commands to solve more complex tasks. 
 - Write _Bash_ scripts to record and make your analysis reproducible.
 - Understand what a _for loop_ is an how it can be used to automate repetitive tasks.
-- Work on remote servers and move data to/from them.
+- Access remote servers and move data to/from them.
 :::
 
 
