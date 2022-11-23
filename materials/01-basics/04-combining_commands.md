@@ -182,7 +182,7 @@ The two options used with this command are:
   The _tab_ is used as the default delimiter. 
 - `-f` defines the _field_ or part of the line we want to extract. 
   In our case, we want the second _field_ (or column) of our CSV file. 
-  It's worth knowing that you can specify more than one _field_, so for example if you had a CSV file with more columns and wanted columns 3 and 7 you could set `-d 3,7`.
+  It's worth knowing that you can specify more than one _field_, so for example if you had a CSV file with more columns and wanted columns 3 and 7 you could set `-f 3,7`.
 
 The next command we will explore is called `sort`, which sorts the lines of its input _alphabetically_ (default) or _numerically_ (if using the `-n` option). 
 Let's combine it with our previous command to see the result:
