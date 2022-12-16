@@ -38,6 +38,7 @@ website:
   navbar:
     pinned: true
     logo: "_extensions/cambiotraining/courseformat/img/university_crest_reversed.png"
+    title: "Unix Command Line"
     left:
       - text: "Home"
         href: index.md
