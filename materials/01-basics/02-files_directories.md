@@ -551,6 +551,40 @@ ethane.pdb   methane.pdb
 :::
 
 
+## Finding Files
+
+Often, it's useful to be able to find files that have a particular pattern in their name. 
+We can use the `find` command to achive this. 
+Here is an example, where we try to find all the CSV files that exist under our `data-shell` folder: 
+
+```bash
+find -type f -name "*.csv"
+```
+
+```
+./coronavirus/variants/india_variants.csv
+./coronavirus/variants/ireland_variants.csv
+./coronavirus/variants/southafrica_variants.csv
+./coronavirus/variants/switzerland_variants.csv
+./coronavirus/variants/uk_variants.csv
+```
+
+In this case, we used the option `-type f` to only find **f**iles with the given name. 
+We could use the option `-type d` if we wanted to instead find **d**irectories only. 
+If we wanted to find both files and directories, then we can omit this option.
+
+The `find` command has many more options to configure the search results (you can check these with `man find`). 
+One option that can sometimes be useful is to find AND delete all the files.
+For example the following command would delete all files with `.txt` extension: 
+
+```bash
+find -type f -name "*.txt" -delete
+```
+
+As you can imagine, this feature is **very useful but also potentially dangerous** as you may accidentally delete files you didn't intend to ("with great power comes great responsibility", as they say <i class="fa-solid fa-spider"></i>). 
+So, always make sure to run the command _without the `-delete` option first_ to check that only the files you really want to delete are being matched. 
+
+
 ## Summary
 
 ::: {.callout-tip}
@@ -571,5 +605,6 @@ ethane.pdb   methane.pdb
 - Files can be removed with the `rm` command. To remove an entire directory (and its contents) we need to use `rm -r`  (the `-r` option will remove files **r**ecursively).
   - Deleting files from the command line is _permanent_.
 - We can operate on multiple files using the `*` wildcard, which matches "zero or more characters". For example `ls *.txt` would list all files that have a `.txt` file extension.
+- The `find` command can be used to find the location of files matching a specific name pattern.
 :::
 
