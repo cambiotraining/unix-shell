@@ -44,7 +44,7 @@ There are several ways in which we have modified our script:
 If we run our new script, this is the result: 
 
 ```bash
-$ bash   scripts/count_atoms.sh   ethane.pdb
+$ bash   count_atoms.sh   ethane.pdb
 ```
 
 ```default

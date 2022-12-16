@@ -31,19 +31,16 @@ But first we need to see how we can create a text file from within the command l
 ## Editing Files
 
 There are many text editors available for programming, but we will cover two simple ones that can be called from the command line: `nano`, which is purely based on the terminal; and `gedit`, which has a graphical user interface.  
-First let's create a directory to save our scripts:
-
-```bash
-$ mkdir scripts/
-```
 
 We can create a file with _Nano_ in the following way:
 
 ```bash
-$ nano scripts/count_atoms.sh
+$ nano count_atoms.sh
 ```
 
 This opens a text editor, where you can type the commands you want to save in the file. 
+Note that the mouse does not work with `nano`, you have to use your <kdb>←</kbd> <kdb>→</kbd> <kdb>↑</kbd> <kdb>↓</kbd> arrow keys to move around. 
+
 Once we're happy with our text, we can press <kbd>Ctrl</kbd>+<kbd>X</kbd> to exit the program.  
 As we have made changes to the file, we will be asked the following:
 
@@ -56,14 +53,14 @@ Save modified buffer?
 That's a slightly strange way that `nano` has of asking if we want to save the file. 
 We can press <kbd>Y</kbd> and then we're asked to confirm the file name. 
 At this point we can press <kbd>Enter ↵</kbd> and this will exit _Nano_ and take us back to the console.  
-We can check with `ls scripts/` that our new file is there. 
+We can check with `ls` that our new file is there. 
 
 Note that because we saved our file with `.sh` extension (the conventional extension used for shell scripts), _Nano_ does some colouring of our commands (this is called _syntax highlighting_) to make it easier to read the code. 
 
 ![Screenshot of the command line text editor _Nano_ (left) and the GUI text editor _Gedit_ (right).](images/nano_gedit.png){fig.alt="Two screenshots of these programs side-by-side, displaying the code described in the text."}
 
 Alternatively, you can use the `gedit` text editor, which is a little more user-friendly. 
-The command to open a script is: `gedit scripts/count_atoms.sh`. 
+The command to open a script is: `gedit count_atoms.sh`. 
 This opens the text editor in a separate window, which has the advantage that you can work on the script while having the terminal open.  
 You can save the file using <kbd>Ctrl</kbd>+<kbd>S</kbd>. Remember to save your files regularly as you work on them.
 
@@ -88,7 +85,7 @@ This software offers many advanced capabilities and extensions and works on Wind
 Now that we have our script, we can run it using the program `bash`:
 
 ```bash
-$ bash scripts/count_atoms.sh
+$ bash count_atoms.sh
 ```
 
 ```

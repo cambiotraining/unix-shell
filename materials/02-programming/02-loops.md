@@ -21,7 +21,7 @@ Going back to our `molecules` directory, suppose we wanted to use our `count_ato
 We know how to run the script for a single file: 
 
 ```bash
-$ bash   scripts/count_atoms.sh   cubane.pdb
+$ bash   count_atoms.sh   cubane.pdb
 ```
 
 Of course, we could manually then repeat this for each of our molecule files: `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb`, `propane.pdb`.  
@@ -35,18 +35,18 @@ do
 done
 ```
 
-Let's create a new script called `scripts/count_loop.sh` (using `nano` or `gedit`), where we apply this idea to our example: 
+Let's create a new script called `count_loop.sh` (using `nano` or `gedit`), where we apply this idea to our example: 
 
 ```bash
 #!/bin/bash
 
 for FILENAME in cubane.pdb ethane.pdb methane.pdb
 do
-  bash scripts/count_atoms.sh $FILENAME
+  bash count_atoms.sh $FILENAME
 done
 ```
 
-If we run this script (`bash scripts/count_loop.sh`), we get the expected output: 
+If we run this script (`bash count_loop.sh`), we get the expected output: 
 
 ```
 Processing file: cubane.pdb
@@ -94,7 +94,7 @@ We can use the `*` wildcard in the for loop:
 ```bash
 for FILENAME in *.pdb
 do
-  bash scripts/count_atoms.sh $FILENAME
+  bash count_atoms.sh $FILENAME
 done
 ```
 
@@ -110,7 +110,7 @@ do
   BASE=$(basename $FILENAME pdb)
   
   # run the script and redirect the output to a new file using the basename
-  bash scripts/count_atoms.sh $FILENAME > ${BASE}_atom_counts.txt
+  bash cripts/count_atoms.sh $FILENAME > ${BASE}_atom_counts.txt
 
   # print a message to help see what is happening
   echo "Finished $BASE"
@@ -120,7 +120,7 @@ done
 If we now run this script:
 
 ```bash
-$ bash scripts/count_loop.sh
+$ bash count_loop.sh
 ```
 
 And then list the files in our directory, we should see the new text files created by the script: 
@@ -146,7 +146,7 @@ Suppose we want to preview the commands the following loop will execute without 
 ```bash
 for FILENAME in *.pdb
 do
-  bash scripts/count_atoms.sh $FILENAME
+  bash count_atoms.sh $FILENAME
 done
 ```
 
@@ -155,19 +155,19 @@ We can do this by quoting the whole command and `echo` it:
 ```bash
 for FILENAME in *.pdb
 do
-  echo "bash scripts/count_atoms.sh $FILENAME"
+  echo "bash count_atoms.sh $FILENAME"
 done
 ```
 
 If we run this, the output we get is: 
 
 ```
-bash scripts/count_atoms.sh cubane.pdb
-bash scripts/count_atoms.sh ethane.pdb
-bash scripts/count_atoms.sh methane.pdb
-bash scripts/count_atoms.sh octane.pdb
-bash scripts/count_atoms.sh pentane.pdb
-bash scripts/count_atoms.sh propane.pdb
+bash count_atoms.sh cubane.pdb
+bash count_atoms.sh ethane.pdb
+bash count_atoms.sh methane.pdb
+bash count_atoms.sh octane.pdb
+bash count_atoms.sh pentane.pdb
+bash count_atoms.sh propane.pdb
 ```
 
 So, it wouldn't actually run the commands, but rather tell us what would have been run. 
@@ -222,7 +222,7 @@ So, for each molecule in the first loop, the second loop (the nested loop) itera
 :::
 
 
-### Exercise: Input File CSV
+### (Optional) Exercise: Input File CSV
 
 **This is an (optional) advanced exercise.**
 
