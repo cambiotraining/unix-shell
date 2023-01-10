@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.112">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The Unix Shell</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../materials/01-basics/02-files_directories.html" rel="next">
+<link href="../../materials.html" rel="prev">
+<link href="../../site_libs/quarto-contrib/quarto-project/cambiotraining/courseformat/img/university-of-cambridge-favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../site_libs/quarto-contrib/quarto-project/cambiotraining/courseformat/img/university_crest_reversed.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Unix Command Line</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../setup.html">Setup</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../materials.html" aria-current="page">Materials</a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cambiotraining/unix-shell"><i class="bi bi-github" role="img" aria-label="Bioinformatics Training Facility GitHub">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bioinfocambs"><i class="bi bi-twitter" role="img" aria-label="Bioinformatics Training Facility Twitter">
+</i> 
+ </a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">The Unix Shell</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials.html" class="sidebar-item-text sidebar-link">Materials</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Basics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/01-unix_overview.html" class="sidebar-item-text sidebar-link active">The Unix Shell</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/02-files_directories.html" class="sidebar-item-text sidebar-link">Files &amp; Folders</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/03-text_manipulation.html" class="sidebar-item-text sidebar-link">Text Manipulation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/04-combining_commands.html" class="sidebar-item-text sidebar-link">Combining Commands</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/05-scripts.html" class="sidebar-item-text sidebar-link">Shell Scripts</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Programming</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/02-programming/01-variables.html" class="sidebar-item-text sidebar-link">Arguments &amp; Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/02-programming/02-loops.html" class="sidebar-item-text sidebar-link">Loops</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Remote Work</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/03-remotes/01-ssh_scp.html" class="sidebar-item-text sidebar-link">Access Remote Servers</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/03-remotes/02-remote_files.html" class="sidebar-item-text sidebar-link">Remote Files</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Miscellaneous</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/04-misc/01-sed.html" class="sidebar-item-text sidebar-link">Text Processing: SED</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Appendix</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/99-extras/01-cheatsheet.html" class="sidebar-item-text sidebar-link">Unix Cheat Sheet</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#the-shell" id="toc-the-shell" class="nav-link" data-scroll-target="#the-shell">The Shell</a></li>
+  <li><a href="#running-commands" id="toc-running-commands" class="nav-link" data-scroll-target="#running-commands">Running Commands</a></li>
+  <li><a href="#command-options" id="toc-command-options" class="nav-link" data-scroll-target="#command-options">Command Options</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting help</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">The Unix Shell</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>List some advantages of using the Unix command line, compared to graphical user interfaces.</li>
+<li>Run and modify the behaviour of a simple command.</li>
+</ul>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Slides <i class="fa-solid fa-presentation-screen"></i>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section has an accompanying <a href="https://docs.google.com/presentation/d/1q9Wy77wg_QrN5iP_wYD_TpX7iurs2eFYliOId1owj1A/edit?usp=sharing" target="_blank">slide deck</a>.</p>
+</div>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>In these lessons we will give a brief introduction to the Unix Command Line. But what is the Command Line?</p>
+<p>Humans and computers commonly interact in many different ways, such as through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. The most widely used way to interact with personal computers is called a <strong>graphical user interface</strong> (GUI). With a GUI, we give instructions by clicking a mouse and using menu-driven interactions.</p>
+<p>While the visual aid of a GUI makes it intuitive to learn, this way of delivering instructions to a computer scales very poorly. Imagine the following task: for a literature search, you have to extract the author’s list contained in the third line of thousands of text files and count how many publications each author has.<br>
+Using a GUI, you would not only be clicking at your desk for several hours, but you could potentially also commit an error in the process of completing this repetitive task. This is where we take advantage of the Unix shell.</p>
+<p>The Unix shell is both a <strong>command-line interface</strong> (CLI) and a <strong>scripting language</strong>, allowing such repetitive tasks to be done automatically and fast. With the proper commands, the shell can repeat tasks with or without some modification as many times as we want. Using the shell, the task in the literature example can be accomplished in seconds. See more motivating examples in the following article: <a href="https://doi.org/10.1038/d41586-021-00263-0">Five reasons why researchers should learn to love the command line</a>.</p>
+<div id="fig-gui-cli" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/gui_vs_cli.png" class="img-fluid figure-img" alt="Screenshots of a terminal and the file explorer both displaying the same files and folders on an example directory"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: An example of listing some files from a command line interface (the Unix terminal, on the left) and the same files shown on a graphical user interface (in this example a file browser, on the right). TODO</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="the-shell" class="level2">
+<h2 class="anchored" data-anchor-id="the-shell">The Shell</h2>
+<p>The shell is a program where users can type commands. With the shell, it’s possible to invoke complicated programs like bioinformatics software or simple commands that create an empty directory, with only one line of code. The most popular Unix shell is <strong><em>Bash</em></strong>. <em>Bash</em> is the default shell on most modern implementations of Unix and in most packages that provide Unix-like tools for Windows.</p>
+<p>Using the shell will take some effort and some time to learn. While a GUI presents you with choices to select, CLI choices are not automatically presented to you, so you must learn a few commands like new vocabulary in a language you’re studying.</p>
+<p>The grammar of a shell allows you to combine existing tools into powerful pipelines and handle large volumes of data automatically. Sequences of commands can be written into a <em>script</em>, improving the reproducibility of workflows.</p>
+<p>In addition, the command line is often the easiest way to interact with remote machines and supercomputers. Familiarity with the shell is near essential to run a variety of specialized tools and resources including high-performance computing systems. As clusters and cloud computing systems become more popular for scientific data processing, being able to interact with the shell is becoming a necessary skill.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nomenclature: Unix, Linux, Shell, Terminal, Command Line
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Often, people interchangeably use terms like “shell”, “command line”, “bash” and “terminal” to mean broadly the same thing: <strong>a (non-Windows) command line</strong>.</p>
+<p>Here is a brief explanation of what these terms mean:</p>
+<ul>
+<li>Terminal – is a program that allows us to interact with the computer using text-based commands (i.e.&nbsp;a command line interface).</li>
+<li>Unix Shell – the command-line interpreter that allows you to interact with the Unix-like operating system. Another example of a command-line interpreter is the <a href="https://en.wikipedia.org/wiki/Cmd.exe">Windows Command Prompt</a>.</li>
+<li>Bash – is both a <em>programming language</em> to work on the Unix shell and an <em>interpreter</em> for shell scripts (similarly to how <em>Python</em> is both a language specification, but also has the <code>python</code> program that can be used to run <em>Python</em> scripts). There are alternative Unix shell implementations, such as the <a href="https://en.wikipedia.org/wiki/Z_shell"><em>Z shell</em></a> (but they share similarities to <em>Bash</em>).</li>
+</ul>
+<p>You may have also heard the terms “Unix”, “Linux” and “Ubuntu” used interchangeably:</p>
+<ul>
+<li>Unix – is a family of operating systems, which includes <em>Linux</em> and <em>Mac OS</em>, and which share a particular architecture.</li>
+<li>Linux – is a (sub-)family of operating systems built on an open-source core.</li>
+<li>Ubuntu – is a particular distribution (or “flavour”) of the <em>Linux</em> operating system. Other popular examples include <a href="https://en.wikipedia.org/wiki/GNOME"><em>Gnome</em></a> and <a href="https://en.wikipedia.org/wiki/CentOS"><em>centOS</em></a>. They are equivalent when it comes to the command-line usage.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="running-commands" class="level2">
+<h2 class="anchored" data-anchor-id="running-commands">Running Commands</h2>
+<p>When the shell is first opened, you are presented with a <strong>prompt</strong>, indicating that the shell is waiting for input.</p>
+<p>The shell typically uses <code>$</code> as the prompt, but may use a different symbol. In the examples for this lesson, we’ll show the prompt as <code>$</code>. Most importantly: when typing commands, either from these lessons or from other sources, <em>do not type the prompt</em>, only the commands that follow it. Also note that after you type a command, you have to press the <kbd>Enter</kbd> key to execute it.</p>
+<p>The prompt is followed by a text cursor, a character that indicates the position where your typing will appear. The cursor is usually a flashing or solid block, but it can also be an underscore or a pipe. You may have seen it in a text editor program, for example.</p>
+<p>So let’s try our first command, <code>ls</code> which is short for “listing”. This command will list the contents of the current directory:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Documents    Downloads    Music        Public
+Desktop      Movies       Pictures     Templates</code></pre>
+<p>Your results may be slightly different, depending on your operating system and how you have customized your filesystem.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Command not found
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If the shell can’t find a program whose name is the command you typed, it will print an error message such as:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>ks: command not found</code></pre>
+<p>This might happen if the command was mis-typed or if the program corresponding to that command is not installed.</p>
+</div>
+</div>
+</section>
+<section id="command-options" class="level2">
+<h2 class="anchored" data-anchor-id="command-options">Command Options</h2>
+<p><img src="images/command_anatomy.svg" class="img-fluid" alt="Image of a typical Shell command also detailed in the main text"></p>
+<p>Commands can often change their behaviour with additional options. Consider the command below as a general example, which we will dissect into its component parts:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> <span class="at">--block-size</span> M Documents/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>ls</code> is the <strong>command</strong>.</li>
+<li><code>-l</code> is an <strong>argument</strong> that “switches on” a particular behaviour of the program. In this case it lists the files in a “long” format. These kind of arguments are also also called an <strong>option</strong>, <strong>switch</strong> or <strong>flag</strong>. Options either start with a single dash (<code>-</code>) or two dashes (<code>--</code>).</li>
+<li><code>--block-size</code> is also argument, but it needs a value to indicate how it should change the behaviour of the program. In this case, the option changes the size units that the files/folders are displayed in (in our example we specified ‘M’ for Megabytes).</li>
+<li><code>Documents/</code> is a <strong>positional argument</strong>, which comes at the end of the command. This argument tells the command what to operate on (e.g.&nbsp;files and directories).</li>
+</ul>
+<p>A command can be called with more than one option and more than one argument: but a command doesn’t always require an argument or an option.</p>
+<p>Each part is separated by spaces: if you omit the space between <code>ls</code> and <code>-l</code> the shell will look for a command called <code>ls-l</code>, which doesn’t exist. Also, capitalisation can be important: <code>ls -r</code> is different to <code>ls -R</code>.</p>
+<p>So, our command above gives us a <em>long listing</em> of files and directories in the directory <code>Documents</code>. An example of the output of the command is:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> <span class="at">--block-size</span> M Documents/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>TODO</code></pre>
+</section>
+<section id="getting-help" class="level2">
+<h2 class="anchored" data-anchor-id="getting-help">Getting help</h2>
+<p><code>ls</code> has lots of other <strong>options</strong>. There are two common ways to find out how to use a command and what options it accepts:</p>
+<ol type="1">
+<li>We can pass a <code>--help</code> option to the command, such as <code>ls --help</code>.</li>
+<li>We can read its manual with <code>man</code>, such as <code>man ls</code>.<br>
+To exit the <code>man</code> page you can type <kbd>Q</kbd> (for “quit”).</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Manual page
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>man</code> page is not available for every software. For example, specialist software (such as bioinformatics packages) only have the documentation available through the <code>--help</code> option.</p>
+</div>
+</div>
+<p>Unfortunately, tool documentation is not completely standardised. However, there are some common patterns, which we highlight here.<br>
+Take the documentation of this (imaginary) software as an example:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Bioinfomagic is a tool that magically guesses what you want to do with your raw data.</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Usage: </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a> bioinfomagic [options] -o &lt;dir&gt; &lt;file1&gt; … &lt;fileN&gt;</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>Arguments (mandatory): </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a> -o, --output=PATH  The path to the results </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                    directory</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>Options:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a> -t, --threads=N    The number of CPUs to use.</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a> --submit           Automatically write and submit </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                    a manuscript.</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a> --help             Print this help message and </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                    exit.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Often the <code>--help</code> page starts with a short description of the software.</li>
+<li>Then there’s a <em>usage</em> example, to give us an idea of how the tool should be run. In this example note that <code>&lt;</code> and <code>&gt;</code> are used to indicate <em>user input</em>. These should not be included in our command. For example, if we wanted our output to be in a directory called <code>results</code>:
+<ul>
+<li>Correct: <code>-o results</code></li>
+<li>Wrong: <code>-o &lt;results&gt;</code></li>
+</ul></li>
+<li>This tool can take an arbitrary number of input files, but they have to be at the end of the command. For example:
+<ul>
+<li>Correct: <code>bioinfomagic -o results file1.txt file2.txt</code></li>
+<li>Wrong: <code>bioinfomagic file1.txt file2.txt -o results</code></li>
+</ul></li>
+<li>In this case <code>[options]</code> indicates that we can add additional arguments to the command (which are listed further down the help). The order of these named arguments doesn’t matter, for example:
+<ul>
+<li>Correct: <code>bioinfomagic --submit -o results file1.txt file2.txt</code></li>
+<li>Correct: <code>bioinfomagic -o results --submit file1.txt file2.txt</code></li>
+<li>Wrong: <code>bioinfomagic -o results file1.txt file2.txt --submit</code> (the input files should be at the end)</li>
+</ul></li>
+<li>Long and short argument names are equivalent, for example: <code>-o results</code> is the same as <code>--output=results</code></li>
+</ul>
+<p>This is one example of how the documentation may look like but, as we mentioned above, this is not always standard. Here is another way in which the usage could have been specified:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bioinfomagic --output STR [--submit] [--threads INT] FILE1 [...] [FILEN]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this case, optional arguments are shown within <code>[]</code> (but the <code>[</code> and <code>]</code> should not be included in our final command). Also, the values for the options are indicated as: <code>STR</code>, which means “string” (textual input);<code>INT</code> (an integer, or whole number).</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<div class="highlight">
+<p><strong>Key Points</strong></p>
+<ul>
+<li>The Unix shell (command line) allows running complex operations with a few commands, interact with high-performance computing servers and write reproducible analysis in scripts.</li>
+<li>The basic syntax of a command is: <code>command -options argument</code>.<br>
+For example, <code>ls -l Documents</code> would <strong>l</strong>ist the contents of the <code>Documents</code> directory in a <strong>l</strong>ong format.</li>
+<li>To find the options available with a given program we can use the <code>--help</code> function or (in some cases) the <code>man</code> command.<br>
+For example: <code>ls --help</code> and <code>man ls</code>.</li>
+</ul>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../materials.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Materials</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../materials/01-basics/02-files_directories.html" class="pagination-link">
+        <span class="nav-page-text">Files &amp; Folders</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">Licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <img src="https://creativecommons.org/images/deed/cc_icon_black_x2.png" class="img-fluid" width="25"> Bioinformatics Training Facility</div>
+  </div>
+</footer>
+
+
+
+</body></html>

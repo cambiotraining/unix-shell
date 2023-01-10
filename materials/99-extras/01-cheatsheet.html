@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.112">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Unix Cheat Sheet</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../materials/04-misc/01-sed.html" rel="prev">
+<link href="../../site_libs/quarto-contrib/quarto-project/cambiotraining/courseformat/img/university-of-cambridge-favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../site_libs/quarto-contrib/quarto-project/cambiotraining/courseformat/img/university_crest_reversed.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Unix Command Line</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../setup.html">Setup</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../materials.html" aria-current="page">Materials</a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cambiotraining/unix-shell"><i class="bi bi-github" role="img" aria-label="Bioinformatics Training Facility GitHub">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bioinfocambs"><i class="bi bi-twitter" role="img" aria-label="Bioinformatics Training Facility Twitter">
+</i> 
+ </a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Unix Cheat Sheet</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials.html" class="sidebar-item-text sidebar-link">Materials</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Basics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/01-unix_overview.html" class="sidebar-item-text sidebar-link">The Unix Shell</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/02-files_directories.html" class="sidebar-item-text sidebar-link">Files &amp; Folders</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/03-text_manipulation.html" class="sidebar-item-text sidebar-link">Text Manipulation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/04-combining_commands.html" class="sidebar-item-text sidebar-link">Combining Commands</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/05-scripts.html" class="sidebar-item-text sidebar-link">Shell Scripts</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Programming</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/02-programming/01-variables.html" class="sidebar-item-text sidebar-link">Arguments &amp; Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/02-programming/02-loops.html" class="sidebar-item-text sidebar-link">Loops</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Remote Work</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/03-remotes/01-ssh_scp.html" class="sidebar-item-text sidebar-link">Access Remote Servers</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/03-remotes/02-remote_files.html" class="sidebar-item-text sidebar-link">Remote Files</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Miscellaneous</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/04-misc/01-sed.html" class="sidebar-item-text sidebar-link">Text Processing: SED</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Appendix</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/99-extras/01-cheatsheet.html" class="sidebar-item-text sidebar-link active">Unix Cheat Sheet</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#documentation-and-help" id="toc-documentation-and-help" class="nav-link active" data-scroll-target="#documentation-and-help">Documentation and Help</a></li>
+  <li><a href="#listing-files" id="toc-listing-files" class="nav-link" data-scroll-target="#listing-files">Listing files</a></li>
+  <li><a href="#change-directories" id="toc-change-directories" class="nav-link" data-scroll-target="#change-directories">Change Directories</a></li>
+  <li><a href="#make-or-remove-directories" id="toc-make-or-remove-directories" class="nav-link" data-scroll-target="#make-or-remove-directories">Make or Remove Directories</a></li>
+  <li><a href="#copy-move-and-remove-files" id="toc-copy-move-and-remove-files" class="nav-link" data-scroll-target="#copy-move-and-remove-files">Copy, Move and Remove Files</a></li>
+  <li><a href="#view-text-files" id="toc-view-text-files" class="nav-link" data-scroll-target="#view-text-files">View Text Files</a></li>
+  <li><a href="#find-patterns" id="toc-find-patterns" class="nav-link" data-scroll-target="#find-patterns">Find Patterns</a></li>
+  <li><a href="#wildcards" id="toc-wildcards" class="nav-link" data-scroll-target="#wildcards">Wildcards</a></li>
+  <li><a href="#redirect-output" id="toc-redirect-output" class="nav-link" data-scroll-target="#redirect-output">Redirect Output</a></li>
+  <li><a href="#combining-commands-with-pipes" id="toc-combining-commands-with-pipes" class="nav-link" data-scroll-target="#combining-commands-with-pipes">Combining Commands with <code>|</code> Pipes</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Unix Cheat Sheet</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>This document gives a brief summary of useful Unix commands. Anything within <code>{</code> and <code>}</code> indicates a user-provided input (<code>{</code> and <code>}</code> should not be included in the commands).</p>
+<section id="documentation-and-help" class="level2">
+<h2 class="anchored" data-anchor-id="documentation-and-help">Documentation and Help</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>man {command}</code></td>
+<td style="text-align: left;">manual page for the program</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>whatis {command}</code></td>
+<td style="text-align: left;">short description of the program</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{command} --help</code></td>
+<td style="text-align: left;">many programs use the <code>--help</code> flag to print documentation</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="listing-files" class="level2">
+<h2 class="anchored" data-anchor-id="listing-files">Listing files</h2>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>ls</code></td>
+<td style="text-align: left;">list files in the current directory</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>ls {path}</code></td>
+<td style="text-align: left;">list files in the specified path</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>ls -l {path}</code></td>
+<td style="text-align: left;">list files in long format (more information)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>ls -a {path}</code></td>
+<td style="text-align: left;">list all files (including hidden files)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="change-directories" class="level2">
+<h2 class="anchored" data-anchor-id="change-directories">Change Directories</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>cd {path}</code></td>
+<td style="text-align: left;">change to the specified directory</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cd</code> or <code>cd ~</code></td>
+<td style="text-align: left;">change to the home directory</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>cd ..</code></td>
+<td style="text-align: left;">move back one directory</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>pwd</code></td>
+<td style="text-align: left;">print working directory. Shows the full path of where you are at the moment (useful if you are lost)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="make-or-remove-directories" class="level2">
+<h2 class="anchored" data-anchor-id="make-or-remove-directories">Make or Remove Directories</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>mkdir {dirname}</code></td>
+<td style="text-align: left;">create a directory with specified name</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>rmdir {dirname}</code></td>
+<td style="text-align: left;">remove a directory (only works if the directory is empty)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>rm -r {dirname}</code></td>
+<td style="text-align: left;">remove the directory and all it’s contents (use with care)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="copy-move-and-remove-files" class="level2">
+<h2 class="anchored" data-anchor-id="copy-move-and-remove-files">Copy, Move and Remove Files</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>cp {source/path/file1} {target/path/}</code></td>
+<td style="text-align: left;">copy “file1” to another directory keeping its name</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cp {source/path/file1} {target/path/file2}</code></td>
+<td style="text-align: left;">copy “file1” to another directory naming it “file2”</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>cp {file1} {file2}</code></td>
+<td style="text-align: left;">make a copy of “file1” in the same directory with a new name “file2”</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>mv {source/path/file1} {target/path/}</code></td>
+<td style="text-align: left;">move “file1” to another directory keeping its name</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>mv {source/path/file1} {target/path/file2}</code></td>
+<td style="text-align: left;">move “file1” to another directory renaming it as “file2”</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>mv {file1} {file2}</code></td>
+<td style="text-align: left;">is equivalent to renaming a file</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>rm {filename}</code></td>
+<td style="text-align: left;">remove a file</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="view-text-files" class="level2">
+<h2 class="anchored" data-anchor-id="view-text-files">View Text Files</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>less {file}</code></td>
+<td style="text-align: left;">view and scroll through a text file</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>head {file}</code></td>
+<td style="text-align: left;">print the first 10 lines of a file</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>head -n {N} {file}</code></td>
+<td style="text-align: left;">print the first N lines of a file</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>tail {file}</code></td>
+<td style="text-align: left;">print the last 10 lines of a file</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>tail -n {N} {file}</code></td>
+<td style="text-align: left;">print the last N lines of a file</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>head -n {N} {file} | tail -n 1</code></td>
+<td style="text-align: left;">print the Nth line of a file</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>cat {file}</code></td>
+<td style="text-align: left;">print the whole content of the file</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cat {file1} {file2} {...} {fileN}</code></td>
+<td style="text-align: left;">concatenate files and print the result</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>zcat {file}</code> and <code>zless {file}</code></td>
+<td style="text-align: left;">like <code>cat</code> and <code>less</code> but for <em>compressed</em> files (<em>.zip</em> or <em>.gz</em>)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="find-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="find-patterns">Find Patterns</h2>
+<p>Finding (and replacing) patterns in text is a very powerful feature of several command line programs. The patterns are specified using <em>regular expressions</em> (shortened as <em>regex</em>), which are not covered in this document. See this <a href="https://cheatography.com/davechild/cheat-sheets/regular-expressions/pdf/">Regular Expressions Cheat Sheet</a> for a comprehensive overview.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>grep {regex} {file}</code></td>
+<td style="text-align: left;">print the lines of the file that have a match with the regular expression pattern</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wildcards" class="level2">
+<h2 class="anchored" data-anchor-id="wildcards">Wildcards</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>*</code></td>
+<td style="text-align: left;">match any number of characters</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>?</code></td>
+<td style="text-align: left;">match any character only once</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>Examples</em></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>ls sample*</code></td>
+<td style="text-align: left;">list all files that start with the word “sample”</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>ls *.txt</code></td>
+<td style="text-align: left;">list all the files with <em>.txt</em> extension</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cp * {another/directory}</code></td>
+<td style="text-align: left;">copy all the files in the current directory to a different directory</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="redirect-output" class="level2">
+<h2 class="anchored" data-anchor-id="redirect-output">Redirect Output</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>{command} &gt; {file}</code></td>
+<td style="text-align: left;">redirect output to a file (overwrites if the file exists)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{command} &gt;&gt; {file}</code></td>
+<td style="text-align: left;">append output to a file (creates a new file if it does not already exist)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="combining-commands-with-pipes" class="level2">
+<h2 class="anchored" data-anchor-id="combining-commands-with-pipes">Combining Commands with <code>|</code> Pipes</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>&lt;command1&gt; | &lt;command2&gt;</code></td>
+<td style="text-align: left;">the output of “command1” is passed as input to “command2”</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>Examples</em></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>ls | wc -l</code></td>
+<td style="text-align: left;">count the number of files in a directory</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cat {file1} {file2} | less</code></td>
+<td style="text-align: left;">concatenate files and view them with <em>less</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>cat {file} | grep "{pattern}" | wc -l</code></td>
+<td style="text-align: left;">count how many lines in the file have a match with “pattern”</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../materials/04-misc/01-sed.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Text Processing: SED</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">Licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <img src="https://creativecommons.org/images/deed/cc_icon_black_x2.png" class="img-fluid" width="25"> Bioinformatics Training Facility</div>
+  </div>
+</footer>
+
+
+
+</body></html>
