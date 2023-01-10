@@ -107,7 +107,7 @@ Here is the modified script:
 for FILENAME in *.pdb
 do
   # create a variable storing just the basename of the file
-  BASE=$(basename $FILENAME pdb)
+  BASE=$(basename $FILENAME .pdb)
   
   # run the script and redirect the output to a new file using the basename
   bash cripts/count_atoms.sh $FILENAME > ${BASE}_atom_counts.txt
