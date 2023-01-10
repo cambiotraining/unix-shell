@@ -208,7 +208,7 @@ $ cat *_variants.csv | cut -d "," -f 2 | sort
 
 You can see that the output is now sorted alphabetically. 
 
-The `cut` command is often used in conjunction with another command: `uniq`. 
+The `sort` command is often used in conjunction with another command: `uniq`. 
 This command returns the unique lines in its input. 
 Importantly, _it only works as intended if the input is sorted_. 
 That's why it's often used together with `sort`.  
