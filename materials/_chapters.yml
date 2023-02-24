@@ -6,11 +6,11 @@ book:
         - materials/01-basics/02-files_directories.md
         - materials/01-basics/03-text_manipulation.md
         - materials/01-basics/04-combining_commands.md
-        - materials/01-basics/05-scripts.md
     - part: "Programming"
       chapters:
-        - materials/02-programming/01-variables.md
-        - materials/02-programming/02-loops.md
+        - materials/01-basics/01-scripts.md
+        - materials/02-programming/02-variables.md
+        - materials/02-programming/03-loops.md
     - part: "Remote Work"
       chapters: 
         - materials/03-remotes/01-ssh_scp.md

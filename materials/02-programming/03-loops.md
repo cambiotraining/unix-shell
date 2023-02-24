@@ -174,7 +174,7 @@ So, for each molecule in the first loop, the second loop (the nested loop) itera
 #### Nested loops
 {{< level 2 >}}
 
-In a [previous exercise](01-variables.md##exercises) we created the script `count_atom_type.sh`, which counts specific atom types in our PDF files. 
+In a [previous exercise](02-variables.md#exercises) we created the script `count_atom_type.sh`, which counts specific atom types in our PDF files. 
 Here is the code from that script:
 
 ```bash
