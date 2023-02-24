@@ -184,52 +184,6 @@ If we press <kbd>Tab ↹</kbd> again it does nothing, since there are now multip
 In this case, quickly pressing <kbd>Tab ↹</kbd> twice brings up a list of all the files. 
 :::
 
-### Exercise: Navigating the Filesystem
-
-Using the filesystem diagram below, if `pwd` displays `/Users/Robin/Documents/`, what will `ls ../backup` display?
-
-1. `../backup: No such file or directory`
-2. `2012-12-01 2013-01-08 2013-01-27`
-3. `original pnas_final pnas_sub`
-
-![](images/filesystem_exercise.svg)
-
-::: {.callout-tip collapse=true}
-#### Answer
-
-1. No: from the diagram, we can see that there *is* a directory `backup` in `/Users/Robin/`.
-2. No: this is the content of `Users/Robin/Documents/backup/`, but with `..` we asked for one level _up_.
-3. **Yes:** `../backup/` refers to `/Users/Robin/backup`.
-:::
-
-### Exercise: File Paths
-
-Starting from `/home/amanda/data`, which of the following commands could Amanda use to navigate to her home directory (`/home/amanda`)?
-
-1. `cd .`
-2. `cd /`
-3. `cd /home/amanda`
-4. `cd ../..`
-5. `cd ~`
-6. `cd home`
-7. `cd ~/data/..`
-8. `cd`
-9. `cd ..`
-
-::: {.callout-tip collapse=true}
-#### Answer
-
-1. No: `.` stands for the current directory.
-2. No: `/` stands for the root directory.
-3. **Yes**: This is an example of using the full absolute path.
-4. No: this goes up two levels, i.e. ends in `/home`.
-5. **Yes**: `~` stands for the user's home directory, in this case `/home/amanda`.
-6. No: this would navigate into a directory `home` in the current directory if it exists.
-7. **Yes**: unnecessarily complicated, but correct.
-8. **Yes**: shortcut to go back to the user's home directory.
-9. **Yes**: goes up one level.
-:::
-
 
 ## Creating directories
 
@@ -370,97 +324,6 @@ books.txt
 ```
 
 
-### Exercise: Renaming Files
-
-Suppose that you created a plain-text file in your current directory to contain a list of the statistical tests you will need to do to analyze your data, and named it `statstics.txt`.
-
-After creating and saving this file you realize you misspelled the filename! 
-You want to correct the mistake, which command could you use to do so?
-
-1. `cp statstics.txt statistics.txt`
-2. `mv statstics.txt statistics.txt`
-3. `mv statstics.txt .`
-4. `cp statstics.txt .`
-
-::: {.callout-tip collapse=true}
-#### Answer
-
-1. No.  While this would create a file with the correct name, the incorrectly named file still exists in the directory
-and would need to be deleted.
-2. **Yes**, this would work to rename the file.
-3. No, the period(.) indicates where to move the file, but does not provide a new file name; identical file names
-cannot be created.
-4. No, the period(.) indicates where to copy the file, but does not provide a new file name; identical file names
-cannot be created.
-:::
-
-### Exercise: Copy Directories
-
-Make a copy of the `sequencing` directory named `backup`.
-When copying an entire directory, you will need to use the option `-r` with the `cp` command (`-r` means "recursive"). 
-
-::: {.callout-tip collapse=true}
-#### Answer 
-
-If we run the command without the `-r` option, this is what happens:
-
-```bash
-$ cp sequencing backup
-```
-
-```
-cp: -r not specified; omitting directory 'sequencing'
-```
-
-This message is already indicating what the problem is.
-By default, directories (and their contents) are not copied unless we specify the option `-r`.
-
-This would work:
-
-```bash
-$ cp -r sequencing backup
-```
-
-Running `ls` we can see a new folder called `backup`:
-
-```bash
-$ ls
-```
-
-```
-README.txt  backup  books_copy.txt  coronavirus  molecules  sequencing  thesis_notes
-```
-:::
-
-### Exercise: Copy with Multiple Filenames
-
-What does `cp` do when given several filenames and a directory name?
-
-```bash
-$ mkdir -p backup
-$ cp molecules/cubane.pdb molecules/ethane.pdb backup/
-```
-
-In the example below, what does `cp` do when given three or more file names?
-
-```bash
-$ cp molecules/cubane.pdb molecules/ethane.pdb molecules/methane.pdb
-```
-
-
-::: {.callout-tip collapse=true}
-#### Answer 
-
-If given more than one file name followed by a directory name (i.e. the destination directory must be the last argument), `cp` copies the files to the named directory.
-
-If given three file names, `cp` throws an error such as the one below, because it is expecting a directory name as the last argument.
-
-```bash
-cp: target 'molecules/methane.pdb' is not a directory
-```
-:::
-
-
 ## Removing Files and Directories
 
 The Unix command used to remove or delete files is `rm` ("remove"). 
@@ -526,31 +389,6 @@ As an exception, if a wildcard expression does not match any file, _Bash_ will p
 For example typing `ls *.pdf` in the `molecules` directory (which does not contain any PDF files) results in an error message that there is no file called `*.pdf`. 
 
 
-### Exercise: Wildcards
-
-When run in the `molecules` directory, which `ls` command(s) will produce this output?
-
-```
-ethane.pdb   methane.pdb
-```
-
-1. `ls *t*ane.pdb`
-2. `ls *t?ne.*`
-3. `ls *t??ne.pdb`
-4. `ls ethane.*`
-
-::: {.callout-tip collapse=true}
-#### Answer
-
-1. No. This shows all files whose names contain zero or more characters (`*`) followed by the letter `t`, then zero or more characters (`*`) followed by `ane.pdb`.  
-   This gives `ethane.pdb  methane.pdb  octane.pdb  pentane.pdb`. 
-2. No. This shows all files whose names start with zero or more characters (`*`) followed by the letter `t`, then a single character (`?`), then `ne.` followed by zero or more characters (`*`).  
-   This will give us `octane.pdb` and `pentane.pdb` but doesn't match anything which ends in `thane.pdb`.
-3. **Yes**. This fixes the problems of option 2 by matching two characters (`??`) between `t` and `ne`. 
-4. No. This only shows files starting with `ethane.`.
-:::
-
-
 ## Finding Files
 
 Often, it's useful to be able to find files that have a particular pattern in their name. 
@@ -558,7 +396,7 @@ We can use the `find` command to achive this.
 Here is an example, where we try to find all the CSV files that exist under our `data-shell` folder: 
 
 ```bash
-find -type f -name "*.csv"
+find . -type f -name "*.csv"
 ```
 
 ```
@@ -578,11 +416,191 @@ One option that can sometimes be useful is to find AND delete all the files.
 For example the following command would delete all files with `.txt` extension: 
 
 ```bash
-find -type f -name "*.txt" -delete
+find . -type f -name "*.txt" -delete
 ```
 
 As you can imagine, this feature is **very useful but also potentially dangerous** as you may accidentally delete files you didn't intend to ("with great power comes great responsibility", as they say <i class="fa-solid fa-spider"></i>). 
 So, always make sure to run the command _without the `-delete` option first_ to check that only the files you really want to delete are being matched. 
+
+
+## Exercises
+
+:::{.callout-exercise}
+#### Navigating the filesystem
+{{< level 1 >}}
+
+Using the filesystem diagram below, if `pwd` displays `/Users/Robin/Documents/`, what will `ls ../backup` display?
+
+1. `../backup: No such file or directory`
+2. `2012-12-01 2013-01-08 2013-01-27`
+3. `original pnas_final pnas_sub`
+
+![](images/filesystem_exercise.svg)
+
+::: {.callout-answer collapse=true}
+
+1. No: from the diagram, we can see that there *is* a directory `backup` in `/Users/Robin/`.
+2. No: this is the content of `Users/Robin/Documents/backup/`, but with `..` we asked for one level _up_.
+3. **Yes:** `../backup/` refers to `/Users/Robin/backup`.
+:::
+:::
+
+
+:::{.callout-exercise}
+#### File paths
+{{< level 1 >}}
+
+Starting from `/home/amanda/data`, which of the following commands could Amanda use to navigate to her home directory (`/home/amanda`)?
+
+1. `cd .`
+2. `cd /`
+3. `cd /home/amanda`
+4. `cd ../..`
+5. `cd ~`
+6. `cd home`
+7. `cd ~/data/..`
+8. `cd`
+9. `cd ..`
+
+::: {.callout-answer collapse=true}
+
+1. No: `.` stands for the current directory.
+2. No: `/` stands for the root directory.
+3. **Yes**: This is an example of using the full absolute path.
+4. No: this goes up two levels, i.e. ends in `/home`.
+5. **Yes**: `~` stands for the user's home directory, in this case `/home/amanda`.
+6. No: this would navigate into a directory `home` in the current directory if it exists.
+7. **Yes**: unnecessarily complicated, but correct.
+8. **Yes**: shortcut to go back to the user's home directory.
+9. **Yes**: goes up one level.
+:::
+:::
+
+
+:::{.callout-exercise}
+#### Renaming files
+{{< level 1 >}}
+
+Suppose that you created a plain-text file in your current directory to contain a list of the statistical tests you will need to do to analyze your data, and named it `statstics.txt`.
+
+After creating and saving this file you realize you misspelled the filename! 
+You want to correct the mistake, which command could you use to do so?
+
+1. `cp statstics.txt statistics.txt`
+2. `mv statstics.txt statistics.txt`
+3. `mv statstics.txt .`
+4. `cp statstics.txt .`
+
+::: {.callout-answer collapse=true}
+
+1. No.  While this would create a file with the correct name, the incorrectly named file still exists in the directory
+and would need to be deleted.
+2. **Yes**, this would work to rename the file.
+3. No, the period(.) indicates where to move the file, but does not provide a new file name; identical file names
+cannot be created.
+4. No, the period(.) indicates where to copy the file, but does not provide a new file name; identical file names
+cannot be created.
+:::
+:::
+
+
+:::{.callout-exercise}
+#### Copy directories
+{{< level 1 >}}
+
+Make a copy of the `sequencing` directory named `backup`.
+When copying an entire directory, you will need to use the option `-r` with the `cp` command (`-r` means "recursive"). 
+
+::: {.callout-answer collapse=true}
+
+If we run the command without the `-r` option, this is what happens:
+
+```bash
+$ cp sequencing backup
+```
+
+```
+cp: -r not specified; omitting directory 'sequencing'
+```
+
+This message is already indicating what the problem is.
+By default, directories (and their contents) are not copied unless we specify the option `-r`.
+
+This would work:
+
+```bash
+$ cp -r sequencing backup
+```
+
+Running `ls` we can see a new folder called `backup`:
+
+```bash
+$ ls
+```
+
+```
+README.txt  backup  books_copy.txt  coronavirus  molecules  sequencing  thesis_notes
+```
+:::
+:::
+
+
+:::{.callout-exercise}
+#### Wildcards
+{{< level 1 >}}
+
+When run in the `molecules` directory, which `ls` command(s) will produce this output?
+
+```
+ethane.pdb   methane.pdb
+```
+
+1. `ls *t*ane.pdb`
+2. `ls *t?ne.*`
+3. `ls *t??ne.pdb`
+4. `ls ethane.*`
+
+::: {.callout-answer collapse=true}
+
+1. No. This shows all files whose names contain zero or more characters (`*`) followed by the letter `t`, then zero or more characters (`*`) followed by `ane.pdb`.  
+   This gives `ethane.pdb  methane.pdb  octane.pdb  pentane.pdb`. 
+2. No. This shows all files whose names start with zero or more characters (`*`) followed by the letter `t`, then a single character (`?`), then `ne.` followed by zero or more characters (`*`).  
+   This will give us `octane.pdb` and `pentane.pdb` but doesn't match anything which ends in `thane.pdb`.
+3. **Yes**. This fixes the problems of option 2 by matching two characters (`??`) between `t` and `ne`. 
+4. No. This only shows files starting with `ethane.`.
+:::
+:::
+
+
+:::{.callout-exercise}
+#### Copy with multiple filenames
+{{< level 2 >}}
+
+What does `cp` do when given several filenames and a directory name?
+
+```bash
+$ mkdir -p backup
+$ cp molecules/cubane.pdb molecules/ethane.pdb backup/
+```
+
+In the example below, what does `cp` do when given three or more file names?
+
+```bash
+$ cp molecules/cubane.pdb molecules/ethane.pdb molecules/methane.pdb
+```
+
+
+::: {.callout-answer collapse=true}
+
+If given more than one file name followed by a directory name (i.e. the destination directory must be the last argument), `cp` copies the files to the named directory.
+
+If given three file names, `cp` throws an error such as the one below, because it is expecting a directory name as the last argument.
+
+```bash
+cp: target 'molecules/methane.pdb' is not a directory
+```
+:::
+:::
 
 
 ## Summary

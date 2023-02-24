@@ -41,6 +41,22 @@ $ nano count_atoms.sh
 This opens a text editor, where you can type the commands you want to save in the file. 
 Note that the mouse does not work with `nano`, you have to use your <kdb>←</kbd> <kdb>→</kbd> <kdb>↑</kbd> <kdb>↓</kbd> arrow keys to move around. 
 
+For now, type this code to your script (or copy-paste it):
+
+```bash
+#!/bin/bash
+
+# count the number of lines containing the word "ATOM"
+cat cubane.pdb | grep "ATOM" | wc -l
+```
+
+Two things to note about our code: 
+
+- We started the script with a special `#!/bin/bash` line, which is known as a [**shebang**](https://en.wikipedia.org/wiki/Shebang_(Unix)). 
+  The _shebang_ is optional, but in some cases is used to inform that this script should use the program `bash` to be executed.
+- The other line starting with the `#` hash character is known as a **comment** and is not executed by `bash` (it is ignored). 
+  Comments are extremely useful because they allow us to annotate our code with information about the commands we're executing. 
+
 Once we're happy with our text, we can press <kbd>Ctrl</kbd>+<kbd>X</kbd> to exit the program.  
 As we have made changes to the file, we will be asked the following:
 
@@ -59,10 +75,11 @@ Note that because we saved our file with `.sh` extension (the conventional exten
 
 ![Screenshot of the command line text editor _Nano_ (left) and the GUI text editor _Gedit_ (right).](images/nano_gedit.png){fig.alt="Two screenshots of these programs side-by-side, displaying the code described in the text."}
 
-Alternatively, you can use the `gedit` text editor, which is a little more user-friendly. 
+Alternatively, you can use the `gedit` text editor, which is a little more user-friendly (but is not always available, for example on macOS). 
 The command to open a script is: `gedit count_atoms.sh`. 
 This opens the text editor in a separate window, which has the advantage that you can work on the script while having the terminal open.  
-You can save the file using <kbd>Ctrl</kbd>+<kbd>S</kbd>. Remember to save your files regularly as you work on them.
+You can save the file using <kbd>Ctrl</kbd>+<kbd>S</kbd>. 
+Remember to save your files regularly as you work on them.
 
 
 ::: {.callout-note}
@@ -92,9 +109,47 @@ $ bash count_atoms.sh
 16
 ```
 
-Which will print the result of running those commands on our screen. 
+Which prints the result of running those commands on our screen. 
 In summary, running a shell script is exactly the same as running the commands one-by-one on the shell.  
 However, saving our commands in a script has some advantages: it serves as a **record** of our analysis, making it more **reproducible** and it allows us to **adapt and reuse** our code to run other similar analysis. 
+
+
+## Exercises
+
+:::{.callout-exercise}
+#### Shell scripts
+{{< level 1 >}}
+
+The `echo` command can be used to print a message to the screen. 
+This can be particularly useful in scripts, as we can use it to give information to the user about the output. 
+
+Using either `nano` or `gedit`, open the script `count_atoms.sh` that we just created so that the output of the script when you run it is: 
+
+```
+The number of atoms in cubane.pdb is:
+16
+```
+
+:::{.callout-answer collapse=true}
+
+We can use `nano count_atoms.sh` to open our script, and add a new line of code with an `echo` command, like this: 
+
+```bash
+#!/bin/bash
+
+# print a message
+echo "The number of atoms in ethane.pdb is:"
+
+# count the number of lines containing the word "ATOM"
+cat cubane.pdb | grep "ATOM" | wc -l
+```
+
+We can then exit nano <kbd>Ctrl</kbd>+<kbd>X</kbd>, confirm that we want to save the changes by pressing <kbd>Y</kbd> and finally confirm the filename by pressing <kbd>Enter ↵</kbd>. 
+
+When we run the modified script with `bash count_atoms.sh`, we should get the desired output.
+
+:::
+:::
 
 
 ## Summary 

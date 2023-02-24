@@ -154,6 +154,7 @@ wc -l *.pdb
  107 total
 ```
 
+
 ## Combining several files
 
 Earlier, we said that the `cat` command stands for "concatenate". 
@@ -164,6 +165,7 @@ For example, if we wanted to combine all PDB files into one:
 cat *.pdb
 ```
 
+
 ## Redirecting Output
 
 The commands we've been using so far, print their output to the terminal. 
@@ -171,7 +173,7 @@ But what if we wanted to save it into a file?
 We can achieve this by **redirecting** the output of the command to a file using the `>` operator. 
 
 ```bash
-wc -l *.pdb > lengths.txt
+wc -l *.pdb > number_lines.txt
 ```
 
 Now, the output is not printed to the console, but instead sent to a new file. 
@@ -182,7 +184,48 @@ If what we want to do is _append_ the result of the command to the existing file
 Let's see this in practice in the next exercise. 
 
 
-### Exercise: Redirection
+## Finding Patterns
+
+Something it can be very useful to find lines of a file that match a particular text pattern. 
+We can use the tool `grep` ("global regular expression print") to achieve this.  
+Going back to our molecules directory (`cd ../molecules`), let's find the word "ATOM" in our `cubane.pdb` molecule file:
+
+```bash
+$ grep "ATOM" cubane.pdb
+```
+
+```
+ATOM      1  C           1       0.789  -0.852   0.504  1.00  0.00
+ATOM      2  C           1      -0.161  -1.104  -0.624  1.00  0.00
+ATOM      3  C           1      -1.262  -0.440   0.160  1.00  0.00
+ATOM      4  C           1      -0.289  -0.202   1.284  1.00  0.00
+ATOM      5  C           1       1.203   0.513  -0.094  1.00  0.00
+ATOM      6  C           1       0.099   1.184   0.694  1.00  0.00
+ATOM      7  C           1      -0.885   0.959  -0.460  1.00  0.00
+ATOM      8  C           1       0.236   0.283  -1.269  1.00  0.00
+ATOM      9  H           1       1.410  -1.631   0.942  1.00  0.00
+ATOM     10  H           1      -0.262  -2.112  -1.024  1.00  0.00
+ATOM     11  H           1      -2.224  -0.925   0.328  1.00  0.00
+ATOM     12  H           1      -0.468  -0.501   2.315  1.00  0.00
+ATOM     13  H           1       2.224   0.892  -0.134  1.00  0.00
+ATOM     14  H           1       0.240   2.112   1.251  1.00  0.00
+ATOM     15  H           1      -1.565   1.730  -0.831  1.00  0.00
+ATOM     16  H           1       0.472   0.494  -2.315  1.00  0.00
+```
+
+We can see the result is all the lines that matched this word pattern. 
+
+`grep` has many other options available, which can be useful depending on the result you want to get. 
+Some of the more useful ones are illustrated below. 
+
+![Illustration of the `grep` command by [Julia Evans](https://wizardzines.com/comics/grep/)](https://wizardzines.com/comics/grep/grep.png)
+
+
+## Exercises
+
+:::{.callout-exercise}
+#### Redirection
+{{< level 1 >}}
 
 Move to the directory `sequencing` and do the following:
 
@@ -191,8 +234,7 @@ Move to the directory `sequencing` and do the following:
 3. The operator `>>` can be used to _append_ the output of a command to an existing file.  
   Re-run both of the previous commands, but instead using the `>>` operator the second time. What happens now?
 
-::: {.callout-tip collapse=true}
-#### Answer
+::: {.callout-answer collapse=true}
 
 **Task 1**
 
@@ -263,45 +305,12 @@ sampleF_1.fq.gz
 sampleF_2.fq.gz
 ```
 :::
+:::
 
 
-## Finding Patterns
-
-Something it can be very useful to find lines of a file that match a particular text pattern. 
-We can use the tool `grep` ("global regular expression print") to achieve this.  
-Going back to our molecules directory (`cd ../molecules`), let's find the word "ATOM" in our `cubane.pdb` molecule file:
-
-```bash
-$ grep "ATOM" cubane.pdb
-```
-
-```
-ATOM      1  C           1       0.789  -0.852   0.504  1.00  0.00
-ATOM      2  C           1      -0.161  -1.104  -0.624  1.00  0.00
-ATOM      3  C           1      -1.262  -0.440   0.160  1.00  0.00
-ATOM      4  C           1      -0.289  -0.202   1.284  1.00  0.00
-ATOM      5  C           1       1.203   0.513  -0.094  1.00  0.00
-ATOM      6  C           1       0.099   1.184   0.694  1.00  0.00
-ATOM      7  C           1      -0.885   0.959  -0.460  1.00  0.00
-ATOM      8  C           1       0.236   0.283  -1.269  1.00  0.00
-ATOM      9  H           1       1.410  -1.631   0.942  1.00  0.00
-ATOM     10  H           1      -0.262  -2.112  -1.024  1.00  0.00
-ATOM     11  H           1      -2.224  -0.925   0.328  1.00  0.00
-ATOM     12  H           1      -0.468  -0.501   2.315  1.00  0.00
-ATOM     13  H           1       2.224   0.892  -0.134  1.00  0.00
-ATOM     14  H           1       0.240   2.112   1.251  1.00  0.00
-ATOM     15  H           1      -1.565   1.730  -0.831  1.00  0.00
-ATOM     16  H           1       0.472   0.494  -2.315  1.00  0.00
-```
-
-We can see the result is all the lines that matched this word pattern. 
-
-`grep` has many other options available, which can be useful depending on the result you want to get. 
-Some of the more useful ones are illustrated below. 
-
-![Illustration of the `grep` command by [Julia Evans](https://wizardzines.com/comics/grep/)](https://wizardzines.com/comics/grep/grep.png)
-
-### Exercise: Pattern Matching
+:::{.callout-exercise}
+#### Pattern matching
+{{< level 2 >}}
 
 In the directory `coronavirus/variants/`, there are several CSV files with information about SARS-CoV-2 virus samples that were classified according to clades (these are also commonly known as _coronavirus variants_). 
 
@@ -311,7 +320,7 @@ In the directory `coronavirus/variants/`, there are several CSV files with infor
   <details><summary>Hint</summary>You can use `grep` to find a pattern in a file. You can use `>` to _redirect_ the output of a command to a new file.</details>
 1. How many Alpha samples are there in total?
 
-::: {.callout-tip collapse=true}
+::: {.callout-answer collapse=true}
 
 **Task 1**
 
@@ -343,6 +352,7 @@ $ wc -l alpha.csv
 
 Giving us 38 as the result.
 
+:::
 :::
 
 

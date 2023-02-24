@@ -4,7 +4,7 @@
 #  Contact us if something doesn't look right on your rendered website
 
 project:
-  type: website
+  type: book
   output-dir: _site
   render:
     - index.md
@@ -23,9 +23,10 @@ knitr:
     cache.path: .knitr_cache
 
 metadata-files:
-  - "materials/_sidebar.yml"
+  - "materials/_chapters.yml"
+  #- "materials/_sidebar.yml"
 
-website:
+book:
   search:
     location: sidebar
   favicon: "_extensions/cambiotraining/courseformat/img/university-of-cambridge-favicon.ico"
@@ -39,13 +40,6 @@ website:
     pinned: true
     logo: "_extensions/cambiotraining/courseformat/img/university_crest_reversed.png"
     title: "Unix Command Line"
-    left:
-      - text: "Home"
-        href: index.md
-      - text: "Setup"
-        href: setup.md
-      - text: "Materials"
-        href: materials.md
     right:
       - icon: github
         href: https://github.com/cambiotraining/unix-shell
@@ -53,5 +47,10 @@ website:
       - icon: twitter
         href: https://twitter.com/bioinfocambs
         aria-label: Bioinformatics Training Facility Twitter
-  sidebar:
-    - title: "Home"
+  chapters:
+    - part: "Welcome"
+      chapters:
+        - text: "Overview"
+          href: index.md
+        - text: "Data & Setup"
+          href: setup.md

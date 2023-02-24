@@ -33,10 +33,10 @@ This is where we take advantage of the Unix shell.
 
 The Unix shell is both a **command-line interface** (CLI) and a **scripting language**, allowing such repetitive tasks to be done automatically and fast. 
 With the proper commands, the shell can repeat tasks with or without some modification as many times as we want. 
-Using the shell, the task in the literature example can be accomplished in seconds. 
+Using the shell, the task in the literature example can be accomplished in seconds.  
 See more motivating examples in the following article: [Five reasons why researchers should learn to love the command line](https://doi.org/10.1038/d41586-021-00263-0).
 
-![An example of listing some files from a command line interface (the Unix terminal, on the left) and the same files shown on a graphical user interface (in this example a file browser, on the right). TODO](images/gui_vs_cli.png){#fig-gui-cli fig-alt="Screenshots of a terminal and the file explorer both displaying the same files and folders on an example directory"}
+![An example of listing some files from a command line interface (the Unix terminal, on the left) and the same files shown on a graphical user interface (a file browser, on the right).](images/terminal_vs_gui.png){#fig-gui-cli fig-alt="Screenshots of a terminal and the file explorer both displaying the same files and folders on an example directory"}
 
 
 ## The Shell
@@ -133,7 +133,7 @@ Commands can often change their behaviour with additional options.
 Consider the command below as a general example, which we will dissect into its component parts:
 
 ```bash
-$ ls -l --block-size M Documents/
+$ ls -l --sort time Desktop/data-shell
 ```
 
 - `ls` is the **command**.
@@ -141,9 +141,9 @@ $ ls -l --block-size M Documents/
   In this case it lists the files in a "long" format.
   These kind of arguments are also also called an **option**, **switch** or **flag**. 
   Options either start with a single dash (`-`) or two dashes (`--`).
-- `--block-size` is also argument, but it needs a value to indicate how it should change the behaviour of the program. 
-  In this case, the option changes the size units that the files/folders are displayed in (in our example we specified 'M' for Megabytes).
-- `Documents/` is a **positional argument**, which comes at the end of the command. 
+- `--sort` is also argument, but it needs a value to indicate how it should change the behaviour of the program. 
+  In this case, the option changes how the files are sorted (in our example we specified 'time' to sort files by the time they were created or modified).
+- `Desktop/data-shell` is a **positional argument**, which comes at the end of the command. 
   This argument tells the command what to operate on (e.g. files and directories). 
 
 A command can be called with more than one option and more than one argument: but a command doesn't always require an argument or an option.
@@ -151,16 +151,7 @@ A command can be called with more than one option and more than one argument: bu
 Each part is separated by spaces: if you omit the space between `ls` and `-l` the shell will look for a command called `ls-l`, which doesn't exist. 
 Also, capitalisation can be important: `ls -r` is different to `ls -R`.
 
-So, our command above gives us a _long listing_ of files and directories in the directory `Documents`. 
-An example of the output of the command is:
-
-```bash
-$ ls -l --block-size M Documents/
-```
-
-```
-TODO
-```
+So, our command above gives us a _long listing_ of files and directories in the directory `Desktop/data-shell`. 
 
 
 ## Getting help
@@ -176,7 +167,6 @@ TODO
 
 The `man` page is not available for every software. 
 For example, specialist software (such as bioinformatics packages) only have the documentation available through the `--help` option. 
-
 :::
 
 Unfortunately, tool documentation is not completely standardised. 
@@ -230,6 +220,18 @@ In this case, optional arguments are shown within `[]` (but the `[` and `]` shou
 Also, the values for the options are indicated as: `STR`, which means "string" (textual input);`INT` (an integer, or whole number). 
 
 
+:::{.callout-note}
+#### macOS vs Linux
+
+Although macOS has a Unix terminal, it uses a different set of tools from Linux distributions. 
+macOS is based on FreeBSD, whereas Linux comes with GNU utilities.  
+
+Most of the commands work very similarly across both, but you may come across some minor differences. 
+For example, the `ls` command on macOS does not have the option `--sort` or `--help`. 
+However, the macOS `ls` command does have options to change how it sorts files, and you can look at the manual page `man ls` to see how. 
+:::
+
+
 ## Summary
 
 :::highlight
@@ -240,7 +242,7 @@ Also, the values for the options are indicated as: `STR`, which means "string" (
 - The basic syntax of a command is: `command -options argument`.  
   For example, `ls -l Documents` would **l**ist the contents of the `Documents` directory in a **l**ong format.
 - To find the options available with a given program we can use the `--help` function or (in some cases) the `man` command.  
-  For example: `ls --help` and `man ls`.
+  For example: `ls --help` or `man ls`.
 
 :::
 

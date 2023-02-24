@@ -2,9 +2,8 @@
 title: "Introduction to the Unix Shell"
 author: "Paul Judge, Hugo Tavares"
 date: today
+number-sections: false
 ---
-
-:::{.panel-tabset}
 
 ## Overview 
 
@@ -32,6 +31,17 @@ This course is targeted at participants with no prior experience of working on t
 ### Prerequisites
 
 None.
+
+
+### Exercises
+
+Exercises in these materials are labelled according to their level of difficulty:
+
+| Level | Description |
+| ----: | :---------- |
+| {{< fa solid star >}} {{< fa regular star >}} {{< fa regular star >}} | Exercises in level 1 are simpler and designed to get you familiar with the concepts and syntax covered in the course. |
+| {{< fa solid star >}} {{< fa solid star >}} {{< fa regular star >}} | Exercises in level 2 combine different concepts together and apply it to a given task. |
+| {{< fa solid star >}} {{< fa solid star >}} {{< fa solid star >}} | Exercises in level 3 require going beyond the concepts and syntax introduced to solve new problems. |
 
 
 ## Authors
@@ -87,7 +97,7 @@ Or in BibTeX format:
 
 ## Acknowledgements
 
-These materials are based on the [Carpentries Shell Lesson](https://swcarpentry.github.io/shell-novice/) with credit to their authors and contributors.  
+These materials are based on the [**Carpentries Shell Lesson**](https://swcarpentry.github.io/shell-novice/) with credit to their authors and contributors.  
 We have adapted these materials to fit with our training environment, rearranged some of the sections and data used and added new sections not on the original materials. 
 
 Please make sure to also cite the original work if you use these materials:
@@ -99,6 +109,4 @@ Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, As
 
 ----
 
-We also thank Julia Evans for their [fantastic illustrations](https://wizardzines.com/) of Bash (and other!) programming concepts. 
-
-:::
+We also thank **Julia Evans** for their [fantastic illustrations](https://wizardzines.com/) of Bash (and other!) programming concepts. 

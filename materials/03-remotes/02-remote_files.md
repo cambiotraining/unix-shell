@@ -100,9 +100,7 @@ Try and build the `rsync` command to perform this operation.
 Keep in mind that for rsync a path with a `/` at the end means the _contents_ of a directory rather than the directory itself.
 Also, make sure to use `--dry-run` first to check what your command would do, before actually running it.
 
-::: {.callout-tip collapse=true}
-#### Answer
-
+::: {.callout-answer collapse=true}
 For checking whether we are specifying our command with the `--delete` flag correctly, we can first do a dry-run (which will indicate what `rsync` would do, but without actually doing it): 
 
 ```bash
@@ -131,10 +129,11 @@ And we could check back on our remote server that those files are now gone and t
 :::
 
 
-## SSHFS
+## Mounting remote filesystem
 
-SSHFS is another way of using the same SSH protocol to share files in a slightly different way. 
-This software allows us to connect the file system of one machine with the file system of another using a "mount point". 
+Another way of accessing files on a remote server is to link the remote filesystem to a local folder on our computer - this is referred to as a **mount point**. 
+This is done using _SSHFS_, which is another way of using the same SSH protocol to share files over a _mount point_. 
+
 Let's start by making a directory in `~/Desktop/data-shell` to act as this mount point. 
 Convention tells us to call it `mnt`:
 
@@ -185,7 +184,7 @@ Whilst this tool can be customised to do a wide range of tasks at its simplest i
 For example, the data for this course can be downloaded as follows:
 
 ```bash
-$ wget -O course_data.zip https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1
+$ wget -O course_data.zip "https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1"
 ```
 
 ```
@@ -218,8 +217,13 @@ If you find `wget` limiting for this purpose, a similar command called `curl` ca
 Here is the `curl` command used to simply download a file:
 
 ```bash
-$ curl -o course_data.zip -L https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1
+$ curl -o course_data.zip -L "https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1"
 ```
+
+:::{.callout-note}
+The `wget` command is usually not available by default on **macOS**.
+Instead you can use the `curl` command. 
+:::
 
 
 ## Summary

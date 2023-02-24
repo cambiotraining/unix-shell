@@ -115,49 +115,58 @@ drosophila_samples.csv
 
 Success!
 
-## Exercise: Copy From the Remote
 
-Can we get some files on the remote server to copy accross?
+## Exercises
 
-1. Copy the file `drosophila_samples.csv` from the remote server to your local `data-shell` folder. 
-2. What happens if you try to copy the directory `drosophila` from the remote server to your local `data-shell` folder? 
-  Look at the command manual `man scp` to see if you can identify the option to copy a directory (or alternatively do a web search!). 
+:::{.callout-exercise}
+#### Copy directories with `scp`
 
-::: {.callout-tip collapse=true}
-#### Answer
+What happens if you try to copy the `molecules` directory to the remote computer?
+Looking at the manual page of `scp` can you find a way to solve this issue?
 
-**Task 1**
+:::{.callout-hint collapse=true}
+Similarly to the `cp` command, when we want to copy a _directory_ with `scp` we need to specify the `-r` option. 
+This is detailed in the manual page for this command.
+:::
 
-To copy a  file from a remote server we use the same syntax, but reverse the order of the arguments in the `scp` command: first we specify the remote server and file and then the local folder. 
+:::{.callout-answer collapse=true}
 
-```bash
-$ scp training@remote-machine:drosophila_samples.csv ~/Desktop/data-shell/
-```
-
-We can use `ls` to confirm the file has been successfully copied to our local computer. 
-
-----
-
-**Task 2**
-
-If we try to run `scp` as before to copy this directory, we get an error: 
+If we try to copy the molecules folder we get an error: 
 
 ```bash
-$ scp training@remote-machine:drosophila ~/Desktop/data-shell/
+scp molecules training@remote-machine:/home/training
 ```
 
 ```
-scp: drosophila: not a regular file
+scp: molecules: not a regular file
 ```
 
-The reason is that, similarly to the `cp` command, by default directories are not copied. 
-To copy directories, we need to use the `-r` option, which has this explanation from `man scp`:
+This is because, by default, `scp` does not copy _directories_ unless we specify the `-r` option (similarly to the standard `cp` command). 
+The manual page says: 
 
 ```
 -r      Recursively copy entire directories.
 ```
 
-If add that option, our command runs successfully:
+So, the correct command would be: 
+
+```bash
+scp -r molecules training@remote-machine:/home/training
+```
+
+:::
+:::
+
+:::{.callout-exercise}
+#### Copy from the remote
+{{< level 2 >}}
+
+Now we want to copy files from the remote server to our local machine. 
+
+Copy the directory `drosophila` from the remote server to your local `data-shell` folder. 
+
+::: {.callout-answer collapse=true}
+To copy from a remote server we use the same syntax, but reverse the order of the arguments in the `scp` command: first we specify the remote server and file/directory and then the local folder we want to copy it to. 
 
 ```bash
 $ scp -r training@remote-machine:drosophila ~/Desktop/data-shell/
@@ -184,15 +193,14 @@ SRR307023_1.fastq.gz                          100%  408KB 228.2MB/s   00:00
 ```
 
 And we can run `ls` on our local computer to confirm the directory has been copied successfully. 
-
+:::
 :::
 
 
 ## Summary
 
-:::highlight
-
-**Key Points**
+:::{.callout-tip}
+#### Key Points
 
 - The `ssh` program can be used to securely login to a remote server. 
   The general command is `ssh username@remote`, where `username` is the user's name _on the remote machine_ and `remote` is the name of that machine (sometimes in the form of an IP address).

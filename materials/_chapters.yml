@@ -1,0 +1,23 @@
+book:
+  chapters:
+    - part: "Basics"
+      chapters:
+        - materials/01-basics/01-unix_overview.md
+        - materials/01-basics/02-files_directories.md
+        - materials/01-basics/03-text_manipulation.md
+        - materials/01-basics/04-combining_commands.md
+        - materials/01-basics/05-scripts.md
+    - part: "Programming"
+      chapters:
+        - materials/02-programming/01-variables.md
+        - materials/02-programming/02-loops.md
+    - part: "Remote Work"
+      chapters: 
+        - materials/03-remotes/01-ssh_scp.md
+        - materials/03-remotes/02-remote_files.md
+    - part: "Miscellaneous"
+      chapters:
+        - materials/04-misc/01-sed.md
+    - part: "Appendix"
+      chapters:
+        - materials/99-extras/01-cheatsheet.md

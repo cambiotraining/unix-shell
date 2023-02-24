@@ -1,5 +1,6 @@
 ---
-title: "Setup"
+title: "Data & Setup"
+number-sections: false
 ---
 
 <!-- 
@@ -10,33 +11,48 @@ Note that we use tabsets to provide instructions for all three major operating s
 -->
 
 ::: {.callout-tip}
-## Workshop Attendees
+#### Workshop Attendees
 
 If you are attending one of our workshops, we will provide a training environment with all of the required software and data.  
 If you want to setup your own computer to run the analysis demonstrated on this course, you can follow the instructions below.
 :::
 
-## Unix Terminal
+## Data
+
+The data used in these materials is provided as a zip file. 
+Download and unzip the folder to your Desktop to follow along with the materials.
+
+<!-- Note for Training Developers: adjust the link as relevant -->
+<a href="https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1">
+  <button class="btn"><i class="fa fa-download"></i> Download</button>
+</a>
+
+## Setup
+
+### Unix Terminal
 
 ::: {.panel-tabset group="os"}
-### Windows 10/11
+#### Windows 10/11
 
 If you are comfortable with installing software on your computer, we highly recommend installing the **Windows Subsystem for Linux** (WSL2), which provides native _Linux_ functionality from within Windows.  
 Alternatively, you can install **MobaXterm**, which provides a Unix-like terminal on _Windows_.  
 We provide instructions for both.
 
-#### MobaXterm (easier)
+----
 
-- Go the the [MobaXterm download page](https://mobaxterm.mobatek.net/download-home-edition.html) and download the "_Installer edition_" (green button). 
-  Unzip the downloaded file and double-click the `MobaXterm_installer_21.5` installer (note: the latest version number might be slightly different). 
-  Accept default options during installation.
-- After completing the installation, press the Windows key and search for "MobaXterm" to launch the application and check that it was installed successfully. 
+##### MobaXterm (easier)
 
-**Note:** if you do not have permissions to install software on your computer, you can download the _portable edition_ from the download page. 
-In that case, you can unzip the downloaded file and launch the application from within the unzipped folder. 
+- Go the the [MobaXterm download page](https://mobaxterm.mobatek.net/download-home-edition.html).
+- If you have permissions to install software on your computer, download the "_Installer edition_" (green button). 
+  - Unzip the downloaded file and double-click the `MobaXterm_installer_23.0` installer (note: the latest version number might be slightly different). 
+  - Accept default options during installation.
+  - After completing the installation, press the Windows key and search for "MobaXterm" to launch the application and check that it was installed successfully. 
+- If you do not have admin rights on your computer, download the "_Portable edition_" (blue button). 
+  - Unzip the downloaded file and copy the folder to a convenient location, such as your Desktop.
+  - You can directly run the program (without need for installation) from the executable in this folder. 
 
-::: {.callout-note collapse=true appearance="minimal"}
-#### Tip: accessing Windows files from MobaXterm
+::: {.callout-note appearance="minimal"}
+#### Accessing Windows files from MobaXterm
 
 Your `C:\` drive is located in `/drives/C/` (equally, other drives will be available based on their letter). 
 For example, your documents will be located in: `/drives/C/Users/<WINDOWS USERNAME>/Documents/`. 
@@ -46,8 +62,9 @@ For example, to create a shortcut to Downloads: `ln -s /drives/C/Users/<WINDOWS 
 
 :::
 
+----
 
-#### WSL (intermediate)
+##### WSL (intermediate)
 
 There are detailed instructions on how to install WSL on the [Microsoft documentation page](https://learn.microsoft.com/en-us/windows/wsl/install). 
 But briefly:
@@ -59,8 +76,8 @@ But briefly:
 - You should now have access to a Ubuntu Linux terminal. 
   This (mostly) behaves like a regular Ubuntu terminal, and you can install apps using the `sudo apt install` command as usual. 
 
-::: {.callout-note collapse=true appearance="minimal"}
-#### Tip: accessing Windows files from WSL
+::: {.callout-note appearance="minimal"}
+#### Accessing Windows files from WSL
 
 Your `C:\` drive is located in `/mnt/c/` (equally, other drives will be available based on their letter). 
 For example, your documents will be located in: `/mnt/c/Users/<WINDOWS USERNAME>/Documents/`. 
@@ -73,16 +90,18 @@ It may be convenient to set shortcuts to commonly-used directories, which you ca
 :::
 
 
-### Mac
+#### Mac
 
 Mac OS already has a terminal available.  
 Press <kbd><kbd>&#8984;</kbd> + <kbd>space</kbd></kbd> to open _spotlight search_ and type "terminal".
 
+Optionally, if you would like a terminal with more modern features, we recommend installing [_iTerm2_](https://iterm2.com).
 
-### Linux
+#### Linux
 
 Linux distributions already have a terminal available.  
 On _Ubuntu_ you can press <kbd><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd></kbd> to open it.
+
 :::
 
 <!--
