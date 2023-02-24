@@ -36,7 +36,7 @@ These are known as **positional argument variables**.
 So, if we run our modified script, this is the result: 
 
 ```bash
-$ bash   count_atoms.sh   ethane.pdb
+bash   count_atoms.sh   ethane.pdb
 ```
 
 ```
@@ -335,7 +335,7 @@ Write a shell script called `longest.sh` that takes two inputs: the name of a di
 The script should then return the name of the file with the most lines in that directory with that extension. For example:
 
 ```bash
-$ bash  longest.sh  molecules  pdb
+bash  longest.sh  molecules  pdb
 ```
 
 Should print the name of the `.pdb` file in the `molecules` folder that has the most lines.  
@@ -377,7 +377,7 @@ Here is an explanation of each step of our chain of commands:
 We could then run this script on both of those directories: 
 
 ```bash
-$ bash longest.sh molecules pdb
+bash longest.sh molecules pdb
 ```
 
 ```
@@ -387,7 +387,7 @@ $ bash longest.sh molecules pdb
 And:
 
 ```bash
-$ bash longest.sh coronavirus/variants csv
+bash longest.sh coronavirus/variants csv
 ```
 
 ```

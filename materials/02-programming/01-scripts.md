@@ -21,7 +21,7 @@ For example, let's create a shell script that counts the number of atoms in one 
 We could achieve this with the following command: 
 
 ```bash
-$ cat cubane.pdb | grep "ATOM" | wc -l
+cat cubane.pdb | grep "ATOM" | wc -l
 ```
 
 To write a shell script we have to save this command within a text file. 
@@ -35,7 +35,7 @@ There are many text editors available for programming, but we will cover two sim
 We can create a file with _Nano_ in the following way:
 
 ```bash
-$ nano count_atoms.sh
+nano count_atoms.sh
 ```
 
 This opens a text editor, where you can type the commands you want to save in the file. 
@@ -102,7 +102,7 @@ This software offers many advanced capabilities and extensions and works on Wind
 Now that we have our script, we can run it using the program `bash`:
 
 ```bash
-$ bash count_atoms.sh
+bash count_atoms.sh
 ```
 
 ```

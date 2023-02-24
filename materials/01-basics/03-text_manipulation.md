@@ -21,8 +21,8 @@ For example, let's take a look at the `cubane.pdb` file in the `molecules` direc
 We will start by printing the whole content of the file with the `cat` command, which stands for "concatenate" (we will see why it's called this way in a little while):
 
 ```bash
-$ cd molecules
-$ cat cubane.pdb
+cd molecules
+cat cubane.pdb
 ```
 
 ```
@@ -52,7 +52,7 @@ Sometimes it is useful to look only at only the top few lines of a file (especia
 We can do this with the `head` command:
 
 ```bash
-$ head cubane.pdb
+head cubane.pdb
 ```
 
 ```
@@ -72,7 +72,7 @@ By default, `head` prints the first 10 lines of the file.
 We can change this using the `-n` option, followed by a number, for example: 
 
 ```bash
-$ head -n 2 cubane.pdb
+head -n 2 cubane.pdb
 ```
 
 ```
@@ -83,7 +83,7 @@ AUTHOR      DAVE WOODCOCK  95 12 06
 Similarly, we can look at the _bottom_ few lines of a file with the `tail` command:
 
 ```bash
-$ tail -n 2 cubane.pdb
+tail -n 2 cubane.pdb
 ```
 
 ```
@@ -94,7 +94,7 @@ END
 Finally, if we want to open the file and browse through it, we can use the `less` command: 
 
 ```bash
-$ less cubane.pdb
+less cubane.pdb
 ```
 
 `less` will open the file and you can use <kbd>↑</kbd> and <kbd>↓</kbd> to move line-by-line or the <kbd>Page Up</kbd> and <kbd>Page Down</kbd> keys to move page-by-page. 
@@ -191,7 +191,7 @@ We can use the tool `grep` ("global regular expression print") to achieve this.
 Going back to our molecules directory (`cd ../molecules`), let's find the word "ATOM" in our `cubane.pdb` molecule file:
 
 ```bash
-$ grep "ATOM" cubane.pdb
+grep "ATOM" cubane.pdb
 ```
 
 ```
@@ -241,13 +241,13 @@ Move to the directory `sequencing` and do the following:
 To list the files in the directory we use `ls`, followed by `>` to save the output in a file:
 
 ```bash
-$ ls run1 > sequencing_files.txt
+ls run1 > sequencing_files.txt
 ```
 
 We can check the content of the file:
 
 ```bash
-$ cat sequencing_files.txt
+cat sequencing_files.txt
 ```
 
 ```
@@ -268,7 +268,7 @@ sampleD_2.fq.gz
 If we run `ls run2/ > sequencing_files.txt`, we will replace the content of the file:
 
 ```bash
-$ cat sequencing_files.txt
+cat sequencing_files.txt
 ```
 
 ```
@@ -285,9 +285,9 @@ sampleF_2.fq.gz
 If we start again from the beginning, but instead use the `>>` operator the second time we run the command, we will append the output to the file instead of replacing it:
 
 ```bash
-$ ls run1/ > sequencing_files.txt
-$ ls run2/ >> sequencing_files.txt
-$ cat sequencing_files.txt
+ls run1/ > sequencing_files.txt
+ls run2/ >> sequencing_files.txt
+cat sequencing_files.txt
 ```
 
 ```
@@ -327,7 +327,7 @@ In the directory `coronavirus/variants/`, there are several CSV files with infor
 We can use `cat` to combine all the files into a single file:
 
 ```bash
-$ cat *_variants.csv > all_countries.csv
+cat *_variants.csv > all_countries.csv
 ```
 
 **Task 2**
@@ -335,7 +335,7 @@ $ cat *_variants.csv > all_countries.csv
 We can use `grep` to find a pattern in our text file and use `>` to save the output in a new file:
 
 ```bash
-$ grep "Alpha" all_countries.csv > alpha.csv
+grep "Alpha" all_countries.csv > alpha.csv
 ```
 
 We could investigate the output of our command using `less alpha.csv`.
@@ -347,7 +347,7 @@ We could investigate the output of our command using `less alpha.csv`.
 We can use `wc` to count the lines of the newly created file:
 
 ```bash
-$ wc -l alpha.csv
+wc -l alpha.csv
 ```
 
 Giving us 38 as the result.

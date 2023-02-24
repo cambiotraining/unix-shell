@@ -39,7 +39,7 @@ book:
   navbar:
     pinned: true
     logo: "_extensions/cambiotraining/courseformat/img/university_crest_reversed.png"
-    title: "Unix Command Line"
+    title: "Introduction to the Unix Command Line"
     right:
       - icon: github
         href: https://github.com/cambiotraining/unix-shell

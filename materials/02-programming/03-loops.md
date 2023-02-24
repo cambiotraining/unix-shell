@@ -21,7 +21,7 @@ Going back to our `molecules` directory, suppose we wanted to use our `count_ato
 We know how to run the script for a single file: 
 
 ```bash
-$ bash   count_atoms.sh   cubane.pdb
+bash   count_atoms.sh   cubane.pdb
 ```
 
 Of course, we could manually then repeat this for each of our molecule files: `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb`, `propane.pdb`.  

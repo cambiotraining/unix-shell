@@ -26,7 +26,7 @@ The way we can combine commands together is using a **pipe**, which uses the spe
 Here is our example using a pipe:
 
 ```bash
-$ cat *_variants.csv | grep "Alpha" | wc -l
+cat *_variants.csv | grep "Alpha" | wc -l
 ```
 
 Notice how we now don't specify an input to either `grep` nor `wc`. 
@@ -42,7 +42,7 @@ Let's start with the command `cut`, which is used to extract sections from each 
 For example, let's say we wanted to retrieve only the second _field_ (or column) of our CSV file, which contains the clade classification of each of our omicron samples:
 
 ```bash
-$ cat *_variants.csv | cut -d "," -f 2
+cat *_variants.csv | cut -d "," -f 2
 ```
 
 ```
@@ -68,7 +68,7 @@ The next command we will explore is called `sort`, which sorts the lines of its 
 Let's combine it with our previous command to see the result:
 
 ```bash
-$ cat *_variants.csv | cut -d "," -f 2 | sort
+cat *_variants.csv | cut -d "," -f 2 | sort
 ```
 
 ```
@@ -95,7 +95,7 @@ That's why it's often used together with `sort`.
 Let's see it in action, by continuing building our command: 
 
 ```bash
-$ cat *_variants.csv | cut -d "," -f 2 | sort | uniq
+cat *_variants.csv | cut -d "," -f 2 | sort | uniq
 ```
 
 ```
@@ -223,7 +223,7 @@ cat animals*.txt    raccoon    head -n 6    rabbit     tail -n 1
 From the `coronavirus/variants` folder, let's continue working on the command we looked at earlier to get the unique values in the variants column of our CSV files: 
 
 ```bash
-$ cat *_variants.csv | cut -d "," -f 2 | sort | uniq
+cat *_variants.csv | cut -d "," -f 2 | sort | uniq
 ```
 
 As you saw, this output also returns a line called "clade". 
@@ -255,7 +255,7 @@ Looking at the help of this function with `man grep`, we can find the following 
 So, we can continue working on our pipeline by adding another step at the end: 
 
 ```bash
-$ cat *_variants.csv | cut -d "," -f 2 | sort | uniq | grep -v "clade"
+cat *_variants.csv | cut -d "," -f 2 | sort | uniq | grep -v "clade"
 ```
 
 ```
@@ -287,7 +287,7 @@ Looking at the help page `man uniq`, we can see that:
 So, if we add this option, we will get the count of how many times each unique line appears in our data: 
 
 ```bash
-$ cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade"
+cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade"
 ```
 
 ```
@@ -311,7 +311,7 @@ $ cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade"
 Now that we've counted each of our variants, we can again sort this result, this time by the counts value, by adding another `sort` step at the end: 
 
 ```bash
-$ cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade" | sort -r
+cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade" | sort -r
 ```
 
 ```
@@ -362,7 +362,7 @@ To look inside compressed files, you can use an alternative to `cat` called `zca
 The following command allows us to "browse" through the content of this file: 
 
 ```bash
-$ zcat proteins.fa.gz | less
+zcat proteins.fa.gz | less
 ```
 
 We can use <kbd>↑</kbd> and <kbd>↓</kbd> to move line-by-line or the <kbd>Page Up</kbd> and <kbd>Page Down</kbd> keys to move page-by-page. 
@@ -374,7 +374,7 @@ This will bring you back to the console.
 We can look at the sequences' names by running: 
 
 ```bash
-$ zcat proteins.fa.gz | grep ">"
+zcat proteins.fa.gz | grep ">"
 ```
 
 ```
@@ -395,7 +395,7 @@ $ zcat proteins.fa.gz | grep ">"
 We could further count how many sequences, by piping this output to `wc`:
 
 ```bash
-$ zcat proteins.fa.gz | grep ">" | wc -l
+zcat proteins.fa.gz | grep ">" | wc -l
 ```
 
 ```

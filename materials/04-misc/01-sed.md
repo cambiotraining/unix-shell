@@ -34,13 +34,13 @@ Some of the common options are:
 For example, let's create a file with some text inside it:
 
 ```bash
-$ echo "Hello world. How are you world?" > hello.txt
+echo "Hello world. How are you world?" > hello.txt
 ```
 
 If we do:
 
 ```bash
-$ sed 's/world/participant/' hello.txt
+sed 's/world/participant/' hello.txt
 ```
 
 This is the result
@@ -54,7 +54,7 @@ This is the default behaviour of `sed`: only the first pattern it finds in a lin
 We can modify this by using the `g` option after the last `/`:
 
 ```bash
-$ sed 's/world/participant/g' hello.txt
+sed 's/world/participant/g' hello.txt
 ```
 
 ```
@@ -73,7 +73,7 @@ For example, in regular expression syntax, the character `.` stands for "any cha
 So, for example, the pattern `H.` would match a "H" followed by any character, and the expression: 
 
 ```bash
-$ sed 's/H./X/g' hello.txt
+sed 's/H./X/g' hello.txt
 ```
 
 Results in:
@@ -95,14 +95,14 @@ You may have asked yourself, if `/` is used to separate parts of the `sed` subst
 For example, let's add a new line of text to our file:
 
 ```bash
-$ echo "Welcome to this workshop/course." >> hello.txt
+echo "Welcome to this workshop/course." >> hello.txt
 ```
 
 Let's say we wanted to replace "workshop/course" with "tutorial" in this text. 
 If we did:
 
 ```bash
-$ sed 's/workshop/course/tutorial/' hello.txt
+sed 's/workshop/course/tutorial/' hello.txt
 ```
 
 We would get an error: 
@@ -118,15 +118,19 @@ That will tell `sed` to treat the `/` as a normal character rather than a separa
 So:
 
 ```bash
-$ sed 's/workshop\/course/tutorial/' hello.txt
-                  ↑
-             This / is "escaped" with \ beforehand
+sed 's/workshop\/course/tutorial/' hello.txt
+                ↑
+            This / is "escaped" with \ beforehand
 ```
 
 This looks a little strange, but the main thing to remember is that `\/` will be interpreted as the character "/" rather than the separator of `sed`'s substitute command. 
 
 
-### Exercise: text replacement
+## Exercises
+
+:::{.callout-exercise}
+#### Text replacement
+{{< level 2 >}}
 
 Working from the `coronavirus/variants` directory, when we run this command: 
 
@@ -160,8 +164,7 @@ IN27,Alpha (version 1)
 ... more output omitted...
 ```
 
-::: {.callout-tip collapse=true}
-#### Answer
+::: {.callout-answer collapse=true}
 
 We could use the command:
 
@@ -175,17 +178,17 @@ We substitute the text in two steps:
 - The second `sed` is used to replace the text "; V1)" with " (version 1)".
 
 Note that the two `sed` steps could also have been done in the opposite order (in this case the order was not important). 
-
+:::
 :::
 
 
-### Exercise: Advanced `sed`
+:::{.callout-exercise}
+#### Searching for `sed` solutions
+{{< level 3 >}}
 
-**This is an (optional) advanced exercise.**
-
-Here's a well-known observation: many (if not most!) users of the command line don't actually know how to program with `sed`. 
+Many (if not most!) users of the command line don't actually know how to program with `sed`. 
 But they can be very good a searching for solutions to their questions, using resources such as [Stack Overflow](https://stackoverflow.com/). 
-So, let's practice some of your web searching skills!
+So, let's practice some web searching skills!
 
 In the directory `coronavirus/` you will find the file `proteins.fa.gz`, which contains the sequences of proteins in the SARS-CoV-2 genome. 
 This file is in a text-based format called _FASTA_, where each sequence name starts with `>`, followed by one or more lines containing the actual sequence. 
@@ -225,17 +228,13 @@ KNLNESLIDLQELGKYEQYIKWPWYIWLGFIAGLIAIVMVTIMLCCMTSCCSCLKGCCSCGSCCKFDEDD
 SEPVLKGVKLHYT
 ```
 
-::: {.callout-note collapse=true appearance="minimal"}
-#### Hint
-
+::: {.callout-hint collapse=true}
 - First investigate the content of the file with `zcat proteins.fa.gz | less` to find what the protein you are looking for is called, as well as the protein that comes after it. 
 - Try a web search for "sed extract lines between two patterns". 
 - If your search is not leading you anywhere, then try [this link](https://stackoverflow.com/a/64970718/5023162).
 :::
 
-::: {.callout-tip collapse=true}
-#### Answer
-
+::: {.callout-answer collapse=true}
 Like the hint suggested, a web search for "sed extract lines between two patterns" will bring this [Stack Overflow answer](https://stackoverflow.com/a/64970718/5023162) as one of the first hits.  
 The person answering suggests that to search for two patterns (PAT1 and PAT2) but without returning PAT2 in the output, we can do: `sed -n '/PAT1/{:a;N;/PAT2/!ba;s/\n[^\n]*$//p}' file`. 
 So, we can adjust this code for our case: 
@@ -248,6 +247,7 @@ In our case, the first pattern is `>S` (the name of the protein we are intereste
 
 Do we have to understand what just happened? 
 In some situations, maybe... but for most applications it's enough to know how to look for the answer! 
+:::
 :::
 
 

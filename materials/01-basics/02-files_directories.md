@@ -34,7 +34,7 @@ Directories are like *places* - at any time while we are using the shell we are 
 Commands mostly read and write files in the current working directory, so knowing where you are before running a command is important. 
 
 ```bash
-$ pwd
+pwd
 ```
 
 ```
@@ -75,7 +75,7 @@ For a user named "larry", on a Mac it would look like `/Users/larry`, and on Win
 We can see the content of our current directory by running `ls`, which stands for "listing":
 
 ```bash
-$ ls
+ls
 ```
 
 ```
@@ -89,7 +89,7 @@ The data for this workshop is located in our Desktop, within a directory called 
 We can look at its contents passing a directory name as an argument to ls:
 
 ```bash
-$ ls -F /home/ubuntu/Desktop/data-shell
+ls -F /home/ubuntu/Desktop/data-shell
 ```
 
 ```
@@ -105,7 +105,7 @@ However, we can change our location to the `Desktop/data-shell` directory to do 
 The command to change locations is `cd` ("change directory") followed by a directory name to change our working directory. 
 
 ```bash
-$ cd /home/ubuntu/Desktop/data-shell/
+cd /home/ubuntu/Desktop/data-shell/
 ```
 
 We can check with `pwd` that we are in the correct directory.
@@ -115,7 +115,7 @@ What if we now wanted to go to the `molecules` directory?
 We could do:
 
 ```bash
-$ cd /home/ubuntu/Desktop/data-shell/molecules/
+cd /home/ubuntu/Desktop/data-shell/molecules/
 ```
 
 However, that's a lot of typing!
@@ -123,7 +123,7 @@ Instead, we can move to that directory by specifying its location _relative_ to 
 So, if our current directory was `/home/ubuntu/Desktop/data-shell/` we could just do:
 
 ```bash
-$ cd molecules
+cd molecules
 ```
 
 In conclusion, there are two ways to specify directory names:
@@ -136,7 +136,7 @@ We now know how to go _down_ the directory tree, but how do we go _up_?
 We might try the following:
 
 ```bash
-$ cd data-shell
+cd data-shell
 ```
 
 ```
@@ -148,7 +148,7 @@ With our methods so far, `cd` can only see sub-directories _inside_ your current
 To move up one directory we need to use the special shortcut `..` like this:
 
 ```bash
-$ cd ..
+cd ..
 ```
 
 `..` is a special directory name meaning "the directory containing this one", or more succinctly, the **parent** of the current directory. 
@@ -171,13 +171,13 @@ We can let the shell do most of the work through what is called **tab completion
 Let's say we are in the `/home/ubuntu/Desktop/data-shell` and we type:
 
 ```bash
-$ ls mol
+ls mol
 ```
 
 and then press the <kbd>Tab ↹</kbd> key on the keyboard, the shell automatically completes the directory name:
 
 ```bash
-$ ls molecules/
+ls molecules/
 ```
 
 If we press <kbd>Tab ↹</kbd> again it does nothing, since there are now multiple possibilities.
@@ -192,8 +192,8 @@ First, we should see where we are and what we already have.
 Let's go back to our `data-shell` directory and use `ls` to see what it contains:
 
 ```bash
-$ cd ~/Desktop/data-shell
-$ ls
+cd ~/Desktop/data-shell
+ls
 ```
 
 ```
@@ -203,13 +203,13 @@ README.txt  coronavirus  molecules  sequencing
 Now, let's **create a new directory** called `thesis_notes` using the command `mkdir` ("make directory"):
 
 ```bash
-$ mkdir thesis_notes
+mkdir thesis_notes
 ```
 
 The new directory is created in the current working directory:
 
 ```bash
-$ ls
+ls
 ```
 
 ```bash
@@ -270,7 +270,7 @@ In our `data-shell` directory we have a file called `things.txt`, which contains
 Let's move this file to the `thesis_notes` directory we created earlier, using the command `mv` ("move"):
 
 ```bash
-$ mv things.txt thesis_notes/
+mv things.txt thesis_notes/
 ```
 
 The first argument tells `mv` what we're "moving", while the second is where it's to go. 
@@ -278,7 +278,7 @@ In this case, we're moving `things.txt` to `thesis_notes/`.
 We can check the file has moved there:
 
 ```bash
-$ ls thesis_notes
+ls thesis_notes
 ```
 
 ```
@@ -290,7 +290,7 @@ Interestingly, we also use the `mv` command to change a file's name.
 Here's how we would do it:
 
 ```bash
-$ mv thesis_notes/things.txt thesis_notes/books.txt
+mv thesis_notes/things.txt thesis_notes/books.txt
 ```
 
 In this case, we are "moving" the file to the same place but with a different name.
@@ -305,8 +305,8 @@ The `cp` command works very much like `mv`, except it copies a file instead of m
 For example, let's make a copy of our `books.txt` file:
 
 ```bash
-$ cp thesis_notes/books.txt books_copy.txt
-$ ls
+cp thesis_notes/books.txt books_copy.txt
+ls
 ```
 
 ```
@@ -316,7 +316,7 @@ README.txt  books_copy.txt  coronavirus  molecules  sequencing  thesis_notes
 Unlike the `mv` command, in this case the original file remains in the original directory: 
 
 ```bash
-$ ls thesis_notes/
+ls thesis_notes/
 ```
 
 ```
@@ -330,7 +330,7 @@ The Unix command used to remove or delete files is `rm` ("remove").
 For example, let's remove one of the files we copied earlier: 
 
 ```bash
-$ rm backup/cubane.pdb
+rm backup/cubane.pdb
 ```
 
 We can confirm the file is gone using `ls backup/`.
@@ -338,7 +338,7 @@ We can confirm the file is gone using `ls backup/`.
 What if we try to remove the whole `backup` directory we created in the previous exercise?
 
 ```bash
-$ rm backup
+rm backup
 ```
 
 ```
@@ -351,7 +351,7 @@ This happens, because `rm` _by default_ only works on files, not directories.
 `rm` can remove a directory *and all its contents* if we use the recursive option `-r`, and it will do so *without any confirmation prompts*:
 
 ```bash
-$ rm -r backup
+rm -r backup
 ```
 
 Given that there is no way to retrieve files deleted using the shell, **`rm -r` should be used with great caution** (you might consider adding the interactive option `rm -r -i`).
@@ -516,7 +516,7 @@ When copying an entire directory, you will need to use the option `-r` with the 
 If we run the command without the `-r` option, this is what happens:
 
 ```bash
-$ cp sequencing backup
+cp sequencing backup
 ```
 
 ```
@@ -529,13 +529,13 @@ By default, directories (and their contents) are not copied unless we specify th
 This would work:
 
 ```bash
-$ cp -r sequencing backup
+cp -r sequencing backup
 ```
 
 Running `ls` we can see a new folder called `backup`:
 
 ```bash
-$ ls
+ls
 ```
 
 ```
@@ -579,14 +579,14 @@ ethane.pdb   methane.pdb
 What does `cp` do when given several filenames and a directory name?
 
 ```bash
-$ mkdir -p backup
-$ cp molecules/cubane.pdb molecules/ethane.pdb backup/
+mkdir -p backup
+cp molecules/cubane.pdb molecules/ethane.pdb backup/
 ```
 
 In the example below, what does `cp` do when given three or more file names?
 
 ```bash
-$ cp molecules/cubane.pdb molecules/ethane.pdb molecules/methane.pdb
+cp molecules/cubane.pdb molecules/ethane.pdb molecules/methane.pdb
 ```
 
 

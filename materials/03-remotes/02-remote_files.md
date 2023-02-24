@@ -18,7 +18,7 @@ In the previous section we've seen how we can copy entire directories from the r
 For example:
 
 ```bash
-$ scp -r training@remote-machine:drosophila ~/Desktop/data-shell
+scp -r training@remote-machine:drosophila ~/Desktop/data-shell
 ```
 
 ```
@@ -51,13 +51,13 @@ First, we will add some new files to our remote `drosophila` directory using the
 This command does nothing but create an empty file or update the timestamp of an existing file.
 
 ```bash
-$ ssh training@remote-machine "touch ~/drosophila/new_file1.txt ~/drosophila/new_file2.txt ~/drosophila/new_file3.txt"
+ssh training@remote-machine "touch ~/drosophila/new_file1.txt ~/drosophila/new_file2.txt ~/drosophila/new_file3.txt"
 ```
 
 Now we have everything set up, we can issue the `rsync` command to sync our two directories:
 
 ```bash
-$ rsync -a -u -v -h -z training@remote-machine:drosophila/ drosophila/
+rsync -a -u -v -h -z training@remote-machine:drosophila/ drosophila/
 ```
 
 The options used with `rsync` in this case mean:
@@ -91,7 +91,7 @@ This can be extremely useful to check that we have specified our command correct
 Let's tidy up our local `drosophila` directory by deleting the empty files we created earlier:
 
 ```bash
-$ rm drosophila/new_file*
+rm drosophila/new_file*
 ```
 
 Now, let's synchronise this copy of the folder with the copy on the remote machine, including the removal of these files. 
@@ -104,7 +104,7 @@ Also, make sure to use `--dry-run` first to check what your command would do, be
 For checking whether we are specifying our command with the `--delete` flag correctly, we can first do a dry-run (which will indicate what `rsync` would do, but without actually doing it): 
 
 ```bash
-$ rsync --dry-run -auvz --delete drosophila/ training@remote-machine:drosophila/
+rsync --dry-run -auvz --delete drosophila/ training@remote-machine:drosophila/
 ```
 
 ```
@@ -121,7 +121,7 @@ From this output we can see that this command would delete the new files, since 
 Once we're happy with the list of files that are transferred or deleted, we can then run our command without the `--dry-run` option:
 
 ```bash
-$ rsync -auvz --delete drosophila/ training@remote-machine:drosophila/
+rsync -auvz --delete drosophila/ training@remote-machine:drosophila/
 ```
 
 And we could check back on our remote server that those files are now gone and the two folders are synced with each other. 
@@ -138,13 +138,13 @@ Let's start by making a directory in `~/Desktop/data-shell` to act as this mount
 Convention tells us to call it `mnt`:
 
 ```bash
-$ mkdir mnt
+mkdir mnt
 ```
 
 Now we can run the `sshfs` command like this:
 
 ```bash
-$ sshfs training@remote-machine:/home/training /home/ubuntu/Desktop/data-shell/mnt/
+sshfs training@remote-machine:/home/training /home/ubuntu/Desktop/data-shell/mnt/
 ```
 
 It looks fairly similar to the previous copying commands. 
@@ -152,8 +152,8 @@ The first argument is a remote source, the second argument is a local destinatio
 The difference is that now whenever we interact with our local mount point it will be as if we were interacting with the remote filesystem starting at the directory we specified.
 
 ```bash
-$ cd /home/ubuntu/Desktop/data-shell/mnt/ 
-$ ls -l
+cd /home/ubuntu/Desktop/data-shell/mnt/ 
+ls -l
 ```
 
 ```
@@ -184,7 +184,7 @@ Whilst this tool can be customised to do a wide range of tasks at its simplest i
 For example, the data for this course can be downloaded as follows:
 
 ```bash
-$ wget -O course_data.zip "https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1"
+wget -O course_data.zip "https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1"
 ```
 
 ```
@@ -217,7 +217,7 @@ If you find `wget` limiting for this purpose, a similar command called `curl` ca
 Here is the `curl` command used to simply download a file:
 
 ```bash
-$ curl -o course_data.zip -L "https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1"
+curl -o course_data.zip -L "https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1"
 ```
 
 :::{.callout-note}

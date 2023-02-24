@@ -1,5 +1,5 @@
 ---
-title: "Introduction to the Unix Shell"
+title: "Introduction to the Unix Command Line"
 author: "Paul Judge, Hugo Tavares"
 date: today
 number-sections: false
