@@ -13,7 +13,7 @@ title: "Arguments & Variables"
 
 ## Custom Inputs
 
-When we discussed [Shell scripts](../01-basics/05-scripts.md), we wrote a script that counted the number of atoms on a specific PDB file (in our example `cubane.pdb`). 
+When we discussed [Shell scripts](01-scripts.md), we wrote a script that counted the number of atoms on a specific PDB file (in our example `cubane.pdb`). 
 But what if we wanted to give it as input a file of our choice? 
 We can make our script more versatile by using a special _shell variable_ that means "the first argument on the command line".
 Here is our new script, modified from the previous section:

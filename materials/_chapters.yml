@@ -8,7 +8,7 @@ book:
         - materials/01-basics/04-combining_commands.md
     - part: "Programming"
       chapters:
-        - materials/01-basics/01-scripts.md
+        - materials/02-programming/01-scripts.md
         - materials/02-programming/02-variables.md
         - materials/02-programming/03-loops.md
     - part: "Remote Work"
