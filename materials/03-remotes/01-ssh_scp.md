@@ -37,7 +37,7 @@ The underlying protocol supports a number of commands we can use to move informa
 The simplest and most straightforward is the `ssh` command which facilitates a remote login session connecting our local user and shell to any remote user we have permission to access.
 
 ```bash
-$ ssh training@remote-machine
+ssh training@remote-machine
 ```
 
 The first argument specifies the location of the remote machine (by IP address or a URL) as well as the user we want to connect to separated by an `@` sign. 
@@ -84,8 +84,11 @@ Let's see an example of copying a small file from our local computer to the remo
 Making sure we're in the `data-shell` directory let's copy the `README.txt` file to the remote machine:
 
 ```bash
-$ cd ~/Desktop/data-shell
-$ scp README.txt training@remote-machine:/home/training
+scp README.txt training@remote-machine:/home/training
+```
+
+```
+README.txt                                    100%  563     1.2MB/s   00:00
 ```
 
 The format of the command should be quite familiar when comparing to the `cp` command for local copying. 
@@ -93,18 +96,16 @@ The last two arguments specify the source and the destination of the copy respec
 The difference comes in that any remote locations involved in the copy must be preceded by the `username@IP` syntax used in the `ssh` command previously. 
 The first half tells scp how to access the computer and the second half tells it where in the filesystem to operate, these two segments are separated by a `:`.
 
-```
-README.txt                                    100%  563     1.2MB/s   00:00
-```
+![Illustration of the `scp` command.](images/scp.png){fig-alt="illustration of the scp command syntax"}
 
-Now it looks like we've copied the file, but we should check.
+It looks like we've copied the file, but we should check.
 
 Establishing a whole ssh session just to run one command might be a bit cumbersome. 
 Instead we can tell `ssh` all the commands it needs to run at the same time we connect by adding an extra argument to the end. 
 `ssh` will automatically disconnect after it completes the full command string.
 
 ```bash
-$ ssh training@remote-machine "ls /home/training/"
+ssh training@remote-machine "ls /home/training/"
 ```
 
 ```
@@ -120,6 +121,7 @@ Success!
 
 :::{.callout-exercise}
 #### Copy directories with `scp`
+{{< level 1 >}}
 
 What happens if you try to copy the `molecules` directory to the remote computer?
 Looking at the manual page of `scp` can you find a way to solve this issue?
@@ -169,7 +171,7 @@ Copy the directory `drosophila` from the remote server to your local `data-shell
 To copy from a remote server we use the same syntax, but reverse the order of the arguments in the `scp` command: first we specify the remote server and file/directory and then the local folder we want to copy it to. 
 
 ```bash
-$ scp -r training@remote-machine:drosophila ~/Desktop/data-shell/
+scp -r training@remote-machine:drosophila ~/Desktop/data-shell/
 ```
 
 ```

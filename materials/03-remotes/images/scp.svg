@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="155.52231mm"
+   height="62.245049mm"
+   viewBox="0 0 155.52231 62.245049"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="scp.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview49"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.5552872"
+     inkscape:cx="261.41875"
+     inkscape:cy="117.79498"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5" />
+  <defs
+     id="defs2">
+    <rect
+       x="80.37886"
+       y="85.788979"
+       width="620.23114"
+       height="26.277704"
+       id="rect186" />
+    <rect
+       x="80.37886"
+       y="85.788979"
+       width="174.28304"
+       height="77.287369"
+       id="rect294" />
+    <rect
+       x="80.37886"
+       y="85.788979"
+       width="338.51868"
+       height="24.731958"
+       id="rect408" />
+    <rect
+       x="80.37886"
+       y="85.788979"
+       width="192.83199"
+       height="76.900932"
+       id="rect414" />
+    <rect
+       x="80.37886"
+       y="85.788979"
+       width="192.83199"
+       height="76.900932"
+       id="rect420" />
+    <rect
+       x="80.37886"
+       y="85.788979"
+       width="192.83199"
+       height="76.900932"
+       id="rect426" />
+    <marker
+       style="overflow:visible"
+       id="RoundedArrow"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="6.1347523"
+       markerHeight="5.9304953"
+       viewBox="0 0 6.1347524 5.9304951"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path1367" />
+    </marker>
+    <rect
+       x="80.37886"
+       y="85.788979"
+       width="620.23114"
+       height="26.277704"
+       id="rect23646" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-21.643124,-13.313307)">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0,17.790586)"
+       id="text184"
+       style="font-weight:bold;font-size:18.6667px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script Bold';white-space:pre;shape-inside:url(#rect186);display:inline;fill:#575757;stroke-width:2.64567;stroke-linecap:round"><tspan
+         x="80.378906"
+         y="102.22859"
+         id="tspan344"><tspan
+           style="font-family:Consolas;-inkscape-font-specification:'Consolas Bold'"
+           id="tspan332">scp   </tspan><tspan
+           style="fill:#f35d5d"
+           id="tspan334">README.txt</tspan><tspan
+           style="font-family:Consolas;-inkscape-font-specification:'Consolas Bold'"
+           id="tspan336">   </tspan><tspan
+           style="fill:#675bf5"
+           id="tspan338">training@remote-machine</tspan><tspan
+           style="font-family:Consolas;-inkscape-font-specification:'Consolas Bold'"
+           id="tspan340">:</tspan><tspan
+           style="fill:#f7c059"
+           id="tspan342">/home/</tspan></tspan><tspan
+         x="80.378906"
+         y="128.50593"
+         id="tspan348"><tspan
+           dx="0 8.0117331 9.5521002 11.402365 8.6953278 14.273464 8.6953278 14.154976"
+           style="fill:#f7c059"
+           id="tspan346">training</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,3.9570716,33.464505)"
+       id="text292"
+       style="font-weight:bold;font-size:18.6667px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script Bold';text-align:center;white-space:pre;shape-inside:url(#rect294);display:inline;fill:#2b2b2b;fill-opacity:1;stroke-width:2.64567;stroke-linecap:round"
+       x="64.499466"
+       y="0"><tspan
+         x="124.86874"
+         y="102.22859"
+         id="tspan350">local file
+</tspan><tspan
+         x="114.42341"
+         y="125.56197"
+         id="tspan352">(of folder) 
+</tspan><tspan
+         x="133.11289"
+         y="148.89534"
+         id="tspan354">to copy</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,55.94582,34.727329)"
+       id="text412"
+       style="font-weight:bold;font-size:18.6667px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script Bold';white-space:pre;shape-inside:url(#rect414);display:inline;fill:#2b2b2b;fill-opacity:1;stroke-width:2.64567;stroke-linecap:round"
+       x="80.896629"
+       y="0"><tspan
+         x="95.497249"
+         y="102.22859"
+         id="tspan358"><tspan
+           style="text-align:center;text-anchor:middle"
+           id="tspan356">remote user and </tspan></tspan><tspan
+         x="101.90026"
+         y="125.56197"
+         id="tspan362"><tspan
+           style="text-align:center;text-anchor:middle"
+           id="tspan360">machine name</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,89.482096,-8.8055779)"
+       id="text418"
+       style="font-weight:bold;font-size:18.6667px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script Bold';white-space:pre;shape-inside:url(#rect420);display:inline;fill:#2b2b2b;fill-opacity:1;stroke-width:2.64567;stroke-linecap:round"
+       x="88.484535"
+       y="0"><tspan
+         x="127.49405"
+         y="102.22859"
+         id="tspan366"><tspan
+           style="text-align:center;text-anchor:middle"
+           id="tspan364">separator 
+</tspan></tspan><tspan
+         x="95.032404"
+         y="125.56197"
+         id="tspan370"><tspan
+           style="text-align:center;text-anchor:middle"
+           id="tspan368">(make sure there </tspan></tspan><tspan
+         x="109.44714"
+         y="148.89534"
+         id="tspan374"><tspan
+           style="text-align:center;text-anchor:middle"
+           id="tspan372">are no spaces)</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,114.13394,34.45648)"
+       id="text424"
+       style="font-weight:bold;font-size:18.6667px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script Bold';text-align:center;white-space:pre;shape-inside:url(#rect426);display:inline;fill:#2b2b2b;fill-opacity:1;stroke-width:2.64567;stroke-linecap:round"
+       x="58.19672"
+       y="0"><tspan
+         x="115.32606"
+         y="102.22859"
+         id="tspan376">destination 
+</tspan><tspan
+         x="147.31831"
+         y="125.56197"
+         id="tspan378">folder</tspan></text>
+    <path
+       style="fill:#675bf5;fill-opacity:1;stroke:#2b2b2b;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow)"
+       d="m 103.38163,47.514079 c -0.0132,3.463313 -0.0132,3.463313 -0.0132,3.463313"
+       id="path12495" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#6559f7;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect15641"
+       width="46.316872"
+       height="14.41651"
+       x="79.990013"
+       y="55.772839" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#f7c059;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect18699"
+       width="33.740768"
+       height="14.314265"
+       x="143.17467"
+       y="55.852161" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#f35d5d;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect18701"
+       width="29.139753"
+       height="19.733236"
+       x="32.775848"
+       y="55.575119" />
+    <path
+       style="fill:#675bf5;fill-opacity:1;stroke:#2b2b2b;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow)"
+       d="m 160.02522,47.514079 c -0.0132,3.463313 -0.0132,3.463313 -0.0132,3.463313"
+       id="path19047" />
+    <path
+       style="fill:#675bf5;fill-opacity:1;stroke:#2b2b2b;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow)"
+       d="m 47.760486,47.514079 c -0.0132,3.463313 -0.0132,3.463313 -0.0132,3.463313"
+       id="path19049" />
+    <path
+       style="fill:#675bf5;fill-opacity:1;stroke:#2b2b2b;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow)"
+       d="m 136.71342,39.989483 c -0.0132,-3.463313 -0.0132,-3.463313 -0.0132,-3.463313"
+       id="path19051" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#575757;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect22743"
+       width="46.316872"
+       height="19.426502"
+       x="113.25861"
+       y="13.563307" />
+  </g>
+</svg>
