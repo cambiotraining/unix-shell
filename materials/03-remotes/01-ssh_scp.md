@@ -75,6 +75,23 @@ Let's say we wanted to copy these files to our local computer.
 To do this, first we need to go back to our original computer's shell. 
 Use the key combination `Ctrl+D` on an empty command prompt to log out (or alternatively the command `exit`).
 
+:::{.callout-note}
+#### Passwordless SSH
+
+Instead of a password authentication, you can use a _key-based authentication_ method to access remote servers. 
+This essentially allows you to access a remote server from a given computer without having to type your password every time.  
+To set this up, see here: [How to Set Up Passwordless SSH Login](https://phoenixnap.com/kb/setup-passwordless-ssh). 
+:::
+
+:::{.callout-note}
+#### Forwarding graphics over SSH
+
+Most remote servers offer a terminal-based interface only. 
+However, it is possible to run a window-based application from the remote server using the so-called _X Window System_ (or _X11_). 
+
+To learn more about this, see this page: [Use X forwarding on a personal computer to securely run graphical applications](https://kb.iu.edu/d/bdnt).
+:::
+
 
 ## Moving files
 

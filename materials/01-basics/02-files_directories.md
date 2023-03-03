@@ -164,7 +164,7 @@ In our example the `~` is equivalent to `/home/ubuntu`.
 
 
 ::: {.callout-note}
-#### Tab Completion
+#### Tab completion
 
 Sometimes file and directory names get too long and it's tedious to have to type the full name, for example when moving with `cd`.  
 We can let the shell do most of the work through what is called **tab completion**. 
@@ -182,6 +182,9 @@ ls molecules/
 
 If we press <kbd>Tab ↹</kbd> again it does nothing, since there are now multiple possibilities.
 In this case, quickly pressing <kbd>Tab ↹</kbd> twice brings up a list of all the files. 
+
+Alternatively, some people prefer that repeatedly pressing <kbd>Tab ↹</kbd> cycles through the different file options. 
+To set this up, see this StackExchange post: [Terminal autocomplete: cycle through suggestions](https://unix.stackexchange.com/questions/24419/terminal-autocomplete-cycle-through-suggestions)
 :::
 
 
@@ -387,6 +390,13 @@ For example:
 When the shell sees a wildcard, it expands the wildcard to create a list of matching filenames *before* running the command that was asked for. 
 As an exception, if a wildcard expression does not match any file, _Bash_ will pass the expression as an argument to the command as it is.  
 For example typing `ls *.pdf` in the `molecules` directory (which does not contain any PDF files) results in an error message that there is no file called `*.pdf`. 
+
+:::{.callout-note}
+#### Bash wildcards
+
+The `*` wildcard is by far the most commonly used. 
+However, there are other wildcards available, and you can find more information about them on the [GNU Wildcard documentation page](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm).
+:::
 
 
 ## Finding Files
