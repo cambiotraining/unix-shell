@@ -240,6 +240,7 @@ Let's try and solve that problem, and also ask the question of how frequent each
 3. Finally, produce a sorted table of counts for each of our variants in _descending order_ (the most common variant at the top). 
   <details><summary>Hint</summary>
   Look at the manual page for the `sort` command to find the option to order the output in _reverse order_ (or do a quick web search).
+  You may also want to use the `-n` option to sort _numerically_.
   </details>
 
 ::: {.callout-answer collapse=true}
@@ -311,7 +312,7 @@ cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade"
 Now that we've counted each of our variants, we can again sort this result, this time by the counts value, by adding another `sort` step at the end: 
 
 ```bash
-cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade" | sort -r
+cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade" | sort -r -n
 ```
 
 ```
@@ -335,6 +336,13 @@ We used the option `-r`, which from the help page `man sort`, says:
 ```
   -r, --reverse               reverse the result of comparisons
 ```
+
+We also used the `-n` option to ensure the result is sorted numerically.
+From the help page it says: 
+
+```
+-n, --numeric-sort      compare according to string numerical value
+```
 :::
 :::
 
@@ -346,9 +354,11 @@ We used the option `-r`, which from the help page `man sort`, says:
 In the `coronavirus` folder, you will find a file named `proteins.fa.gz`. 
 This is a file that contains the amino acid sequences of the proteins in the SARS-CoV-2 coronavirus in a text-based format known as FASTA. 
 However, this file is _compressed_ using an algorithm known as _GZip_, which is indicated by the file extension `.gz`.  
-To look inside compressed files, you can use an alternative to `cat` called `zcat` (the 'z' at the beggining indicates it will work on _zipped_ files). 
+To look inside compressed files, you can use an alternative to `cat` called `zcat` (if you are using the _macOS_ terminal use `gzcat` instead).
+The 'z' at the beggining indicates it will work on _zipped_ files. 
 
-1. Use `zcat` together with `less` to look inside this file. 
+
+1. Use `zcat` (`gzcat` on macOS) together with `less` to look inside this file. 
   Remember that you can press <kbd>Q</kbd> to exit the `less` program.
 2. The content of this file may look a little strange, if you're not familiar with the FASTA file format. 
   Put simply, each protein sequence name starts with the `>` symbol. 
