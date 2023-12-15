@@ -18,6 +18,6 @@ book:
     - part: "Miscellaneous"
       chapters:
         - materials/04-misc/01-sed.md
-    - part: "Appendix"
-      chapters:
-        - materials/99-extras/01-cheatsheet.md
+  appendices:
+    - materials/99-extras/01-cheatsheet.md
+    - materials/99-extras/02-wsl.md
