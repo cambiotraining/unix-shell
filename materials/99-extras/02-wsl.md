@@ -40,9 +40,9 @@ To create shortcuts to commonly-used directories you use _symbolic links_.
 Here are some commands to automatically create shortcuts to your Windows "Documents",  "Desktop" and "Downloads" folders (copy/paste these commands on the terminal):
 
 ```bash
-ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("mydocuments")' | tr -d '\r')) ~/Documents
-ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("desktop")' | tr -d '\r')) ~/Desktop
-ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("downloads")' | tr -d '\r')) ~/Downloads
+ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("MyDocuments")' | tr -d '\r')) ~/Documents
+ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("Desktop")' | tr -d '\r')) ~/Desktop
+ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("UserProfile")' | tr -d '\r'))/Downloads ~/Downloads
 ```
 
 You may also want to **configure the Windows terminal to automatically open _WSL2_** (instead of the default Windows Command Prompt or Powershell):
