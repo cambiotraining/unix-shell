@@ -19,14 +19,17 @@ But briefly:
 
 - Click the Windows key and search for  _Windows PowerShell_, right-click on the app and choose **Run as administrator**. 
 - Answer "Yes" when it asks if you want the App to make changes on your computer. 
-- A terminal will open; run the command: `wsl --install`. 
-  - This should start installing "ubuntu". 
-  - It may ask for you to restart your computer. 
-- After restart, click the Windows key and search for _Ubuntu_, click on the App and it should open a new terminal. 
-- Follow the instructions to create a username and password (you can use the same username and password that you have on Windows, or a different one - it's your choice). 
+- A terminal will open; run the command: `wsl --install`.  
+  Progress bars will show while installing "Virtual Machine Platform", "Windows Subsystem for Linux" and finally "Ubuntu" (this process can take a long time).
+    - **Note:** it has happened to us in the past that the terminal freezes at the step of installing "Ubuntu". If it is frozen for ~1h at that step, press <kbd>Ctrl + C</kdb> and hopefully you will get a message saying "Ubuntu installed successfully".
+- After installation completes, restart your computer.
+- After restart, a terminal window will open asking you to create a username and password.  
+  If it doesn't, click the Windows key and search for _Ubuntu_, click on the App and it should open a new terminal. 
+  - You can use the same username and password that you have on Windows, or a different one - it's your choice. Spaces and other special characters are not allowed for your Ubuntu username.
   - **Note:** when you type your password nothing seems to be happening as the cursor doesn't move. However, the terminal is recording your password as you type. You will be asked to type the new password again to confirm it, so you can always try again if you get it wrong the first time.
-- You should now have access to a Ubuntu Linux terminal. 
-  This behaves very much like a regular Ubuntu server, and you can install apps using the `sudo apt install` command as usual. 
+
+You should now have access to a Ubuntu Linux terminal. 
+This behaves very much like a regular Ubuntu server. 
 
 
 ### Configuring WSL2
@@ -37,9 +40,9 @@ To create shortcuts to commonly-used directories you use _symbolic links_.
 Here are some commands to automatically create shortcuts to your Windows "Documents",  "Desktop" and "Downloads" folders (copy/paste these commands on the terminal):
 
 ```bash
-ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("mydocuments")')) ~/Documents
-ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("desktop")')) ~/Desktop
-ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("downloads")')) ~/Downloads
+ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("mydocuments")' | tr -d '\r')) ~/Documents
+ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("desktop")' | tr -d '\r')) ~/Desktop
+ln -s $(wslpath $(powershell.exe '[environment]::getfolderpath("downloads")' | tr -d '\r')) ~/Downloads
 ```
 
 You may also want to **configure the Windows terminal to automatically open _WSL2_** (instead of the default Windows Command Prompt or Powershell):
