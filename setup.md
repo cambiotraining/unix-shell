@@ -35,19 +35,32 @@ Download and unzip the folder to your Desktop to follow along with the materials
 #### Windows 10/11
 
 To get ready for our workshop please download the **MobaXterm** application, as instructed below. 
-However, for more advanced usage see the "[Unix on Windows](materials/99-extras/02-wsl.md)" appendix.
 
 - Go the the [MobaXterm download page](https://mobaxterm.mobatek.net/download-home-edition.html).
 - Download the "_Portable edition_" (blue button). 
   - Unzip the downloaded file and copy the folder to a convenient location, such as your Desktop.
   - You can directly run the program (without need for installation) from the executable in this folder. 
 
+However, for more advanced usage see the "[Unix on Windows](materials/99-extras/02-wsl.md)" appendix.
+
 #### Mac
 
 Mac OS already has a terminal available.  
 Press <kbd><kbd>&#8984;</kbd> + <kbd>space</kbd></kbd> to open _spotlight search_ and type "terminal".
 
-Optionally, if you would like a terminal with more modern features, we recommend installing [_iTerm2_](https://iterm2.com).
+Optionally, if you would like a terminal with more modern features, we recommend installing [_iTerm2_](https://iterm2.com).ss
+
+:::{.callout-warning}
+#### macOS permissions
+
+If you get the following error when you run the command `ls` from the terminal: 
+
+```
+ls: .: operation not permitted
+```
+
+Then, follow [these instructions](https://cleanmymac.com/blog/operation-not-permitted-terminal) to enable access to your filesystem.
+:::
 
 #### Linux
 
