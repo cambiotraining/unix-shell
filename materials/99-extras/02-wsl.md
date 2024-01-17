@@ -65,6 +65,7 @@ To install _Visual Studio Code_:
   Double-click the downloaded file to install the software, accepting all the default options. 
 - After completing the installation, search for "Visual Studio Code" and launch the application. 
 - Go to "_File > Preferences > Settings_", then select "_Text Editor > Files_" on the drop-down menu on the left. Scroll down to the section named "_EOL_" and choose "_\\n_" (this will ensure that the files you edit on Windows are compatible with the Linux operating system).
+- Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>. Search for "**Terminal: Select Default Profile**" and click. Then click on either "**WSL Ubuntu**" or "**bash**".
 - You can now close _VS Code_.
 
 Now, when you are working on _WSL2_, you can open _VS Code_ from the directory you are working from by typing the command `code .`.

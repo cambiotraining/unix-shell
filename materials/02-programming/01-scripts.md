@@ -27,6 +27,20 @@ cat cubane.pdb | grep "ATOM" | wc -l
 To write a shell script we have to save this command within a text file. 
 But first we need to see how we can create a text file from within the command line.
 
+:::{.callout-important collapse=true}
+#### Text editor on Windows/MobaXterm
+
+The text editor we will use from the command line is not installed by default on MobaXterm.
+To do so, run the following command: 
+
+```bash
+apt install nano
+```
+
+When asked, type "**y**" to continue, then "**y**" again to confirm the installation. 
+Several packages will start downloading and installing.
+:::
+
 
 ## Editing Files
 

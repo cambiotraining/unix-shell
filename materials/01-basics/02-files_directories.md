@@ -415,11 +415,35 @@ find . -type f -name "*.csv"
 ./coronavirus/variants/southafrica_variants.csv
 ./coronavirus/variants/switzerland_variants.csv
 ./coronavirus/variants/uk_variants.csv
+./sequencing/sample_metadata.csv
 ```
 
 In this case, we used the option `-type f` to only find **f**iles with the given name. 
 We could use the option `-type d` if we wanted to instead find **d**irectories only. 
 If we wanted to find both files and directories, then we can omit this option.
+
+We used `-name` to specify the name of the file we wanted to search for. 
+Similarly to `ls`, you can use the `*` wildcard to match _any number of characters_. 
+In our example, we used `*.csv` to find all files with the _.csv_ file extension.
+
+Finally, we searched for files from the current location we were in. 
+That's what the `.` in the command above means: search for files _from the current directory_. 
+If we wanted to find files in a different directory without having to `cd` into it first, we could replace `.` with the name of the directory we want to search from. 
+For example, if you only wanted to search for CSV files in the `coronavirus` folder:
+
+```bash
+find coronavirus -type f -name "*.csv"
+```
+
+```
+coronavirus/variants/india_variants.csv
+coronavirus/variants/ireland_variants.csv
+coronavirus/variants/southafrica_variants.csv
+coronavirus/variants/switzerland_variants.csv
+coronavirus/variants/uk_variants.csv
+```
+
+Notice how the `sequencing/sample_metadata.csv` file is not returned in this case.
 
 The `find` command has many more options to configure the search results (you can check these with `man find`). 
 One option that can sometimes be useful is to find AND delete all the files.
