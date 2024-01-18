@@ -125,6 +125,58 @@ sed 's/workshop\/course/tutorial/' hello.txt
 
 This looks a little strange, but the main thing to remember is that `\/` will be interpreted as the character "/" rather than the separator of `sed`'s substitute command. 
 
+The output now would be what we wanted: 
+
+```
+Hello world. How are you world?
+Welcome to this tutorial.
+```
+
+
+## Alternative separator: `|`
+
+Instead of using the escape character, like we did above, `sed` can also use the character `|` to separate the two parts of the expression.
+Our command could have instead been written as: 
+
+```bash
+sed 's|workshop/course|tutorial|' hello.txt
+```
+
+```
+Hello world. How are you world?
+Welcome to this tutorial.
+```
+
+This is a little easier to read, as we avoid using the `\` escape character in our pattern to be replaced.
+
+
+## Removing text
+
+The `sed` command can be used to remove text from an input. 
+The way to do it is to use nothing as the text to be replaced with.
+For example, if we wanted to remove the word "world" from our example file, we could do: 
+
+```bash
+sed 's/ world//g' hello.txt
+```
+
+Or, equivalently, using the `|` vertical separator: 
+
+```bash
+sed 's| world||g' hello.txt
+```
+
+```
+Hello. How are you?
+Welcome to this workshop/course.
+```
+
+A few things to note in our command above: 
+
+- We included the " " space before "world", to make sure we also remove it from the text.
+- The second part of the `sed` substitution we left blank, that's why we have two consecutive `//` (or `||`), to indicate we are replacing " world" with nothing. 
+- We made sure to include the `g` modifier, so that we replace both occurrences of the world "world".
+
 
 ## Exercises
 
