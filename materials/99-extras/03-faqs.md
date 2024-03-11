@@ -2,7 +2,7 @@
 title: "Unix Frequently Asked Questions"
 ---
 
-This document answers some questions asked frequently during the Unix and shell scripting lessons.
+### This document answers some questions asked frequently during the Unix and shell scripting lessons and is hopefully helpful as a reference. Please do ask any and all questions you may have during the session (please use the Google Doc for online sessions).
 
 ## Shell 101
 ### What is a kernel and what is a shell? 
@@ -15,10 +15,10 @@ The Bourne shell (bsh) was the first default shell on Unix systems. bash stands 
 
 ### What do the different text colours in terminal mean?
 
-Every terminal environment looks different and the colour scheme varies in different terminal systems. The first part, such as username@machine:~$ shows your username, the name of the computer, the location in the filesystem where you are at the moment. After, the names in blue are folder/directory names. Then, here, we see some .txt files in green. Please note again that this varies in all systems. 
+Every terminal environment looks different and the colour scheme varies in different terminal systems. The first part, such as `username@machine:~$` shows your username, the name of the computer, the location in the filesystem where you are at the moment. After, the names in blue are folder/directory names. Then, here, we see some .txt files in green. Please note again that this varies in all systems. 
 Thus, generally speaking, different file/folder types are indicated by different colours. For example, in our course terminal, blue files indicate it is a folder, green indicates .txt files, and red indicates a zipped file.
    
-### I don’t see the “$” at the beginning of the line anymore, what can I do? 
+### I don’t see the `$` at the beginning of the line anymore, what can I do? 
 Ctrl+C (aborts current task and returns control to the user) or Ctrl+Z (pauses the task running currently and can return control to the user)
 
 ### How can I autocomplete names of folders/paths in the terminal?
@@ -41,11 +41,11 @@ Often, when working on projects, it may be preferable to use relative paths as i
 ```
 
 Person A is running a tool that takes some input data and outputs into the results directory. If they specify a command as follows:
-	command --input data/input_file.txt  --output results/
+`	command --input data/input_file.txt  --output results/`
 
-This command will work for Person A provided they are in the `my_awesome_project` folder. If they instead decide to copy the folder to ~/Desktop, the code will still work. Further, if they shared the same code with Person B, the code will still work for them when ran as-is as long as Person B runs the code relative to `my_awesome_project` (i.e. they can cd into that folder, wherever it’s located in their filesystem). 
+This command will work for Person A provided they are in the `my_awesome_project` folder. If they instead decide to copy the folder to `~/Desktop`, the code will still work. Further, if they shared the same code with Person B, the code will still work for them when ran as-is as long as Person B runs the code relative to `my_awesome_project` (i.e. they can cd into that folder, wherever it’s located in their filesystem). 
 However, if Person A instead used a full path: 
-command --input /home/hugot/Documents/my_awesome_project/data/input_file.txt  --output /home/hugot/Documents/my_awesome_project/data/results/
+`command --input /home/hugot/Documents/my_awesome_project/data/input_file.txt  --output /home/hugot/Documents/my_awesome_project/data/results/`
 
 there would arise some issues:
 The code is very long and therefore harder to read. 
@@ -57,21 +57,21 @@ Therefore, it is recommended that relative paths are used. It is noteworthy that
 
 ## Functions in Terminal
 
-### Are removed (using rm) files recoverable? Is there a recycling bin or a staging process for removal of files?
+### Are removed files (using `rm`) recoverable? Is there a recycling bin or a staging process for removal of files?
 
 `rm` deletes things permanently, skipping the “Trash” stage altogether, and you will be unable to recover any file that has been deleted with `rm`. It is worth noting that in Unix things are just as you dictate, so be very careful when removing files (look at case, dashes, underscores, etc. and decide which files you want to keep carefully). 
 You can move files using `mv` or `cp` to put the file into another folder to get them out of the way, but which wouldn't delete them the same way the Recycling Bin works to periodically delete things. It’s also worth keeping in mind that moving things to a “recycling bin” doesn’t save space on the computer. So, if you’re trying to remove big files to save space, deleting them permanently is what you actually want. 
 
-### What is the difference between > and >>?
+### What is the difference between `>` and `>>`?
 `>` will insert the contents indicated by commands preceding it into a file, completely rewriting a file. `>>` will append to a file, retaining any pre-existing text in the file. Also, `>` will create a file if it does not exist, whereas `>>` will not.
 
 ### Can you combine commands such as grep? 
-Yes, you can do this using the pipe | such as grep “something” | grep “something else”
+Yes, you can do this using the pipe `|` such as `grep “something” | grep “something else”`
 
 ### What is the difference between different numerical sort options such as -g and -n?
--g sorts numerically, converting a prefix of each line to a long double-precision floating point number. -n sorts numerically without making any changes to the inputted number, thereby providing a more precise sort.
+`-g` sorts numerically, converting a prefix of each line to a long double-precision floating point number. `-n` sorts numerically without making any changes to the inputted number, thereby providing a more precise sort.
 
 ## Shell Scripting
 
-### Are there any text editors other than “nano”?
+### Are there any text editors other than nano?
 Yes, another popular basic text editor is gedit. For a less basic one, we recommend VS Code.
