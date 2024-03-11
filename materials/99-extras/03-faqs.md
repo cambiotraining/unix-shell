@@ -15,8 +15,8 @@ The Bourne shell (bsh) was the first default shell on Unix systems. bash stands 
 
 ### What do the different text colours in terminal mean?
 
-Every terminal environment looks different and the colour scheme varies in different terminal systems. The first part, such as `username@machine:~$` shows your username, the name of the computer, the location in the filesystem where you are at the moment. After, the names in blue are folder/directory names. Then, here, we see some .txt files in green. Please note again that this varies in all systems. 
-Thus, generally speaking, different file/folder types are indicated by different colours. For example, in our course terminal, blue files indicate it is a folder, green indicates .txt files, and red indicates a zipped file.
+Every terminal environment looks different and the colour scheme varies in different terminal systems. The first part, such as `username@machine:~$` in green displays your username, the name of the computer, the location (or folder) in the filesystem where you are currently.
+Generally speaking, different file/folder types are indicated by different colours. For example, in our course terminal, blue files indicate it is a folder, green indicates .txt files, and red indicates a zipped file. Please note once again that this varies in all systems. 
    
 ### I don’t see the `$` at the beginning of the line anymore, what can I do? 
 Ctrl+C (aborts current task and returns control to the user) or Ctrl+Z (pauses the task running currently and can return control to the user)
