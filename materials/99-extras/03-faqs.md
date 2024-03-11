@@ -6,6 +6,7 @@ title: "Unix Frequently Asked Questions"
 #### Overview 
 
 This document answers some questions asked frequently during the Unix and shell scripting lessons and is hopefully helpful as a reference. Please do ask any and all questions you may have during the session (please use the Google Doc for online sessions).
+
 :::
 
 ## Shell 101
