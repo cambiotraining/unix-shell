@@ -1,6 +1,8 @@
 ---
-title: "Unix on Windows"
+pagetitle: "Unix Shell"
 ---
+
+# Unix on Windows {.unnumbered}
 
 In [Data & Setup](../../setup.md) we recommended installing _MobaXterm_ as a way to have a Linux-like terminal on Windows. 
 While easy to install, _MobaXterm_ is not a fully-featured Linux environment. 
