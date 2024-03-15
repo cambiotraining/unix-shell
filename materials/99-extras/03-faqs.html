@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.112">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Unix Shell</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../materials/99-extras/02-wsl.html" rel="prev">
+<link href="../../site_libs/quarto-contrib/quarto-project/cambiotraining/courseformat/img/university-of-cambridge-favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../site_libs/quarto-contrib/quarto-project/cambiotraining/courseformat/img/university_crest_reversed.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Introduction to the Unix Command Line</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cambiotraining/unix-shell"><i class="bi bi-github" role="img" aria-label="Bioinformatics Training Facility GitHub">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bioinfocambs"><i class="bi bi-twitter" role="img" aria-label="Bioinformatics Training Facility Twitter">
+</i> 
+ </a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Frequently Asked Questions</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Welcome</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data &amp; Setup</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Basics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/01-unix_overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Unix Shell</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/02-files_directories.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Files &amp; Folders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/03-text_manipulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Text Manipulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/01-basics/04-combining_commands.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Combining Commands</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Programming</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/02-programming/01-scripts.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Shell Scripts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/02-programming/02-variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Arguments &amp; Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/02-programming/03-loops.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loops</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Remote Work</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/03-remotes/01-ssh_scp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Access Remote Servers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/03-remotes/02-remote_files.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Remote Files</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Miscellaneous</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/04-misc/01-sed.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Text Processing: SED</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/99-extras/01-cheatsheet.html" class="sidebar-item-text sidebar-link">Unix Cheat Sheet</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/99-extras/02-wsl.html" class="sidebar-item-text sidebar-link">Unix on Windows</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../materials/99-extras/03-faqs.html" class="sidebar-item-text sidebar-link active">Frequently Asked Questions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#shell-101" id="toc-shell-101" class="nav-link active" data-scroll-target="#shell-101">Shell 101</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-kernel-and-what-is-a-shell" id="toc-what-is-a-kernel-and-what-is-a-shell" class="nav-link" data-scroll-target="#what-is-a-kernel-and-what-is-a-shell">What is a kernel and what is a shell?</a></li>
+  <li><a href="#what-are-some-common-shells" id="toc-what-are-some-common-shells" class="nav-link" data-scroll-target="#what-are-some-common-shells">What are some common shells?</a></li>
+  </ul></li>
+  <li><a href="#terminal-syntax-shortcuts-and-quick-fixes" id="toc-terminal-syntax-shortcuts-and-quick-fixes" class="nav-link" data-scroll-target="#terminal-syntax-shortcuts-and-quick-fixes">Terminal Syntax, Shortcuts, and Quick Fixes</a>
+  <ul class="collapse">
+  <li><a href="#what-do-the-different-text-colours-in-terminal-mean" id="toc-what-do-the-different-text-colours-in-terminal-mean" class="nav-link" data-scroll-target="#what-do-the-different-text-colours-in-terminal-mean">What do the different text colours in terminal mean?</a></li>
+  <li><a href="#i-dont-see-the-at-the-beginning-of-the-line-anymore-what-can-i-do" id="toc-i-dont-see-the-at-the-beginning-of-the-line-anymore-what-can-i-do" class="nav-link" data-scroll-target="#i-dont-see-the-at-the-beginning-of-the-line-anymore-what-can-i-do">I don’t see the <code>$</code> at the beginning of the line anymore, what can I do?</a></li>
+  <li><a href="#how-can-i-autocomplete-names-of-folderspaths-in-the-terminal" id="toc-how-can-i-autocomplete-names-of-folderspaths-in-the-terminal" class="nav-link" data-scroll-target="#how-can-i-autocomplete-names-of-folderspaths-in-the-terminal">How can I autocomplete names of folders/paths in the terminal?</a></li>
+  <li><a href="#how-can-i-re-run-previously-run-commands-without-typing-them-out-again" id="toc-how-can-i-re-run-previously-run-commands-without-typing-them-out-again" class="nav-link" data-scroll-target="#how-can-i-re-run-previously-run-commands-without-typing-them-out-again">How can I re-run previously run commands without typing them out again?</a></li>
+  <li><a href="#is-there-any-merit-to-using-an-absolute-path-or-a-relative-path-over-the-other" id="toc-is-there-any-merit-to-using-an-absolute-path-or-a-relative-path-over-the-other" class="nav-link" data-scroll-target="#is-there-any-merit-to-using-an-absolute-path-or-a-relative-path-over-the-other">Is there any merit to using an absolute path or a relative path over the other?</a></li>
+  </ul></li>
+  <li><a href="#functions-in-terminal" id="toc-functions-in-terminal" class="nav-link" data-scroll-target="#functions-in-terminal">Functions in Terminal</a>
+  <ul class="collapse">
+  <li><a href="#are-removed-files-using-rm-recoverable-is-there-a-recycling-bin-or-a-staging-process-for-removal-of-files" id="toc-are-removed-files-using-rm-recoverable-is-there-a-recycling-bin-or-a-staging-process-for-removal-of-files" class="nav-link" data-scroll-target="#are-removed-files-using-rm-recoverable-is-there-a-recycling-bin-or-a-staging-process-for-removal-of-files">Are removed files (using <code>rm</code>) recoverable? Is there a recycling bin or a staging process for removal of files?</a></li>
+  <li><a href="#what-is-the-difference-between-and" id="toc-what-is-the-difference-between-and" class="nav-link" data-scroll-target="#what-is-the-difference-between-and">What is the difference between <code>&gt;</code> and <code>&gt;&gt;</code>?</a></li>
+  <li><a href="#can-you-combine-commands-such-as-grep" id="toc-can-you-combine-commands-such-as-grep" class="nav-link" data-scroll-target="#can-you-combine-commands-such-as-grep">Can you combine commands such as grep?</a></li>
+  <li><a href="#what-is-the-difference-between-different-numerical-sort-options-such-as--g-and--n" id="toc-what-is-the-difference-between-different-numerical-sort-options-such-as--g-and--n" class="nav-link" data-scroll-target="#what-is-the-difference-between-different-numerical-sort-options-such-as--g-and--n">What is the difference between different numerical sort options such as -g and -n?</a></li>
+  </ul></li>
+  <li><a href="#shell-scripting" id="toc-shell-scripting" class="nav-link" data-scroll-target="#shell-scripting">Shell Scripting</a>
+  <ul class="collapse">
+  <li><a href="#are-there-any-text-editors-other-than-nano" id="toc-are-there-any-text-editors-other-than-nano" class="nav-link" data-scroll-target="#are-there-any-text-editors-other-than-nano">Are there any text editors other than nano?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Frequently Asked Questions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This document compiles answers to questions asked frequently during our live courses, and is hopefully helpful as a reference.</p>
+</div>
+</div>
+<section id="shell-101" class="level2">
+<h2 class="anchored" data-anchor-id="shell-101">Shell 101</h2>
+<section id="what-is-a-kernel-and-what-is-a-shell" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-kernel-and-what-is-a-shell">What is a kernel and what is a shell?</h3>
+<p>The kernel is the core component of an operating system (OS). The shell is the user interface that interacts with the kernel.</p>
+</section>
+<section id="what-are-some-common-shells" class="level3">
+<h3 class="anchored" data-anchor-id="what-are-some-common-shells">What are some common shells?</h3>
+<p>The “Bourne shell” (<em>bsh</em>) was the first default shell on Unix systems. <em>bash</em> stands for “Bourne again shell” and is an extension of the Bourne shell. If you’re a Mac user, you may see the beginning of your terminal line says <em>zsh</em>, standing for the “Z shell”, which is another shell created as an extension for <em>bsh</em>.</p>
+</section>
+</section>
+<section id="terminal-syntax-shortcuts-and-quick-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="terminal-syntax-shortcuts-and-quick-fixes">Terminal Syntax, Shortcuts, and Quick Fixes</h2>
+<section id="what-do-the-different-text-colours-in-terminal-mean" class="level3">
+<h3 class="anchored" data-anchor-id="what-do-the-different-text-colours-in-terminal-mean">What do the different text colours in terminal mean?</h3>
+<p>Every terminal environment looks different and the colour scheme varies in different terminal systems. The first part, such as <code>username@machine:~$</code> in green displays your username, the name of the computer, the location (or folder) in the filesystem where you are currently. Generally speaking, different file/folder types are indicated by different colours. For example, in our course terminal, blue files indicate it is a folder, green indicates .txt files, and red indicates a zipped file. Please note once again that this varies in all systems.</p>
+</section>
+<section id="i-dont-see-the-at-the-beginning-of-the-line-anymore-what-can-i-do" class="level3">
+<h3 class="anchored" data-anchor-id="i-dont-see-the-at-the-beginning-of-the-line-anymore-what-can-i-do">I don’t see the <code>$</code> at the beginning of the line anymore, what can I do?</h3>
+<p>Ctrl + C aborts the current task and returns control to the user.</p>
+</section>
+<section id="how-can-i-autocomplete-names-of-folderspaths-in-the-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="how-can-i-autocomplete-names-of-folderspaths-in-the-terminal">How can I autocomplete names of folders/paths in the terminal?</h3>
+<p>You can use the “Tab” key to autocomplete names of folders/paths. If there are multiple files with the same beginning, eg: Desktop and DesktopFolder, it will autocomplete until the “p” in Desktop as that is the end of the common string (please remember the terminal is case-sensitive). It will not autocomplete further until it sees a character that would make one name different from the other. You can press “Tab” twice to see what options you have to autocomplete. In this case, you could type DesktopF and then use the “Tab” key to autocomplete to DesktopFolder.</p>
+</section>
+<section id="how-can-i-re-run-previously-run-commands-without-typing-them-out-again" class="level3">
+<h3 class="anchored" data-anchor-id="how-can-i-re-run-previously-run-commands-without-typing-them-out-again">How can I re-run previously run commands without typing them out again?</h3>
+<p>If you press the up arrow key multiple times it will give you the last commands you have run in historical order.</p>
+</section>
+<section id="is-there-any-merit-to-using-an-absolute-path-or-a-relative-path-over-the-other" class="level3">
+<h3 class="anchored" data-anchor-id="is-there-any-merit-to-using-an-absolute-path-or-a-relative-path-over-the-other">Is there any merit to using an absolute path or a relative path over the other?</h3>
+<p>Often, when working on projects, it may be preferable to use relative paths as it makes one’s code more “portable”. For example, if this is Person A’s folder structure:</p>
+<pre><code>/home
+        |_ hugot
+            |_ Documents
+                |_ my_awesome_project
+                    |_ data
+                    |_ results </code></pre>
+<p>Person A is running a tool that takes some input data and outputs into the results directory. If they specify a command as follows: <code>command --input data/input_file.txt  --output results/</code></p>
+<p>This command will work for Person A provided they are in the <code>my_awesome_project</code> folder. If they instead decide to copy the folder to <code>~/Desktop</code>, the code will still work. Further, if they shared the same code with Person B, the code will still work for them when ran as-is as long as Person B runs the code relative to <code>my_awesome_project</code> (i.e.&nbsp;they can cd into that folder, wherever it’s located in their filesystem). However, if Person A instead used a full path: <code>command --input /home/hugot/Documents/my_awesome_project/data/input_file.txt  --output /home/hugot/Documents/my_awesome_project/data/results/</code></p>
+<p>there would arise some issues: The code is very long and therefore harder to read. If the data is moved into a different folder (whether it’s the same person running it or someone they have shared it with running it), file paths would have to be changed. This makes it harder to use repeatedly (unless working in the very same folder) and share with others (often working on a collaborative project).</p>
+<p>Therefore, it is recommended that relative paths are used. It is noteworthy that what is considered to be a “project folder” is typically at the user’s discretion (it is up to you!).</p>
+</section>
+</section>
+<section id="functions-in-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="functions-in-terminal">Functions in Terminal</h2>
+<section id="are-removed-files-using-rm-recoverable-is-there-a-recycling-bin-or-a-staging-process-for-removal-of-files" class="level3">
+<h3 class="anchored" data-anchor-id="are-removed-files-using-rm-recoverable-is-there-a-recycling-bin-or-a-staging-process-for-removal-of-files">Are removed files (using <code>rm</code>) recoverable? Is there a recycling bin or a staging process for removal of files?</h3>
+<p><code>rm</code> deletes things permanently, skipping the “Trash” stage altogether, and you will be unable to recover any file that has been deleted with <code>rm</code>. It is worth noting that in Unix things are just as you dictate, so be very careful when removing files (look at case, dashes, underscores, etc. and decide which files you want to keep carefully). You can move files using <code>mv</code> or <code>cp</code> to put the file into another folder to get them out of the way, but which wouldn’t delete them the same way the Recycling Bin works to periodically delete things. It’s also worth keeping in mind that moving things to a “recycling bin” doesn’t save space on the computer. So, if you’re trying to remove big files to save space, deleting them permanently is what you actually want.</p>
+</section>
+<section id="what-is-the-difference-between-and" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-the-difference-between-and">What is the difference between <code>&gt;</code> and <code>&gt;&gt;</code>?</h3>
+<p><code>&gt;</code> will insert the contents indicated by commands preceding it into a file, completely rewriting a file. <code>&gt;&gt;</code> will append to a file, retaining any pre-existing text in the file. Also, <code>&gt;</code> will create a file if it does not exist, whereas <code>&gt;&gt;</code> will not.</p>
+</section>
+<section id="can-you-combine-commands-such-as-grep" class="level3">
+<h3 class="anchored" data-anchor-id="can-you-combine-commands-such-as-grep">Can you combine commands such as grep?</h3>
+<p>Yes, you can do this using the pipe <code>|</code> such as <code>grep “something” | grep “something else”</code></p>
+</section>
+<section id="what-is-the-difference-between-different-numerical-sort-options-such-as--g-and--n" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-the-difference-between-different-numerical-sort-options-such-as--g-and--n">What is the difference between different numerical sort options such as -g and -n?</h3>
+<p><code>-g</code> sorts numerically, converting a prefix of each line to a long double-precision floating point number. <code>-n</code> sorts numerically without making any changes to the inputted number, thereby providing a more precise sort.</p>
+</section>
+</section>
+<section id="shell-scripting" class="level2">
+<h2 class="anchored" data-anchor-id="shell-scripting">Shell Scripting</h2>
+<section id="are-there-any-text-editors-other-than-nano" class="level3">
+<h3 class="anchored" data-anchor-id="are-there-any-text-editors-other-than-nano">Are there any text editors other than nano?</h3>
+<p>Yes, another popular basic text editor is gedit. For a less basic one, we recommend VS Code.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../materials/99-extras/02-wsl.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Unix on Windows</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">Licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <img src="https://creativecommons.org/images/deed/cc_icon_black_x2.png" class="img-fluid" width="25"> Bioinformatics Training Facility</div>
+  </div>
+</footer>
+
+
+
+</body></html>
