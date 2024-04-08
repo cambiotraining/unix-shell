@@ -1,31 +1,32 @@
 ---
-title: "Unix Frequently Asked Questions"
+pagetitle: "Unix Shell"
 ---
 
-:::{callout-tip}
+# Frequently Asked Questions {.unnumbered}
 
+:::{.callout-tip}
 #### Overview 
 
-This document answers some questions asked frequently during the Unix and shell scripting lessons and is hopefully helpful as a reference. Please do ask any and all questions you may have during the session (please use the Google Doc for online sessions).
-
+This document compiles answers to questions asked frequently during our live courses, and is hopefully helpful as a reference.
 :::
 
 ## Shell 101
+
 ### What is a kernel and what is a shell? 
 The kernel is the core component of an operating system (OS). The shell is the user interface that interacts with the kernel. 
 
 ### What are some common shells?
-The Bourne shell (bsh) was the first default shell on Unix systems. bash stands for Bourne again shell and is an extension of the Bourne shell. If you're a Mac user, you may see the beginning of your terminal line says zsh, standing for the Z shell which is another shell created as an extension for bsh.Some other popular shells are csh and Debian.
+The "Bourne shell" (_bsh_) was the first default shell on Unix systems. _bash_ stands for "Bourne again shell" and is an extension of the Bourne shell. 
+If you're a Mac user, you may see the beginning of your terminal line says _zsh_, standing for the "Z shell", which is another shell created as an extension for _bsh_.
 
 ## Terminal Syntax, Shortcuts, and Quick Fixes
 
 ### What do the different text colours in terminal mean?
 
-Every terminal environment looks different and the colour scheme varies in different terminal systems. The first part, such as `username@machine:~$` in green displays your username, the name of the computer, the location (or folder) in the filesystem where you are currently.  
-Generally speaking, different file/folder types are indicated by different colours. For example, in our course terminal, blue files indicate it is a folder, green indicates .txt files, and red indicates a zipped file. Please note once again that this varies in all systems. 
+Every terminal environment looks different and the colour scheme varies in different terminal systems. The first part, such as `username@machine:~$` in green displays your username, the name of the computer, the location (or folder) in the filesystem where you are currently.
    
 ### I don’t see the `$` at the beginning of the line anymore, what can I do? 
-Ctrl+C (aborts current task and returns control to the user) or Ctrl+Z (pauses the task running currently and can return control to the user)
+Ctrl + C aborts the current task and returns control to the user.
 
 ### How can I autocomplete names of folders/paths in the terminal?
 You can use the “Tab” key to autocomplete names of folders/paths. If there are multiple files with the same beginning, eg: Desktop and DesktopFolder, it will autocomplete until the “p” in Desktop as that is the end of the common string (please remember the terminal is case-sensitive). It will not autocomplete further until it sees a character that would make one name different from the other. You can press “Tab” twice to see what options you have to autocomplete. In this case, you could type DesktopF and then use the “Tab” key to autocomplete to DesktopFolder.
