@@ -15,6 +15,9 @@ project:
 
 format: courseformat-html
 
+filters:
+  - courseformat
+
 execute:
   freeze: auto
 
@@ -47,6 +50,9 @@ book:
       - icon: twitter
         href: https://twitter.com/bioinfocambs
         aria-label: Bioinformatics Training Facility Twitter
+      - icon: mastodon
+        href: https://genomic.social/@BioInfoCambs
+        aria-label: Bioinformatics Training Facility Mastodon
   chapters:
     - part: "Welcome"
       chapters:
