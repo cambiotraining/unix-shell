@@ -130,7 +130,7 @@ done
 
 :::{.callout-exercise}
 #### Dry run
-{{< level 1 >}}
+{{< level 2 >}}
 
 Suppose we want to set up up a directory structure to organize some experiments measuring reaction rate constants with different compounds and different temperatures.  
 Modify the following code to run as a _dry-run_ (i.e. not actually execute the command inside the loop) and try to understand what would happen:
@@ -172,7 +172,7 @@ So, for each molecule in the first loop, the second loop (the nested loop) itera
 
 :::{.callout-exercise}
 #### Nested loops
-{{< level 2 >}}
+{{< level 3 >}}
 
 In a [previous exercise](02-variables.md#exercises) we created the script `count_atom_type.sh`, which counts specific atom types in our PDB files. 
 Here is the code from that script:

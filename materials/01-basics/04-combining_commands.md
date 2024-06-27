@@ -163,6 +163,8 @@ Here's the main message: **always use the `-n` option if you want things that lo
 #### Pipe comprehension
 {{< level 1 >}}
 
+(**Note:** this is a conceptual exercise, you don't need to use your own terminal.)
+
 If you had the following two text files:
 
 ```bash

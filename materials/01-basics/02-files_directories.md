@@ -96,6 +96,10 @@ ls -F /home/ubuntu/Desktop/data-shell
 README.txt  coronavirus/  molecules/  sequencing/  things.txt
 ```
 
+:::{.callout-exercise}
+See the [filesystem exercise](#filesystem-exr) to test your knowledge.
+:::
+
 
 ## Changing Directory
 
@@ -185,6 +189,10 @@ In this case, quickly pressing <kbd>Tab ↹</kbd> twice brings up a list of all 
 
 Alternatively, some people prefer that repeatedly pressing <kbd>Tab ↹</kbd> cycles through the different file options. 
 To set this up, see this StackExchange post: [Terminal autocomplete: cycle through suggestions](https://unix.stackexchange.com/questions/24419/terminal-autocomplete-cycle-through-suggestions)
+:::
+
+:::{.callout-exercise}
+See the [file paths exercise](#paths-exr) to test your knowledge.
 :::
 
 
@@ -302,6 +310,10 @@ Be careful when specifying the target file name, since `mv` will silently overwr
 The command `mv` also works with directories, and you can use it to move/rename an entire directory just as you use it to move an individual file.
 
 
+:::{.callout-exercise}
+See the [renaming files exercise](#rename-exr) to test your knowledge.
+:::
+
 ## Copying Files and Directories
 
 The `cp` command works very much like `mv`, except it copies a file instead of moving it.
@@ -326,6 +338,9 @@ ls thesis_notes/
 books.txt
 ```
 
+:::{.callout-exercise}
+See the [copying files exercise](#copy-exr) to test your knowledge.
+:::
 
 ## Removing Files and Directories
 
@@ -398,6 +413,9 @@ The `*` wildcard is by far the most commonly used.
 However, there are other wildcards available, and you can find more information about them on the [GNU Wildcard documentation page](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm).
 :::
 
+:::{.callout-exercise}
+See the [wildcards exercise](#wildcards-exr) to test your knowledge.
+:::
 
 ## Finding Files
 
@@ -459,11 +477,13 @@ So, always make sure to run the command _without the `-delete` option first_ to 
 
 ## Exercises
 
-:::{.callout-exercise}
-#### Navigating the filesystem
+:::{.callout-exercise #filesystem-exr}
+#### Navigating the filesystem {#exercise-1}
 {{< level 1 >}}
 
-Using the filesystem diagram below, if `pwd` displays `/Users/Robin/Documents/`, what will `ls ../backup` display?
+(**Note:** this is a conceptual exercise, you don't need to use your own terminal.)
+
+Using the hypothetical filesystem diagram below, if `pwd` displays `/Users/Robin/Documents/`, what will `ls ../backup` display?
 
 1. `../backup: No such file or directory`
 2. `2012-12-01 2013-01-08 2013-01-27`
@@ -480,9 +500,11 @@ Using the filesystem diagram below, if `pwd` displays `/Users/Robin/Documents/`,
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #paths-exr}
 #### File paths
 {{< level 1 >}}
+
+(**Note:** this is a conceptual exercise, you don't need to use your own terminal.)
 
 Starting from `/home/amanda/data`, which of the following commands could Amanda use to navigate to her home directory (`/home/amanda`)?
 
@@ -511,9 +533,11 @@ Starting from `/home/amanda/data`, which of the following commands could Amanda 
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #rename-exr}
 #### Renaming files
 {{< level 1 >}}
+
+(**Note:** this is a conceptual exercise, you don't need to use your own terminal.)
 
 Suppose that you created a plain-text file in your current directory to contain a list of the statistical tests you will need to do to analyze your data, and named it `statstics.txt`.
 
@@ -538,9 +562,11 @@ cannot be created.
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #copy-exr}
 #### Copy directories
 {{< level 1 >}}
+
+For this exercise, make sure you are in the course materials directory: `cd ~/Desktop/data-shell`
 
 Make a copy of the `sequencing` directory named `backup`.
 When copying an entire directory, you will need to use the option `-r` with the `cp` command (`-r` means "recursive"). 
@@ -579,11 +605,12 @@ README.txt  backup  books_copy.txt  coronavirus  molecules  sequencing  thesis_n
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #wildcards-exr}
 #### Wildcards
 {{< level 1 >}}
 
-When run in the `molecules` directory, which `ls` command(s) will produce this output?
+Change into the `molecules` directory.
+Which `ls` command(s) will produce this output?
 
 ```
 ethane.pdb   methane.pdb
@@ -609,6 +636,8 @@ ethane.pdb   methane.pdb
 :::{.callout-exercise}
 #### Copy with multiple filenames
 {{< level 2 >}}
+
+For this exercise, make sure you are in the course materials directory: `cd ~/Desktop/data-shell`
 
 What does `cp` do when given several filenames and a directory name?
 
