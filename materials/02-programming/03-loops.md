@@ -42,19 +42,20 @@ Let's create a new script called `count_loop.sh` (using `nano` or `gedit`), wher
 
 for filename in cubane.pdb ethane.pdb methane.pdb
 do
-  bash count_atoms.sh $filename
+  # count the number of lines containing the word "ATOM"
+  natoms=$(cat ${filename} | grep "ATOM" | wc -l)
+  
+  # print a message to the user
+  echo "The number of atoms in ${filename} is: ${natoms}"
 done
 ```
 
 If we run this script (`bash count_loop.sh`), we get the expected output: 
 
 ```
-Processing file: cubane.pdb
-16
-Processing file: ethane.pdb
-8
-Processing file: methane.pdb
-5
+The number of atoms in cubane.pdb is: 16
+The number of atoms in ethane.pdb is: 8
+The number of atoms in methane.pdb is: 5
 ```
 
 When the shell sees the keyword `for`, it knows to repeat a command (or group of commands) once for each item in a list. 
@@ -71,13 +72,12 @@ In our example, at each iteration of the _for loop_, the variable `$filename` st
 :::
 
 
-## Doing a Dry Run
+## Scripts within scripts
 
-A loop is a way to do many things at once -- or to make many mistakes at once if it does the wrong thing! 
-One way to check what a loop *would* do is to `echo` the commands it would run instead of actually running them -- this is known as a _dry-run_.
+In the example above, we wrote our code to count the number of atoms directly inside our _for loop_. 
+However, in the [previous section](02-variables.md), we had already written a script - `count_atoms.sh` - that counts the number of atoms in a single file. 
 
-Suppose we want to preview the commands of our `count_loop.sh` script, but without actually executing the command within the loop.
-Here is our original code:
+Given we already have that generic script, we could have run our task like this: 
 
 ```bash
 for filename in cubane.pdb ethane.pdb methane.pdb
@@ -86,7 +86,17 @@ do
 done
 ```
 
-To preview what commands would be run, we can double-quote the whole command and `echo` it:
+Here, we call our `count_atoms.sh` script from within the _for loop_. 
+This is a very useful technique, as we can write generic scripts for a certain task, which we can then call from programming constructs such as a _for loop_.
+
+
+## Dry runs
+
+A loop is a way to do many things at once -- or to make many mistakes at once if it does the wrong thing! 
+One way to check what a loop _would_ do is to `echo` the commands it would run instead of actually running them -- this is known as a _dry-run_.
+
+Suppose we want to preview the commands of our `count_loop.sh` script, but without actually executing the command within the loop.
+Here is how we could have modified the previous code:
 
 ```bash
 for filename in cubane.pdb ethane.pdb methane.pdb
@@ -95,6 +105,7 @@ do
 done
 ```
 
+All we've done is wrap our command instead of the `echo` command. 
 If we run this modified code, the output is: 
 
 ```
@@ -110,7 +121,7 @@ This is a good practice when building scripts that include a _for loop_, because
 ## Exercises
 
 :::{.callout-exercise}
-#### For loops
+#### Multiple files
 {{< level 1 >}}
 
 Can you think of a way to improve our `count_loop.sh` script, so that every file gets processed, but without having to type all the individual files' names?
@@ -121,16 +132,70 @@ We can use the `*` wildcard in the for loop:
 ```bash
 for filename in *.pdb
 do
-  bash count_atoms.sh $filename
+  # count the number of lines containing the word "ATOM"
+  natoms=$(cat ${filename} | grep "ATOM" | wc -l)
+  
+  # print a message to the user
+  echo "The number of atoms in ${filename} is: ${natoms}"
 done
 ```
+:::
+:::
+
+:::{.callout-exercise}
+#### Searching for text
+{{< level 2 >}}
+
+For this exercise, go to the following directory: `cd ~/Desktop/data-shell/coronavirus/variants` (adjust the path if your data is on a different location of your computer).
+
+[Previously](../01-basics/04-combining_commands.md), we had used the following command to count the number of "Alpha" variants in our dataset:
+
+```bash
+cat *_variants.csv | grep "Alpha" | wc -l
+```
+
+Write a _for loop_ to search for several variants:
+
+- Use `nano` to create a new script called `count_variants.sh`. 
+- Adapt the commands shown above to write a _for loop_ to search for the variants "Alpha", "Delta" and "Omicron".
+- Bonus: print a message indicating which of the variants is being searched for. 
+
+::: {.callout-answer collapse=true}
+We can write the following script: 
+
+```bash
+#!/bin/bash
+
+for variant in Alpha Delta Omicron
+do
+  # count the variant occurrence across all files - save the result in a variable called "n"
+  n=$(cat *_variants.csv | grep "${variant}" | wc -l)
+  
+  # print a message to the terminal
+  echo "The number of ${variant} samples is: ${n}"
+done
+```
+
+- In our _for loop_, we create a variable called `variant` to store each of the values we are iterating through.
+- Within the loop, we used this `$variant` variable in our `grep` command. This ensure that each time the code runs, a different variant will be searched for in our files.
+- We stored the result of our `cat` + `grep` + `wc` commands in a variable. This was so we could use this variable in our message at the end. 
+- We used the `echo` command to print a message, which again uses the `$variant` variable as well as the `$n` variable, which stores the number of atoms from our previous command. 
+
+After creating the script, we ran it with `bash count_variants.sh` and this was the result: 
+
+```
+The number of Alpha samples is: 38
+The number of Delta samples is: 75
+The number of Omicron samples is: 93
+```
+
 :::
 :::
 
 
 :::{.callout-exercise}
 #### Dry run
-{{< level 2 >}}
+{{< level 3 >}}
 
 Suppose we want to set up up a directory structure to organize some experiments measuring reaction rate constants with different compounds and different temperatures.  
 Modify the following code to run as a _dry-run_ (i.e. not actually execute the command inside the loop) and try to understand what would happen:
