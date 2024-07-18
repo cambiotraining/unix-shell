@@ -339,7 +339,7 @@ books.txt
 ```
 
 :::{.callout-exercise}
-See the [copying files exercise](#copy-exr) to test your knowledge.
+See the [copying directories](#copy-exr) and [copying multiple files](#cp-multiple-exr) exercises to test your knowledge.
 :::
 
 ## Removing Files and Directories
@@ -605,35 +605,7 @@ README.txt  backup  books_copy.txt  coronavirus  molecules  sequencing  thesis_n
 :::
 
 
-:::{.callout-exercise #wildcards-exr}
-#### Wildcards
-{{< level 1 >}}
-
-Change into the `molecules` directory.
-Which `ls` command(s) will produce this output?
-
-```
-ethane.pdb   methane.pdb
-```
-
-1. `ls *t*ane.pdb`
-2. `ls *t?ne.*`
-3. `ls *t??ne.pdb`
-4. `ls ethane.*`
-
-::: {.callout-answer collapse=true}
-
-1. No. This shows all files whose names contain zero or more characters (`*`) followed by the letter `t`, then zero or more characters (`*`) followed by `ane.pdb`.  
-   This gives `ethane.pdb  methane.pdb  octane.pdb  pentane.pdb`. 
-2. No. This shows all files whose names start with zero or more characters (`*`) followed by the letter `t`, then a single character (`?`), then `ne.` followed by zero or more characters (`*`).  
-   This will give us `octane.pdb` and `pentane.pdb` but doesn't match anything which ends in `thane.pdb`.
-3. **Yes**. This fixes the problems of option 2 by matching two characters (`??`) between `t` and `ne`. 
-4. No. This only shows files starting with `ethane.`.
-:::
-:::
-
-
-:::{.callout-exercise}
+:::{.callout-exercise #cp-multiple-exr}
 #### Copy with multiple filenames
 {{< level 2 >}}
 
@@ -662,6 +634,34 @@ If given three file names, `cp` throws an error such as the one below, because i
 ```bash
 cp: target 'molecules/methane.pdb' is not a directory
 ```
+:::
+:::
+
+
+:::{.callout-exercise #wildcards-exr}
+#### Wildcards
+{{< level 1 >}}
+
+Change into the `molecules` directory.
+Which `ls` command(s) will produce this output?
+
+```
+ethane.pdb   methane.pdb
+```
+
+1. `ls *t*ane.pdb`
+2. `ls *t?ne.*`
+3. `ls *t??ne.pdb`
+4. `ls ethane.*`
+
+::: {.callout-answer collapse=true}
+
+1. No. This shows all files whose names contain zero or more characters (`*`) followed by the letter `t`, then zero or more characters (`*`) followed by `ane.pdb`.  
+   This gives `ethane.pdb  methane.pdb  octane.pdb  pentane.pdb`. 
+2. No. This shows all files whose names start with zero or more characters (`*`) followed by the letter `t`, then a single character (`?`), then `ne.` followed by zero or more characters (`*`).  
+   This will give us `octane.pdb` and `pentane.pdb` but doesn't match anything which ends in `thane.pdb`.
+3. **Yes**. This fixes the problems of option 2 by matching two characters (`??`) between `t` and `ne`. 
+4. No. This only shows files starting with `ethane.`.
 :::
 :::
 
