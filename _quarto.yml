@@ -33,6 +33,7 @@ book:
   search:
     location: sidebar
   favicon: "_extensions/cambiotraining/courseformat/img/university-of-cambridge-favicon.ico"
+  bread-crumbs: false
   page-navigation: true
   page-footer: 
     center: |
@@ -43,6 +44,9 @@ book:
     pinned: true
     logo: "_extensions/cambiotraining/courseformat/img/university_crest_reversed.png"
     title: "Introduction to the Unix Command Line"
+    left:
+      - text: "Slides"
+        href: https://docs.google.com/presentation/d/1q9Wy77wg_QrN5iP_wYD_TpX7iurs2eFYliOId1owj1A/edit?usp=sharing
     right:
       - icon: github
         href: https://github.com/cambiotraining/unix-shell
