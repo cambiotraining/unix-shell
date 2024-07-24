@@ -71,6 +71,23 @@ echo "$molecule"
 ethane
 ```
 
+:::{.callout-important}
+#### Single `'` or double `"` quotes?
+
+Wrapping variables in single or double quotes makes a difference. 
+
+When you use double quotes the shell will interpret the values in the variable, as shown in the example above.
+However, if you use single quotes, the shell will not interpret those variable values, instead printing the text as is:
+
+```bash
+echo 'My molecule is: $molecule'
+```
+
+```
+My molecule is $molecule
+```
+:::
+
 In this case, our variable is storing the name of one of our molecules, so we could use it to look at the content of our file: 
 
 ```bash
@@ -97,7 +114,7 @@ echo "$molecule_copy"
 echo "${molecule}_copy"
 ```
 
-The first command would throw an error because _Bash_ would think there is a variable called "molecule_copy", but such a variable does not exist. 
+The first command would give us an empty output because _Bash_ would think there is a variable called "molecule_copy", but such a variable does not exist (and by default the shell assumes its value is empty). 
 In the second command, because we included the variable name in `{}`, then this is not a problem and the output we get is "ethane_copy". 
 
 In conclusion: **always include `{}` when using your variables in scripts**. 
@@ -148,6 +165,8 @@ echo "$ethane_atoms"
 :::{.callout-exercise}
 #### Variable comprehension
 {{< level 1 >}}
+
+(**Note:** this is a conceptual exercise, you don't need to use your own terminal.)
 
 Assuming that we have a user named `robin`, what would be the output of the `echo` command below? 
 
@@ -258,7 +277,7 @@ The number of H atoms in octane.pdb is:
 
 :::{.callout-exercise}
 #### Variables and commands
-{{< level 2 >}}
+{{< level 3 >}}
 
 Let's continue working on our earlier script `count_atoms.sh`. 
 Let's say that instead of printing the number of atoms to the console, we would want the result to be saved in a file named as `<MOLECULE>_atoms.txt` (where `<MOLECULE>` is the name of the respective molecule file).

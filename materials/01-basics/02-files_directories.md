@@ -96,6 +96,10 @@ ls -F /home/ubuntu/Desktop/data-shell
 README.txt  coronavirus/  molecules/  sequencing/  things.txt
 ```
 
+:::{.callout-exercise}
+See the [filesystem exercise](#filesystem-exr) to test your knowledge.
+:::
+
 
 ## Changing Directory
 
@@ -185,6 +189,10 @@ In this case, quickly pressing <kbd>Tab ↹</kbd> twice brings up a list of all 
 
 Alternatively, some people prefer that repeatedly pressing <kbd>Tab ↹</kbd> cycles through the different file options. 
 To set this up, see this StackExchange post: [Terminal autocomplete: cycle through suggestions](https://unix.stackexchange.com/questions/24419/terminal-autocomplete-cycle-through-suggestions)
+:::
+
+:::{.callout-exercise}
+See the [file paths exercise](#paths-exr) to test your knowledge.
 :::
 
 
@@ -302,6 +310,10 @@ Be careful when specifying the target file name, since `mv` will silently overwr
 The command `mv` also works with directories, and you can use it to move/rename an entire directory just as you use it to move an individual file.
 
 
+:::{.callout-exercise}
+See the [renaming files exercise](#rename-exr) to test your knowledge.
+:::
+
 ## Copying Files and Directories
 
 The `cp` command works very much like `mv`, except it copies a file instead of moving it.
@@ -326,6 +338,9 @@ ls thesis_notes/
 books.txt
 ```
 
+:::{.callout-exercise}
+See the [copying directories](#copy-exr) and [copying multiple files](#cp-multiple-exr) exercises to test your knowledge.
+:::
 
 ## Removing Files and Directories
 
@@ -398,6 +413,9 @@ The `*` wildcard is by far the most commonly used.
 However, there are other wildcards available, and you can find more information about them on the [GNU Wildcard documentation page](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm).
 :::
 
+:::{.callout-exercise}
+See the [wildcards exercise](#wildcards-exr) to test your knowledge.
+:::
 
 ## Finding Files
 
@@ -459,11 +477,13 @@ So, always make sure to run the command _without the `-delete` option first_ to 
 
 ## Exercises
 
-:::{.callout-exercise}
-#### Navigating the filesystem
+:::{.callout-exercise #filesystem-exr}
+#### Navigating the filesystem {#exercise-1}
 {{< level 1 >}}
 
-Using the filesystem diagram below, if `pwd` displays `/Users/Robin/Documents/`, what will `ls ../backup` display?
+(**Note:** this is a conceptual exercise, you don't need to use your own terminal.)
+
+Using the hypothetical filesystem diagram below, if `pwd` displays `/Users/Robin/Documents/`, what will `ls ../backup` display?
 
 1. `../backup: No such file or directory`
 2. `2012-12-01 2013-01-08 2013-01-27`
@@ -480,9 +500,11 @@ Using the filesystem diagram below, if `pwd` displays `/Users/Robin/Documents/`,
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #paths-exr}
 #### File paths
 {{< level 1 >}}
+
+(**Note:** this is a conceptual exercise, you don't need to use your own terminal.)
 
 Starting from `/home/amanda/data`, which of the following commands could Amanda use to navigate to her home directory (`/home/amanda`)?
 
@@ -511,9 +533,11 @@ Starting from `/home/amanda/data`, which of the following commands could Amanda 
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #rename-exr}
 #### Renaming files
 {{< level 1 >}}
+
+(**Note:** this is a conceptual exercise, you don't need to use your own terminal.)
 
 Suppose that you created a plain-text file in your current directory to contain a list of the statistical tests you will need to do to analyze your data, and named it `statstics.txt`.
 
@@ -538,9 +562,11 @@ cannot be created.
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #copy-exr}
 #### Copy directories
 {{< level 1 >}}
+
+For this exercise, make sure you are in the course materials directory: `cd ~/Desktop/data-shell`
 
 Make a copy of the `sequencing` directory named `backup`.
 When copying an entire directory, you will need to use the option `-r` with the `cp` command (`-r` means "recursive"). 
@@ -579,36 +605,11 @@ README.txt  backup  books_copy.txt  coronavirus  molecules  sequencing  thesis_n
 :::
 
 
-:::{.callout-exercise}
-#### Wildcards
-{{< level 1 >}}
-
-When run in the `molecules` directory, which `ls` command(s) will produce this output?
-
-```
-ethane.pdb   methane.pdb
-```
-
-1. `ls *t*ane.pdb`
-2. `ls *t?ne.*`
-3. `ls *t??ne.pdb`
-4. `ls ethane.*`
-
-::: {.callout-answer collapse=true}
-
-1. No. This shows all files whose names contain zero or more characters (`*`) followed by the letter `t`, then zero or more characters (`*`) followed by `ane.pdb`.  
-   This gives `ethane.pdb  methane.pdb  octane.pdb  pentane.pdb`. 
-2. No. This shows all files whose names start with zero or more characters (`*`) followed by the letter `t`, then a single character (`?`), then `ne.` followed by zero or more characters (`*`).  
-   This will give us `octane.pdb` and `pentane.pdb` but doesn't match anything which ends in `thane.pdb`.
-3. **Yes**. This fixes the problems of option 2 by matching two characters (`??`) between `t` and `ne`. 
-4. No. This only shows files starting with `ethane.`.
-:::
-:::
-
-
-:::{.callout-exercise}
+:::{.callout-exercise #cp-multiple-exr}
 #### Copy with multiple filenames
 {{< level 2 >}}
+
+For this exercise, make sure you are in the course materials directory: `cd ~/Desktop/data-shell`
 
 What does `cp` do when given several filenames and a directory name?
 
@@ -633,6 +634,34 @@ If given three file names, `cp` throws an error such as the one below, because i
 ```bash
 cp: target 'molecules/methane.pdb' is not a directory
 ```
+:::
+:::
+
+
+:::{.callout-exercise #wildcards-exr}
+#### Wildcards
+{{< level 1 >}}
+
+Change into the `molecules` directory.
+Which `ls` command(s) will produce this output?
+
+```
+ethane.pdb   methane.pdb
+```
+
+1. `ls *t*ane.pdb`
+2. `ls *t?ne.*`
+3. `ls *t??ne.pdb`
+4. `ls ethane.*`
+
+::: {.callout-answer collapse=true}
+
+1. No. This shows all files whose names contain zero or more characters (`*`) followed by the letter `t`, then zero or more characters (`*`) followed by `ane.pdb`.  
+   This gives `ethane.pdb  methane.pdb  octane.pdb  pentane.pdb`. 
+2. No. This shows all files whose names start with zero or more characters (`*`) followed by the letter `t`, then a single character (`?`), then `ne.` followed by zero or more characters (`*`).  
+   This will give us `octane.pdb` and `pentane.pdb` but doesn't match anything which ends in `thane.pdb`.
+3. **Yes**. This fixes the problems of option 2 by matching two characters (`??`) between `t` and `ne`. 
+4. No. This only shows files starting with `ethane.`.
 :::
 :::
 

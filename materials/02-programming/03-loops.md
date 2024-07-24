@@ -17,11 +17,11 @@ title: "Loops"
 As such they are key to productivity improvements through automation. 
 Similar to wildcards and tab completion, using loops also reduces the amount of typing required (and hence reduces the number of typing mistakes).
 
-Going back to our `molecules` directory, suppose we wanted to use our `count_atoms.sh` script to get the number of atoms in each of our molecules' PDB files. 
-We know how to run the script for a single file: 
+Going back to our `molecules` directory, suppose we wanted to count the number of atoms in each of our molecules' PDB files. 
+As a reminder, here is the command to do this for one of our files:
 
 ```bash
-bash   count_atoms.sh   cubane.pdb
+cat cubane.pdb | grep "ATOM" | wc -l
 ```
 
 Of course, we could manually then repeat this for each of our molecule files: `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb`, `propane.pdb`.  
@@ -31,29 +31,28 @@ We’ll use a loop to solve this problem, but first let’s look at the general 
 ```bash
 for thing in list_of_things
 do
-  operation_using $thing  # Indentation within the loop is not required, but aids legibility
+  # Indentation within the loop is not required, but aids legibility
+  operation_using ${thing}
 done
 ```
 
-Let's create a new script called `count_loop.sh` (using `nano` or `gedit`), where we apply this idea to our example: 
+Taking our command above to count atoms, let's create a new script called `count_loop.sh`, where we apply this idea: 
 
 ```bash
 #!/bin/bash
 
 for filename in cubane.pdb ethane.pdb methane.pdb
 do
-  bash count_atoms.sh $filename
+  # count the number of lines containing the word "ATOM"
+  cat ${filename} | grep "ATOM" | wc -l
 done
 ```
 
-If we run this script (`bash count_loop.sh`), we get the expected output: 
+If we ran this script (`bash count_loop.sh`), we would get the following output: 
 
 ```
-Processing file: cubane.pdb
 16
-Processing file: ethane.pdb
 8
-Processing file: methane.pdb
 5
 ```
 
@@ -64,20 +63,49 @@ Inside the loop, we call for the variable's value `$filename`.
 
 In our example, at each iteration of the _for loop_, the variable `$filename` stored a different value, cycling through `cubane.pdb`, `ethane.pdb` and finally `methane.pdb`. 
 
+At the moment our script is not very informative of what files are being processed. 
+But we could use some of the programming techniques we've already learned about to make our output even more informative.
+Here is an example of a modified script: 
+
+```bash
+#!/bin/bash
+
+for filename in cubane.pdb ethane.pdb methane.pdb
+do
+  # count the number of lines containing the word "ATOM"
+  # store the result inside a variable 'natoms'
+  natoms=$(cat ${filename} | grep "ATOM" | wc -l)
+  
+  # print a message to the user
+  echo "The number of atoms in ${filename} is: ${natoms}"
+done
+```
+
+If we run this script (`bash count_loop.sh`), we get a more informative output than before: 
+
+```
+The number of atoms in cubane.pdb is: 16
+The number of atoms in ethane.pdb is: 8
+The number of atoms in methane.pdb is: 5
+```
 
 ::: {.callout-note}
 - Do not use spaces, quotes, or wildcard characters such as '*' or '?' in filenames, as it complicates variable expansion.
 - Give files consistent names that are easy to match with wildcard patterns to make it easy to select them for looping.
 :::
 
+:::{.callout-exercise}
 
-## Doing a Dry Run
+See the [loop multiple files](#wildcard-loops-exr) and [searching for text](#grep-loop-exr) exercises to test your knowledge.
+:::
 
-A loop is a way to do many things at once -- or to make many mistakes at once if it does the wrong thing! 
-One way to check what a loop *would* do is to `echo` the commands it would run instead of actually running them -- this is known as a _dry-run_.
 
-Suppose we want to preview the commands of our `count_loop.sh` script, but without actually executing the command within the loop.
-Here is our original code:
+## Scripts within scripts
+
+In the example above, we wrote our code to count the number of atoms directly inside our _for loop_. 
+However, in the [previous section](02-variables.md), we had already written a script - `count_atoms.sh` - that counts the number of atoms in a single file. 
+
+Given we already have that generic script, we could have run our task like this: 
 
 ```bash
 for filename in cubane.pdb ethane.pdb methane.pdb
@@ -86,7 +114,17 @@ do
 done
 ```
 
-To preview what commands would be run, we can double-quote the whole command and `echo` it:
+Here, we call our `count_atoms.sh` script from within the _for loop_. 
+This is a very useful technique, as we can write generic scripts for a certain task, which we can then call from programming constructs such as a _for loop_.
+
+
+## Dry runs
+
+A loop is a way to do many things at once -- or to make many mistakes at once if it does the wrong thing! 
+One way to check what a loop _would_ do is to `echo` the commands it would run instead of actually running them -- this is known as a _dry-run_.
+
+Suppose we want to preview the commands of our `count_loop.sh` script, but without actually executing the command within the loop.
+Here is how we could have modified the previous code:
 
 ```bash
 for filename in cubane.pdb ethane.pdb methane.pdb
@@ -95,6 +133,7 @@ do
 done
 ```
 
+All we've done is wrap our command instead of the `echo` command. 
 If we run this modified code, the output is: 
 
 ```
@@ -106,11 +145,15 @@ bash count_atoms.sh methane.pdb
 So, it wouldn't actually run the command within the loop, but rather tell us what would have been run. 
 This is a good practice when building scripts that include a _for loop_, because it lets us check that our code is all correct. 
 
+:::{.callout-exercise}
+Try the [dry run exercise](#dry-run-exr) to test your knowledge.
+:::
+
 
 ## Exercises
 
-:::{.callout-exercise}
-#### For loops
+:::{.callout-exercise #wildcard-loops-exr}
+#### Looping multiple files
 {{< level 1 >}}
 
 Can you think of a way to improve our `count_loop.sh` script, so that every file gets processed, but without having to type all the individual files' names?
@@ -121,16 +164,107 @@ We can use the `*` wildcard in the for loop:
 ```bash
 for filename in *.pdb
 do
-  bash count_atoms.sh $filename
+  # count the number of lines containing the word "ATOM"
+  natoms=$(cat ${filename} | grep "ATOM" | wc -l)
+  
+  # print a message to the user
+  echo "The number of atoms in ${filename} is: ${natoms}"
 done
 ```
 :::
 :::
 
+:::{.callout-exercise #grep-loop-exr}
+#### Searching for text
+{{< level 2 >}}
 
-:::{.callout-exercise}
+For this exercise, go to the following directory: `cd ~/Desktop/data-shell/coronavirus/variants` (adjust the path if your data is on a different location of your computer).
+
+[Previously](../01-basics/04-combining_commands.md), we had used the following command to count the number of "Alpha" variants in our dataset:
+
+```bash
+cat *_variants.csv | grep "Alpha" | wc -l
+```
+
+Write a _for loop_ to search for several variants:
+
+- Use `nano` to create a new script called `count_variants.sh`. 
+- Adapt the commands shown above to write a _for loop_ to search for the variants "Alpha", "Delta" and "Omicron".
+- Print a message indicating which of the variants is being searched for. 
+
+**Bonus (optional):** modify the script to output the results to a CSV file called `variant_counts.csv` with the name of the variant as the first column and the count as the second column. 
+
+::: {.callout-answer collapse=true}
+We can write the following script: 
+
+```bash
+#!/bin/bash
+
+for variant in Alpha Delta Omicron
+do
+  # count the variant occurrence across all files - save the result in a variable called "n"
+  n=$(cat *_variants.csv | grep "${variant}" | wc -l)
+  
+  # print a message to the terminal
+  echo "The number of ${variant} samples is: ${n}"
+done
+```
+
+- In our _for loop_, we create a variable called `variant` to store each of the values we are iterating through.
+- Within the loop, we used this `$variant` variable in our `grep` command. This ensure that each time the code runs, a different variant will be searched for in our files.
+- We stored the result of our `cat` + `grep` + `wc` commands in a variable. This was so we could use this variable in our message at the end. 
+- We used the `echo` command to print a message, which again uses the `$variant` variable as well as the `$n` variable, which stores the number of atoms from our previous command. 
+
+After creating the script, we ran it with `bash count_variants.sh` and this was the result: 
+
+```
+The number of Alpha samples is: 38
+The number of Delta samples is: 75
+The number of Omicron samples is: 93
+```
+
+The bonus task asked to modify the code to output the results to a file. 
+We can use the redirection operators (`>` / `>>`) to achieve this: 
+
+```bash
+#!/bin/bash
+
+# outside of the loop we initiate a new file with column names
+echo "variant,count" > variant_counts.csv
+
+for variant in Alpha Delta Omicron
+do
+  # count the variant occurrence across all files - save the result in a variable called "n"
+  n=$(cat *_variants.csv | grep "${variant}" | wc -l)
+  
+  # we append the variant name and its count to our file, each separated by a comma
+  echo "${variant},${n}" >> variant_counts.csv
+done
+```
+
+If we run this modified script (`bash count_variants.sh`), nothing is printed to the terminal. 
+However, a file is created in our directory, which contains the results of our analysis: 
+
+```bash
+cat variant_counts.csv
+```
+
+```
+variant,count
+Alpha,38
+Delta,75
+Omicron,93
+```
+
+Because this is a CSV file, we could easily import it into a data analysis package (e.g. R or Python) to produce some visualisations. 
+
+:::
+:::
+
+
+:::{.callout-exercise #dry-run-exr}
 #### Dry run
-{{< level 1 >}}
+{{< level 2 >}}
 
 Suppose we want to set up up a directory structure to organize some experiments measuring reaction rate constants with different compounds and different temperatures.  
 Modify the following code to run as a _dry-run_ (i.e. not actually execute the command inside the loop) and try to understand what would happen:
@@ -172,7 +306,7 @@ So, for each molecule in the first loop, the second loop (the nested loop) itera
 
 :::{.callout-exercise}
 #### Nested loops
-{{< level 2 >}}
+{{< level 3 >}}
 
 In a [previous exercise](02-variables.md#exercises) we created the script `count_atom_type.sh`, which counts specific atom types in our PDB files. 
 Here is the code from that script:
