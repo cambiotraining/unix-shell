@@ -1,6 +1,5 @@
 ---
 title: "Introduction to the Unix Command Line"
-author: "Paul Judge, Hugo Tavares"
 date: today
 number-sections: false
 ---
@@ -44,29 +43,7 @@ Exercises in these materials are labelled according to their level of difficulty
 | {{< fa solid star >}} {{< fa solid star >}} {{< fa solid star >}} | Exercises in level 3 require going beyond the concepts and syntax introduced to solve new problems. |
 
 
-## Authors
-<!-- 
-The listing below shows an example of how you can give more details about yourself.
-These examples include icons with links to GitHub and Orcid. 
--->
-
-About the authors:
-
-- **Paul Judge**  
-  _Affiliation_: Bioinformatics Training Facility, University of Cambridge  
-  _Roles_: writing - review & editing; writing - original content; conceptualisation; coding
-- **Hugo Tavares**
-  <a href="https://orcid.org/0000-0001-9373-2726" target="_blank"><i class="fa-brands fa-orcid" style="color:#a6ce39"></i></a> 
-  <a href="https://github.com/tavareshugo" target="_blank"><i class="fa-brands fa-github" style="color:#4078c0"></i></a>  
-  _Affiliation_: Bioinformatics Training Facility, University of Cambridge  
-  _Roles_: writing - review & editing; writing - original content; conceptualisation; coding
-
-:::{.callout-important}
-These materials are a fork of the [Carpentries Shell Lesson](https://swcarpentry.github.io/shell-novice/).  
-As such, please make sure to cite both works if you use these materials (see [Citation] and [Acknowledgements]).
-:::
-
-## Citation
+## Citation & Authors
 
 :::{.callout-important}
 These materials are a fork of the [Carpentries Shell Lesson](https://swcarpentry.github.io/shell-novice/).  
@@ -76,36 +53,29 @@ As such, please make sure to cite both works if you use these materials (see [Ac
 Please cite these materials if:
 
 - You adapted or used any of them in your own teaching.
-- These materials were useful for your research work. For example, you can cite us in the methods section of your paper: "We carried our analyses based on the recommendations in Tavares & Judge (2022).".
+- These materials were useful for your research work. For example, you can cite us in the methods section of your paper: "We carried our analyses based on the recommendations in _YourReferenceHere_".
 
-You can cite these materials as:
+<!-- 
+This is generated automatically from the CITATION.cff file. 
+If you think you should be added as an author, please get in touch with us.
+-->
 
-> Tavares H, Judge P (2022) “cambiotraining/unix-shell: Introduction to the Unix Shell”, https://cambiotraining.github.io/unix-shell
-
-Or in BibTeX format:
-
-```
-@Misc{,
-  author = {Tavares, Hugo and Judge, Paul},
-  title = {cambiotraining/unix-shell: Introduction to the Unix Shell},
-  month = {April},
-  year = {2022},
-  url = {https://cambiotraining.github.io/unix-shell},
-}
-```
+{{< citation CITATION.cff >}}
 
 
 ## Acknowledgements
 
-These materials are based on the [**Carpentries Shell Lesson**](https://swcarpentry.github.io/shell-novice/) with credit to their authors and contributors.  
+These materials are based on the [**Carpentries Shell Lesson**](https://swcarpentry.github.io/shell-novice/) (Copyright (c) The Carpentries) with credit to their authors and contributors.  
 We have adapted these materials to fit with our training environment, rearranged some of the sections and data used and added new sections not on the original materials. 
+The original authors and publishers of the work have not endorsed the adaptation of this work.
 
-Please make sure to also cite the original work if you use these materials:
+Please make sure to also cite the original work (licensed under the Creative Commons Attribution 4.0 International, [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)) if you use these materials:
 
 > Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.),
 Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, … Vikram Chhatre.
 > (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1).
 > Zenodo. http://doi.org/10.5281/zenodo.3266823
+
 
 ----
 

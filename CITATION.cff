@@ -1,0 +1,35 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+# Note: we use the author alias to record author contributions
+# This is a known limitation of CFF files: https://github.com/citation-file-format/citation-file-format/issues/112
+
+cff-version: 1.2.0
+title: Introduction to the Unix command line
+message: >-
+  You may cite these materials using the metadata in this
+  file. Please cite our materials if you publish materials
+  derived from these, run a workshop using them, or use
+  the information in your own work.
+type: dataset
+authors:
+  - given-names: Hugo
+    family-names: Tavares
+    affiliation: Cambridge Centre for Research Informatics Training
+    website: 'https://bioinfotraining.bio.cam.ac.uk/staff/hugo-tavares-phd'
+    orcid: 'https://orcid.org/0000-0001-9373-2726'
+    alias: 'writing - original draft; conceptualisation; software'
+  - given-names: Paul
+    family-names: Judge
+    affiliation: Cambridge Centre for Research Informatics Training
+    alias: 'writing - original draft; conceptualisation; software'
+  - given-names: Ilina
+    family-names: Moitra
+    affiliation: Cambridge Centre for Research Informatics Training
+    orcid: 'https://orcid.org/0000-0002-7877-5565'
+    alias: 'writing - contributor'
+repository-code: 'https://github.com/cambiotraining/unix-shell'
+url: 'https://cambiotraining.github.io/unix-shell/'
+license: CC-BY-4.0
+commit: 
+date-released: '2024-08-27'
