@@ -159,7 +159,7 @@ Here's the main message: **always use the `-n` option if you want things that lo
 
 ## Exercises
 
-:::{.callout-exercise}
+:::{.callout-exercise #pipes-exr}
 #### Pipe comprehension
 {{< level 1 >}}
 
@@ -195,7 +195,7 @@ What would be the result of the following command?
 cat animals*.txt | head -n 6 | tail -n 1
 ```
 
-::: {.callout-answer collapse=true}
+::: {.callout-answer}
 
 The result would be "fox". 
 Here is a diagram illustrating what happens in each of the three steps:
@@ -218,7 +218,7 @@ cat animals*.txt    raccoon    head -n 6    rabbit     tail -n 1
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #sort-exr}
 #### Sort & count
 {{< level 2 >}}
 
@@ -245,7 +245,7 @@ Let's try and solve that problem, and also ask the question of how frequent each
   You may also want to use the `-n` option to sort _numerically_.
   </details>
 
-::: {.callout-answer collapse=true}
+::: {.callout-answer}
 
 **Task 1**
 
@@ -349,7 +349,7 @@ From the help page it says:
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #zcat-exr}
 #### `zcat` and `grep`
 {{< level 2 >}}
 
@@ -367,7 +367,7 @@ The 'z' at the beggining indicates it will work on _zipped_ files.
   Combine `zcat` with `grep` to extract the sequence names only. 
   How many proteins does SARS-CoV-2 have?
 
-::: {.callout-answer collapse=true}
+::: {.callout-answer}
 
 **Task 1**
 
@@ -417,7 +417,7 @@ zcat proteins.fa.gz | grep ">" | wc -l
 :::
 
 
-:::{.callout-exercise}
+:::{.callout-exercise #count-exr}
 #### Counting values in columns
 {{< level 3 >}}
 
@@ -438,7 +438,7 @@ Using a combination of the commands we've seen so far:
 - Remember that the `cut` program uses tab as its default delimiter. 
 :::
 
-::: {.callout-answer collapse=true}
+::: {.callout-answer}
 
 **Task 1**
 

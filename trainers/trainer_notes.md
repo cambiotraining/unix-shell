@@ -57,9 +57,11 @@ Below, we give details to help you prepare each section of the materials.
 [Combining commands](https://cambiotraining.github.io/unix-shell/materials/01-basics/04-combining_commands.html)
 
 - This naturally flows from the previous section and is also live-coded (often the same trainer does both). 
-- Do the exercises after the live coding.
-- Summary (slides): 
-  - After finishing the above, go through the slides in the section entitled "Basics of Unix - Summary"
+- Participants can do the exercises after the live coding.
+- Summary (slides): after finishing the above, go through the slides in the section entitled "Basics of Unix - Summary".
+- Courses split across two half-days (usually online):
+  - The summary slides above can instead be presented at the beginning of day 2 as a recap
+  - You can also go through the solution of the zcat+grep exercise in the morning of day 2 also as a recap
 
 ### Shell scripts
 
