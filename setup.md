@@ -34,14 +34,19 @@ Download and unzip the folder to your Desktop to follow along with the materials
 ::: {.panel-tabset group="os"}
 #### Windows 10/11
 
-To get ready for our workshop please download the **MobaXterm** application, as instructed below. 
+To get ready for our workshop please download and setup the **MobaXterm** application:
 
-- Go the the [MobaXterm download page](https://mobaxterm.mobatek.net/download-home-edition.html).
-- Download the "_Portable edition_" (blue button). 
-  - Unzip the downloaded file and copy the folder to a convenient location, such as your Desktop.
-  - You can directly run the program (without need for installation) from the executable in this folder. 
+- Go the the [**MobaXterm download page**](https://mobaxterm.mobatek.net/download-home-edition.html).
+- Download the **Portable edition** (blue button). 
+- **Unzip the file** and copy the folder to a convenient location, such as your Desktop.
+- Open the folder and double-click the executable file called **MobaXterm_Personal_XX.X.exe**.
+  - If asked "Do you want to allow public and private networks to access this app?" press **Allow**.
+- Click on **Start local terminal**.
+- Type the command `apt install nano`, then type `y` ("yes"), followed by `y` again. 
+  - A progress message should print on the screen as an additional application is installed
+- Once finished, you can close MobaXterm.
 
-However, for more advanced usage see the "[Unix on Windows](materials/99-extras/02-wsl.md)" appendix.
+For more advanced usage see the "[Unix on Windows](materials/99-extras/02-wsl.md)" appendix.
 
 #### Mac
 
