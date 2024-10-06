@@ -15,7 +15,7 @@ book:
       chapters: 
         - materials/03-remotes/01-ssh_scp.md
         - materials/03-remotes/02-remote_files.md
-    - part: "Miscellaneous"
+    - part: "Advanced text processing"
       chapters:
         - materials/04-misc/01-sed.md
   appendices:

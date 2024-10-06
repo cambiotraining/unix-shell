@@ -1,5 +1,5 @@
 ---
-title: "Text Processing: SED"
+title: "SED"
 ---
 
 ::: {.callout-tip}
