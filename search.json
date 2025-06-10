@@ -1,0 +1,1118 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to the Unix Command Line",
+    "section": "",
+    "text": "Overview\nThe Unix shell (aka command line) is a powerful and essential tool for researchers, in particular those working in computational disciplines such as bioinformatics and large-scale data analysis. In this course we will explore the basic structure of the Unix operating system and how we can interact with it using a basic set of commands. You will learn how to navigate the filesystem, manipulate text-based data and combine multiple commands to quickly extract information from large data files. You will also learn how to write scripts, use programmatic techniques to automate task repetition, and communicate with remote servers (such as High Performance Computing servers).",
+    "crumbs": [
+      "Slides",
+      "Welcome",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Introduction to the Unix Command Line",
+    "section": "",
+    "text": "Learning Objectives\n\n\n\n\nRecognise the uses of the command line for computational work.\nBecome comfortable in using the command line, understanding how commands are structured and how to access their documentation.\nNavigate the filesystem from the command line and understand how to specify the location of files and directories.\nPerform basic file manipulations in Bash: combine multiple files together; count number of lines, words and characters in a file; extract text matching a pattern; counting unique values in a file.\nCombine multiple commands to solve more complex tasks.\nWrite Bash scripts to record and make your analysis reproducible.\nUnderstand what a for loop is an how it can be used to automate repetitive tasks.\nAccess remote servers and move data to/from them.\n\n\n\n\nTarget Audience\nThis course is targeted at participants with no prior experience of working on the command line.\n\n\nPrerequisites\nNone.\n\n\nExercises\nExercises in these materials are labelled according to their level of difficulty:\n\n\n\n\n\n\n\nLevel\nDescription\n\n\n\n\n  \nExercises in level 1 are simpler and designed to get you familiar with the concepts and syntax covered in the course.\n\n\n  \nExercises in level 2 combine different concepts together and apply it to a given task.\n\n\n  \nExercises in level 3 require going beyond the concepts and syntax introduced to solve new problems.",
+    "crumbs": [
+      "Slides",
+      "Welcome",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#citation-authors",
+    "href": "index.html#citation-authors",
+    "title": "Introduction to the Unix Command Line",
+    "section": "Citation & Authors",
+    "text": "Citation & Authors\n\n\n\n\n\n\nImportant\n\n\n\nThese materials are a fork of the Carpentries Shell Lesson.\nAs such, please make sure to cite both works if you use these materials (see Acknowledgements).\n\n\nPlease cite these materials if:\n\nYou adapted or used any of them in your own teaching.\nThese materials were useful for your research work. For example, you can cite us in the methods section of your paper: “We carried our analyses based on the recommendations in YourReferenceHere”.\n\n\nYou can cite these materials as:\n\nTavares, H., Judge, P., Moitra, I. (2024). Introduction to the Unix command line. https://cambiotraining.github.io/unix-shell/\n\nOr in BibTeX format:\n@misc{YourReferenceHere,\n  author = {Tavares, Hugo and Judge, Paul and Moitra, Ilina},\n  month = {8},\n  title = {Introduction to the Unix command line},\n  url = {https://cambiotraining.github.io/unix-shell/},\n  year = {2024}\n}\nAbout the authors:\nHugo Tavares  \nAffiliation: Cambridge Centre for Research Informatics Training Roles: writing - original draft; conceptualisation; software\n\nPaul Judge  \nAffiliation: Cambridge Centre for Research Informatics Training Roles: writing - original draft; conceptualisation; software\n\nIlina Moitra  \nAffiliation: Cambridge Centre for Research Informatics Training Roles: writing - contributor",
+    "crumbs": [
+      "Slides",
+      "Welcome",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Introduction to the Unix Command Line",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThese materials are based on the Carpentries Shell Lesson (Copyright (c) The Carpentries) with credit to their authors and contributors.\nWe have adapted these materials to fit with our training environment, rearranged some of the sections and data used and added new sections not on the original materials. The original authors and publishers of the work have not endorsed the adaptation of this work.\nPlease make sure to also cite the original work (licensed under the Creative Commons Attribution 4.0 International, CC-BY 4.0) if you use these materials:\n\nGabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.), Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, … Vikram Chhatre. (2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1). Zenodo. http://doi.org/10.5281/zenodo.3266823\n\n\nWe also thank Julia Evans for their fantastic illustrations of Bash (and other!) programming concepts.",
+    "crumbs": [
+      "Slides",
+      "Welcome",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "Data & Setup",
+    "section": "",
+    "text": "Data\nThe data used in these materials is provided as a zip file. Download and unzip the folder to your Desktop to follow along with the materials.\nDownload\nYou can also download the data from the terminal using the following commands:",
+    "crumbs": [
+      "Slides",
+      "Welcome",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data & Setup</span>"
+    ]
+  },
+  {
+    "objectID": "setup.html#data",
+    "href": "setup.html#data",
+    "title": "Data & Setup",
+    "section": "",
+    "text": "cd ~/Desktop\nwget -O data-shell.zip \"https://www.dropbox.com/scl/fo/tnlv39c7tummmgfgus9ke/AKcdC6Cw26JFsbkWZV9nsRE?rlkey=go3spp4tabdzkbp60gh481l10&st=mn62c73t&dl=1\"\nunzip data-shell.zip",
+    "crumbs": [
+      "Slides",
+      "Welcome",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data & Setup</span>"
+    ]
+  },
+  {
+    "objectID": "setup.html#software",
+    "href": "setup.html#software",
+    "title": "Data & Setup",
+    "section": "Software",
+    "text": "Software\n\nUnix Terminal\n\nWindows 10/11MacLinux\n\n\nTo get ready for our workshop please download and setup the MobaXterm application:\n\nGo the the MobaXterm download page.\nDownload the Portable edition (blue button).\nUnzip the file and copy the folder to a convenient location, such as your Desktop.\nOpen the folder and double-click the executable file called MobaXterm_Personal_XX.X.exe.\n\nIf asked “Do you want to allow public and private networks to access this app?” press Allow.\n\nClick on Start local terminal.\nType the command apt install nano, then type y (“yes”), followed by y again.\n\nA progress message should print on the screen as an additional application is installed\n\nOnce finished, you can close MobaXterm.\n\nFor more advanced usage see the “Unix on Windows” appendix.\n\n\nMac OS already has a terminal available.\nPress ⌘ + space to open spotlight search and type “terminal”.\nOptionally, if you would like a terminal with more modern features, we recommend installing iTerm2.ss\n\n\n\n\n\n\nmacOS permissions\n\n\n\nIf you get the following error when you run the command ls from the terminal:\nls: .: operation not permitted\nThen, follow these instructions to enable access to your filesystem.\n\n\n\n\nLinux distributions already have a terminal available.\nOn Ubuntu you can press Ctrl + Alt + T to open it.",
+    "crumbs": [
+      "Slides",
+      "Welcome",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data & Setup</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/01-unix_overview.html",
+    "href": "materials/01-basics/01-unix_overview.html",
+    "title": "3  The Unix Shell",
+    "section": "",
+    "text": "3.1 Overview\nIn these lessons we will give a brief introduction to the Unix Command Line. But what is the Command Line?\nHumans and computers commonly interact in many different ways, such as through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. The most widely used way to interact with personal computers is called a graphical user interface (GUI). With a GUI, we give instructions by clicking a mouse and using menu-driven interactions.\nWhile the visual aid of a GUI makes it intuitive to learn, this way of delivering instructions to a computer scales very poorly. Imagine the following task: for a literature search, you have to extract the author’s list contained in the third line of thousands of text files and count how many publications each author has.\nUsing a GUI, you would not only be clicking at your desk for several hours, but you could potentially also commit an error in the process of completing this repetitive task. This is where we take advantage of the Unix shell.\nThe Unix shell is both a command-line interface (CLI) and a scripting language, allowing such repetitive tasks to be done automatically and fast. With the proper commands, the shell can repeat tasks with or without some modification as many times as we want. Using the shell, the task in the literature example can be accomplished in seconds.\nSee more motivating examples in the following article: Five reasons why researchers should learn to love the command line.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Unix Shell</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/01-unix_overview.html#overview",
+    "href": "materials/01-basics/01-unix_overview.html#overview",
+    "title": "3  The Unix Shell",
+    "section": "",
+    "text": "Figure 3.1: An example of listing some files from a command line interface (the Unix terminal, on the left) and the same files shown on a graphical user interface (a file browser, on the right).",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Unix Shell</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/01-unix_overview.html#the-shell",
+    "href": "materials/01-basics/01-unix_overview.html#the-shell",
+    "title": "3  The Unix Shell",
+    "section": "3.2 The Shell",
+    "text": "3.2 The Shell\nThe shell is a program where users can type commands. With the shell, it’s possible to invoke complicated programs like bioinformatics software or simple commands that create an empty directory, with only one line of code. The most popular Unix shell is Bash. Bash is the default shell on most modern implementations of Unix and in most packages that provide Unix-like tools for Windows.\nUsing the shell will take some effort and some time to learn. While a GUI presents you with choices to select, CLI choices are not automatically presented to you, so you must learn a few commands like new vocabulary in a language you’re studying.\nThe grammar of a shell allows you to combine existing tools into powerful pipelines and handle large volumes of data automatically. Sequences of commands can be written into a script, improving the reproducibility of workflows.\nIn addition, the command line is often the easiest way to interact with remote machines and supercomputers. Familiarity with the shell is near essential to run a variety of specialized tools and resources including high-performance computing systems. As clusters and cloud computing systems become more popular for scientific data processing, being able to interact with the shell is becoming a necessary skill.\n\n\n\n\n\n\nNomenclature: Unix, Linux, Shell, Terminal, Command Line\n\n\n\n\n\nOften, people interchangeably use terms like “shell”, “command line”, “bash” and “terminal” to mean broadly the same thing: a (non-Windows) command line.\nHere is a brief explanation of what these terms mean:\n\nTerminal – is a program that allows us to interact with the computer using text-based commands (i.e. a command line interface).\nUnix Shell – the command-line interpreter that allows you to interact with the Unix-like operating system. Another example of a command-line interpreter is the Windows Command Prompt.\nBash – is both a programming language to work on the Unix shell and an interpreter for shell scripts (similarly to how Python is both a language specification, but also has the python program that can be used to run Python scripts). There are alternative Unix shell implementations, such as the Z shell (but they share similarities to Bash).\n\nYou may have also heard the terms “Unix”, “Linux” and “Ubuntu” used interchangeably:\n\nUnix – is a family of operating systems, which includes Linux and Mac OS, and which share a particular architecture.\nLinux – is a (sub-)family of operating systems built on an open-source core.\nUbuntu – is a particular distribution (or “flavour”) of the Linux operating system. Other popular examples include Gnome and centOS. They are equivalent when it comes to the command-line usage.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Unix Shell</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/01-unix_overview.html#running-commands",
+    "href": "materials/01-basics/01-unix_overview.html#running-commands",
+    "title": "3  The Unix Shell",
+    "section": "3.3 Running Commands",
+    "text": "3.3 Running Commands\nWhen the shell is first opened, you are presented with a prompt, indicating that the shell is waiting for input. A typical prompt on Linux may look like this:\nusername@machine:~$\nIt shows your username, the name of the computer, the location in the filesystem where you are at the moment (more on this later) and the $, after which you have a blinking cursor waiting for input. After you type a command, you have to press the Enter ↲ key to execute it.\nSo let’s try our first command, ls which is short for “listing”. This command will list the contents of the current directory:\nls\nDocuments    Downloads    Music        Public\nDesktop      Movies       Pictures     Templates\nYour results may be slightly different, depending on your operating system and how you have customized your filesystem.\n\n\n\n\n\n\nCommand not found\n\n\n\nIf the shell can’t find a program whose name is the command you typed, it will print an error message such as:\nks\nks: command not found\nThis might happen if the command was mis-typed or if the program corresponding to that command is not installed.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Unix Shell</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/01-unix_overview.html#command-options",
+    "href": "materials/01-basics/01-unix_overview.html#command-options",
+    "title": "3  The Unix Shell",
+    "section": "3.4 Command Options",
+    "text": "3.4 Command Options\n\nCommands can often change their behaviour with additional options. Consider the command below as a general example, which we will dissect into its component parts:\nls -l --sort time Desktop/data-shell\n\nls is the command.\n-l is an argument that “switches on” a particular behaviour of the program. In this case it lists the files in a “long” format. These kind of arguments are also also called an option, switch or flag. Options either start with a single dash (-) or two dashes (--).\n--sort is also argument, but it needs a value to indicate how it should change the behaviour of the program. In this case, the option changes how the files are sorted (in our example we specified ‘time’ to sort files by the time they were created or modified).\nDesktop/data-shell is a positional argument, which comes at the end of the command. This argument tells the command what to operate on (e.g. files and directories).\n\nA command can be called with more than one option and more than one argument: but a command doesn’t always require an argument or an option.\nEach part is separated by spaces: if you omit the space between ls and -l the shell will look for a command called ls-l, which doesn’t exist. Also, capitalisation can be important: ls -r is different to ls -R.\nSo, our command above gives us a long listing of files and directories in the directory Desktop/data-shell.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Unix Shell</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/01-unix_overview.html#getting-help",
+    "href": "materials/01-basics/01-unix_overview.html#getting-help",
+    "title": "3  The Unix Shell",
+    "section": "3.5 Getting help",
+    "text": "3.5 Getting help\nls has lots of other options. There are two common ways to find out how to use a command and what options it accepts:\n\nWe can pass a --help option to the command, such as ls --help.\nWe can read its manual with man, such as man ls.\nTo exit the man page you can type Q (for “quit”).\n\n\n\n\n\n\n\nManual page\n\n\n\nThe man page is not available for every software. For example, specialist software (such as bioinformatics packages) only have the documentation available through the --help option.\n\n\nUnfortunately, tool documentation is not completely standardised. However, there are some common patterns, which we highlight here.\nTake the documentation of this (imaginary) software as an example:\nBioinfomagic is a tool that magically guesses what you want to do with your raw data.\n\nUsage: \n bioinfomagic [options] -o &lt;dir&gt; &lt;file1&gt; … &lt;fileN&gt;\n\nArguments (mandatory): \n -o, --output=PATH  The path to the results \n                    directory\n\nOptions:\n -t, --threads=N    The number of CPUs to use.\n --submit           Automatically write and submit \n                    a manuscript.\n --help             Print this help message and \n                    exit.\n\nOften the --help page starts with a short description of the software.\nThen there’s a usage example, to give us an idea of how the tool should be run. In this example note that &lt; and &gt; are used to indicate user input. These should not be included in our command. For example, if we wanted our output to be in a directory called results:\n\nCorrect: -o results\nWrong: -o &lt;results&gt;\n\nThis tool can take an arbitrary number of input files, but they have to be at the end of the command. For example:\n\nCorrect: bioinfomagic -o results file1.txt file2.txt\nWrong: bioinfomagic file1.txt file2.txt -o results\n\nIn this case [options] indicates that we can add additional arguments to the command (which are listed further down the help). The order of these named arguments doesn’t matter, for example:\n\nCorrect: bioinfomagic --submit -o results file1.txt file2.txt\nCorrect: bioinfomagic -o results --submit file1.txt file2.txt\nWrong: bioinfomagic -o results file1.txt file2.txt --submit (the input files should be at the end)\n\nLong and short argument names are equivalent, for example: -o results is the same as --output=results\n\nThis is one example of how the documentation may look like but, as we mentioned above, this is not always standard. Here is another way in which the usage could have been specified:\nbioinfomagic --output STR [--submit] [--threads INT] FILE1 [...] [FILEN]\nIn this case, optional arguments are shown within [] (but the [ and ] should not be included in our final command). Also, the values for the options are indicated as: STR, which means “string” (textual input);INT (an integer, or whole number).\n\n\n\n\n\n\nmacOS vs Linux\n\n\n\nAlthough macOS has a Unix terminal, it uses a different set of tools from Linux distributions. macOS is based on FreeBSD, whereas Linux comes with GNU utilities.\nMost of the commands work very similarly across both, but you may come across some minor differences. For example, the ls command on macOS does not have the option --sort or --help. However, the macOS ls command does have options to change how it sorts files, and you can look at the manual page man ls to see how.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Unix Shell</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/01-unix_overview.html#summary",
+    "href": "materials/01-basics/01-unix_overview.html#summary",
+    "title": "3  The Unix Shell",
+    "section": "3.6 Summary",
+    "text": "3.6 Summary\n\nKey Points\n\nThe Unix shell (command line) allows running complex operations with a few commands, interact with high-performance computing servers and write reproducible analysis in scripts.\nThe basic syntax of a command is: command -options argument.\nFor example, ls -l Documents would list the contents of the Documents directory in a long format.\nTo find the options available with a given program we can use the --help function or (in some cases) the man command.\nFor example: ls --help or man ls.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Unix Shell</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html",
+    "href": "materials/01-basics/02-files_directories.html",
+    "title": "4  Files & Folders",
+    "section": "",
+    "text": "4.1 Working Directory\nThe part of the operating system responsible for managing files and directories is called the filesystem. It organizes our data into files, which hold information, and directories (also called folders), which hold files or other directories.\nThese directories are orgainsed in a hierarchical way, which we can represent as a tree. Take the following image as an example:\nThis is illustrating the location of the home directories for three users called “larry”, “imhotep” and “ubuntu”. We can see that each of their home directories is within another directory called home. And finally, the home directory is located in the so-called root of the filesystem, represented by a / slash. The root is the top-most directory where everything for our operating system is stored in (it’s not possible to go “above” this special root directory).\nWhen we use the shell, we need to specify the location of files and directories using an “address” (similarly to how you specify an internet address to reach a given website). Let’s explore this from our shell terminal.\nFirst let’s find out where we are by running a command called pwd (which stands for “print working directory”). Directories are like places - at any time while we are using the shell we are in exactly one place, called our current working directory. Commands mostly read and write files in the current working directory, so knowing where you are before running a command is important.\nHere, the computer’s response is /home/ubuntu, which is our home directory, the default when opening a new shell terminal. The name “ubuntu” is our username.\nIf the user imhotep was logged in, they would see /home/imhotep as their default working directory.\nNotice how the location of this folder is specified:\nThis way of representing file or directory locations is called a path.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#working-directory",
+    "href": "materials/01-basics/02-files_directories.html#working-directory",
+    "title": "4  Files & Folders",
+    "section": "",
+    "text": "pwd\n/home/ubuntu\n\n\n\n/ at the start specifies the root of the filesystem.\nhome specifies the folder “home” within the root.\n/ is a separator between the “home” folder and the next folder.\nubuntu is the final folder specifying this location.\n\n\n\n\n\n\n\n\nThe / Slash\n\n\n\nNotice that there are two meanings for the / character. When it appears at the beginning of a file or directory name, it refers to the root directory. When it appears inside a name, it’s a separator.\n\n\n\n\n\n\n\n\nHome Directory Variation\n\n\n\nThe home directory path will look different on different operating systems. For a user named “larry”, on a Mac it would look like /Users/larry, and on Windows C:\\Users\\larry.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#listing-files",
+    "href": "materials/01-basics/02-files_directories.html#listing-files",
+    "title": "4  Files & Folders",
+    "section": "4.2 Listing Files",
+    "text": "4.2 Listing Files\nWe can see the content of our current directory by running ls, which stands for “listing”:\nls\nDocuments    Downloads    Music        Public\nDesktop      Movies       Pictures     Templates\nThe /home/ubuntu/ directory contains many familiar folders that are typical of a user’s home.\nThe data for this workshop is located in our Desktop, within a directory called data-shell. We can look at its contents passing a directory name as an argument to ls:\nls -F /home/ubuntu/Desktop/data-shell\nREADME.txt  coronavirus/  molecules/  sequencing/  things.txt\n\n\n\n\n\n\nExercise\n\n\n\nSee the filesystem exercise to test your knowledge.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#changing-directory",
+    "href": "materials/01-basics/02-files_directories.html#changing-directory",
+    "title": "4  Files & Folders",
+    "section": "4.3 Changing Directory",
+    "text": "4.3 Changing Directory\nSo far, we have been working from /home/ubuntu/. However, we can change our location to the Desktop/data-shell directory to do our work.\nThe command to change locations is cd (“change directory”) followed by a directory name to change our working directory.\ncd /home/ubuntu/Desktop/data-shell/\nWe can check with pwd that we are in the correct directory. We can also run ls again to see the files within our current directory.\nWhat if we now wanted to go to the molecules directory? We could do:\ncd /home/ubuntu/Desktop/data-shell/molecules/\nHowever, that’s a lot of typing! Instead, we can move to that directory by specifying its location relative to our current directory. So, if our current directory was /home/ubuntu/Desktop/data-shell/ we could just do:\ncd molecules\nIn conclusion, there are two ways to specify directory names:\n\nAn absolute path includes the entire path (or location) from the root directory, which is indicated by a leading slash. The leading / tells the computer to follow the path from the root of the file system, so it always refers to exactly one directory, no matter where we are when we run the command.\nA relative path tries to find that location from where we are (our current directory), rather than from the root of the file system.\n\nWe now know how to go down the directory tree, but how do we go up? We might try the following:\ncd data-shell\n-bash: cd: data-shell: No such file or directory\nBut we get an error! Why is this? With our methods so far, cd can only see sub-directories inside your current directory. To move up one directory we need to use the special shortcut .. like this:\ncd ..\n.. is a special directory name meaning “the directory containing this one”, or more succinctly, the parent of the current directory. Sure enough, if we run pwd after running cd .., we’re back in /home/ubuntu/Desktop/data-shell.\n\n\n\n\n\n\nThe ~ Home Shortcut\n\n\n\nThe shell interprets the character ~ (tilde) at the start of a path to mean “the user’s home directory”. In our example the ~ is equivalent to /home/ubuntu.\n\n\n\n\n\n\n\n\nTab completion\n\n\n\nSometimes file and directory names get too long and it’s tedious to have to type the full name, for example when moving with cd.\nWe can let the shell do most of the work through what is called tab completion. Let’s say we are in the /home/ubuntu/Desktop/data-shell and we type:\nls mol\nand then press the Tab ↹ key on the keyboard, the shell automatically completes the directory name:\nls molecules/\nIf we press Tab ↹ again it does nothing, since there are now multiple possibilities. In this case, quickly pressing Tab ↹ twice brings up a list of all the files.\nAlternatively, some people prefer that repeatedly pressing Tab ↹ cycles through the different file options. To set this up, see this StackExchange post: Terminal autocomplete: cycle through suggestions\n\n\n\n\n\n\n\n\nExercise\n\n\n\nSee the file paths exercise to test your knowledge.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#creating-directories",
+    "href": "materials/01-basics/02-files_directories.html#creating-directories",
+    "title": "4  Files & Folders",
+    "section": "4.4 Creating directories",
+    "text": "4.4 Creating directories\nWe now know how to explore files and directories, but how do we create them in the first place?\nFirst, we should see where we are and what we already have. Let’s go back to our data-shell directory and use ls to see what it contains:\ncd ~/Desktop/data-shell\nls\nREADME.txt  coronavirus  molecules  sequencing\nNow, let’s create a new directory called thesis_notes using the command mkdir (“make directory”):\nmkdir thesis_notes\nThe new directory is created in the current working directory:\nls\nREADME.txt  coronavirus  molecules  sequencing  thesis_notes  things.txt\nNote that using the shell to create a directory is no different than using a file explorer. If you open the current directory using your operating system’s graphical file explorer , the results directory will appear there too.\nWhile the shell and the file explorer are two different ways of interacting with the files, the files and directories themselves are the same.\n\n\n\n\n\n\nGood Naming Conventions - click here for some tips\n\n\n\n\n\nComplicated names of files and directories can make your life painful when working on the command line.\nHere are some useful tips for naming your files:\n\nDon’t use spaces.\nSpaces can make a name more meaningful, but since spaces are used to separate arguments on the command line it is better to avoid them in names of files and directories. You can use - or _ instead (e.g. thesis_notes/ rather than thesis notes/).\nDon’t begin the name with - (dash).\nCommands treat names starting with - as options.\nOnly use letters, numbers, . period, - hyphen and _ underscore.\nMany other characters (such as !, @, $, \", etc.) have special meanings on the command line and can cause your command to not work as expected or even lead to data loss.\n\nIf you need to refer to names of files or directories that have spaces or other special characters, you should surround the name in quotes (\"\").\n\n\n\n\n\n\n\n\n\nWhat’s in a file name?\n\n\n\nYou may have noticed that all of the files in our data directory are named “something dot something”. For example README.txt, which indicates this is a plain text file.\nThe second part of such a name is called the filename extension, and indicates what type of data the file holds. Here are some common examples:\n\n.txt is a plain text file.\n.csv is a text file with tabular data where each column is separated by a comma.\n.tsv is like a CSV but values are separated by a tab.\n.log is a text file containing messages produced by a software while it runs.\n.pdf indicates a PDF document.\n.png is a PNG image.\n\nThis is just a convention: we can call a file mydocument or almost anything else we want. However, most people use two-part names most of the time to help them (and their programs) tell different kinds of files apart.\nThis is just a convention, albeit an important one. Files contain bytes: it’s up to us and our programs to interpret those bytes according to the rules for plain text files, PDF documents, configuration files, images, and so on.\nNaming a PNG image of a whale as whale.mp3 doesn’t somehow magically turn it into a recording of whalesong, though it might cause the operating system to try to open it with a music player when someone double-clicks it.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#moving-renaming",
+    "href": "materials/01-basics/02-files_directories.html#moving-renaming",
+    "title": "4  Files & Folders",
+    "section": "4.5 Moving & Renaming",
+    "text": "4.5 Moving & Renaming\nIn our data-shell directory we have a file called things.txt, which contains a note of books to read for our thesis. Let’s move this file to the thesis_notes directory we created earlier, using the command mv (“move”):\nmv things.txt thesis_notes/\nThe first argument tells mv what we’re “moving”, while the second is where it’s to go. In this case, we’re moving things.txt to thesis_notes/. We can check the file has moved there:\nls thesis_notes\nthings.txt\nThis isn’t a particularly informative name for our file, so let’s change it! Interestingly, we also use the mv command to change a file’s name.\nHere’s how we would do it:\nmv thesis_notes/things.txt thesis_notes/books.txt\nIn this case, we are “moving” the file to the same place but with a different name. Be careful when specifying the target file name, since mv will silently overwrite any existing file with the same name, which could lead to data loss.\nThe command mv also works with directories, and you can use it to move/rename an entire directory just as you use it to move an individual file.\n\n\n\n\n\n\nExercise\n\n\n\nSee the renaming files exercise to test your knowledge.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#copying-files-and-directories",
+    "href": "materials/01-basics/02-files_directories.html#copying-files-and-directories",
+    "title": "4  Files & Folders",
+    "section": "4.6 Copying Files and Directories",
+    "text": "4.6 Copying Files and Directories\nThe cp command works very much like mv, except it copies a file instead of moving it. For example, let’s make a copy of our books.txt file:\ncp thesis_notes/books.txt books_copy.txt\nls\nREADME.txt  books_copy.txt  coronavirus  molecules  sequencing  thesis_notes\nUnlike the mv command, in this case the original file remains in the original directory:\nls thesis_notes/\nbooks.txt\n\n\n\n\n\n\nExercise\n\n\n\nSee the copying directories and copying multiple files exercises to test your knowledge.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#removing-files-and-directories",
+    "href": "materials/01-basics/02-files_directories.html#removing-files-and-directories",
+    "title": "4  Files & Folders",
+    "section": "4.7 Removing Files and Directories",
+    "text": "4.7 Removing Files and Directories\nThe Unix command used to remove or delete files is rm (“remove”). For example, let’s remove one of the files we copied earlier:\nrm backup/cubane.pdb\nWe can confirm the file is gone using ls backup/.\nWhat if we try to remove the whole backup directory we created in the previous exercise?\nrm backup\nrm: cannot remove `backup': Is a directory\nWe get an error. This happens, because rm by default only works on files, not directories.\nrm can remove a directory and all its contents if we use the recursive option -r, and it will do so without any confirmation prompts:\nrm -r backup\nGiven that there is no way to retrieve files deleted using the shell, rm -r should be used with great caution (you might consider adding the interactive option rm -r -i).\nTo remove empty directories, we can also use the rmdir command. This is a safer option than rm -r, because it will never delete the directory if it contains files, giving us a chance to check whether we really want to delete all its contents.\n\n\n\n\n\n\nDeleting Is Forever\n\n\n\nThe Unix shell doesn’t have a trash bin that we can recover deleted files from (though most graphical interfaces to Unix do).\nInstead, when we delete files, they are unlinked from the file system so that their storage space on disk can be recycled. Tools for finding and recovering deleted files do exist, but there’s no guarantee they’ll work in any particular situation, since the computer may recycle the file’s disk space right away.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#wildcards",
+    "href": "materials/01-basics/02-files_directories.html#wildcards",
+    "title": "4  Files & Folders",
+    "section": "4.8 Wildcards",
+    "text": "4.8 Wildcards\nWildcards are special characters that can be used to access multiple files at once. The most commonly-used wildcard is *, which is used to match zero or more characters.\nConsider these examples referring to files in the molecules directory:\n\n*.pdb matches every file that ends with ‘.pdb’ extension.\np*.pdb only matches pentane.pdb and propane.pdb, because the ‘p’ at the front only matches filenames that begin with the letter ‘p’.\n\nAnother common wildcard is ?, which matches any character exactly once. For example:\n\n?ethane.pdb would only match methane.pdb (whereas *ethane.pdb matches both ethane.pdb, and methane.pdb).\n???ane.pdb matches three characters followed by ane.pdb, giving cubane.pdb  ethane.pdb  octane.pdb.\n\nWhen the shell sees a wildcard, it expands the wildcard to create a list of matching filenames before running the command that was asked for. As an exception, if a wildcard expression does not match any file, Bash will pass the expression as an argument to the command as it is.\nFor example typing ls *.pdf in the molecules directory (which does not contain any PDF files) results in an error message that there is no file called *.pdf.\n\n\n\n\n\n\nBash wildcards\n\n\n\nThe * wildcard is by far the most commonly used. However, there are other wildcards available, and you can find more information about them on the GNU Wildcard documentation page.\n\n\n\n\n\n\n\n\nExercise\n\n\n\nSee the wildcards exercise to test your knowledge.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#finding-files",
+    "href": "materials/01-basics/02-files_directories.html#finding-files",
+    "title": "4  Files & Folders",
+    "section": "4.9 Finding Files",
+    "text": "4.9 Finding Files\nOften, it’s useful to be able to find files that have a particular pattern in their name. We can use the find command to achive this. Here is an example, where we try to find all the CSV files that exist under our data-shell folder:\nfind . -type f -name \"*.csv\"\n./coronavirus/variants/india_variants.csv\n./coronavirus/variants/ireland_variants.csv\n./coronavirus/variants/southafrica_variants.csv\n./coronavirus/variants/switzerland_variants.csv\n./coronavirus/variants/uk_variants.csv\n./sequencing/sample_metadata.csv\nIn this case, we used the option -type f to only find files with the given name. We could use the option -type d if we wanted to instead find directories only. If we wanted to find both files and directories, then we can omit this option.\nWe used -name to specify the name of the file we wanted to search for. Similarly to ls, you can use the * wildcard to match any number of characters. In our example, we used *.csv to find all files with the .csv file extension.\nFinally, we searched for files from the current location we were in. That’s what the . in the command above means: search for files from the current directory. If we wanted to find files in a different directory without having to cd into it first, we could replace . with the name of the directory we want to search from. For example, if you only wanted to search for CSV files in the coronavirus folder:\nfind coronavirus -type f -name \"*.csv\"\ncoronavirus/variants/india_variants.csv\ncoronavirus/variants/ireland_variants.csv\ncoronavirus/variants/southafrica_variants.csv\ncoronavirus/variants/switzerland_variants.csv\ncoronavirus/variants/uk_variants.csv\nNotice how the sequencing/sample_metadata.csv file is not returned in this case.\nThe find command has many more options to configure the search results (you can check these with man find). One option that can sometimes be useful is to find AND delete all the files. For example the following command would delete all files with .txt extension:\nfind . -type f -name \"*.txt\" -delete\nAs you can imagine, this feature is very useful but also potentially dangerous as you may accidentally delete files you didn’t intend to (“with great power comes great responsibility”, as they say ). So, always make sure to run the command without the -delete option first to check that only the files you really want to delete are being matched.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#exercises",
+    "href": "materials/01-basics/02-files_directories.html#exercises",
+    "title": "4  Files & Folders",
+    "section": "4.10 Exercises",
+    "text": "4.10 Exercises\n\n\n\n\n\n\nExercise 1 - Navigating the filesystem\n\n\n\n\n\n\nLevel: \n(Note: this is a conceptual exercise, you don’t need to use your own terminal.)\nUsing the hypothetical filesystem diagram below, if pwd displays /Users/Robin/Documents/, what will ls ../backup display?\n\n../backup: No such file or directory\n2012-12-01 2013-01-08 2013-01-27\noriginal pnas_final pnas_sub\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\n\nNo: from the diagram, we can see that there is a directory backup in /Users/Robin/.\nNo: this is the content of Users/Robin/Documents/backup/, but with .. we asked for one level up.\nYes: ../backup/ refers to /Users/Robin/backup.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 2 - File paths\n\n\n\n\n\n\nLevel: \n(Note: this is a conceptual exercise, you don’t need to use your own terminal.)\nStarting from /home/amanda/data, which of the following commands could Amanda use to navigate to her home directory (/home/amanda)?\n\ncd .\ncd /\ncd /home/amanda\ncd ../..\ncd ~\ncd home\ncd ~/data/..\ncd\ncd ..\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\n\nNo: . stands for the current directory.\nNo: / stands for the root directory.\nYes: This is an example of using the full absolute path.\nNo: this goes up two levels, i.e. ends in /home.\nYes: ~ stands for the user’s home directory, in this case /home/amanda.\nNo: this would navigate into a directory home in the current directory if it exists.\nYes: unnecessarily complicated, but correct.\nYes: shortcut to go back to the user’s home directory.\nYes: goes up one level.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3 - Renaming files\n\n\n\n\n\n\nLevel: \n(Note: this is a conceptual exercise, you don’t need to use your own terminal.)\nSuppose that you created a plain-text file in your current directory to contain a list of the statistical tests you will need to do to analyze your data, and named it statstics.txt.\nAfter creating and saving this file you realize you misspelled the filename! You want to correct the mistake, which command could you use to do so?\n\ncp statstics.txt statistics.txt\nmv statstics.txt statistics.txt\nmv statstics.txt .\ncp statstics.txt .\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\n\nNo. While this would create a file with the correct name, the incorrectly named file still exists in the directory and would need to be deleted.\nYes, this would work to rename the file.\nNo, the period(.) indicates where to move the file, but does not provide a new file name; identical file names cannot be created.\nNo, the period(.) indicates where to copy the file, but does not provide a new file name; identical file names cannot be created.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 4 - Copy directories\n\n\n\n\n\n\nLevel: \nFor this exercise, make sure you are in the course materials directory: cd ~/Desktop/data-shell\nMake a copy of the sequencing directory named backup. When copying an entire directory, you will need to use the option -r with the cp command (-r means “recursive”).\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nIf we run the command without the -r option, this is what happens:\ncp sequencing backup\ncp: -r not specified; omitting directory 'sequencing'\nThis message is already indicating what the problem is. By default, directories (and their contents) are not copied unless we specify the option -r.\nThis would work:\ncp -r sequencing backup\nRunning ls we can see a new folder called backup:\nls\nREADME.txt  backup  books_copy.txt  coronavirus  molecules  sequencing  thesis_notes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 5 - Copy with multiple filenames\n\n\n\n\n\n\nLevel: \nFor this exercise, make sure you are in the course materials directory: cd ~/Desktop/data-shell\nWhat does cp do when given several filenames and a directory name?\nmkdir -p backup\ncp molecules/cubane.pdb molecules/ethane.pdb backup/\nIn the example below, what does cp do when given three or more file names?\ncp molecules/cubane.pdb molecules/ethane.pdb molecules/methane.pdb\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nIf given more than one file name followed by a directory name (i.e. the destination directory must be the last argument), cp copies the files to the named directory.\nIf given three file names, cp throws an error such as the one below, because it is expecting a directory name as the last argument.\ncp: target 'molecules/methane.pdb' is not a directory\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 6 - Wildcards\n\n\n\n\n\n\nLevel: \nChange into the molecules directory. Which ls command(s) will produce this output?\nethane.pdb   methane.pdb\n\nls *t*ane.pdb\nls *t?ne.*\nls *t??ne.pdb\nls ethane.*\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\n\nNo. This shows all files whose names contain zero or more characters (*) followed by the letter t, then zero or more characters (*) followed by ane.pdb.\nThis gives ethane.pdb  methane.pdb  octane.pdb  pentane.pdb.\nNo. This shows all files whose names start with zero or more characters (*) followed by the letter t, then a single character (?), then ne. followed by zero or more characters (*).\nThis will give us octane.pdb and pentane.pdb but doesn’t match anything which ends in thane.pdb.\nYes. This fixes the problems of option 2 by matching two characters (??) between t and ne.\nNo. This only shows files starting with ethane..",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/02-files_directories.html#summary",
+    "href": "materials/01-basics/02-files_directories.html#summary",
+    "title": "4  Files & Folders",
+    "section": "4.11 Summary",
+    "text": "4.11 Summary\n\n\n\n\n\n\nKey Points\n\n\n\n\nThe file system is organised in a hierarchical way.\nEvery user has a home directory, which on Linux is /home/username/.\nLocations in the filesystem are represented by a path:\n\nThe / used at the start of a path means the “root” directory (the start of the filesystem).\n/ used in the middle of the path separates different directories.\n\nSome of the commands used to navigate the filesystem are:\n\npwd to print the working directory (or the current directory)\nls to list files and directories\ncd to change directory\n\nDirectories can be created with the mkdir command.\nFiles can be moved and/or renamed using the mv command.\nFiles can be copied with the cp command. To copy an entire directory (and its contents) we need to use cp -r (the -r option will copy files recursively).\nFiles can be removed with the rm command. To remove an entire directory (and its contents) we need to use rm -r (the -r option will remove files recursively).\n\nDeleting files from the command line is permanent.\n\nWe can operate on multiple files using the * wildcard, which matches “zero or more characters”. For example ls *.txt would list all files that have a .txt file extension.\nThe find command can be used to find the location of files matching a specific name pattern.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Files & Folders</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/03-text_manipulation.html",
+    "href": "materials/01-basics/03-text_manipulation.html",
+    "title": "5  Text Manipulation",
+    "section": "",
+    "text": "5.1 Looking Inside Files\nOften we want to investigate the content of a file, without having to open it in a text editor. This is especially useful if the file is very large (as is often the case in bioinformatic applications).\nFor example, let’s take a look at the cubane.pdb file in the molecules directory. We will start by printing the whole content of the file with the cat command, which stands for “concatenate” (we will see why it’s called this way in a little while):\nSometimes it is useful to look only at only the top few lines of a file (especially for very large files). We can do this with the head command:\nBy default, head prints the first 10 lines of the file. We can change this using the -n option, followed by a number, for example:\nSimilarly, we can look at the bottom few lines of a file with the tail command:\nFinally, if we want to open the file and browse through it, we can use the less command:\nless will open the file and you can use ↑ and ↓ to move line-by-line or the Page Up and Page Down keys to move page-by-page. You can exit less by pressing Q (for “quit”). This will bring you back to the console.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Text Manipulation</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/03-text_manipulation.html#looking-inside-files",
+    "href": "materials/01-basics/03-text_manipulation.html#looking-inside-files",
+    "title": "5  Text Manipulation",
+    "section": "",
+    "text": "cd molecules\ncat cubane.pdb\nCOMPND      CUBANE\nAUTHOR      DAVE WOODCOCK  95 12 06\nATOM      1  C           1       0.789  -0.852   0.504  1.00  0.00\nATOM      2  C           1      -0.161  -1.104  -0.624  1.00  0.00\nATOM      3  C           1      -1.262  -0.440   0.160  1.00  0.00\nATOM      4  C           1      -0.289  -0.202   1.284  1.00  0.00\nATOM      5  C           1       1.203   0.513  -0.094  1.00  0.00\nATOM      6  C           1       0.099   1.184   0.694  1.00  0.00\nATOM      7  C           1      -0.885   0.959  -0.460  1.00  0.00\nATOM      8  C           1       0.236   0.283  -1.269  1.00  0.00\nATOM      9  H           1       1.410  -1.631   0.942  1.00  0.00\nATOM     10  H           1      -0.262  -2.112  -1.024  1.00  0.00\nATOM     11  H           1      -2.224  -0.925   0.328  1.00  0.00\nATOM     12  H           1      -0.468  -0.501   2.315  1.00  0.00\nATOM     13  H           1       2.224   0.892  -0.134  1.00  0.00\nATOM     14  H           1       0.240   2.112   1.251  1.00  0.00\nATOM     15  H           1      -1.565   1.730  -0.831  1.00  0.00\nATOM     16  H           1       0.472   0.494  -2.315  1.00  0.00\nTER      17              1\nEND\n\nhead cubane.pdb\nCOMPND      CUBANE\nAUTHOR      DAVE WOODCOCK  95 12 06\nATOM      1  C           1       0.789  -0.852   0.504  1.00  0.00\nATOM      2  C           1      -0.161  -1.104  -0.624  1.00  0.00\nATOM      3  C           1      -1.262  -0.440   0.160  1.00  0.00\nATOM      4  C           1      -0.289  -0.202   1.284  1.00  0.00\nATOM      5  C           1       1.203   0.513  -0.094  1.00  0.00\nATOM      6  C           1       0.099   1.184   0.694  1.00  0.00\nATOM      7  C           1      -0.885   0.959  -0.460  1.00  0.00\nATOM      8  C           1       0.236   0.283  -1.269  1.00  0.00\n\nhead -n 2 cubane.pdb\nCOMPND      CUBANE\nAUTHOR      DAVE WOODCOCK  95 12 06\n\ntail -n 2 cubane.pdb\nTER      17              1\nEND\n\nless cubane.pdb\n\n\n\n\n\n\n\nSearching Text with less\n\n\n\nWhen you open a file with the less program, you can also search for text within the file. To do this, press / and you will notice the bottom of the terminal changes to /. Now, type the word (or part of a word) that you want to search for and press Enter ↵.\nLess will search of the word in the file and highlight it for you. If you want to move to the next match press n and to move to the previous match press Shift + n.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Text Manipulation</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/03-text_manipulation.html#count-wordslinescharacters",
+    "href": "materials/01-basics/03-text_manipulation.html#count-wordslinescharacters",
+    "title": "5  Text Manipulation",
+    "section": "5.2 Count Words/Lines/Characters",
+    "text": "5.2 Count Words/Lines/Characters\nOften it can be useful to count how many lines, words and characters a file has. We can use the wc command for this:\nwc *.pdb\n  20  156 1158 cubane.pdb\n  12   84  622 ethane.pdb\n   9   57  422 methane.pdb\n  30  246 1828 octane.pdb\n  21  165 1226 pentane.pdb\n  15  111  825 propane.pdb\n 107  819 6081 total\nIn this case, we used the * wildcard to count lines, words and characters (in that order, left-to-right) of all our PDB files. Often, we only want to count one of these things, and wc has options for all of them:\n\n-l counts lines only.\n-w counts words only.\n-c counts characters only.\n\nFor example, the following counts only the number of lines in each file:\nwc -l *.pdb\n  20 cubane.pdb\n  12 ethane.pdb\n   9 methane.pdb\n  30 octane.pdb\n  21 pentane.pdb\n  15 propane.pdb\n 107 total",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Text Manipulation</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/03-text_manipulation.html#combining-several-files",
+    "href": "materials/01-basics/03-text_manipulation.html#combining-several-files",
+    "title": "5  Text Manipulation",
+    "section": "5.3 Combining several files",
+    "text": "5.3 Combining several files\nEarlier, we said that the cat command stands for “concatenate”. This is because this command can be used to concatenate (combine) several files together. For example, if we wanted to combine all PDB files into one:\ncat *.pdb",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Text Manipulation</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/03-text_manipulation.html#redirecting-output",
+    "href": "materials/01-basics/03-text_manipulation.html#redirecting-output",
+    "title": "5  Text Manipulation",
+    "section": "5.4 Redirecting Output",
+    "text": "5.4 Redirecting Output\nThe commands we’ve been using so far, print their output to the terminal. But what if we wanted to save it into a file? We can achieve this by redirecting the output of the command to a file using the &gt; operator.\nwc -l *.pdb &gt; number_lines.txt\nNow, the output is not printed to the console, but instead sent to a new file. We can check that the file was created with ls.\nIf we use &gt; and the output file already exists, its content will be replaced. If what we want to do is append the result of the command to the existing file, we can use &gt;&gt; instead. Let’s see this in practice in the next exercise.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Text Manipulation</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/03-text_manipulation.html#finding-patterns",
+    "href": "materials/01-basics/03-text_manipulation.html#finding-patterns",
+    "title": "5  Text Manipulation",
+    "section": "5.5 Finding Patterns",
+    "text": "5.5 Finding Patterns\nSomething it can be very useful to find lines of a file that match a particular text pattern. We can use the tool grep (“global regular expression print”) to achieve this.\nGoing back to our molecules directory (cd ../molecules), let’s find the word “ATOM” in our cubane.pdb molecule file:\ngrep \"ATOM\" cubane.pdb\nATOM      1  C           1       0.789  -0.852   0.504  1.00  0.00\nATOM      2  C           1      -0.161  -1.104  -0.624  1.00  0.00\nATOM      3  C           1      -1.262  -0.440   0.160  1.00  0.00\nATOM      4  C           1      -0.289  -0.202   1.284  1.00  0.00\nATOM      5  C           1       1.203   0.513  -0.094  1.00  0.00\nATOM      6  C           1       0.099   1.184   0.694  1.00  0.00\nATOM      7  C           1      -0.885   0.959  -0.460  1.00  0.00\nATOM      8  C           1       0.236   0.283  -1.269  1.00  0.00\nATOM      9  H           1       1.410  -1.631   0.942  1.00  0.00\nATOM     10  H           1      -0.262  -2.112  -1.024  1.00  0.00\nATOM     11  H           1      -2.224  -0.925   0.328  1.00  0.00\nATOM     12  H           1      -0.468  -0.501   2.315  1.00  0.00\nATOM     13  H           1       2.224   0.892  -0.134  1.00  0.00\nATOM     14  H           1       0.240   2.112   1.251  1.00  0.00\nATOM     15  H           1      -1.565   1.730  -0.831  1.00  0.00\nATOM     16  H           1       0.472   0.494  -2.315  1.00  0.00\nWe can see the result is all the lines that matched this word pattern.\ngrep has many other options available, which can be useful depending on the result you want to get. Some of the more useful ones are illustrated below.\n\n\n\nIllustration of the grep command by Julia Evans",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Text Manipulation</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/03-text_manipulation.html#exercises",
+    "href": "materials/01-basics/03-text_manipulation.html#exercises",
+    "title": "5  Text Manipulation",
+    "section": "5.6 Exercises",
+    "text": "5.6 Exercises\n\n\n\n\n\n\nExercise 1 - Redirection\n\n\n\n\n\n\nLevel: \nMove to the directory sequencing and do the following:\n\nList the files in the run1/ directory. Save the output in a file called sequencing_files.txt.\nWhat happens to the content of that file after you run the command ls run2 &gt; sequencing_files.txt?\nThe operator &gt;&gt; can be used to append the output of a command to an existing file.\nRe-run both of the previous commands, but instead using the &gt;&gt; operator the second time. What happens now?\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nTask 1\nTo list the files in the directory we use ls, followed by &gt; to save the output in a file:\nls run1 &gt; sequencing_files.txt\nWe can check the content of the file:\ncat sequencing_files.txt\nsampleA_1.fq.gz\nsampleA_2.fq.gz\nsampleB_1.fq.gz\nsampleB_2.fq.gz\nsampleC_1.fq.gz\nsampleC_2.fq.gz\nsampleD_1.fq.gz\nsampleD_2.fq.gz\n\nTask 2\nIf we run ls run2/ &gt; sequencing_files.txt, we will replace the content of the file:\ncat sequencing_files.txt\nsampleE_1.fq.gz\nsampleE_2.fq.gz\nsampleF_1.fq.gz\nsampleF_2.fq.gz\n\nTask 3\nIf we start again from the beginning, but instead use the &gt;&gt; operator the second time we run the command, we will append the output to the file instead of replacing it:\nls run1/ &gt; sequencing_files.txt\nls run2/ &gt;&gt; sequencing_files.txt\ncat sequencing_files.txt\nsampleA_1.fq.gz\nsampleA_2.fq.gz\nsampleB_1.fq.gz\nsampleB_2.fq.gz\nsampleC_1.fq.gz\nsampleC_2.fq.gz\nsampleD_1.fq.gz\nsampleD_2.fq.gz\nsampleE_1.fq.gz\nsampleE_2.fq.gz\nsampleF_1.fq.gz\nsampleF_2.fq.gz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 2 - Pattern matching\n\n\n\n\n\n\nLevel: \nIn the directory coronavirus/variants/, there are several CSV files with information about SARS-CoV-2 virus samples that were classified according to clades (these are also commonly known as coronavirus variants).\n\nCombine all files into a new file called all_countries.csv.\n\n\n\nHint\n\nYou can use cat to combine multiple text files. You can use &gt; to redirect the output of a command to a new file.\n\nCreate another file called alpha.csv that contains only the Alpha variant samples.\n\n\n\nHint\n\nYou can use grep to find a pattern in a file. You can use &gt; to redirect the output of a command to a new file.\n\nHow many Alpha samples are there in total?\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nTask 1\nWe can use cat to combine all the files into a single file:\ncat *_variants.csv &gt; all_countries.csv\nTask 2\nWe can use grep to find a pattern in our text file and use &gt; to save the output in a new file:\ngrep \"Alpha\" all_countries.csv &gt; alpha.csv\nWe could investigate the output of our command using less alpha.csv.\n\nTask 3\nWe can use wc to count the lines of the newly created file:\nwc -l alpha.csv\nGiving us 38 as the result.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Text Manipulation</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/03-text_manipulation.html#summary",
+    "href": "materials/01-basics/03-text_manipulation.html#summary",
+    "title": "5  Text Manipulation",
+    "section": "5.7 Summary",
+    "text": "5.7 Summary\n\n\n\n\n\n\nKey Points\n\n\n\n\nThe head and tail commands can be used to look at the top or bottom of a file, respectively.\nThe less command can be used to interactively investigate the content of a file. Use ↑ and ↓ to browse the file and Q to quit and return to the console.\nThe cat command can be used to combine multiple files together. The zcat command can be used instead if the files are compressed.\nThe &gt; operator redirects the output of a command into a file. If the file already exists, it’s content will be overwritten.\nThe &gt;&gt; operator also redictects the output of a command into a file, but appends it to any content that already exists.\nThe grep command can be used to find the lines in a text file that match a text pattern.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Text Manipulation</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/04-combining_commands.html",
+    "href": "materials/01-basics/04-combining_commands.html",
+    "title": "6  Combining Commands",
+    "section": "",
+    "text": "6.1 The | Pipe\nIn the previous section we ended with an exercise where we counted the number of lines matching the word “Alpha” in several CSV files containing variant classification of coronavirus virus samples from several countries.\nWe achieved this in three steps:\nBut what if we now wanted to search for a different pattern, for example “Delta”? It seems unpractical to keep creating new files every time we want to ask such a question from our data.\nThis is where one of the shell’s most powerful feature becomes handy: the ease with which it lets us combine existing programs in new ways.\nThe way we can combine commands together is using a pipe, which uses the special operator |. Here is our example using a pipe:\nNotice how we now don’t specify an input to either grep nor wc. The input is streamed automatically from one tool to another through the pipe. So, the output of cat is sent to grep and the output from grep is then sent to wc.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Combining Commands</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/04-combining_commands.html#the-pipe",
+    "href": "materials/01-basics/04-combining_commands.html#the-pipe",
+    "title": "6  Combining Commands",
+    "section": "",
+    "text": "Combine all CSV files into one: cat *_variants.csv &gt; all_countries.csv.\nCreate a new file containing only the lines that match our pattern: grep \"Alpha\" all_countries.csv &gt; alpha.csv\nCount the number of lines in this new file: wc -l alpha.csv\n\n\n\ncat *_variants.csv | grep \"Alpha\" | wc -l",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Combining Commands</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/04-combining_commands.html#cut-sort-unique-count",
+    "href": "materials/01-basics/04-combining_commands.html#cut-sort-unique-count",
+    "title": "6  Combining Commands",
+    "section": "6.2 Cut, Sort, Unique & Count",
+    "text": "6.2 Cut, Sort, Unique & Count\nLet’s now explore a few more useful commands to manipulate text that can be combined to quickly answer useful questions about our data.\nLet’s start with the command cut, which is used to extract sections from each line of its input. For example, let’s say we wanted to retrieve only the second field (or column) of our CSV file, which contains the clade classification of each of our omicron samples:\ncat *_variants.csv | cut -d \",\" -f 2\nclade\n20I (Alpha; V1)\n20A\n20I (Alpha; V1)\n20A\n\n... (more output omitted) ...\nThe two options used with this command are:\n\n-d defines the delimiter used to separate different parts of the line. Because this is a CSV file, we use the comma as our delimiter. The tab is used as the default delimiter.\n-f defines the field or part of the line we want to extract. In our case, we want the second field (or column) of our CSV file. It’s worth knowing that you can specify more than one field, so for example if you had a CSV file with more columns and wanted columns 3 and 7 you could set -f 3,7.\n\nThe next command we will explore is called sort, which sorts the lines of its input alphabetically (default) or numerically (if using the -n option). Let’s combine it with our previous command to see the result:\ncat *_variants.csv | cut -d \",\" -f 2 | sort\n19B\n19B\n20A\n20A\n20A\n20A\n20A\n20A\n20A\n20A\n\n... (more output omitted) ...\nYou can see that the output is now sorted alphabetically.\nThe sort command is often used in conjunction with another command: uniq. This command returns the unique lines in its input. Importantly, it only works as intended if the input is sorted. That’s why it’s often used together with sort.\nLet’s see it in action, by continuing building our command:\ncat *_variants.csv | cut -d \",\" -f 2 | sort | uniq\n19B\n20A\n20B\n20C\n20E (EU1)\n20I (Alpha; V1)\n21A (Delta)\n21I (Delta)\n21J (Delta)\n21K (Omicron)\n21L (Omicron)\n21M (Omicron)\nNA\nclade\nWe can see that now the output is de-duplicated, so only unique values are returned. And so, with a few simple commands, we’ve answered a very useful question from our data: what are the unique variants in our collection of samples?\n\n\n\n\n\n\nAlphabetic or numeric sort?\n\n\n\n\n\nNote that, by default the sort command will order input lines alphabetically. So, for example, if it received this as input:\n10\n2\n1\n20\nThe result of sorting would be:\n1\n10\n2\n20\nBecause that’s the alphabetical order of those characters. We can use the option sort -n to make sure it sorts these as numbers, in which case the output would be as expected:\n1\n2\n10\n20\nHere’s the main message: always use the -n option if you want things that look like numbers to be sorted numerically (if the input doesn’t look like a number, then sort will just order them alphabetically instead).\n\n\n\n\n\n\nIllustration of the sort + uniq commands by Julia Evans",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Combining Commands</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/04-combining_commands.html#exercises",
+    "href": "materials/01-basics/04-combining_commands.html#exercises",
+    "title": "6  Combining Commands",
+    "section": "6.3 Exercises",
+    "text": "6.3 Exercises\n\n\n\n\n\n\nExercise 1 - Pipe comprehension\n\n\n\n\n\n\nLevel: \n(Note: this is a conceptual exercise, you don’t need to use your own terminal.)\nIf you had the following two text files:\ncat animals_1.txt\ndeer\nrabbit\nraccoon\nrabbit\ncat animals_2.txt\ndeer\nfox\nrabbit\nbear\nWhat would be the result of the following command?\ncat animals*.txt | head -n 6 | tail -n 1\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nThe result would be “fox”. Here is a diagram illustrating what happens in each of the three steps:\n                    deer\n                    rabbit                  deer\ncat animals*.txt    raccoon    head -n 6    rabbit     tail -n 1\n-----------------&gt;  rabbit    -----------&gt;  raccoon   -----------&gt;  fox\n                    deer                    rabbit\n                    fox                     deer\n                    rabbit                  fox\n                    bear\n\ncat animals*.txt would combine the content of both files, and then\nhead -n 6 would print the first six lines of the combined file, and then\ntail -n 1 would return the last line of this output.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 2 - Sort & count\n\n\n\n\n\n\nLevel: \nFrom the coronavirus/variants folder, let’s continue working on the command we looked at earlier to get the unique values in the variants column of our CSV files:\ncat *_variants.csv | cut -d \",\" -f 2 | sort | uniq\nAs you saw, this output also returns a line called “clade”. This was part of the header (column name) of our CSV file, which is not really useful to have in our output.\nLet’s try and solve that problem, and also ask the question of how frequent each of these variants are in our data.\n\nLooking at the help page for grep (man grep), see if you can find an option to invert a match, i.e. to return the lines that do not match a pattern. Can you think of how to include this in our pipeline to remove that line from our output?\n\n\nHint\n\nThe option to invert a match with grep is -v. Using one of our previous examples, grep -v \"Alpha\" would return the lines that do not match the word “Alpha”.\n\nThe uniq command has an option called -c. Try adding that option to the command and infer what it does (or look at man uniq).\nFinally, produce a sorted table of counts for each of our variants in descending order (the most common variant at the top).\n\n\nHint\n\nLook at the manual page for the sort command to find the option to order the output in reverse order (or do a quick web search). You may also want to use the -n option to sort numerically.\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nTask 1\nLooking at the help of this function with man grep, we can find the following option:\n -v, --invert-match        select non-matching lines\nSo, we can continue working on our pipeline by adding another step at the end:\ncat *_variants.csv | cut -d \",\" -f 2 | sort | uniq | grep -v \"clade\"\n19B\n20A\n20B\n20C\n20E (EU1)\n20I (Alpha; V1)\n21A (Delta)\n21I (Delta)\n21J (Delta)\n21K (Omicron)\n21L (Omicron)\n21M (Omicron)\nNA\nThis now removes the line that matched the word “clade”.\nTask 2\nLooking at the help page man uniq, we can see that:\n -c, --count           prefix lines by the number of occurrences\nSo, if we add this option, we will get the count of how many times each unique line appears in our data:\ncat *_variants.csv | cut -d \",\" -f 2 | sort | uniq -c | grep -v \"clade\"\n 2 19B\n30 20A\n 8 20B\n 1 20C\n 1 20E (EU1)\n38 20I (Alpha; V1)\n 8 21A (Delta)\n 1 21I (Delta)\n66 21J (Delta)\n87 21K (Omicron)\n 4 21L (Omicron)\n 2 21M (Omicron)\n 3 NA\nTask 3\nNow that we’ve counted each of our variants, we can again sort this result, this time by the counts value, by adding another sort step at the end:\ncat *_variants.csv | cut -d \",\" -f 2 | sort | uniq -c | grep -v \"clade\" | sort -r -n\n87 21K (Omicron)\n66 21J (Delta)\n38 20I (Alpha; V1)\n30 20A\n 8 21A (Delta)\n 8 20B\n 4 21L (Omicron)\n 3 NA\n 2 21M (Omicron)\n 2 19B\n 1 21I (Delta)\n 1 20E (EU1)\n 1 20C\nWe used the option -r, which from the help page man sort, says:\n  -r, --reverse               reverse the result of comparisons\nWe also used the -n option to ensure the result is sorted numerically. From the help page it says:\n-n, --numeric-sort      compare according to string numerical value\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3 - zcat and grep\n\n\n\n\n\n\nLevel: \nIn the coronavirus folder, you will find a file named proteins.fa.gz. This is a file that contains the amino acid sequences of the proteins in the SARS-CoV-2 coronavirus in a text-based format known as FASTA. However, this file is compressed using an algorithm known as GZip, which is indicated by the file extension .gz.\nTo look inside compressed files, you can use an alternative to cat called zcat (if you are using the macOS terminal use gzcat instead). The ‘z’ at the beggining indicates it will work on zipped files.\n\nUse zcat (gzcat on macOS) together with less to look inside this file. Remember that you can press Q to exit the less program.\nThe content of this file may look a little strange, if you’re not familiar with the FASTA file format. Put simply, each protein sequence name starts with the &gt; symbol. Combine zcat with grep to extract the sequence names only. How many proteins does SARS-CoV-2 have?\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nTask 1\nThe following command allows us to “browse” through the content of this file:\nzcat proteins.fa.gz | less\nWe can use ↑ and ↓ to move line-by-line or the Page Up and Page Down keys to move page-by-page. You can exit less by pressing Q (for “quit”). This will bring you back to the console.\nTask 2\nWe can look at the sequences’ names by running:\nzcat proteins.fa.gz | grep \"&gt;\"\n&gt;ORF1ab protein=ORF1ab polyprotein\n&gt;ORF1ab protein=ORF1a polyprotein\n&gt;S protein=surface glycoprotein\n&gt;ORF3a protein=ORF3a protein\n&gt;E protein=envelope protein\n&gt;M protein=membrane glycoprotein\n&gt;ORF6 protein=ORF6 protein\n&gt;ORF7a protein=ORF7a protein\n&gt;ORF7b protein=ORF7b\n&gt;ORF8 protein=ORF8 protein\n&gt;N protein=nucleocapsid phosphoprotein\n&gt;ORF10 protein=ORF10 protein\nWe could further count how many sequences, by piping this output to wc:\nzcat proteins.fa.gz | grep \"&gt;\" | wc -l\n12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 4 - Counting values in columns\n\n\n\n\n\n\nLevel: \nIn the sequencing/ directory, you will find a file named gene_annotation.gtf.gz. This is a file containing the names and locations of genes in the Human genome in a standard text-based format called GTF.\nThis is a tab-delimited file, where the 3rd column contains information about the kind of annotated feature (e.g. a gene, an exon, start codon, etc.).\nUsing a combination of the commands we’ve seen so far:\n\nCount how many occurrences of each feature (3rd column) there is in this file.\nHow many transcripts does the gene “ENSG00000113643” have?\n\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n\nStart by investigating the content of the file with zcat gene_annotation.gtf.gz | less -S. You will notice the first few lines of the file contain comments starting with # symbol. You should remove these lines before continuing.\nCheck the help for grep to remind yourself what the option is to return lines not matching a pattern.\nRemember that the cut program uses tab as its default delimiter.\n\n\n\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nTask 1\nWe could use:\nzcat gene_annotation.gtf.gz | grep -v \"#\" | cut -f 3 | sort | uniq -c\n 871196 CDS\n    119 Selenocysteine\n1624585 exon\n 171504 five_prime_utr\n  61860 gene\n  96934 start_codon\n  90724 stop_codon\n 203201 three_prime_utr\n 251121 transcript\n\nWe use zcat because the file is compressed (we can tell from its extension ending with .gz).\nWe use grep to remove the first few lines of the file that start with # character.\nWe use cut to extract the third “field” (column) of the file. Because it’s a tab-delimited file, we don’t need to specify a delimiter with cut, as that is the default.\nWe use sort to order the features in alphabetical order.\nFinally, uniq is used to return the unique values as well as count their occurrence (with the -c option).\n\n\nTask 2\nThe answer is 10. We could use the following command:\nzcat gene_annotation.gtf.gz | grep \"ENSG00000113643\" | cut -f 3 | grep \"transcript\" | wc -l",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Combining Commands</span>"
+    ]
+  },
+  {
+    "objectID": "materials/01-basics/04-combining_commands.html#summary",
+    "href": "materials/01-basics/04-combining_commands.html#summary",
+    "title": "6  Combining Commands",
+    "section": "6.4 Summary",
+    "text": "6.4 Summary\n\n\n\n\n\n\nKey Points\n\n\n\n\nThe | pipe allows to chain several commands together. The output of the command on the left of the pipe is sent as input to the command on the right.\nOther useful commands to manipulate text and which are often used together in pipes include:\n\ncut to extract parts of a file that are separated by a delimiter.\nsort to order the input lines alphabetically (default) or numerically (-n option).\nuniq to obtain only unique lines from its input. The -c option can also be used to count how often each of those unique lines occur.",
+    "crumbs": [
+      "Slides",
+      "Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Combining Commands</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/01-scripts.html",
+    "href": "materials/02-programming/01-scripts.html",
+    "title": "7  Shell Scripts",
+    "section": "",
+    "text": "7.1 Shell Scripts\nSo far, we have been running commands directly on the console in an interactive way. However, to re-run a series of commands (or an analysis), we can save the commands in a file and execute all those operations again later by typing a single command. The file containing the commands is usually called a shell script (you can think of them as small programs).\nFor example, let’s create a shell script that counts the number of atoms in one of our molecule files (in the molecules directory): We could achieve this with the following command:\nTo write a shell script we have to save this command within a text file. But first we need to see how we can create a text file from within the command line.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Shell Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/01-scripts.html#shell-scripts",
+    "href": "materials/02-programming/01-scripts.html#shell-scripts",
+    "title": "7  Shell Scripts",
+    "section": "",
+    "text": "cat cubane.pdb | grep \"ATOM\" | wc -l\n\n\n\n\n\n\n\nText editor on Windows/MobaXterm\n\n\n\n\n\nThe text editor we will use from the command line is not installed by default on MobaXterm. To do so, run the following command:\napt install nano\nWhen asked, type “y” to continue, then “y” again to confirm the installation. Several packages will start downloading and installing.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Shell Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/01-scripts.html#editing-files",
+    "href": "materials/02-programming/01-scripts.html#editing-files",
+    "title": "7  Shell Scripts",
+    "section": "7.2 Editing Files",
+    "text": "7.2 Editing Files\nThere are many text editors available for programming, but we will cover two simple ones that can be called from the command line: nano, which is purely based on the terminal; and gedit, which has a graphical user interface.\nWe can create a file with Nano in the following way:\nnano count_atoms.sh\nThis opens a text editor, where you can type the commands you want to save in the file. Note that the mouse does not work with nano, you have to use your ← → ↑ ↓ arrow keys to move around.\nFor now, type this code to your script (or copy-paste it):\n#!/bin/bash\n\n# count the number of lines containing the word \"ATOM\"\ncat cubane.pdb | grep \"ATOM\" | wc -l\nTwo things to note about our code:\n\nWe started the script with a special #!/bin/bash line, which is known as a shebang. The shebang is optional, but in some cases is used to inform that this script should use the program bash to be executed.\nThe other line starting with the # hash character is known as a comment and is not executed by bash (it is ignored). Comments are extremely useful because they allow us to annotate our code with information about the commands we’re executing.\n\nOnce we’re happy with our text, we can press Ctrl+X to exit the program.\nAs we have made changes to the file, we will be asked the following:\nSave modified buffer?\n Y Yes\n N No    ^C Cancel\nThat’s a slightly strange way that nano has of asking if we want to save the file. We can press Y and then we’re asked to confirm the file name. At this point we can press Enter ↵ and this will exit Nano and take us back to the console.\nWe can check with ls that our new file is there.\nNote that because we saved our file with .sh extension (the conventional extension used for shell scripts), Nano does some colouring of our commands (this is called syntax highlighting) to make it easier to read the code.\n\n\n\nScreenshot of the command line text editor Nano (left) and the GUI text editor Gedit (right).\n\n\nAlternatively, you can use the gedit text editor, which is a little more user-friendly (but is not always available, for example on macOS). The command to open a script is: gedit count_atoms.sh. This opens the text editor in a separate window, which has the advantage that you can work on the script while having the terminal open.\nYou can save the file using Ctrl+S. Remember to save your files regularly as you work on them.\n\n\n\n\n\n\nText Editors\n\n\n\nWhen we say, “nano and gedit are text editors”, we really do mean “text”: they only work with plain character data, not tables, images, or any other human-friendly media. We use it in examples because it is one of the least complex text editors. However, because of this trait, it may not be powerful enough or flexible enough for the work you need to do after this workshop.\nOn Unix systems (such as Linux and Mac OS X), many programmers use Emacs or Vim. Both of these run from the terminal and have very advanced features, but require more time to learn.\nAlternatively, programmers also use graphical editors, such as Visual Studio Code. This software offers many advanced capabilities and extensions and works on Windows, Mac OS and Linux.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Shell Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/01-scripts.html#running-scripts",
+    "href": "materials/02-programming/01-scripts.html#running-scripts",
+    "title": "7  Shell Scripts",
+    "section": "7.3 Running Scripts",
+    "text": "7.3 Running Scripts\nNow that we have our script, we can run it using the program bash:\nbash count_atoms.sh\n16\nWhich prints the result of running those commands on our screen. In summary, running a shell script is exactly the same as running the commands one-by-one on the shell.\nHowever, saving our commands in a script has some advantages: it serves as a record of our analysis, making it more reproducible and it allows us to adapt and reuse our code to run other similar analysis.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Shell Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/01-scripts.html#exercises",
+    "href": "materials/02-programming/01-scripts.html#exercises",
+    "title": "7  Shell Scripts",
+    "section": "7.4 Exercises",
+    "text": "7.4 Exercises\n\n\n\n\n\n\nExercise 1 - Shell scripts\n\n\n\n\n\n\nLevel: \nThe echo command can be used to print a message to the screen. This can be particularly useful in scripts, as we can use it to give information to the user about the output.\nUsing either nano or gedit, open the script count_atoms.sh that we just created so that the output of the script when you run it is:\nThe number of atoms in cubane.pdb is:\n16\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nWe can use nano count_atoms.sh to open our script, and add a new line of code with an echo command, like this:\n#!/bin/bash\n\n# print a message\necho \"The number of atoms in ethane.pdb is:\"\n\n# count the number of lines containing the word \"ATOM\"\ncat cubane.pdb | grep \"ATOM\" | wc -l\nWe can then exit nano Ctrl+X, confirm that we want to save the changes by pressing Y and finally confirm the filename by pressing Enter ↵.\nWhen we run the modified script with bash count_atoms.sh, we should get the desired output.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Shell Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/01-scripts.html#summary",
+    "href": "materials/02-programming/01-scripts.html#summary",
+    "title": "7  Shell Scripts",
+    "section": "7.5 Summary",
+    "text": "7.5 Summary\n\n\n\n\n\n\n\nKey Points\n\n\n\n\nThe nano text editor can be used to create or edit files from the command line.\n\nThe gedit text editor is a graphical alternative available on most Linux distributions.\nA recommended graphical text editor availabe on all major operating systems is Visual Studio Code.\n\nWe can save commands in a text file, which we call a shell script. Shell scripts have extension .sh.\nShell scripts can be executed using the program bash.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Shell Scripts</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/02-variables.html",
+    "href": "materials/02-programming/02-variables.html",
+    "title": "8  Arguments & Variables",
+    "section": "",
+    "text": "8.1 Custom Inputs\nWhen we discussed Shell scripts, we wrote a script that counted the number of atoms on a specific PDB file (in our example cubane.pdb). But what if we wanted to give it as input a file of our choice? We can make our script more versatile by using a special shell variable that means “the first argument on the command line”. Here is our new script, modified from the previous section:\nThe main change in our script is that we used a special variable called $1 to indicate the file that we want to process will be given by the user from the command line. This variable means “the first argument passed to the shell script”. You can use any number of these, for example $2 would mean “the second argument passed to the shell script”. These are known as positional argument variables.\nSo, if we run our modified script, this is the result:\nThis is a much more flexible script, as the input can now be specified by the user.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Arguments & Variables</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/02-variables.html#custom-inputs",
+    "href": "materials/02-programming/02-variables.html#custom-inputs",
+    "title": "8  Arguments & Variables",
+    "section": "",
+    "text": "#!/bin/bash\n\n# print a message to the user\necho \"Processing file: $1\"\n\n# count the number of lines containing the word \"ATOM\"\ncat \"$1\" | grep \"ATOM\" | wc -l\n\n\nbash   count_atoms.sh   ethane.pdb\nProcessing file: ethane.pdb\n8",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Arguments & Variables</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/02-variables.html#bash-variables",
+    "href": "materials/02-programming/02-variables.html#bash-variables",
+    "title": "8  Arguments & Variables",
+    "section": "8.2 Bash Variables",
+    "text": "8.2 Bash Variables\nVariables in Bash always start with the $ symbol. We have already seen the special variables called $1, $2 (which take input from the user). However, we can also create variables ourselves, with the following syntax:\nmolecule=\"ethane\"\nThis would create a variable named “molecule” containing the text “ethane”. Notice that there should be no space between the variable name (“molecule”) and its value (“ethane”).\nOnce we create a variable, we need to prefix it with $ every time we want to use it. For example, to see the value stored inside a variable we can use the echo command:\necho \"$molecule\"\nethane\n\n\n\n\n\n\nSingle ' or double \" quotes?\n\n\n\nWrapping variables in single or double quotes makes a difference.\nWhen you use double quotes the shell will interpret the values in the variable, as shown in the example above. However, if you use single quotes, the shell will not interpret those variable values, instead printing the text as is:\necho 'My molecule is: $molecule'\nMy molecule is $molecule\n\n\nIn this case, our variable is storing the name of one of our molecules, so we could use it to look at the content of our file:\ngrep \"ATOM\" \"${molecule}.pdb\"\nATOM      1  C           1      -0.752   0.001  -0.141  1.00  0.00\nATOM      2  C           1       0.752  -0.001   0.141  1.00  0.00\nATOM      3  H           1      -1.158   0.991   0.070  1.00  0.00\nATOM      4  H           1      -1.240  -0.737   0.496  1.00  0.00\nATOM      5  H           1      -0.924  -0.249  -1.188  1.00  0.00\nATOM      6  H           1       1.158  -0.991  -0.070  1.00  0.00\nATOM      7  H           1       0.924   0.249   1.188  1.00  0.00\nATOM      8  H           1       1.240   0.737  -0.496  1.00  0.00\nOne thing to note here is that we included the variable name within {}. The reason is that this allows us to combine the value of a variable with other text.\nTake these two examples:\necho \"$molecule_copy\"\necho \"${molecule}_copy\"\nThe first command would give us an empty output because Bash would think there is a variable called “molecule_copy”, but such a variable does not exist (and by default the shell assumes its value is empty). In the second command, because we included the variable name in {}, then this is not a problem and the output we get is “ethane_copy”.\nIn conclusion: always include {} when using your variables in scripts. It is also good practice to always include variables within double \" quotes. The reasons are more subtle, but see this StackOverflow post to learn more about it.\n\n8.2.1 Environment Variables\nThere are many default variables that are automatically created when we open the terminal. These are called environment variables, which as a convention are always named with upppercase. For example the variable $HOME stores the user’s home directory.\nTry running:\necho $HOME\n\n\n8.2.2 Variables and Commands\nVery often we may want to create a variable with the result of evaluating a command. The syntax to do this is:\nvariable=$(command)\nFor example, let’s say we wanted to create a variable that stores the results of the grep command we ran earlier:\nethane_atoms=$(cat ethane.pdb | grep \"ATOM\" | wc -l)\nRunning this command generates no output. Instead the output of the command is stored inside our variable. We can print the content of the variable with:\necho \"$ethane_atoms\"\n8",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Arguments & Variables</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/02-variables.html#exercises",
+    "href": "materials/02-programming/02-variables.html#exercises",
+    "title": "8  Arguments & Variables",
+    "section": "8.3 Exercises",
+    "text": "8.3 Exercises\n\n\n\n\n\n\nExercise 1 - Variable comprehension\n\n\n\n\n\n\nLevel: \n(Note: this is a conceptual exercise, you don’t need to use your own terminal.)\nAssuming that we have a user named robin, what would be the output of the echo command below?\ndatadir=\"${HOME}/Desktop/data-shell\"\ndatafiles=$(ls ${datadir}/molecules)\necho \"${datafiles}\"\n\n /home/robin/Desktop/data-shell\n\n /home/robin/Desktop/data-shell/molecules\n\n cubane.pdb\n ethane.pdb\n methane.pdb\n octane.pdb\n pentane.pdb\n propane.pdb\n\n /home/robin/Desktop/data-shell/molecules/cubane.pdb \n /home/robin/Desktop/data-shell/molecules/ethane.pdb \n /home/robin/Desktop/data-shell/molecules/methane.pdb \n /home/robin/Desktop/data-shell/molecules/octane.pdb \n /home/robin/Desktop/data-shell/molecules/pentane.pdb \n /home/robin/Desktop/data-shell/molecules/propane.pdb\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\n\nNo, this would be the output of echo \"${datadir}\".\nNo, this would be the output of echo \"${datadir}/molecules\".\nYes, this is the correct answer. It is the equivalent of running the command ls /home/robin/Desktop/data-shell/molecules/.\nNo, the full filepath is not included in the output.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 2 - Positional arguments\n\n\n\n\n\n\nLevel: \nTake the following code, which counts the number of carbon atoms in one of our molecule files:\n# print a message\necho \"The number of C atoms in ethane.pdb is:\"\n\n# count carbon \"C\" atoms\ncat ethane.pdb | grep \"ATOM\" | grep \"C\" | wc -l\nWe want to generalise this code, such that it works on different molecule input files and to search for different types of atoms.\n\nUsing nano create a new script called count_atom_type.sh and copy-paste the code above.\nTest that the script works by running it with bash count_atom_type.sh.\nModify the script to take two inputs provided by the user:\n\nthe first input is the filename to process\nthe second input is the type of atom to search for\n\nUse your modified script to count the number of hydrogen atoms (“H”) in one of the molecule files.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n\nRecall that the special variables $1, $2, etc., can be used to store, respectively, the first, second, etc., user-provided arguments to the script.\nHere is an example of the command (and its output) that you should be able to run with your final script:\n\nbash  count_atom_type.sh  methane.pdb  H\nThe number of H atoms in methane.pdb is:\n4\n\n\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nIn our modified script we use the $1 and $2 variables to capture input given by the user.\nHere is our script, which generalises the code given:\n# print a message\necho \"The number of $2 atoms in $1 is:\"\n\n# count carbon \"C\" atoms\ncat \"$1\" | grep \"ATOM\" | grep \"$2\" | wc -l\nWith this code saved in a script called count_atom_type.sh, we should be able to run it like this, for example:\nbash count_atom_type.sh octane.pdb H\nThe number of H atoms in octane.pdb is:\n18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3 - Variables and commands\n\n\n\n\n\n\nLevel: \nLet’s continue working on our earlier script count_atoms.sh. Let’s say that instead of printing the number of atoms to the console, we would want the result to be saved in a file named as &lt;MOLECULE&gt;_atoms.txt (where &lt;MOLECULE&gt; is the name of the respective molecule file).\nTo achieve this, we will use the help of a new command called basename. This command returns the filename in a path. For example:\nbasename molecules/ethane.pdb\nethane.pdb\nFurthermore, we can also add some text we want removed at the end of the filename (usually used to remove the file extension). For example:\nbasename  molecules/ethane.pdb  \".pdb\"\nethane\nBased on this knowledge, modify the count_atoms.sh script to save the output into a file with the name and extension as mentioned above. For example, this command:\ncount_atoms.sh  ethane.pdb\nShould create a new file called ethane_atoms.txt\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n\nInside the script, create a variable molecule that stores the basename of the user-provided input file.\nRemember that user-provided inputs are stored in the special variables $1, $2, etc.\nRecall that you can store the result of a command in a variable, using the syntax: variable=$(command)\n\n\n\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nHere is our modified count_atoms.sh script:\n#!/bin/bash\n\n# store the molecule name in a new variable\n# remove the \".pdb\" extension from the name\nmolecule=$(basename $1 \".pdb\")\n\n# print a message to the user\necho \"Processing file: $1\"\n\n# count the number of lines containing the word \"ATOM\"\n# save the output to a new file\ncat \"$1\" | grep \"ATOM\" | wc -l &gt; \"${molecule}_atoms.txt\"\nRunning this script now creates a file with the name of the molecule, instead of printing the number of atoms to the console.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 4 - Positional arguments (advanced)\n\n\n\n\n\n\nLevel: \nGo back to the data-shell folder for this exercise.\nWrite a shell script called longest.sh that takes two inputs: the name of a directory and a file extension.\nThe script should then return the name of the file with the most lines in that directory with that extension. For example:\nbash  longest.sh  molecules  pdb\nShould print the name of the .pdb file in the molecules folder that has the most lines.\nUsing your script determine what is the longest PDB file in molecules and the longest CSV file in coronavirus/variants.\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n\nBefore writing the script, first test how you would achieve this for a directory and file extension of your choice.\nOnce that is working, you can then try to generalise your script to take user inputs (using $1 and $2 special variables).\nThe commands you can use to help you are wc -l (to count the number of lines in a file), sort -n (to sort the input numerically), head and tail combined to get a specific line from an input.\nRemember that to get a specific line from an input, you can use the trick head -n &lt;LINE NUMBER YOU WANT&gt; | tail -n 1.\n\n\n\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nHere is a script that would do what is requested:\n#!/bin/bash\n\n# This script takes two arguments:\n#    1. a directory name\n#    2. a file extension\n# and prints the name of the file in that directory \n# with the most lines which matches the file extension\n\nwc -l $1/*.$2 | sort -n -r | head -n 2 | tail -n 1\nHere is an explanation of each step of our chain of commands:\n\nWith wc -l $1/*.$2 we:\n\ncount lines in input files with wc -l\nwe specify the input files to this command using $1/*.$2, where $1 is the name of the directory given by the user and *.$2 is used to match all file names (*) with a given extension specified by the user ($2)\n\nWith sort -n -r we get the output of the previous command sorted in numeric and reverse order (so we have largest files first)\nWith head -n 2 | tail -n 1 we get the 2nd line comming out of the previous command. The reason we do this is that the wc command also counts the total number of lines across all files, which is not what we want. Therefore we get the 2nd line of the output, which corresponds to the file with the most lines.\n\nWe could then run this script on both of those directories:\nbash longest.sh molecules pdb\n 30 molecules/octane.pdb\nAnd:\nbash longest.sh coronavirus/variants csv\n256 coronavirus/variants/all_countries.csv\nHere is a diagram illustrating what is happening at each step of our chain of commands (using the molecules pdb files as an example):\n                         20 molecules/cubane.pdb                 107 total                                 \n                         12 molecules/ethane.pdb                  30 molecules/octane.pdb                   \n                          9 molecules/methane.pdb                 21 molecules/pentane.pdb\nwc -l molecules/*.pdb    30 molecules/octane.pdb    sort -n -r    20 molecules/cubane.pdb    head -n 2   107 total                  tail -n 1\n----------------------&gt;  21 molecules/pentane.pdb  ------------&gt;  15 molecules/propane.pdb  -----------&gt;  30 molecules/octane.pdb  -----------&gt; 30 molecules/octane.pdb\n                         15 molecules/propane.pdb                 12 molecules/ethane.pdb \n                         107 total                                 9 molecules/methane.pdb",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Arguments & Variables</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/02-variables.html#summary",
+    "href": "materials/02-programming/02-variables.html#summary",
+    "title": "8  Arguments & Variables",
+    "section": "8.4 Summary",
+    "text": "8.4 Summary\n\n\n\nIllustration of Bash variables by Julia Evans\n\n\n\n\n\n\n\n\nKey Points\n\n\n\n\nVariables in Bash start with the $ character.\nPositional variables such as $1, $2, $3, etc., can be used to store input values specified by the user when running the script.\nEnvironment variables are default variables created by the shell. For example $HOME stores the user’s home directory path. These are conventionally named with uppercase.\nCustom variables can be defined with the syntax:\n\nvariable=\"value\" if we want the variable to contain a fixed value.\nvariable=$(command) if we want the variable to contain the result of running a command.\n\nThe value stored in a variable can be printed using echo \"$variable\".\nVariable names should be wrapped in {} if concatenating with other text. For example echo ${variable}_suffix will add “suffix” to the value stored in the variable.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Arguments & Variables</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/03-loops.html",
+    "href": "materials/02-programming/03-loops.html",
+    "title": "9  Loops",
+    "section": "",
+    "text": "9.1 The for Loop\nLoops are a programming construct which allow us to repeat a command or set of commands for each item in a list. As such they are key to productivity improvements through automation. Similar to wildcards and tab completion, using loops also reduces the amount of typing required (and hence reduces the number of typing mistakes).\nGoing back to our molecules directory, suppose we wanted to count the number of atoms in each of our molecules’ PDB files. As a reminder, here is the command to do this for one of our files:\nOf course, we could manually then repeat this for each of our molecule files: cubane.pdb, ethane.pdb, methane.pdb, octane.pdb, pentane.pdb, propane.pdb.\nBut what if we had hundreds (or thousands!) of these files? We’ll use a loop to solve this problem, but first let’s look at the general form of a loop:\nTaking our command above to count atoms, let’s create a new script called count_loop.sh, where we apply this idea:\nIf we ran this script (bash count_loop.sh), we would get the following output:\nWhen the shell sees the keyword for, it knows to repeat a command (or group of commands) once for each item in a list. Each time the loop runs (called an iteration), an item in the list is assigned in sequence to the variable we specify (in this case filename). Then, the commands inside the loop are executed, before moving on to the next item in the list. Inside the loop, we call for the variable’s value $filename.\nIn our example, at each iteration of the for loop, the variable $filename stored a different value, cycling through cubane.pdb, ethane.pdb and finally methane.pdb.\nAt the moment our script is not very informative of what files are being processed. But we could use some of the programming techniques we’ve already learned about to make our output even more informative. Here is an example of a modified script:\nIf we run this script (bash count_loop.sh), we get a more informative output than before:",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Loops</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/03-loops.html#the-for-loop",
+    "href": "materials/02-programming/03-loops.html#the-for-loop",
+    "title": "9  Loops",
+    "section": "",
+    "text": "cat cubane.pdb | grep \"ATOM\" | wc -l\n\nfor thing in list_of_things\ndo\n  # Indentation within the loop is not required, but aids legibility\n  operation_using ${thing}\ndone\n\n#!/bin/bash\n\nfor filename in cubane.pdb ethane.pdb methane.pdb\ndo\n  # count the number of lines containing the word \"ATOM\"\n  cat ${filename} | grep \"ATOM\" | wc -l\ndone\n\n16\n8\n5\n\n\n\n#!/bin/bash\n\nfor filename in cubane.pdb ethane.pdb methane.pdb\ndo\n  # count the number of lines containing the word \"ATOM\"\n  # store the result inside a variable 'natoms'\n  natoms=$(cat ${filename} | grep \"ATOM\" | wc -l)\n  \n  # print a message to the user\n  echo \"The number of atoms in ${filename} is: ${natoms}\"\ndone\n\nThe number of atoms in cubane.pdb is: 16\nThe number of atoms in ethane.pdb is: 8\nThe number of atoms in methane.pdb is: 5\n\n\n\n\n\n\nNote\n\n\n\n\nDo not use spaces, quotes, or wildcard characters such as ’*’ or ‘?’ in filenames, as it complicates variable expansion.\nGive files consistent names that are easy to match with wildcard patterns to make it easy to select them for looping.\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nSee the loop multiple files and searching for text exercises to test your knowledge.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Loops</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/03-loops.html#scripts-within-scripts",
+    "href": "materials/02-programming/03-loops.html#scripts-within-scripts",
+    "title": "9  Loops",
+    "section": "9.2 Scripts within scripts",
+    "text": "9.2 Scripts within scripts\nIn the example above, we wrote our code to count the number of atoms directly inside our for loop. However, in the previous section, we had already written a script - count_atoms.sh - that counts the number of atoms in a single file.\nGiven we already have that generic script, we could have run our task like this:\nfor filename in cubane.pdb ethane.pdb methane.pdb\ndo\n  bash count_atoms.sh $filename\ndone\nHere, we call our count_atoms.sh script from within the for loop. This is a very useful technique, as we can write generic scripts for a certain task, which we can then call from programming constructs such as a for loop.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Loops</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/03-loops.html#dry-runs",
+    "href": "materials/02-programming/03-loops.html#dry-runs",
+    "title": "9  Loops",
+    "section": "9.3 Dry runs",
+    "text": "9.3 Dry runs\nA loop is a way to do many things at once – or to make many mistakes at once if it does the wrong thing! One way to check what a loop would do is to echo the commands it would run instead of actually running them – this is known as a dry-run.\nSuppose we want to preview the commands of our count_loop.sh script, but without actually executing the command within the loop. Here is how we could have modified the previous code:\nfor filename in cubane.pdb ethane.pdb methane.pdb\ndo\n  echo \"bash count_atoms.sh $filename\"\ndone\nAll we’ve done is wrap our command instead of the echo command. If we run this modified code, the output is:\nbash count_atoms.sh cubane.pdb\nbash count_atoms.sh ethane.pdb\nbash count_atoms.sh methane.pdb\nSo, it wouldn’t actually run the command within the loop, but rather tell us what would have been run. This is a good practice when building scripts that include a for loop, because it lets us check that our code is all correct.\n\n\n\n\n\n\nExercise\n\n\n\nTry the dry run exercise to test your knowledge.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Loops</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/03-loops.html#exercises",
+    "href": "materials/02-programming/03-loops.html#exercises",
+    "title": "9  Loops",
+    "section": "9.4 Exercises",
+    "text": "9.4 Exercises\n\n\n\n\n\n\nExercise 1 - Looping multiple files\n\n\n\n\n\n\nLevel: \nCan you think of a way to improve our count_loop.sh script, so that every file gets processed, but without having to type all the individual files’ names?\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nWe can use the * wildcard in the for loop:\nfor filename in *.pdb\ndo\n  # count the number of lines containing the word \"ATOM\"\n  natoms=$(cat ${filename} | grep \"ATOM\" | wc -l)\n  \n  # print a message to the user\n  echo \"The number of atoms in ${filename} is: ${natoms}\"\ndone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 2 - Searching for text\n\n\n\n\n\n\nLevel: \nFor this exercise, go to the following directory: cd ~/Desktop/data-shell/coronavirus/variants (adjust the path if your data is on a different location of your computer).\nPreviously, we had used the following command to count the number of “Alpha” variants in our dataset:\ncat *_variants.csv | grep \"Alpha\" | wc -l\nWrite a for loop to search for several variants:\n\nUse nano to create a new script called count_variants.sh.\nAdapt the commands shown above to write a for loop to search for the variants “Alpha”, “Delta” and “Omicron”.\nPrint a message indicating which of the variants is being searched for.\n\nBonus (optional): modify the script to output the results to a CSV file called variant_counts.csv with the name of the variant as the first column and the count as the second column.\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nWe can write the following script:\n#!/bin/bash\n\nfor variant in Alpha Delta Omicron\ndo\n  # count the variant occurrence across all files - save the result in a variable called \"n\"\n  n=$(cat *_variants.csv | grep \"${variant}\" | wc -l)\n  \n  # print a message to the terminal\n  echo \"The number of ${variant} samples is: ${n}\"\ndone\n\nIn our for loop, we create a variable called variant to store each of the values we are iterating through.\nWithin the loop, we used this $variant variable in our grep command. This ensure that each time the code runs, a different variant will be searched for in our files.\nWe stored the result of our cat + grep + wc commands in a variable. This was so we could use this variable in our message at the end.\nWe used the echo command to print a message, which again uses the $variant variable as well as the $n variable, which stores the number of atoms from our previous command.\n\nAfter creating the script, we ran it with bash count_variants.sh and this was the result:\nThe number of Alpha samples is: 38\nThe number of Delta samples is: 75\nThe number of Omicron samples is: 93\nThe bonus task asked to modify the code to output the results to a file. We can use the redirection operators (&gt; / &gt;&gt;) to achieve this:\n#!/bin/bash\n\n# outside of the loop we initiate a new file with column names\necho \"variant,count\" &gt; variant_counts.csv\n\nfor variant in Alpha Delta Omicron\ndo\n  # count the variant occurrence across all files - save the result in a variable called \"n\"\n  n=$(cat *_variants.csv | grep \"${variant}\" | wc -l)\n  \n  # we append the variant name and its count to our file, each separated by a comma\n  echo \"${variant},${n}\" &gt;&gt; variant_counts.csv\ndone\nIf we run this modified script (bash count_variants.sh), nothing is printed to the terminal. However, a file is created in our directory, which contains the results of our analysis:\ncat variant_counts.csv\nvariant,count\nAlpha,38\nDelta,75\nOmicron,93\nBecause this is a CSV file, we could easily import it into a data analysis package (e.g. R or Python) to produce some visualisations.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3 - Dry run\n\n\n\n\n\n\nLevel: \nSuppose we want to set up up a directory structure to organize some experiments measuring reaction rate constants with different compounds and different temperatures.\nModify the following code to run as a dry-run (i.e. not actually execute the command inside the loop) and try to understand what would happen:\nfor molecule in cubane ethane methane\ndo\n  for temp in 25 30 37 40\n  do\n    mkdir $molecule-$temp\n  done\ndone\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nWe can modify the code so that our command is quoted in an echo command: echo \"mkdir $molecule-$temp\".\nThis would be the output:\nmkdir cubane-25\nmkdir cubane-30\nmkdir cubane-37\nmkdir cubane-40\nmkdir ethane-25\nmkdir ethane-30\nmkdir ethane-37\nmkdir ethane-40\nmkdir methane-25\nmkdir methane-30\nmkdir methane-37\nmkdir methane-40\nWhat we have done here is known as a nested loop, i.e. a loop contained within another loop. So, for each molecule in the first loop, the second loop (the nested loop) iterates over the list of temperatures, and creates a new directory for each combination.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 4 - Nested loops\n\n\n\n\n\n\nLevel: \nIn a previous exercise we created the script count_atom_type.sh, which counts specific atom types in our PDB files. Here is the code from that script:\n# print a message\necho \"The number of $2 atoms in $1 is:\"\n\n# count carbon \"C\" atoms\ncat \"$1\" | grep \"ATOM\" | grep \"$2\" | wc -l\n(Note: if you haven’t done the previous exercise, please create a script named count_atom_type.sh and copy/paste this code into it.)\nCreate a new script called atom_type_loop.sh, which counts the number of Hydrogen (“H”) and Carbon (“C”) atoms in every .pdb file.\n\n\n\n\n\n\nHint\n\n\n\n\n\n\nYou will have to use a nested for loop, i.e. a loop within another loop. Look at the previous exercise to see the syntax for a nested loop. In this case, you want to loop through the files and loop through the two atom types.\n\n\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nWe achieve this with two nested for loops:\n\nthe first loop goes through the files\nthe second loop goes through each of the types of atom that we are interested in\n\n#!/bin/bash\n\n# first for loop\nfor filename in *.pdb\ndo\n  # second (nested) for loop\n  for atom in C H\n  do\n    # run the script on the current filename and atom\n    bash count_atom_type.sh $filename $atom\n  done\ndone\nRunning our script with bash atom_type_loop.sh, we get the following output:\nThe number of C atoms in cubane.pdb is:\n8\nThe number of H atoms in cubane.pdb is:\n8\nThe number of C atoms in ethane.pdb is:\n2\nThe number of H atoms in ethane.pdb is:\n6\nThe number of C atoms in methane.pdb is:\n1\nThe number of H atoms in methane.pdb is:\n4\nThe number of C atoms in octane.pdb is:\n8\nThe number of H atoms in octane.pdb is:\n18\nThe number of C atoms in pentane.pdb is:\n5\nThe number of H atoms in pentane.pdb is:\n12\nThe number of C atoms in propane.pdb is:\n3\nThe number of H atoms in propane.pdb is:\n8\nWith only a few lines of code, we managed to perform this operation across all our files at once.\nNote that, in this case, the order of the two loops was not important, it would have also worked to loop through the atom types first and then loop through the files. This may not always be the case, however, it depends on the task at hand.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 5 - Preparing pipeline input files\n\n\n\n\n\n\nLevel: \nLet’s consider the files in the data-shell/sequencing directory (note: it’s not important to know what sequencing is). This directory contains the results of an experiment where several samples were processed in two runs of the sequencing machine (run1/ and run2/). For each sample, there are two input files, which have suffix _1.fq.gz and _2.fq.gz.\nThe researcher analysing these files needs to produce a CSV file, which will be used as input to a pipeline, and the format of this file should be:\nsample,input1,input2\nsampleA,run1/sampleA_1.fq.gz,run1/sampleA_2.fq.gz\nsampleB,run1/sampleB_1.fq.gz,run1/sampleB_2.fq.gz\nsampleC,run1/sampleC_1.fq.gz,run1/sampleC_2.fq.gz\nsampleD,run1/sampleD_1.fq.gz,run1/sampleD_2.fq.gz\nsampleE,run2/sampleE_1.fq.gz,run2/sampleE_2.fq.gz\nsampleF,run2/sampleF_1.fq.gz,run2/sampleF_2.fq.gz\nWrite a script that produces this file.\nDon’t hesitate to look at the hints below, as this is a challenging exercise!\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n\nUse a for loop to iterate through each sample (remember that each sample has two input files, so you might only want to iterate through one of the sets to extract sample names).\nYou can combine multiple wildcards in a path, for example ls run*/*_1.fq.gz would list all files in folders starting with the word “run” and all files within those folders ending in “_1.fq.gz”.\nThe command dirname can be used to extract the directory name from a path. For example: dirname run1/sampleA_1.fq.gz would return “run1” as the result.\nConversely, the command basename can be used to extract the name of a file from a path. For example: basename run1/sampleA_1.fq.gz would return “sampleA_1.fq.gz”. Further, you can also remove a suffix at the end of the name by passing it as a second argument to basename: basename  run1/sampleA_1.fq.gz  \"_1.fq.gz\" would only return “sampleA”.\nYou can store the result of a command in a variable with the syntax name=$(command). For example, dir=$(dirname run1/sampleA_1.fq.gz) would create a variable called $dir storing the result of the command, i.e. “run1”.\n\n\n\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nBased on all the hints given, here is a script that would achieve the desired result:\n#!/bin/bash\n\n# first create a file with the CSV header (column names)\necho \"sample,input1,input2\" &gt; samplesheet.csv\n\n# for each file ending with `_1.fq.gz` (so we only process each sample once)\nfor file in run*/*_1.fq.gz\ndo\n  # extract the directory name of the file\n  dir=$(dirname $file)\n\n  # extract the prefix basename of the file\n  base=$(basename $file \"_1.fq.gz\")\n\n  # append the name of the sample, and each input file path\n  echo \"${base},${dir}/${base}_1.fq.gz,${dir}/${base}_2.fq.gz\" &gt;&gt; samplesheet.csv\ndone\nThis can be incredibly useful, especially for bioinformatic applications, when you may have to process hundreds of samples using standard pipelines.",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Loops</span>"
+    ]
+  },
+  {
+    "objectID": "materials/02-programming/03-loops.html#summary",
+    "href": "materials/02-programming/03-loops.html#summary",
+    "title": "9  Loops",
+    "section": "9.5 Summary",
+    "text": "9.5 Summary\n\n\n\n\n\n\nKey Points\n\n\n\n\nA for loop repeats commands once for every item in a list.\nEvery for loop needs a variable to refer to the item it is currently operating on.\nUse $NAME to use the variable within the loop. ${NAME} can also be used.\nYou can use the echo command to do a dry-run of the commands in the loop to check what they would do, but without actually running them.\nTwo other commands that can be useful when looping through files are:\n\ndirname to extract the directory name from a path.\nbasename to extract the file name from a path. Using basename  &lt;path&gt;  &lt;suffix&gt; will return the file name without the specified suffix (this is useful to extract the file name without the extension).",
+    "crumbs": [
+      "Slides",
+      "Programming",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Loops</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/01-ssh_scp.html",
+    "href": "materials/03-remotes/01-ssh_scp.html",
+    "title": "10  Access Remote Servers",
+    "section": "",
+    "text": "10.1 The SSH protocol\nLet’s take a closer look at what happens when we use the shell on a desktop or laptop computer. The first step is to log in so that the operating system knows who we are and what we’re allowed to do. We do this by typing our username and password; the operating system checks those values against its records, and if they match, runs a shell for us.\nAs we type commands, the 1’s and 0’s that represent the characters we’re typing are sent from the keyboard to the shell. The shell displays those characters on the screen to represent what we type, and then, if what we typed was a command, the shell executes it and displays its output (if any).\nWhat if we want to run some commands on another machine, such as a High Performance Compute (HPC) server at our institution, to work on large-scale applications? To do this, we have to first log in to that machine. We call this a remote login.\nIn order for us to be able to login, the remote computer must be running a remote login server and we will run a client program that can talk to that server. The client program passes our login credentials to the remote login server and, if we are allowed to login, that server then runs a shell for us on the remote computer.\nOnce our local client is connected to the remote server, everything we type into the client is passed on, by the server, to the shell running on the remote computer. That remote shell runs those commands on our behalf, just as a local shell would, then sends back output, via the server, to our client, for our computer to display.\nSSH is a protocol which allows us to send secure encrypted information across an unsecured network, like the internet. The underlying protocol supports a number of commands we can use to move information of different types in different ways. The simplest and most straightforward is the ssh command which facilitates a remote login session connecting our local user and shell to any remote user we have permission to access.\nThe first argument specifies the location of the remote machine (by IP address or a URL) as well as the user we want to connect to separated by an @ sign.\nFor the purpose of this course, we’ve set up a container on our cluster for you to connect to. The address remote-machine is actually a special kind of URL that only your computer will understand. In real life this would normally be an address on the internet which can be access from anywhere or at least an institutional local area network.\nWhen you connect to a computer for the first time you should see a warning like the one above. This signifies that the computer is trying to prove it’s identity by sending a fingerprint which relates to a key that only it knows. Depending on the security of the server you are connecting to they might distribute the fingerprint ahead of time for you to compare and advise you to double check it in case it changes at a later log on. In our case it is safe to type yes.\nNow you are prompted for a password. In an example of terribly bad practice, our password is the same as our username training .\nYou should now have a prompt very similar to the one you started with but with a new username and computer hostname. Take a look around with the ls command and you should see that your new session has its own completely independent filesystem. In this case we have some files from a sequencing experiment on the model organism Drosophila.\nLet’s say we wanted to copy these files to our local computer. To do this, first we need to go back to our original computer’s shell. Use the key combination Ctrl+D on an empty command prompt to log out (or alternatively the command exit).",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Access Remote Servers</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/01-ssh_scp.html#the-ssh-protocol",
+    "href": "materials/03-remotes/01-ssh_scp.html#the-ssh-protocol",
+    "title": "10  Access Remote Servers",
+    "section": "",
+    "text": "ssh training@remote-machine\n\n\nThe authenticity of host '[192.168.1.59]:2231 ([192.168.1.59]:2231)' can't be established.\nRSA key fingerprint is SHA256:4X1kUMDOG021U52XDL2U56GFIyC+S5koImofnTHvALk.\nAre you sure you want to continue connecting (yes/no)?\n\ntraining@192.168.1.59's password: ********\n\ntraining@remote_machine:~$\n\n\n\n\n\n\n\nPasswordless SSH\n\n\n\nInstead of a password authentication, you can use a key-based authentication method to access remote servers. This essentially allows you to access a remote server from a given computer without having to type your password every time.\nTo set this up, see here: How to Set Up Passwordless SSH Login.\n\n\n\n\n\n\n\n\nForwarding graphics over SSH\n\n\n\nMost remote servers offer a terminal-based interface only. However, it is possible to run a window-based application from the remote server using the so-called X Window System (or X11).\nTo learn more about this, see this page: Use X forwarding on a personal computer to securely run graphical applications.",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Access Remote Servers</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/01-ssh_scp.html#moving-files",
+    "href": "materials/03-remotes/01-ssh_scp.html#moving-files",
+    "title": "10  Access Remote Servers",
+    "section": "10.2 Moving files",
+    "text": "10.2 Moving files\nssh has a simple file copying counterpart called scp which uses all the same methods for authentication and encryption but focuses on copying files between computers in a similar manner to the cp command we learnt about before. Let’s see an example of copying a small file from our local computer to the remote server.\nMaking sure we’re in the data-shell directory let’s copy the README.txt file to the remote machine:\nscp README.txt training@remote-machine:/home/training\nREADME.txt                                    100%  563     1.2MB/s   00:00\nThe format of the command should be quite familiar when comparing to the cp command for local copying. The last two arguments specify the source and the destination of the copy respectively. The difference comes in that any remote locations involved in the copy must be preceded by the username@IP syntax used in the ssh command previously. The first half tells scp how to access the computer and the second half tells it where in the filesystem to operate, these two segments are separated by a :.\n\n\n\nIllustration of the scp command.\n\n\nIt looks like we’ve copied the file, but we should check.\nEstablishing a whole ssh session just to run one command might be a bit cumbersome. Instead we can tell ssh all the commands it needs to run at the same time we connect by adding an extra argument to the end. ssh will automatically disconnect after it completes the full command string.\nssh training@remote-machine \"ls /home/training/\"\nREADME.txt\ndrosophila\ndrosophila_samples.csv\nSuccess!",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Access Remote Servers</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/01-ssh_scp.html#exercises",
+    "href": "materials/03-remotes/01-ssh_scp.html#exercises",
+    "title": "10  Access Remote Servers",
+    "section": "10.3 Exercises",
+    "text": "10.3 Exercises\n\n\n\n\n\n\nExercise 1 - Copy directories with scp\n\n\n\n\n\n\nLevel: \nWhat happens if you try to copy the molecules directory to the remote computer? Looking at the manual page of scp can you find a way to solve this issue?\n\n\n\n\n\n\nHint\n\n\n\n\n\n\nSimilarly to the cp command, when we want to copy a directory with scp we need to specify the -r option. This is detailed in the manual page for this command.\n\n\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nIf we try to copy the molecules folder we get an error:\nscp molecules training@remote-machine:/home/training\nscp: molecules: not a regular file\nThis is because, by default, scp does not copy directories unless we specify the -r option (similarly to the standard cp command). The manual page says:\n-r      Recursively copy entire directories.\nSo, the correct command would be:\nscp -r molecules training@remote-machine:/home/training\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 2 - Copy from the remote\n\n\n\n\n\n\nLevel: \nNow we want to copy files from the remote server to our local machine.\nCopy the directory drosophila from the remote server to your local data-shell folder.\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nTo copy from a remote server we use the same syntax, but reverse the order of the arguments in the scp command: first we specify the remote server and file/directory and then the local folder we want to copy it to.\nscp -r training@remote-machine:drosophila ~/Desktop/data-shell/\ndrosophila_genome.fa                          100%  139MB 311.7MB/s   00:00    \nSRR307030_1.fastq.gz                          100%  441KB 177.3MB/s   00:00    \nSRR307026_2.fastq.gz                          100%  323KB 215.2MB/s   00:00    \nSRR307029_1.fastq.gz                          100%  444KB 199.4MB/s   00:00    \nSRR307027_1.fastq.gz                          100%  413KB 204.2MB/s   00:00    \nSRR307025_1.fastq.gz                          100%  414KB 219.9MB/s   00:00    \nSRR307027_2.fastq.gz                          100%  426KB 186.3MB/s   00:00    \nSRR307024_1.fastq.gz                          100%  389KB 162.0MB/s   00:00    \nSRR307025_2.fastq.gz                          100%  323KB 173.5MB/s   00:00    \nSRR307028_2.fastq.gz                          100%  419KB 204.1MB/s   00:00    \nSRR307030_2.fastq.gz                          100%  453KB 225.2MB/s   00:00    \nSRR307023_2.fastq.gz                          100%  328KB 199.3MB/s   00:00    \nSRR307028_1.fastq.gz                          100%  399KB 193.1MB/s   00:00    \nSRR307029_2.fastq.gz                          100%  461KB 229.3MB/s   00:00    \nSRR307024_2.fastq.gz                          100%  323KB 219.9MB/s   00:00    \nSRR307026_1.fastq.gz                          100%  408KB 197.7MB/s   00:00    \nSRR307023_1.fastq.gz                          100%  408KB 228.2MB/s   00:00 \nAnd we can run ls on our local computer to confirm the directory has been copied successfully.",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Access Remote Servers</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/01-ssh_scp.html#summary",
+    "href": "materials/03-remotes/01-ssh_scp.html#summary",
+    "title": "10  Access Remote Servers",
+    "section": "10.4 Summary",
+    "text": "10.4 Summary\n\n\n\n\n\n\nKey Points\n\n\n\n\nThe ssh program can be used to securely login to a remote server. The general command is ssh username@remote, where username is the user’s name on the remote machine and remote is the name of that machine (sometimes in the form of an IP address).\nTo copy files to/from a remote server we can use the scp command. The syntax for this command is ssh  username@remote:path_to_remote_file  path_on_local_machine to copy a file from the remote machine to the local machine or ssh  path_on_local_machine  username@remote:path_to_remote_file vice-versa.",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Access Remote Servers</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/02-remote_files.html",
+    "href": "materials/03-remotes/02-remote_files.html",
+    "title": "11  Remote Files",
+    "section": "",
+    "text": "11.1 File Sync\nIn the previous section we’ve seen how we can copy entire directories from the remote server using scp -r. For example:\nHowever scp isn’t always the best tool to use for managing this kind of operation. When you run scp it copies the entirety of every single file you specify even if it already exists in the destination. For an initial copy this is probably what you want, but if you change only a few files and want to synchronize the server copy to keep up with your changes it wouldn’t make sense to copy the entire directory structure again.\nFor this scenario rsync can be an excellent tool.\nFirst, we will add some new files to our remote drosophila directory using the touch command. This command does nothing but create an empty file or update the timestamp of an existing file.\nNow we have everything set up, we can issue the rsync command to sync our two directories:\nThe options used with rsync in this case mean:\nWhilst we’ve used rsync in mostly the same way as we did scp, it has many more customisation options as we can observe on the manual page man rsync. For example, the options --exclude and --include can be used to more granularly control which files are copied. Another option, --delete, is useful when you want to maintain an exact copy of the source including the deletion of files only present in the destination.\nOne important option that we can use is --dry-run, which performs a dry run indicating what would have been transferred or deleted by rsync, but without actually doing it. This can be extremely useful to check that we have specified our command correctly, before actually running it (and accidentally sync the wrong files!).",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Remote Files</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/02-remote_files.html#file-sync",
+    "href": "materials/03-remotes/02-remote_files.html#file-sync",
+    "title": "11  Remote Files",
+    "section": "",
+    "text": "scp -r training@remote-machine:drosophila ~/Desktop/data-shell\ndrosophila_genome.fa                          100%  139MB 311.7MB/s   00:00    \nSRR307030_1.fastq.gz                          100%  441KB 177.3MB/s   00:00    \nSRR307026_2.fastq.gz                          100%  323KB 215.2MB/s   00:00    \nSRR307029_1.fastq.gz                          100%  444KB 199.4MB/s   00:00    \nSRR307027_1.fastq.gz                          100%  413KB 204.2MB/s   00:00    \nSRR307025_1.fastq.gz                          100%  414KB 219.9MB/s   00:00    \nSRR307027_2.fastq.gz                          100%  426KB 186.3MB/s   00:00    \nSRR307024_1.fastq.gz                          100%  389KB 162.0MB/s   00:00    \nSRR307025_2.fastq.gz                          100%  323KB 173.5MB/s   00:00    \nSRR307028_2.fastq.gz                          100%  419KB 204.1MB/s   00:00    \nSRR307030_2.fastq.gz                          100%  453KB 225.2MB/s   00:00    \nSRR307023_2.fastq.gz                          100%  328KB 199.3MB/s   00:00    \nSRR307028_1.fastq.gz                          100%  399KB 193.1MB/s   00:00    \nSRR307029_2.fastq.gz                          100%  461KB 229.3MB/s   00:00    \nSRR307024_2.fastq.gz                          100%  323KB 219.9MB/s   00:00    \nSRR307026_1.fastq.gz                          100%  408KB 197.7MB/s   00:00    \nSRR307023_1.fastq.gz                          100%  408KB 228.2MB/s   00:00 \n\n\n\nssh training@remote-machine \"touch ~/drosophila/new_file1.txt ~/drosophila/new_file2.txt ~/drosophila/new_file3.txt\"\n\nrsync -a -u -v -h -z training@remote-machine:drosophila/ drosophila/\n\n\n-a (or --archive) sets rsync to synchronise only the files that changed (have a different timestamp) between the two locations, and it also preserves filesystem metadata (which is useful if you want to sync a copy back to the original location later).\n-u (or --update) makes sure only files that are newer in the source directory are transferred. This may be desirable to set in case you have newer versions in the destination folder that you don’t want to overwrite with older versions locally.\n-v (or --verbose) outputs status information during the transfer. This is helpful when running the command interactively but should generally be removed when writing scripts.\n-h (or --human-readable) prints file sizes in human readable format.\n-z (or --compress) will compress the data in transit. This is good practice depending on the speed of your connection (although in our case it is a little unecessary).\n\n\n\n\n\n\n\nWarning\n\n\n\nWhen you specify the source directory as path/to/source/ (with / at the end) or path/to/source (without / at the end), rsync will do different things:\n\npath/to/source_folder/ will copy the files within source_folder but not the folder itself\npath/to/source_folder will copy the actual source_folder as well as all the files within it",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Remote Files</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/02-remote_files.html#exercise-rsync---delete",
+    "href": "materials/03-remotes/02-remote_files.html#exercise-rsync---delete",
+    "title": "11  Remote Files",
+    "section": "11.2 Exercise: rsync --delete",
+    "text": "11.2 Exercise: rsync --delete\nLet’s tidy up our local drosophila directory by deleting the empty files we created earlier:\nrm drosophila/new_file*\nNow, let’s synchronise this copy of the folder with the copy on the remote machine, including the removal of these files. We can use the --delete flag to do this.\nTry and build the rsync command to perform this operation. Keep in mind that for rsync a path with a / at the end means the contents of a directory rather than the directory itself. Also, make sure to use --dry-run first to check what your command would do, before actually running it.\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nFor checking whether we are specifying our command with the --delete flag correctly, we can first do a dry-run (which will indicate what rsync would do, but without actually doing it):\nrsync --dry-run -auvz --delete drosophila/ training@remote-machine:drosophila/\nsending incremental file list\ndeleting new_file2.txt\ndeleting new_file1.txt\n./\n\nsent 453 bytes  received 55 bytes  203.20 bytes/sec\ntotal size is 152,792,450  speedup is 300,772.54 (DRY RUN)\nFrom this output we can see that this command would delete the new files, since they now don’t exist in our local folder anymore. Once we’re happy with the list of files that are transferred or deleted, we can then run our command without the --dry-run option:\nrsync -auvz --delete drosophila/ training@remote-machine:drosophila/\nAnd we could check back on our remote server that those files are now gone and the two folders are synced with each other.",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Remote Files</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/02-remote_files.html#mounting-remote-filesystem",
+    "href": "materials/03-remotes/02-remote_files.html#mounting-remote-filesystem",
+    "title": "11  Remote Files",
+    "section": "11.3 Mounting remote filesystem",
+    "text": "11.3 Mounting remote filesystem\nAnother way of accessing files on a remote server is to link the remote filesystem to a local folder on our computer - this is referred to as a mount point. This is done using SSHFS, which is another way of using the same SSH protocol to share files over a mount point.\nLet’s start by making a directory in ~/Desktop/data-shell to act as this mount point. Convention tells us to call it mnt:\nmkdir mnt\nNow we can run the sshfs command like this:\nsshfs training@remote-machine:/home/training /home/ubuntu/Desktop/data-shell/mnt/\nIt looks fairly similar to the previous copying commands. The first argument is a remote source, the second argument is a local destination. The difference is that now whenever we interact with our local mount point it will be as if we were interacting with the remote filesystem starting at the directory we specified.\ncd /home/ubuntu/Desktop/data-shell/mnt/ \nls -l\ntotal 12K\n-rwxr-xr-x 1 1001 1001  563 Oct 18 10:14 README.txt\ndrwxr-xr-x 1 1001 1001 4.0K Oct 18 13:47 drosophila\n-rwxr-xr-x 1 1001 1001  611 Oct 17 14:30 drosophila_samples.csv\nThe files shown are not on the local machine at all but we can still access and edit them. Much like the concept of a shared network drive in Windows.\nThis approach is particularly useful when you need to use a program which isn’t available on the remote server to edit or visualize files stored remotely. Keep in mind however, that every action taken on these files is being encrypted and sent over the network. Using this approach for computationally intense tasks could substantially slow down the time to completion.\nIt’s also worth noting that this isn’t the only way to mount remote directories in linux. Protocols such as nfs and samba are actually more common and may be more appropriate for a given use case. SSHFS has the advantage of running over SSH so it requires very little set up on the remote computer.",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Remote Files</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/02-remote_files.html#downloading-web-resources",
+    "href": "materials/03-remotes/02-remote_files.html#downloading-web-resources",
+    "title": "11  Remote Files",
+    "section": "11.4 Downloading Web Resources",
+    "text": "11.4 Downloading Web Resources\nOftentimes we may want to download data from a web resource. For this, we can use the software wget, which is mainly used for accessing resources that can be downloaded over http(s) and doesn’t have a mechanism for uploading/pushing files.\nWhilst this tool can be customised to do a wide range of tasks at its simplest it can be used to download datasets for processing at the start of an analysisi pipeline.\nFor example, the data for this course can be downloaded as follows:\nwget -O course_data.zip \"https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1\"\n--2022-10-18 14:13:22--  https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1\nResolving www.dropbox.com (www.dropbox.com)... 162.125.64.18, 2620:100:6020:18::a27d:4012\nConnecting to www.dropbox.com (www.dropbox.com)|162.125.64.18|:443... connected.\nHTTP request sent, awaiting response... 302 Found\nLocation: /sh/dl/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a [following]\nResolving uc1bdbe8464e973f3d5adb36ffdb.dl-eu.dropboxusercontent.com (uc1bdbe8464e973f3d5adb36ffdb.dl-eu.dropboxusercontent.com)... 162.125.64.15, 2620:100:6020:15::a27d:400f\nConnecting to uc1bdbe8464e973f3d5adb36ffdb.dl-eu.dropboxusercontent.com (uc1bdbe8464e973f3d5adb36ffdb.dl-eu.dropboxusercontent.com)|162.125.64.15|:443... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 60215338 (57M) [application/zip]\nSaving to: course_data.zip\n\ncourse_data.zip                   100%[===========================================================&gt;]  57.43M  60.5MB/s    in 0.9s    \n\n2022-10-18 14:13:25 (60.5 MB/s) - course_data.zip saved [60215338/60215338]\nThis downloads the zip file from Dropbox and saves it with the name course_data.zip (which we set with the -O option). For large files or sets of files there are also a few useful flags:\n\n-b runs the task in the background and writes all output into a log file\n-c can be used to resume a download that has failed mid-way\n-i can take a file with a list of URLs for downloading\n\nWhere tools like wget shine in particular is in using URLs generated by web-based REST APIs like the one offered by Ensembl.\nIf you find wget limiting for this purpose, a similar command called curl can be slightly more customisable for use in programming. Here is the curl command used to simply download a file:\ncurl -o course_data.zip -L \"https://www.dropbox.com/sh/d9kjkq0053uyxxc/AAAzFpD0NfUmxvoQxeZRpMw8a?dl=1\"\n\n\n\n\n\n\nNote\n\n\n\nThe wget command is usually not available by default on macOS. Instead you can use the curl command.",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Remote Files</span>"
+    ]
+  },
+  {
+    "objectID": "materials/03-remotes/02-remote_files.html#summary",
+    "href": "materials/03-remotes/02-remote_files.html#summary",
+    "title": "11  Remote Files",
+    "section": "11.5 Summary",
+    "text": "11.5 Summary\n\n\n\n\n\n\nKey Points\n\n\n\n\nrsync can be used to synchronise files between a local directory and a remote server. This is a flexible tool, allowing for more customisation compared to a simpler command such as scp.\nsshfs can be used to mount a remote directory directly on the local computer, allowing us to interact with the files in the remote server as if they were a new drive on your computer.\nsshfs should not be used for compute-heavy operations, as the data is being communicated over the network, making it slower for heavier work.\nwget and curl can be used to download static content from web-based resources.",
+    "crumbs": [
+      "Slides",
+      "Remote Work",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Remote Files</span>"
+    ]
+  },
+  {
+    "objectID": "materials/04-misc/01-sed.html",
+    "href": "materials/04-misc/01-sed.html",
+    "title": "12  SED",
+    "section": "",
+    "text": "12.1 Text Replacement\nOne of the most prominent text-processing utilities is the sed command, which is short for “stream editor”. A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline).\nsed contains several sub-commands, but the main one we will cover is the substitute or s command. The syntax is:\nWhere pattern is the word we want to substitute and replacement is the new word we want to use instead. There are also other “options” added at the end of the command, which change the default behaviour of the text substitution. Some of the common options are:\nFor example, let’s create a file with some text inside it:\nIf we do:\nThis is the result\nWe can see that the first “world” word was replaced with “participant”. This is the default behaviour of sed: only the first pattern it finds in a line of text is replaced with the new word. We can modify this by using the g option after the last /:",
+    "crumbs": [
+      "Slides",
+      "Advanced text processing",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>SED</span>"
+    ]
+  },
+  {
+    "objectID": "materials/04-misc/01-sed.html#text-replacement",
+    "href": "materials/04-misc/01-sed.html#text-replacement",
+    "title": "12  SED",
+    "section": "",
+    "text": "sed 's/pattern/replacement/options'\n\n\ng: by default sed will only substitute the first match of the pattern. If we use the g option (“global”), then sed will substitute all matching text.\ni: by default sed matches the pattern in a case-sensitive manner. For example ‘A’ and ‘a’ are treated as different. If we use the i option (“case-insensitive”) then sed will treat ‘A’ and ‘a’ as the same.\n\n\necho \"Hello world. How are you world?\" &gt; hello.txt\n\nsed 's/world/participant/' hello.txt\n\nHello participant. How are you world?\n\nsed 's/world/participant/g' hello.txt\nHello participant. How are you participant?\n\n\n\n\n\n\nRegular Expressions\n\n\n\nFinding patterns in text can be a very powerful skill to master. In our examples we have been finding a literal word and replacing it with another word. However, we can do more complex text substitutions by using special keywords that define a more general pattern. These are known as regular expressions.\nFor example, in regular expression syntax, the character . stands for “any character”. So, for example, the pattern H. would match a “H” followed by any character, and the expression:\nsed 's/H./X/g' hello.txt\nResults in:\nXllo world. Xw are you world?\nNotice how both “He” (at the start of the word “Hello”) and “Ho” (at the start of the word “How”) are replaced with the letter “X”. Because both of them match the pattern “H followed by any character” (H.).\nTo learn more see this Regular Expression Cheatsheet.",
+    "crumbs": [
+      "Slides",
+      "Advanced text processing",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>SED</span>"
+    ]
+  },
+  {
+    "objectID": "materials/04-misc/01-sed.html#the-escape-character",
+    "href": "materials/04-misc/01-sed.html#the-escape-character",
+    "title": "12  SED",
+    "section": "12.2 The \\ Escape Character",
+    "text": "12.2 The \\ Escape Character\nYou may have asked yourself, if / is used to separate parts of the sed substitute command, then how would we replace the “/” character itself in a piece of text? For example, let’s add a new line of text to our file:\necho \"Welcome to this workshop/course.\" &gt;&gt; hello.txt\nLet’s say we wanted to replace “workshop/course” with “tutorial” in this text. If we did:\nsed 's/workshop/course/tutorial/' hello.txt\nWe would get an error:\nsed: -e expression #1, char 5: unknown option to `s'\nThis is because we ended up with too many / in the command, and sed uses that to separate its different parts of the command. In this situation we need to tell sed to ignore that / as being a special character but instead treat it as the literal “/” character. To to this, we need to use \\ before /, which is called the “escape” character. That will tell sed to treat the / as a normal character rather than a separator of its commands. So:\nsed 's/workshop\\/course/tutorial/' hello.txt\n                ↑\n            This / is \"escaped\" with \\ beforehand\nThis looks a little strange, but the main thing to remember is that \\/ will be interpreted as the character “/” rather than the separator of sed’s substitute command.\nThe output now would be what we wanted:\nHello world. How are you world?\nWelcome to this tutorial.",
+    "crumbs": [
+      "Slides",
+      "Advanced text processing",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>SED</span>"
+    ]
+  },
+  {
+    "objectID": "materials/04-misc/01-sed.html#alternative-separator",
+    "href": "materials/04-misc/01-sed.html#alternative-separator",
+    "title": "12  SED",
+    "section": "12.3 Alternative separator: |",
+    "text": "12.3 Alternative separator: |\nInstead of using the escape character, like we did above, sed can also use the character | to separate the two parts of the expression. Our command could have instead been written as:\nsed 's|workshop/course|tutorial|' hello.txt\nHello world. How are you world?\nWelcome to this tutorial.\nThis is a little easier to read, as we avoid using the \\ escape character in our pattern to be replaced.",
+    "crumbs": [
+      "Slides",
+      "Advanced text processing",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>SED</span>"
+    ]
+  },
+  {
+    "objectID": "materials/04-misc/01-sed.html#removing-text",
+    "href": "materials/04-misc/01-sed.html#removing-text",
+    "title": "12  SED",
+    "section": "12.4 Removing text",
+    "text": "12.4 Removing text\nThe sed command can be used to remove text from an input. The way to do it is to use nothing as the text to be replaced with. For example, if we wanted to remove the word “world” from our example file, we could do:\nsed 's/ world//g' hello.txt\nOr, equivalently, using the | vertical separator:\nsed 's| world||g' hello.txt\nHello. How are you?\nWelcome to this workshop/course.\nA few things to note in our command above:\n\nWe included the ” ” space before “world”, to make sure we also remove it from the text.\nThe second part of the sed substitution we left blank, that’s why we have two consecutive // (or ||), to indicate we are replacing ” world” with nothing.\nWe made sure to include the g modifier, so that we replace both occurrences of the world “world”.",
+    "crumbs": [
+      "Slides",
+      "Advanced text processing",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>SED</span>"
+    ]
+  },
+  {
+    "objectID": "materials/04-misc/01-sed.html#exercises",
+    "href": "materials/04-misc/01-sed.html#exercises",
+    "title": "12  SED",
+    "section": "12.5 Exercises",
+    "text": "12.5 Exercises\n\n\n\n\n\n\nExercise 1 - Text replacement\n\n\n\n\n\n\nLevel: \nWorking from the coronavirus/variants directory, when we run this command:\ncat *_variants.csv | grep \"Alpha\"\nWe obtain the following:\nIN01,20I (Alpha; V1)\nIN03,20I (Alpha; V1)\nIN22,20I (Alpha; V1)\nIN23,20I (Alpha; V1)\nIN26,20I (Alpha; V1)\nIN27,20I (Alpha; V1)\n\n... more output omitted...\nModify the command so that our ouput looks like this:\nIN01,Alpha (version 1)\nIN03,Alpha (version 1)\nIN22,Alpha (version 1)\nIN23,Alpha (version 1)\nIN26,Alpha (version 1)\nIN27,Alpha (version 1)\n\n... more output omitted...\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nWe could use the command:\ncat *_variants.csv | grep \"Alpha\" | sed 's/20I (//' | sed 's/; V1)/ (version 1)/'\nWe substitute the text in two steps:\n\nThe first sed is used to replace the text “20I (” with nothing (effectively removing that text from the output).\nThe second sed is used to replace the text “; V1)” with ” (version 1)“.\n\nNote that the two sed steps could also have been done in the opposite order (in this case the order was not important).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 2 - Searching for sed solutions\n\n\n\n\n\n\nLevel: \nMany (if not most!) users of the command line don’t actually know how to program with sed. But they can be very good a searching for solutions to their questions, using resources such as Stack Overflow. So, let’s practice some web searching skills!\nIn the directory coronavirus/ you will find the file proteins.fa.gz, which contains the sequences of proteins in the SARS-CoV-2 genome. This file is in a text-based format called FASTA, where each sequence name starts with &gt;, followed by one or more lines containing the actual sequence. For example:\n&gt;sequence 1\nGCTACGTACGTGCTG\nGCTAGCTAGGTACGC\n&gt;sequence 2\nGCCGTACGGAGCTAC\nGCACGTACGATGGTA\nFrom the coronavirus/proteins.fa.gz extract the sequence containing the “S” protein only, so your output should be:\n&gt;S protein=surface glycoprotein\nMFVFLVLLPLVSSQCVNLTTRTQLPPAYTNSFTRGVYYPDKVFRSSVLHSTQDLFLPFFSNVTWFHAIHV\nSGTNGTKRFDNPVLPFNDGVYFASTEKSNIIRGWIFGTTLDSKTQSLLIVNNATNVVIKVCEFQFCNDPF\nLGVYYHKNNKSWMESEFRVYSSANNCTFEYVSQPFLMDLEGKQGNFKNLREFVFKNIDGYFKIYSKHTPI\nNLVRDLPQGFSALEPLVDLPIGINITRFQTLLALHRSYLTPGDSSSGWTAGAAAYYVGYLQPRTFLLKYN\nENGTITDAVDCALDPLSETKCTLKSFTVEKGIYQTSNFRVQPTESIVRFPNITNLCPFGEVFNATRFASV\nYAWNRKRISNCVADYSVLYNSASFSTFKCYGVSPTKLNDLCFTNVYADSFVIRGDEVRQIAPGQTGKIAD\nYNYKLPDDFTGCVIAWNSNNLDSKVGGNYNYLYRLFRKSNLKPFERDISTEIYQAGSTPCNGVEGFNCYF\nPLQSYGFQPTNGVGYQPYRVVVLSFELLHAPATVCGPKKSTNLVKNKCVNFNFNGLTGTGVLTESNKKFL\nPFQQFGRDIADTTDAVRDPQTLEILDITPCSFGGVSVITPGTNTSNQVAVLYQDVNCTEVPVAIHADQLT\nPTWRVYSTGSNVFQTRAGCLIGAEHVNNSYECDIPIGAGICASYQTQTNSPRRARSVASQSIIAYTMSLG\nAENSVAYSNNSIAIPTNFTISVTTEILPVSMTKTSVDCTMYICGDSTECSNLLLQYGSFCTQLNRALTGI\nAVEQDKNTQEVFAQVKQIYKTPPIKDFGGFNFSQILPDPSKPSKRSFIEDLLFNKVTLADAGFIKQYGDC\nLGDIAARDLICAQKFNGLTVLPPLLTDEMIAQYTSALLAGTITSGWTFGAGAALQIPFAMQMAYRFNGIG\nVTQNVLYENQKLIANQFNSAIGKIQDSLSSTASALGKLQDVVNQNAQALNTLVKQLSSNFGAISSVLNDI\nLSRLDKVEAEVQIDRLITGRLQSLQTYVTQQLIRAAEIRASANLAATKMSECVLGQSKRVDFCGKGYHLM\nSFPQSAPHGVVFLHVTYVPAQEKNFTTAPAICHDGKAHFPREGVFVSNGTHWFVTQRNFYEPQIITTDNT\nFVSGNCDVVIGIVNNTVYDPLQPELDSFKEELDKYFKNHTSPDVDLGDISGINASVVNIQKEIDRLNEVA\nKNLNESLIDLQELGKYEQYIKWPWYIWLGFIAGLIAIVMVTIMLCCMTSCCSCLKGCCSCGSCCKFDEDD\nSEPVLKGVKLHYT\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n\nFirst investigate the content of the file with zcat proteins.fa.gz | less to find what the protein you are looking for is called, as well as the protein that comes after it.\nTry a web search for “sed extract lines between two patterns”.\nIf your search is not leading you anywhere, then try this link.\n\n\n\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nLike the hint suggested, a web search for “sed extract lines between two patterns” will bring this Stack Overflow answer as one of the first hits.\nThe person answering suggests that to search for two patterns (PAT1 and PAT2) but without returning PAT2 in the output, we can do: sed -n '/PAT1/{:a;N;/PAT2/!ba;s/\\n[^\\n]*$//p}' file. So, we can adjust this code for our case:\nzcat proteins.fa.gz | sed -n '/&gt;S/{:a;N;/&gt;ORF3a/!ba;s/\\n[^\\n]*$//p}'\nIn our case, the first pattern is &gt;S (the name of the protein we are interested in) and the second pattern is &gt;ORF3a (which is the protein following that one).\nDo we have to understand what just happened? In some situations, maybe… but for most applications it’s enough to know how to look for the answer!",
+    "crumbs": [
+      "Slides",
+      "Advanced text processing",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>SED</span>"
+    ]
+  },
+  {
+    "objectID": "materials/04-misc/01-sed.html#summary",
+    "href": "materials/04-misc/01-sed.html#summary",
+    "title": "12  SED",
+    "section": "12.6 Summary",
+    "text": "12.6 Summary\n\n\n\n\n\n\nKey Points\n\n\n\n\nThe sed tool can be used for advanced text manipulation. The “substitute” command can be used to text replacement: sed 's/pattern/replacement/options'.\nCommon options that can be used with sed include:\n\ng for global substitution, rather than just the first match.\ni for case-insensitive substitution, rather than being case-sensitive.\n\nTo remove part of a text we can leave the “replacement” part of the command empty: sed 's/pattern//g' (this would replace “pattern” with nothing, i.e. removing it).\nWhile sed is extremely versatile, learning and remembering all of its operations can be challenging. Instead, effective web-searching can often lead us to solutions for not-so-trivial text manipulation problems, without the need to learn all the workings of the tool.",
+    "crumbs": [
+      "Slides",
+      "Advanced text processing",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>SED</span>"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html",
+    "href": "materials/99-extras/01-cheatsheet.html",
+    "title": "Unix Cheat Sheet",
+    "section": "",
+    "text": "Documentation and Help\nThis document gives a brief summary of useful Unix commands. Anything within { and } indicates a user-provided input ({ and } should not be included in the commands).",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#documentation-and-help",
+    "href": "materials/99-extras/01-cheatsheet.html#documentation-and-help",
+    "title": "Unix Cheat Sheet",
+    "section": "",
+    "text": "man {command}\nmanual page for the program\n\n\nwhatis {command}\nshort description of the program\n\n\n{command} --help\nmany programs use the --help flag to print documentation",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#listing-files",
+    "href": "materials/99-extras/01-cheatsheet.html#listing-files",
+    "title": "Unix Cheat Sheet",
+    "section": "Listing files",
+    "text": "Listing files\n\n\n\nls\nlist files in the current directory\n\n\nls {path}\nlist files in the specified path\n\n\nls -l {path}\nlist files in long format (more information)\n\n\nls -a {path}\nlist all files (including hidden files)",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#change-directories",
+    "href": "materials/99-extras/01-cheatsheet.html#change-directories",
+    "title": "Unix Cheat Sheet",
+    "section": "Change Directories",
+    "text": "Change Directories\n\n\n\n\n\n\n\ncd {path}\nchange to the specified directory\n\n\ncd or cd ~\nchange to the home directory\n\n\ncd ..\nmove back one directory\n\n\npwd\nprint working directory. Shows the full path of where you are at the moment (useful if you are lost)",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#make-or-remove-directories",
+    "href": "materials/99-extras/01-cheatsheet.html#make-or-remove-directories",
+    "title": "Unix Cheat Sheet",
+    "section": "Make or Remove Directories",
+    "text": "Make or Remove Directories\n\n\n\n\n\n\n\nmkdir {dirname}\ncreate a directory with specified name\n\n\nrmdir {dirname}\nremove a directory (only works if the directory is empty)\n\n\nrm -r {dirname}\nremove the directory and all it’s contents (use with care)",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#copy-move-and-remove-files",
+    "href": "materials/99-extras/01-cheatsheet.html#copy-move-and-remove-files",
+    "title": "Unix Cheat Sheet",
+    "section": "Copy, Move and Remove Files",
+    "text": "Copy, Move and Remove Files\n\n\n\n\n\n\n\ncp {source/path/file1} {target/path/}\ncopy “file1” to another directory keeping its name\n\n\ncp {source/path/file1} {target/path/file2}\ncopy “file1” to another directory naming it “file2”\n\n\ncp {file1} {file2}\nmake a copy of “file1” in the same directory with a new name “file2”\n\n\nmv {source/path/file1} {target/path/}\nmove “file1” to another directory keeping its name\n\n\nmv {source/path/file1} {target/path/file2}\nmove “file1” to another directory renaming it as “file2”\n\n\nmv {file1} {file2}\nis equivalent to renaming a file\n\n\nrm {filename}\nremove a file",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#view-text-files",
+    "href": "materials/99-extras/01-cheatsheet.html#view-text-files",
+    "title": "Unix Cheat Sheet",
+    "section": "View Text Files",
+    "text": "View Text Files\n\n\n\n\n\n\n\nless {file}\nview and scroll through a text file\n\n\nhead {file}\nprint the first 10 lines of a file\n\n\nhead -n {N} {file}\nprint the first N lines of a file\n\n\ntail {file}\nprint the last 10 lines of a file\n\n\ntail -n {N} {file}\nprint the last N lines of a file\n\n\nhead -n {N} {file} | tail -n 1\nprint the Nth line of a file\n\n\ncat {file}\nprint the whole content of the file\n\n\ncat {file1} {file2} {...} {fileN}\nconcatenate files and print the result\n\n\nzcat {file} and zless {file}\nlike cat and less but for compressed files (.zip or .gz)",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#find-patterns",
+    "href": "materials/99-extras/01-cheatsheet.html#find-patterns",
+    "title": "Unix Cheat Sheet",
+    "section": "Find Patterns",
+    "text": "Find Patterns\nFinding (and replacing) patterns in text is a very powerful feature of several command line programs. The patterns are specified using regular expressions (shortened as regex), which are not covered in this document. See this Regular Expressions Cheat Sheet for a comprehensive overview.\n\n\n\n\n\n\n\ngrep {regex} {file}\nprint the lines of the file that have a match with the regular expression pattern",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#wildcards",
+    "href": "materials/99-extras/01-cheatsheet.html#wildcards",
+    "title": "Unix Cheat Sheet",
+    "section": "Wildcards",
+    "text": "Wildcards\n\n\n\n\n\n\n\n*\nmatch any number of characters\n\n\n?\nmatch any character only once\n\n\nExamples\n\n\n\nls sample*\nlist all files that start with the word “sample”\n\n\nls *.txt\nlist all the files with .txt extension\n\n\ncp * {another/directory}\ncopy all the files in the current directory to a different directory",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#redirect-output",
+    "href": "materials/99-extras/01-cheatsheet.html#redirect-output",
+    "title": "Unix Cheat Sheet",
+    "section": "Redirect Output",
+    "text": "Redirect Output\n\n\n\n\n\n\n\n{command} &gt; {file}\nredirect output to a file (overwrites if the file exists)\n\n\n{command} &gt;&gt; {file}\nappend output to a file (creates a new file if it does not already exist)",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/01-cheatsheet.html#combining-commands-with-pipes",
+    "href": "materials/99-extras/01-cheatsheet.html#combining-commands-with-pipes",
+    "title": "Unix Cheat Sheet",
+    "section": "Combining Commands with | Pipes",
+    "text": "Combining Commands with | Pipes\n\n\n\n\n\n\n\n&lt;command1&gt; | &lt;command2&gt;\nthe output of “command1” is passed as input to “command2”\n\n\nExamples\n\n\n\nls | wc -l\ncount the number of files in a directory\n\n\ncat {file1} {file2} | less\nconcatenate files and view them with less\n\n\ncat {file} | grep \"{pattern}\" | wc -l\ncount how many lines in the file have a match with “pattern”",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/02-wsl.html",
+    "href": "materials/99-extras/02-wsl.html",
+    "title": "Unix on Windows",
+    "section": "",
+    "text": "Installing WSL2\nIn Data & Setup we recommended installing MobaXterm as a way to have a Linux-like terminal on Windows. While easy to install, MobaXterm is not a fully-featured Linux environment. This means that if you want to run specialised software which only runs on Linux (e.g. in the field of bioinformatics or machine learning), then MobaXterm is quite limited.\nThe recommended alternative is to install the Windows Subsystem for Linux (WSL2), available for Windows 11 (and recent versions of Windows 10). WSL2 is a compatibility layer within Windows that enables users to run a Linux “core” alongside the Windows operating system. It provides a seamless integration between Windows and Linux environments, allowing users to execute native Linux commands and run Linux applications directly on a Windows machine. WSL2 is designed to be compatible with the Windows filesystem, allowing you to seamlessly interact with your Windows files.\nThere are detailed instructions on how to install WSL on the Microsoft documentation page. But briefly:\nYou should now have access to a Ubuntu Linux terminal. This behaves very much like a regular Ubuntu server.",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix on Windows"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/02-wsl.html#installing-wsl2",
+    "href": "materials/99-extras/02-wsl.html#installing-wsl2",
+    "title": "Unix on Windows",
+    "section": "",
+    "text": "Click the Windows key and search for Windows PowerShell, right-click on the app and choose Run as administrator.\nAnswer “Yes” when it asks if you want the App to make changes on your computer.\nA terminal will open; run the command: wsl --install.\nProgress bars will show while installing “Virtual Machine Platform”, “Windows Subsystem for Linux” and finally “Ubuntu” (this process can take a long time).\n\nNote: it has happened to us in the past that the terminal freezes at the step of installing “Ubuntu”. If it is frozen for ~1h at that step, press Ctrl + C and hopefully you will get a message saying “Ubuntu installed successfully”.\n\nAfter installation completes, restart your computer.\nAfter restart, a terminal window will open asking you to create a username and password.\nIf it doesn’t, click the Windows key and search for Ubuntu, click on the App and it should open a new terminal.\n\nYou can use the same username and password that you have on Windows, or a different one - it’s your choice. Spaces and other special characters are not allowed for your Ubuntu username.\nNote: when you type your password nothing seems to be happening as the cursor doesn’t move. However, the terminal is recording your password as you type. You will be asked to type the new password again to confirm it, so you can always try again if you get it wrong the first time.\n\n\n\n\nConfiguring WSL2\nAfter installation, it is useful to create shortcuts to your files on Windows. Your main C:\\ drive is located in /mnt/c/ and other drives will be equally available based on their letter. To create shortcuts to commonly-used directories you use symbolic links. Here are some commands to automatically create shortcuts to your Windows “Documents”, “Desktop” and “Downloads” folders (copy/paste these commands on the terminal):\nln -s $(wslpath $(powershell.exe '[environment]::getfolderpath(\"MyDocuments\")' | tr -d '\\r')) ~/Documents\nln -s $(wslpath $(powershell.exe '[environment]::getfolderpath(\"Desktop\")' | tr -d '\\r')) ~/Desktop\nln -s $(wslpath $(powershell.exe '[environment]::getfolderpath(\"UserProfile\")' | tr -d '\\r'))/Downloads ~/Downloads\nYou may also want to configure the Windows terminal to automatically open WSL2 (instead of the default Windows Command Prompt or Powershell):\n\nSearch for and open the “ Terminal” application.\nClick on the down arrow  in the toolbar.\nClick on “ Settings”.\nUnder “Default Profile” select “ Ubuntu”.",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix on Windows"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/02-wsl.html#visual-studio-code",
+    "href": "materials/99-extras/02-wsl.html#visual-studio-code",
+    "title": "Unix on Windows",
+    "section": "Visual Studio Code",
+    "text": "Visual Studio Code\nThis is an additional software recommendation for a text editor. Strictly speaking, you do not need this software for working on WSL2, but we recommend it because of how well it integrates with it. Although you can use nano to edit your scripts, Visual Studio Code offers a more user-friendly and fully-featured alternative to it.\nTo install Visual Studio Code:\n\nGo to the Visual Studio Code download page and download the installer for your operating system. Double-click the downloaded file to install the software, accepting all the default options.\nAfter completing the installation, search for “Visual Studio Code” and launch the application.\nGo to “File &gt; Preferences &gt; Settings”, then select “Text Editor &gt; Files” on the drop-down menu on the left. Scroll down to the section named “EOL” and choose “\\n” (this will ensure that the files you edit on Windows are compatible with the Linux operating system).\nPress Ctrl + Shift + P. Search for “Terminal: Select Default Profile” and click. Then click on either “WSL Ubuntu” or “bash”.\nYou can now close VS Code.\n\nNow, when you are working on WSL2, you can open VS Code from the directory you are working from by typing the command code .. VS Code provides a file explorer panel on the left, from where you can conveniently open any scripts you are working on. You can also open a terminal from within VS Code by going to “Terminal &gt; New Terminal”.",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Unix on Windows"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/03-faqs.html",
+    "href": "materials/99-extras/03-faqs.html",
+    "title": "Frequently Asked Questions",
+    "section": "",
+    "text": "Shell 101",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Frequently Asked Questions"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/03-faqs.html#shell-101",
+    "href": "materials/99-extras/03-faqs.html#shell-101",
+    "title": "Frequently Asked Questions",
+    "section": "",
+    "text": "What is a kernel and what is a shell?\nThe kernel is the core component of an operating system (OS). The shell is the user interface that interacts with the kernel.\n\n\nWhat are some common shells?\nThe “Bourne shell” (bsh) was the first default shell on Unix systems. bash stands for “Bourne again shell” and is an extension of the Bourne shell. If you’re a Mac user, you may see the beginning of your terminal line says zsh, standing for the “Z shell”, which is another shell created as an extension for bsh.",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Frequently Asked Questions"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/03-faqs.html#terminal-syntax-shortcuts-and-quick-fixes",
+    "href": "materials/99-extras/03-faqs.html#terminal-syntax-shortcuts-and-quick-fixes",
+    "title": "Frequently Asked Questions",
+    "section": "Terminal Syntax, Shortcuts, and Quick Fixes",
+    "text": "Terminal Syntax, Shortcuts, and Quick Fixes\n\nWhat do I do if the terminal seems stuck or I want to cancel a command?\nIf you mistakenly wrote a command and want to cancel or if you launched a command and for some reason, the command is “stuck” or taking too long to run, then you can do Ctrl + C and see whether the cursor returns to your usual command line.\n\n\nI don’t see the $ at the beginning of the line anymore, what can I do?\nCtrl + C aborts the current task and returns control to the user.\n\n\nWhat do the different text colours in terminal mean?\nEvery terminal environment looks different and the colour scheme varies in different terminal systems. The first part, such as username@machine:~$ in green displays your username, the name of the computer, the location (or folder) in the filesystem where you are currently.\n\n\n\nImage of terminal here\n\n\n\n\nHow can I autocomplete names of folders/paths in the terminal?\nYou can use the Tab key to autocomplete names of folders/paths. If there are multiple files with the same beginning, eg: Desktop and DesktopFolder, it will autocomplete until the “p” in Desktop as that is the end of the common string (please remember the terminal is case-sensitive). It will not autocomplete further until it sees a character that would make one name different from the other. You can press “Tab” twice to see what options you have to autocomplete. In this case, you could type DesktopF and then use the “Tab” key to autocomplete to DesktopFolder.\n\n\nHow can I re-run previously run commands without typing them out again?\nIf you press the up arrow key multiple times it will give you the last commands you have run in historical order.\n\n\nIs there any merit to using an absolute path or a relative path over the other?\nOften, when working on projects, it may be preferable to use relative paths as it makes one’s code more “portable”. For example, if this is Person A’s folder structure:\n/home\n        |_ hugot\n            |_ Documents\n                |_ my_awesome_project\n                    |_ data\n                    |_ results \nPerson A is running a tool that takes some input data and outputs into the results directory. If they specify a command as follows: command --input data/input_file.txt  --output results/\nThis command will work for Person A provided they are in the my_awesome_project folder. If they instead decide to copy the folder to ~/Desktop, the code will still work. Further, if they shared the same code with Person B, the code will still work for them when ran as-is as long as Person B runs the code relative to my_awesome_project (i.e. they can cd into that folder, wherever it’s located in their filesystem). However, if Person A instead used a full path: command --input /home/hugot/Documents/my_awesome_project/data/input_file.txt  --output /home/hugot/Documents/my_awesome_project/data/results/\nthere would arise some issues: The code is very long and therefore harder to read. If the data is moved into a different folder (whether it’s the same person running it or someone they have shared it with running it), file paths would have to be changed. This makes it harder to use repeatedly (unless working in the very same folder) and share with others (often working on a collaborative project).\nTherefore, it is recommended that relative paths are used. It is noteworthy that what is considered to be a “project folder” is typically at the user’s discretion (it is up to you!).",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Frequently Asked Questions"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/03-faqs.html#functions-in-terminal",
+    "href": "materials/99-extras/03-faqs.html#functions-in-terminal",
+    "title": "Frequently Asked Questions",
+    "section": "Functions in Terminal",
+    "text": "Functions in Terminal\n\nAre removed files (using rm) recoverable? Is there a recycling bin or a staging process for removal of files?\nrm deletes things permanently, skipping the “Trash” stage altogether, and you will be unable to recover any file that has been deleted with rm. It is worth noting that in Unix things are just as you dictate, so be very careful when removing files (look at case, dashes, underscores, etc. and decide which files you want to keep carefully). You can move files using mv or cp to put the file into another folder to get them out of the way, but which wouldn’t delete them the same way the Recycling Bin works to periodically delete things. It’s also worth keeping in mind that moving things to a “recycling bin” doesn’t save space on the computer. So, if you’re trying to remove big files to save space, deleting them permanently is what you actually want.\n\n\nWhat is the difference between &gt; and &gt;&gt;?\n&gt; will insert the contents indicated by commands preceding it into a file, completely rewriting a file. &gt;&gt; will append to a file, retaining any pre-existing text in the file. Also, &gt; will create a file if it does not exist, whereas &gt;&gt; will not.\n\n\nCan you combine commands such as grep?\nYes, you can do this using the pipe | such as grep “something” | grep “something else”\n\n\nWhat is the difference between different numerical sort options such as -g and -n?\n-g sorts numerically, converting a prefix of each line to a long double-precision floating point number. -n sorts numerically without making any changes to the inputted number, thereby providing a more precise sort.",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Frequently Asked Questions"
+    ]
+  },
+  {
+    "objectID": "materials/99-extras/03-faqs.html#shell-scripting",
+    "href": "materials/99-extras/03-faqs.html#shell-scripting",
+    "title": "Frequently Asked Questions",
+    "section": "Shell Scripting",
+    "text": "Shell Scripting\n\nAre there any text editors other than nano?\nYes, another popular basic text editor is gedit. For a less basic one, we recommend VS Code.",
+    "crumbs": [
+      "Slides",
+      "Appendices",
+      "Frequently Asked Questions"
+    ]
+  }
+]
