@@ -94,7 +94,8 @@ The number of atoms in methane.pdb is: 5
 - Give files consistent names that are easy to match with wildcard patterns to make it easy to select them for looping.
 :::
 
-:::{.callout-exercise}
+:::{.callout-note}
+#### Exercise
 
 See the [loop multiple files](#wildcard-loops-exr) and [searching for text](#grep-loop-exr) exercises to test your knowledge.
 :::
@@ -145,7 +146,9 @@ bash count_atoms.sh methane.pdb
 So, it wouldn't actually run the command within the loop, but rather tell us what would have been run. 
 This is a good practice when building scripts that include a _for loop_, because it lets us check that our code is all correct. 
 
-:::{.callout-exercise}
+:::{.callout-note}
+#### Exercise
+
 Try the [dry run exercise](#dry-run-exr) to test your knowledge.
 :::
 
@@ -410,10 +413,11 @@ sampleF,run2/sampleF_1.fq.gz,run2/sampleF_2.fq.gz
 
 Write a script that produces this file.  
 
-:::{.callout-hint collapse=true}
-#### Hint - don't hesitate to look at these tips, it's a challenging exercise!
+Don't hesitate to look at the hints below, as this is a challenging exercise!
 
-- Use a for loop to iterate through each sample (remember that each sample has two input files).
+:::{.callout-hint collapse=true}
+
+- Use a for loop to iterate through each sample (remember that each sample has two input files, so you might only want to iterate through one of the sets to extract sample names).
 - You can combine multiple wildcards in a path, for example `ls run*/*_1.fq.gz` would list all files in folders starting with the word "run" and all files within those folders ending in "_1.fq.gz". 
 - The command `dirname` can be used to extract the directory name from a path. For example: `dirname run1/sampleA_1.fq.gz` would return "run1" as the result.
 - Conversely, the command `basename` can be used to extract the name of a file from a path. For example: `basename run1/sampleA_1.fq.gz` would return "sampleA_1.fq.gz". 

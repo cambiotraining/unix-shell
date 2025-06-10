@@ -96,7 +96,9 @@ ls -F /home/ubuntu/Desktop/data-shell
 README.txt  coronavirus/  molecules/  sequencing/  things.txt
 ```
 
-:::{.callout-exercise}
+:::{.callout-note}
+#### Exercise
+
 See the [filesystem exercise](#filesystem-exr) to test your knowledge.
 :::
 
@@ -191,7 +193,9 @@ Alternatively, some people prefer that repeatedly pressing <kbd>Tab ↹</kbd> cy
 To set this up, see this StackExchange post: [Terminal autocomplete: cycle through suggestions](https://unix.stackexchange.com/questions/24419/terminal-autocomplete-cycle-through-suggestions)
 :::
 
-:::{.callout-exercise}
+:::{.callout-note}
+#### Exercise
+
 See the [file paths exercise](#paths-exr) to test your knowledge.
 :::
 
@@ -310,7 +314,9 @@ Be careful when specifying the target file name, since `mv` will silently overwr
 The command `mv` also works with directories, and you can use it to move/rename an entire directory just as you use it to move an individual file.
 
 
-:::{.callout-exercise}
+:::{.callout-note}
+#### Exercise
+
 See the [renaming files exercise](#rename-exr) to test your knowledge.
 :::
 
@@ -338,7 +344,9 @@ ls thesis_notes/
 books.txt
 ```
 
-:::{.callout-exercise}
+:::{.callout-note}
+#### Exercise
+
 See the [copying directories](#copy-exr) and [copying multiple files](#cp-multiple-exr) exercises to test your knowledge.
 :::
 
@@ -413,7 +421,9 @@ The `*` wildcard is by far the most commonly used.
 However, there are other wildcards available, and you can find more information about them on the [GNU Wildcard documentation page](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm).
 :::
 
-:::{.callout-exercise}
+:::{.callout-note}
+#### Exercise
+
 See the [wildcards exercise](#wildcards-exr) to test your knowledge.
 :::
 
