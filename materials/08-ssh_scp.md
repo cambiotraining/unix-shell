@@ -1,6 +1,8 @@
 ---
-title: "Access Remote Servers"
+pagetitle: "Unix course"
 ---
+
+# Access Remote Servers
 
 ::: {.callout-warning}
 If you are a self-learner (rather than attending one of our workshops), you will need an account on a remote server to follow this section.  

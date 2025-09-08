@@ -1,7 +1,9 @@
 ---
-title: "Data & Setup"
+pagetitle: "Unix course"
 number-sections: false
 ---
+
+# Data & Setup {.unnumbered}
 
 <!-- 
 Note for Training Developers:
@@ -54,7 +56,7 @@ To get ready for our workshop please download and setup the **MobaXterm** applic
   - A progress message should print on the screen as an additional application is installed
 - Once finished, you can close MobaXterm.
 
-For more advanced usage see the "[Unix on Windows](materials/99-extras/02-wsl.md)" appendix.
+For more advanced usage see the "[Unix on Windows](materials/a02-wsl.md)" appendix.
 
 #### Mac
 

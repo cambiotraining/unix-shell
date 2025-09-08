@@ -1,6 +1,8 @@
 ---
-title: "Files & Folders"
+pagetitle: "Unix course"
 ---
+
+# Files & Folders
 
 ::: {.callout-tip}
 ## Learning Objectives
@@ -488,7 +490,7 @@ So, always make sure to run the command _without the `-delete` option first_ to 
 ## Exercises
 
 :::{.callout-exercise #filesystem-exr}
-#### Navigating the filesystem {#exercise-1}
+#### Navigating the filesystem
 {{< level 1 >}}
 
 (**Note:** this is a conceptual exercise, you don't need to use your own terminal.)

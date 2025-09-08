@@ -54,7 +54,7 @@ Below, we give details to help you prepare each section of the materials.
 
 ### Combining commands
 
-[Combining commands](https://cambiotraining.github.io/unix-shell/materials/01-basics/04-combining_commands.html)
+[Combining commands](https://cambiotraining.github.io/unix-shell/materials/04-combining_commands.html)
 
 - This naturally flows from the previous section and is also live-coded (often the same trainer does both). 
 - Participants can do the exercises after the live coding.
@@ -65,7 +65,7 @@ Below, we give details to help you prepare each section of the materials.
 
 ### Shell scripts
 
-[Shell scripts](https://cambiotraining.github.io/unix-shell/materials/02-programming/01-scripts.html) and [Arguments & variables](https://cambiotraining.github.io/unix-shell/materials/02-programming/02-variables.html)
+[Shell scripts](https://cambiotraining.github.io/unix-shell/materials/05-scripts.html) and [Arguments & variables](https://cambiotraining.github.io/unix-shell/materials/02-programming/06-variables.html)
 
 - These two sections are live-coded, they naturally follow each other and from the previous live-coded section.
 - Note that there are two level 3 exercises in the variables section - we have found these to be difficult for participants, thus we have made them optional - you do not have to cover these in a live workshop. 

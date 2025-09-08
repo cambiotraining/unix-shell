@@ -1,6 +1,8 @@
 ---
-title: "Text Manipulation"
+pagetitle: "Unix course"
 ---
+
+# Text Manipulation
 
 ::: {.callout-tip}
 ## Learning Objectives

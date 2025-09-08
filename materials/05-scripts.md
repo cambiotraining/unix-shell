@@ -1,6 +1,8 @@
 ---
-title: "Shell Scripts"
+pagetitle: "Unix course"
 ---
+
+# Shell Scripts
 
 ::: {.callout-tip}
 ## Learning Objectives
@@ -168,7 +170,7 @@ When we run the modified script with `bash count_atoms.sh`, we should get the de
 
 ## Summary 
 
-![](images/scripts.png){fig-alt="Diagram summarising how a shell script is organised, including the shebang, comments and code."}
+![](images/scripts.svg){fig-alt="Diagram summarising how a shell script is organised, including the shebang, comments and code."}
 
 ::: {.callout-tip}
 #### Key Points

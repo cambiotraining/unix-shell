@@ -1,6 +1,8 @@
 ---
-title: "Remote Files"
+pagetitle: "Unix course"
 ---
+
+# Remote Files
 
 ::: {.callout-tip}
 ## Learning Objectives

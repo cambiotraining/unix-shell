@@ -1,6 +1,8 @@
 ---
-title: "SED"
+pagetitle: "Unix course"
 ---
+
+# sed
 
 ::: {.callout-tip}
 ## Learning Objectives

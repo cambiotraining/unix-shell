@@ -1,6 +1,8 @@
 ---
-title: "Text Processing: AWK"
+pagetitle: "Unix course"
 ---
+
+# AWK
 
 ::: {.callout-tip}
 ## Learning Objectives

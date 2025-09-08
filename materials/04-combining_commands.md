@@ -1,6 +1,8 @@
 ---
-title: "Combining Commands"
+pagetitle: "Unix course"
 ---
+
+# Combining Commands
 
 ::: {.callout-tip}
 ## Learning Objectives
