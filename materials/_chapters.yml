@@ -1,23 +1,26 @@
 book:
   chapters:
-    - part: "Basics"
+    - part: "Command Line Essentials"
       chapters:
+        - materials/slides01-essentials.md
         - materials/01-unix_overview.md
-        - materials/02-files_directories.md
-        - materials/03-text_manipulation.md
-        - materials/04-combining_commands.md
-        - materials/05-scripts.md
-    - part: "Programming"
+        - materials/02-file_navigation.md
+        - materials/03-file_operations.md
+        - materials/04-text_manipulation.md
+        - materials/05-combining_commands.md
+        - materials/06-scripts.md
+    - part: "Shell Programming"
       chapters:
-        - materials/06-variables.md
-        - materials/07-loops.md
+        - materials/slides02-programming.md
+        - materials/07-variables.md
+        - materials/08-loops.md
     - part: "Remote Work"
       chapters: 
-        - materials/08-ssh_scp.md
-        - materials/09-remote_files.md
+        - materials/09-ssh_scp.md
+        - materials/10-remote_files.md
     - part: "Advanced text processing"
       chapters:
-        - materials/10-sed.md
+        - materials/11-sed.md
   appendices:
     - materials/a01-cheatsheet.md
     - materials/a02-wsl.md

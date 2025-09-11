@@ -106,7 +106,7 @@ See the [loop multiple files](#wildcard-loops-exr) and [searching for text](#gre
 ## Scripts within scripts
 
 In the example above, we wrote our code to count the number of atoms directly inside our _for loop_. 
-However, in the [previous section](06-variables.md), we had already written a script - `count_atoms.sh` - that counts the number of atoms in a single file. 
+However, in the [previous section](07-variables.md), we had already written a script - `count_atoms.sh` - that counts the number of atoms in a single file. 
 
 Given we already have that generic script, we could have run our task like this: 
 
@@ -185,7 +185,7 @@ done
 
 For this exercise, go to the following directory: `cd ~/Desktop/data-shell/coronavirus/variants` (adjust the path if your data is on a different location of your computer).
 
-[Previously](04-combining_commands.md), we had used the following command to count the number of "Alpha" variants in our dataset:
+[Previously](05-combining_commands.md), we had used the following command to count the number of "Alpha" variants in our dataset:
 
 ```bash
 cat *_variants.csv | grep "Alpha" | wc -l
@@ -313,7 +313,7 @@ So, for each molecule in the first loop, the second loop (the nested loop) itera
 #### Nested loops
 {{< level 3 >}}
 
-In a [previous exercise](06-variables.md#exercises) we created the script `count_atom_type.sh`, which counts specific atom types in our PDB files. 
+In a [previous exercise](07-variables.md#exercises) we created the script `count_atom_type.sh`, which counts specific atom types in our PDB files. 
 Here is the code from that script:
 
 ```bash
@@ -459,7 +459,7 @@ This can be incredibly useful, especially for bioinformatic applications, when y
 ## Summary
 
 ::: {.callout-tip}
-#### Key Points
+#### Key points
 
 - A `for` loop repeats commands once for every item in a list.
 - Every `for` loop needs a variable to refer to the item it is currently operating on.

@@ -2,7 +2,7 @@
 pagetitle: "Unix course"
 ---
 
-# Access Remote Servers
+# Access remote servers
 
 ::: {.callout-warning}
 If you are a self-learner (rather than attending one of our workshops), you will need an account on a remote server to follow this section.  
@@ -221,7 +221,7 @@ And we can run `ls` on our local computer to confirm the directory has been copi
 ## Summary
 
 :::{.callout-tip}
-#### Key Points
+#### Key points
 
 - The `ssh` program can be used to securely login to a remote server. 
   The general command is `ssh username@remote`, where `username` is the user's name _on the remote machine_ and `remote` is the name of that machine (sometimes in the form of an IP address).

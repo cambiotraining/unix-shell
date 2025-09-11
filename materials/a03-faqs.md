@@ -2,7 +2,7 @@
 pagetitle: "Unix Shell"
 ---
 
-# Frequently Asked Questions {.unnumbered}
+# Frequently asked questions {.unnumbered}
 
 :::{.callout-tip}
 #### Overview 

@@ -2,7 +2,7 @@
 pagetitle: "Unix Shell"
 ---
 
-# Unix Cheat Sheet {.unnumbered}
+# Unix cheat sheet {.unnumbered}
 
 This document gives a brief summary of useful Unix commands.
 Anything within `{` and `}` indicates a user-provided input (`{` and `}` should not be included in the commands).

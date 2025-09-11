@@ -2,7 +2,7 @@
 pagetitle: "Unix course"
 ---
 
-# Text Manipulation
+# Working with text
 
 ::: {.callout-tip}
 ## Learning Objectives
@@ -361,7 +361,7 @@ Giving us 38 as the result.
 ## Summary
 
 ::: {.callout-tip}
-#### Key Points
+#### Key points
 
 - The `head` and `tail` commands can be used to look at the top or bottom of a file, respectively.
 - The `less` command can be used to interactively investigate the content of a file. Use <kbd>↑</kbd> and <kbd>↓</kbd> to browse the file and <kbd>Q</kbd> to quit and return to the console.
