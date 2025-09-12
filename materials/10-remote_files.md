@@ -1,6 +1,8 @@
 ---
-title: "Remote Files"
+pagetitle: "Unix course"
 ---
+
+# Remote files
 
 ::: {.callout-tip}
 ## Learning Objectives
@@ -144,7 +146,7 @@ mkdir mnt
 Now we can run the `sshfs` command like this:
 
 ```bash
-sshfs training@remote-machine:/home/training /home/ubuntu/Desktop/data-shell/mnt/
+sshfs training@remote-machine:/home/training /home/participant/Desktop/data-shell/mnt/
 ```
 
 It looks fairly similar to the previous copying commands. 
@@ -152,7 +154,7 @@ The first argument is a remote source, the second argument is a local destinatio
 The difference is that now whenever we interact with our local mount point it will be as if we were interacting with the remote filesystem starting at the directory we specified.
 
 ```bash
-cd /home/ubuntu/Desktop/data-shell/mnt/ 
+cd /home/participant/Desktop/data-shell/mnt/ 
 ls -l
 ```
 
@@ -229,7 +231,7 @@ Instead you can use the `curl` command.
 ## Summary
 
 ::: {.callout-tip}
-#### Key Points
+#### Key points
 
 - `rsync` can be used to _synchronise_ files between a local directory and a remote server. 
   This is a flexible tool, allowing for more customisation compared to a simpler command such as `scp`. 

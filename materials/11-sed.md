@@ -1,6 +1,8 @@
 ---
-title: "SED"
+pagetitle: "Unix course"
 ---
+
+# sed
 
 ::: {.callout-tip}
 ## Learning Objectives
@@ -306,7 +308,7 @@ In some situations, maybe... but for most applications it's enough to know how t
 ## Summary 
 
 ::: {.callout-tip}
-#### Key Points
+#### Key points
 
 - The `sed` tool can be used for advanced text manipulation. The "substitute" command can be used to text replacement: `sed 's/pattern/replacement/options'`.
 - Common options that can be used with `sed` include:

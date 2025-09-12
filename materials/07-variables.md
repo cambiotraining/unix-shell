@@ -1,6 +1,8 @@
 ---
-title: "Arguments & Variables"
+pagetitle: "Unix course"
 ---
+
+# Arguments & variables
 
 ::: {.callout-tip}
 ## Learning Objectives
@@ -13,7 +15,7 @@ title: "Arguments & Variables"
 
 ## Custom Inputs
 
-When we discussed [Shell scripts](01-scripts.md), we wrote a script that counted the number of atoms on a specific PDB file (in our example `cubane.pdb`). 
+When we discussed [Shell scripts](06-scripts.md), we wrote a script that counted the number of atoms on a specific PDB file (in our example `cubane.pdb`). 
 But what if we wanted to give it as input a file of our choice? 
 We can make our script more versatile by using a special _shell variable_ that means "the first argument on the command line".
 Here is our new script, modified from the previous section:
@@ -436,7 +438,7 @@ wc -l molecules/*.pdb    30 molecules/octane.pdb    sort -n -r    20 molecules/c
 ![Illustration of Bash variables by [Julia Evans](https://wizardzines.com/comics/variables/)](https://wizardzines.com/comics/variables/variables.png)
 
 ::: {.callout-tip}
-#### Key Points
+#### Key points
 
 - Variables in _Bash_ start with the `$` character. 
 - Positional variables such as `$1`, `$2`, `$3`, etc., can be used to store input values specified by the user when running the script.

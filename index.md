@@ -1,8 +1,10 @@
 ---
-title: "Introduction to the Unix Command Line"
+pagetitle: "Unix course"
 date: today
 number-sections: false
 ---
+
+# Introduction to the Unix Command Line {.unnumbered}
 
 ## Overview 
 

@@ -1,6 +1,8 @@
 ---
-title: "Combining Commands"
+pagetitle: "Unix course"
 ---
+
+# Combining commands
 
 ::: {.callout-tip}
 ## Learning Objectives
@@ -11,7 +13,7 @@ title: "Combining Commands"
 
 ## The `|` Pipe
 
-In the [previous section](03-text_manipulation.md#exercises) we ended with an exercise where we counted the number of lines matching the word "Alpha" in several CSV files containing variant classification of _coronavirus_ virus samples from several countries.  
+In the [previous section](04-text_manipulation.md#exercises) we ended with an exercise where we counted the number of lines matching the word "Alpha" in several CSV files containing variant classification of _coronavirus_ virus samples from several countries.  
 We achieved this in three steps: 
 
 1. Combine all CSV files into one: `cat *_variants.csv > all_countries.csv`.
@@ -482,7 +484,7 @@ zcat gene_annotation.gtf.gz | grep "ENSG00000113643" | cut -f 3 | grep "transcri
 ## Summary
 
 ::: {.callout-tip}
-#### Key Points
+#### Key points
 
 - The `|` pipe allows to chain several commands together. 
   The output of the command on the left of the pipe is sent as input to the command on the right.
