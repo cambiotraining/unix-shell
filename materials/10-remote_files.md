@@ -146,7 +146,7 @@ mkdir mnt
 Now we can run the `sshfs` command like this:
 
 ```bash
-sshfs training@remote-machine:/home/training /home/tux/Desktop/data-shell/mnt/
+sshfs training@remote-machine:/home/training /home/participant/Desktop/data-shell/mnt/
 ```
 
 It looks fairly similar to the previous copying commands. 
@@ -154,7 +154,7 @@ The first argument is a remote source, the second argument is a local destinatio
 The difference is that now whenever we interact with our local mount point it will be as if we were interacting with the remote filesystem starting at the directory we specified.
 
 ```bash
-cd /home/tux/Desktop/data-shell/mnt/ 
+cd /home/participant/Desktop/data-shell/mnt/ 
 ls -l
 ```
 

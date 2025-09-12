@@ -25,10 +25,10 @@ These directories are organised in a hierarchical way, which we can represent as
 Take the following image as an example:
 
 <p align="center">
-  <img src="images/filesystem_home_directories.svg" alt="Diagram of a filesystem representing three users' home folders as a tree-like diagram starting from the root `/` of the filesystem, then to a folder called `home` and finally three folders called `robin`, `wren` and `tux`." />
+  <img src="images/filesystem_home_directories.svg" alt="Diagram of a filesystem representing three users' home folders as a tree-like diagram starting from the root `/` of the filesystem, then to a folder called `home` and finally three folders called `robin`, `wren` and `participant`." />
 </p>
 
-This is illustrating the location of the home directories for three users called "robin", "wren" and "tux" (the <a href="https://en.wikipedia.org/wiki/Tux_(mascot)" target="_blank">Linux mascot</a> {{< iconify fa7-brands:linux >}}).
+This is illustrating the location of the home directories for three users called "robin", "wren" and "participant" (representing us).
 We can see that each of their home directories is within another directory called `home`.
 And finally, the `home` directory is located in the so-called _root of the filesystem_, represented by a `/` slash.
 The root is the top-most directory where everything for our operating system is stored in (it's not possible to go "above" this special root directory).
@@ -44,11 +44,11 @@ pwd
 ```
 
 ```output
-/home/tux
+/home/participant
 ```
 
-Here, the computer's response is `/home/tux`, which is our **home directory**, the default when opening a new shell terminal.
-The name "tux" is our _username_.  
+Here, the computer's response is `/home/participant`, which is our **home directory**, the default when opening a new shell terminal.
+The name "participant" is our _username_.  
 If the user "wren" was logged in, they would see `/home/wren` as their default working directory.
 
 Notice how the location of this folder is specified:
@@ -92,36 +92,28 @@ Documents    Downloads    Music        Public
 Desktop      Movies       Pictures     Templates
 ```
 
-The `/home/tux/` directory contains many familiar folders that are typical of a user's home.
+The `/home/participant/` directory contains many familiar folders that are typical of a user's home.
 
 The data for this workshop is located in our Desktop, within a directory called `data-shell`.
 We can look at its contents passing a directory name as an argument to ls:
 
 ```bash
-ls -F /home/tux/Desktop/data-shell
+ls /home/participant/Desktop/data-shell
 ```
 
 ```output
-README.txt  coronavirus/  molecules/  sequencing/  things.txt
+README.txt  coronavirus  molecules  sequencing  things.txt
 ```
-
-:::{.callout-note}
-
-#### Exercise
-
-See the [filesystem exercise](#filesystem-exr) to test your knowledge.
-
-:::
 
 ## Changing Directory
 
-So far, we have been working from `/home/tux/`.
+So far, we have been working from `/home/participant/`.
 However, we can change our location to the `Desktop/data-shell` directory to do our work.
 
 The command to change locations is `cd` ("change directory") followed by a directory name to change our working directory.
 
 ```bash
-cd /home/tux/Desktop/data-shell/
+cd /home/participant/Desktop/data-shell/
 ```
 
 We can check with `pwd` that we are in the correct directory.
@@ -131,12 +123,12 @@ What if we now wanted to go to the `molecules` directory?
 We could do:
 
 ```bash
-cd /home/tux/Desktop/data-shell/molecules/
+cd /home/participant/Desktop/data-shell/molecules/
 ```
 
 However, that's a lot of typing!
 Instead, we can move to that directory by specifying its location _relative_ to our current directory.
-So, if our current directory was `/home/tux/Desktop/data-shell/` we could just do:
+So, if our current directory was `/home/participant/Desktop/data-shell/` we could just do:
 
 ```bash
 cd molecules
@@ -148,6 +140,15 @@ In conclusion, there are two ways to specify directory names:
   The leading `/` tells the computer to follow the path from the root of the filesystem, so it always refers to exactly one directory, no matter where we are when we run the command.
 - A **relative path** tries to find that location from where we are (our current directory), rather than from the root of the filesystem.
 
+::: {.callout-note}
+#### The `~` home shortcut
+
+The shell interprets the character `~` (tilde) at the start of a path to mean "the user's home directory".
+In our example the `~` is equivalent to `/home/participant`.
+:::
+
+### Going "up" a directory
+
 We now know how to go _down_ the directory tree, but how do we go _up_? 
 We might try the following:
 
@@ -155,7 +156,7 @@ We might try the following:
 cd data-shell
 ```
 
-```text
+```output
 -bash: cd: data-shell: No such file or directory
 ```
 
@@ -168,16 +169,7 @@ cd ..
 ```
 
 `..` is a special directory name meaning "the directory containing this one", or more succinctly, the **parent** of the current directory.
-Sure enough, if we run `pwd` after running `cd ..`, we're back in `/home/tux/Desktop/data-shell`.
-
-::: {.callout-note}
-
-#### The `~` home shortcut
-
-The shell interprets the character `~` (tilde) at the start of a path to mean "the user's home directory".
-In our example the `~` is equivalent to `/home/tux`.
-
-:::
+Sure enough, if we run `pwd` after running `cd ..`, we're back in `/home/participant/Desktop/data-shell`.
 
 ::: {.callout-note}
 
@@ -185,7 +177,7 @@ In our example the `~` is equivalent to `/home/tux`.
 
 Sometimes file and directory names get too long and it's tedious to have to type the full name, for example when moving with `cd`.  
 We can let the shell do most of the work through what is called **tab completion**.
-Let's say we are in the `/home/tux/Desktop/data-shell` and we type:
+Let's say we are in the `/home/participant/Desktop/data-shell` and we type:
 
 ```bash
 ls mol
@@ -202,42 +194,6 @@ In this case, quickly pressing <kbd>Tab ↹</kbd> twice brings up a list of all 
 
 Alternatively, some people prefer that repeatedly pressing <kbd>Tab ↹</kbd> cycles through the different file options.
 To set this up, see this StackExchange post: [Terminal autocomplete: cycle through suggestions](https://unix.stackexchange.com/questions/24419/terminal-autocomplete-cycle-through-suggestions)
-
-:::
-
-:::{.callout-note}
-
-#### Exercise
-
-See the [file paths exercise](#paths-exr) to test your knowledge.
-
-:::
-
-::: {.callout-note}
-
-#### What's in a file name?
-
-You may have noticed that all of the files in our data directory are named "something dot something". 
-For example `README.txt`, which indicates this is a plain text file. 
-
-The second part of such a name is called the **filename extension**, and indicates what type of data the file holds. 
-Here are some common examples:
-
-- `.txt` is a plain text file.
-- `.csv` is a text file with tabular data where each column is separated by a comma. 
-- `.tsv` is like a CSV but values are separated by a tab.
-- `.log` is a text file containing messages produced by a software while it runs.
-- `.pdf` indicates a PDF document.
-- `.png` is a PNG image.
-
-This is just a convention: we can call a file `mydocument` or almost anything else we want. 
-However, most people use two-part names most of the time to help them (and their programs) tell different kinds of files apart. 
-
-This is just a convention, albeit an important one. 
-Files contain bytes: it's up to us and our programs to interpret those bytes according to the rules for plain text files, PDF documents, configuration
-files, images, and so on.
-
-Naming a PNG image of a whale as `whale.mp3` doesn't somehow magically turn it into a recording of whalesong, though it *might* cause the operating system to try to open it with a music player when someone double-clicks it.
 
 :::
 
@@ -262,20 +218,10 @@ As an exception, if a wildcard expression does not match any file, _Bash_ will p
 For example typing `ls *.pdf` in the `molecules` directory (which does not contain any PDF files) results in an error message that there is no file called `*.pdf`.
 
 :::{.callout-note}
-
 #### Bash wildcards
 
 The `*` wildcard is by far the most commonly used.
 However, there are other wildcards available, and you can find more information about them on the [GNU Wildcard documentation page](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm).
-
-:::
-
-:::{.callout-note}
-
-#### Exercise
-
-See the [wildcards exercise](#wildcards-exr) to test your knowledge.
-
 :::
 
 ## Finding Files
@@ -334,6 +280,32 @@ find . -type f -name "*.txt" -delete
 
 As you can imagine, this feature is **very useful but also potentially dangerous** as you may accidentally delete files you didn't intend to ("with great power comes great responsibility", as they say <i class="fa-solid fa-spider"></i>).
 So, always make sure to run the command _without the `-delete` option first_ to check that only the files you really want to delete are being matched.
+
+::: {.callout-note collapse=true}
+#### What's in a file name?
+
+You may have noticed that all of the files in our data directory are named "something dot something". 
+For example `README.txt`, which indicates this is a plain text file. 
+
+The second part of such a name is called the **filename extension**, and indicates what type of data the file holds. 
+Here are some common examples:
+
+- `.txt` is a plain text file.
+- `.csv` is a text file with tabular data where each column is separated by a comma. 
+- `.tsv` is like a CSV but values are separated by a tab.
+- `.log` is a text file containing messages produced by a software while it runs.
+- `.pdf` indicates a PDF document.
+- `.png` is a PNG image.
+
+This is just a convention: we can call a file `mydocument` or almost anything else we want. 
+However, most people use two-part names most of the time to help them (and their programs) tell different kinds of files apart. 
+
+This is just a convention, albeit an important one. 
+Files contain bytes: it's up to us and our programs to interpret those bytes according to the rules for plain text files, PDF documents, configuration
+files, images, and so on.
+
+Naming a PNG image of a whale as `whale.mp3` doesn't somehow magically turn it into a recording of whalesong, though it *might* cause the operating system to try to open it with a music player when someone double-clicks it.
+:::
 
 ## Exercises
 
@@ -397,7 +369,7 @@ Starting from `/home/amanda/data`, which of the following commands could Amanda 
 #### Wildcards
 {{< level 1 >}}
 
-Change into the `molecules` directory.
+Go into the `molecules` directory of the course materials. 
 Which `ls` command(s) will produce this output?
 
 ```

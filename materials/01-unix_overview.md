@@ -12,13 +12,6 @@ pagetitle: "Unix course"
 
 :::
 
-
-::: {.callout-note}
-#### Slides <i class="fa-solid fa-presentation-screen"></i>
-
-This section has an accompanying <a href="https://docs.google.com/presentation/d/1q9Wy77wg_QrN5iP_wYD_TpX7iurs2eFYliOId1owj1A/edit?usp=sharing" target="_blank">slide deck</a>.
-:::
-
 ## Overview
 
 In these lessons, we will give an introduction to the **Unix Command Line**.
@@ -64,17 +57,17 @@ Often, people interchangeably use terms like “shell”, “command line”, �
 
 Here is a brief explanation of what these terms mean:
 
-- Terminal – the application that allows us to interact with the computer using text-based commands (i.e. a command line interface).
-- Shell – the command-line interpreter, which you can think of as the translator between your typing and computer actions.
+- **Terminal** – the application that allows us to interact with the computer using text-based commands (i.e. a command line interface).
+- **Shell** – the command-line interpreter, which you can think of as the translator between your typing and computer actions.
   Another example of a command-line interpreter is the [Windows Command Prompt](https://en.wikipedia.org/wiki/Cmd.exe).
-- Bash – is both a _programming language_ to work on the Unix shell and an _interpreter_ for shell scripts (similarly to how _Python_ is both a language specification, but also has the `python` program that can be used to run _Python_ scripts).
+- **Bash** – is both a _programming language_ to work on the Unix shell and an _interpreter_ for shell scripts (similarly to how _Python_ is both a language specification, but also has the `python` program that can be used to run _Python_ scripts).
   There are alternative Unix shell implementations, such as the [_Z shell_](https://en.wikipedia.org/wiki/Z_shell) (but they share similarities to _Bash_).
 
 You may have also heard the terms “Unix”, “Linux” and “Ubuntu” used interchangeably:
 
-- Unix – is a family of operating systems, which includes _Linux_ and _Mac OS_, and which share a particular architecture.
-- Linux – is a (sub-)family of operating systems built on an open-source core.
-- Ubuntu – is a particular distribution (or "flavour") of the _Linux_ operating system. 
+- **Unix** – is a family of operating systems, which includes _Linux_ and _Mac OS_, and which share a particular architecture.
+- **Linux** – is a (sub-)family of operating systems built on an open-source core.
+- **Ubuntu** – is a particular distribution (or "flavour") of the _Linux_ operating system. 
   Other popular examples include [_Gnome_](https://en.wikipedia.org/wiki/GNOME) and [_centOS_](https://en.wikipedia.org/wiki/CentOS). 
   They are equivalent when it comes to the command-line usage.
 

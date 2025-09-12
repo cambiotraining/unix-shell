@@ -232,9 +232,14 @@ Some of the more useful ones are illustrated below.
 Move to the directory `sequencing` and do the following:
 
 1. List the files in the `run1/` directory. Save the output in a file called `sequencing_files.txt`.
-2. What happens to the content of that file after you run the command `ls run2 > sequencing_files.txt`?
-3. The operator `>>` can be used to _append_ the output of a command to an existing file.  
-  Re-run both of the previous commands, but instead using the `>>` operator the second time. What happens now?
+2. Inspect the content of the file, e.g. using `cat`.
+3. What happens to the content of that file after you run the command `ls run2 > sequencing_files.txt`?
+4. The operator `>>` can be used to _append_ the output of a command to an existing file. Run the following code and inspect the file content again. What happens now?
+
+    ```bash
+    ls run1/ > sequencing_files.txt
+    ls run2/ >> sequencing_files.txt
+    ```
 
 ::: {.callout-answer collapse=true}
 
@@ -245,6 +250,10 @@ To list the files in the directory we use `ls`, followed by `>` to save the outp
 ```bash
 ls run1 > sequencing_files.txt
 ```
+
+----
+
+**Task 2**
 
 We can check the content of the file:
 
@@ -265,7 +274,7 @@ sampleD_2.fq.gz
 
 ----
 
-**Task 2**
+**Task 3**
 
 If we run `ls run2/ > sequencing_files.txt`, we will replace the content of the file:
 
@@ -282,7 +291,7 @@ sampleF_2.fq.gz
 
 ----
 
-**Task 3**
+**Task 4**
 
 If we start again from the beginning, but instead use the `>>` operator the second time we run the command, we will append the output to the file instead of replacing it:
 
@@ -306,12 +315,77 @@ sampleE_2.fq.gz
 sampleF_1.fq.gz
 sampleF_2.fq.gz
 ```
-:::
-:::
 
+:::
+:::
 
 :::{.callout-exercise}
-#### Pattern matching
+#### Counting lines
+{{< level 1 >}}
+
+In the directory `coronavirus/variants/`, there are several CSV files with information about Coronavirus samples that were classified according to _variants_ (e.g. "Alpha", "Delta", "Omicron").
+
+1. Inspect the top and bottom few lines of one of the files.
+2. Each sample is represented by one line in the file. How many samples are there in each file?
+
+:::{.callout-answer}
+
+**Task 1**
+
+We can use `head` and `tail` to inspect the top and bottom few lines of one of the files, e.g.:
+
+```bash
+head -n 3 uk_variants.csv
+```
+
+```output
+Sample,clade
+GB01,20I (Alpha; V1)
+GB02,20I (Alpha; V1)
+```
+
+```bash
+tail -n 3 uk_variants.csv
+```
+
+```output
+GB46,21J (Delta)
+GB47,21J (Delta)
+GB48,21J (Delta)
+```
+
+**Task 2**
+
+We can use `wc -l` to count the number of lines in a single file:
+
+```bash
+wc -l uk_variants.csv
+```
+
+```output
+49 uk_variants.csv
+```
+
+To count the number of lines in all files at once, we can use the `*` wildcard:
+
+```bash
+wc -l *_variants.csv
+```
+
+```output
+  49 india_variants.csv
+  49 ireland_variants.csv
+  49 southafrica_variants.csv
+  60 switzerland_variants.csv
+  49 uk_variants.csv
+ 256 total
+```
+
+:::
+:::
+
+:::{.callout-exercise}
+#### Combining files and pattern matching
 {{< level 2 >}}
 
 In the directory `coronavirus/variants/`, there are several CSV files with information about SARS-CoV-2 virus samples that were classified according to clades (these are also commonly known as _coronavirus variants_). 
@@ -356,7 +430,6 @@ Giving us 38 as the result.
 
 :::
 :::
-
 
 ## Summary
 

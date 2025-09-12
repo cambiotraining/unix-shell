@@ -7,7 +7,7 @@ pagetitle: "Unix course"
 ::: {.callout-tip}
 #### Downloading the slides
 
-The original presentation can be found <a href="https://docs.google.com/presentation/d/1I65aVp9dFpL1So5r9mtLVO33biUb2iqbU5f-7tP5cyA/edit?usp=sharing" target="_blank">here</a>, where it can be easily downloaded in different formats (File > Download).
+The original presentation can be found <a href="https://docs.google.com/presentation/d/1sUo7DSkJORSyTvcznMsM54S2oZDJC8H7falolCrqiUA/edit?usp=sharing" target="_blank">here</a>, where it can be easily downloaded in different formats (File > Download).
 :::
 
 <style>
