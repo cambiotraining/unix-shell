@@ -8,6 +8,7 @@
 library(tidyverse)
 
 setwd("hospital_records")
+write_lines("*", ".gitignore")
 
 # probabilities for location types
 locations <- c("Home" = 0.02, 
@@ -68,7 +69,7 @@ sim_data <- function(n = 10){
   tibble(
     location_type = sample(names(locations), n, replace = TRUE, prob = locations),
     diagnosis = sample(names(diagnosis), n, replace = TRUE, prob = diagnosis),
-    duration_min = rlnorm(n, meanlog = duration["mean"], sdlog = duration["sd"])
+    duration_min = round(rlnorm(n, meanlog = duration["mean"], sdlog = duration["sd"]))
   )
 }
 
