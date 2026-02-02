@@ -25,7 +25,7 @@ The data used in these materials is provided as a zip file.
 Download and unzip the folder to your Desktop to follow along with the materials.
 
 <!-- Note for Training Developers: adjust the link as relevant -->
-<a href="https://www.dropbox.com/scl/fo/tnlv39c7tummmgfgus9ke/AKcdC6Cw26JFsbkWZV9nsRE?rlkey=go3spp4tabdzkbp60gh481l10&st=mn62c73t&dl=1">
+<a href="https://www.dropbox.com/scl/fo/tnlv39c7tummmgfgus9ke/AKcdC6Cw26JFsbkWZV9nsRE?rlkey=go3spp4tabdzkbp60gh481l10&st=31fg7tg0&dl=0">
   <button class="btn"><i class="fa fa-download"></i> Download</button>
 </a>
 
@@ -33,7 +33,7 @@ You can also download the data from the terminal using the following commands:
 
 ```bash
 cd ~/Desktop
-wget -O data-shell.zip "https://www.dropbox.com/scl/fo/tnlv39c7tummmgfgus9ke/AKcdC6Cw26JFsbkWZV9nsRE?rlkey=go3spp4tabdzkbp60gh481l10&st=mn62c73t&dl=1"
+wget -O data-shell.zip "https://www.dropbox.com/scl/fo/tnlv39c7tummmgfgus9ke/AKcdC6Cw26JFsbkWZV9nsRE?rlkey=go3spp4tabdzkbp60gh481l10&st=31fg7tg0&dl=1"
 unzip data-shell.zip
 ```
 

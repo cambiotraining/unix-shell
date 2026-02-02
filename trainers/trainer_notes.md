@@ -44,8 +44,11 @@ Below, we give details to help you prepare each section of the materials.
 [Slides section](https://docs.google.com/presentation/d/1sUo7DSkJORSyTvcznMsM54S2oZDJC8H7falolCrqiUA/edit?slide=id.g37d7a051cc1_0_273#slide=id.g37d7a051cc1_0_273) | [Materials chapter](https://cambiotraining.github.io/unix-shell/materials/02-file_navigation.html)
 
 - After the slides, open the terminal and together with the participants live demo the code in this section.
+  - You can demonstrate the commands shown in section 2 up to and including wildcards. (the command `find` is a bonus)
+  - At the end of your live demo everyone should have been able to navigate to their Desktop/data-shell folder.
+  - Then they can do the exercises at the end of section 2.
 - `find` is included in the materials as bonus – you can highlight its existence in the materials, but don't cover it to save time.
-- Be careful in this session not to go too much into detail about the tools, as this is the first time people are exposed to the command line.
+- Be careful in this session not to go too much into detail about the tools (e.g. covering other flags that the commands support), as this is the first time people are exposed to the command line.
 
 ### File operations
 
