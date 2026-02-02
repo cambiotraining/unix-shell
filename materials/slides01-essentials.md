@@ -7,7 +7,7 @@ pagetitle: "Unix course"
 ::: {.callout-tip}
 #### Downloading the slides
 
-The original presentation can be found <a href="https://docs.google.com/presentation/d/1sUo7DSkJORSyTvcznMsM54S2oZDJC8H7falolCrqiUA/edit?usp=sharing" target="_blank">here</a>, where it can be easily downloaded in different formats (File > Download).
+The original presentation can be found <a href="https://docs.google.com/presentation/d/1u-z4rhEZ6zmWIzQ6007s1yE1OfvUXw1ypAXlawuQNa4/edit?usp=sharing" target="_blank">here</a>, where it can be easily downloaded in different formats (File > Download).
 :::
 
 <style>
@@ -25,5 +25,5 @@ The original presentation can be found <a href="https://docs.google.com/presenta
 </style>
 
 <div class="slide-container">
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSYiN9UVeSQKs2g3eB3-hJvf2h5PvWdm6GCOSH5RBVWstjj2l2tbS59SYKUYrFHmMSfNAVuCQIqM_wd/pubembed?start=false&loop=false&delayms=600000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSncNo5O5UFLJ-6T2_-h18XSyTiO0XObuAyNrBbjuyvMF1rd0tHlmAxEhR_zCu1Aw207baEY-nDun9q/pub?start=false&loop=false&delayms=60000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
