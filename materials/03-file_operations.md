@@ -232,7 +232,7 @@ If we run the command without the `-r` option, this is what happens:
 cp sequencing backup
 ```
 
-```
+```output
 cp: -r not specified; omitting directory 'sequencing'
 ```
 
@@ -251,7 +251,7 @@ Running `ls` we can see a new folder called `backup`:
 ls
 ```
 
-```
+```output
 README.txt  backup  books_copy.txt  coronavirus  molecules  sequencing  thesis_notes
 ```
 :::

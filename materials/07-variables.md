@@ -41,7 +41,7 @@ So, if we run our modified script, this is the result:
 bash   count_atoms.sh   ethane.pdb
 ```
 
-```
+```output
 Processing file: ethane.pdb
 8
 ```

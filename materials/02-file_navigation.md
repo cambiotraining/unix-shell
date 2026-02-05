@@ -234,7 +234,7 @@ Here is an example, where we try to find all the CSV files that exist under our 
 find . -type f -name "*.csv"
 ```
 
-```
+```output
 ./coronavirus/variants/india_variants.csv
 ./coronavirus/variants/ireland_variants.csv
 ./coronavirus/variants/southafrica_variants.csv

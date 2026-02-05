@@ -27,7 +27,7 @@ cd molecules
 cat cubane.pdb
 ```
 
-```
+```output
 COMPND      CUBANE
 AUTHOR      DAVE WOODCOCK  95 12 06
 ATOM      1  C           1       0.789  -0.852   0.504  1.00  0.00
@@ -57,7 +57,7 @@ We can do this with the `head` command:
 head cubane.pdb
 ```
 
-```
+```output
 COMPND      CUBANE
 AUTHOR      DAVE WOODCOCK  95 12 06
 ATOM      1  C           1       0.789  -0.852   0.504  1.00  0.00
@@ -77,7 +77,7 @@ We can change this using the `-n` option, followed by a number, for example:
 head -n 2 cubane.pdb
 ```
 
-```
+```output
 COMPND      CUBANE
 AUTHOR      DAVE WOODCOCK  95 12 06
 ```
@@ -88,7 +88,7 @@ Similarly, we can look at the _bottom_ few lines of a file with the `tail` comma
 tail -n 2 cubane.pdb
 ```
 
-```
+```output
 TER      17              1
 END
 ```
@@ -123,7 +123,7 @@ We can use the `wc` command for this:
 wc *.pdb
 ```
 
-```
+```output
   20  156 1158 cubane.pdb
   12   84  622 ethane.pdb
    9   57  422 methane.pdb
@@ -146,7 +146,7 @@ For example, the following counts only the number of lines in each file:
 wc -l *.pdb
 ```
 
-```
+```output
   20 cubane.pdb
   12 ethane.pdb
    9 methane.pdb
@@ -196,7 +196,7 @@ Going back to our molecules directory (`cd ../molecules`), let's find the word "
 grep "ATOM" cubane.pdb
 ```
 
-```
+```output
 ATOM      1  C           1       0.789  -0.852   0.504  1.00  0.00
 ATOM      2  C           1      -0.161  -1.104  -0.624  1.00  0.00
 ATOM      3  C           1      -1.262  -0.440   0.160  1.00  0.00
@@ -261,7 +261,7 @@ We can check the content of the file:
 cat sequencing_files.txt
 ```
 
-```
+```output
 sampleA_1.fq.gz
 sampleA_2.fq.gz
 sampleB_1.fq.gz
@@ -282,7 +282,7 @@ If we run `ls run2/ > sequencing_files.txt`, we will replace the content of the 
 cat sequencing_files.txt
 ```
 
-```
+```output
 sampleE_1.fq.gz
 sampleE_2.fq.gz
 sampleF_1.fq.gz
@@ -301,7 +301,7 @@ ls run2/ >> sequencing_files.txt
 cat sequencing_files.txt
 ```
 
-```
+```output
 sampleA_1.fq.gz
 sampleA_2.fq.gz
 sampleB_1.fq.gz
