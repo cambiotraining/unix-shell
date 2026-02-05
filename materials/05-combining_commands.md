@@ -47,7 +47,7 @@ For example, let's say we wanted to retrieve only the second _field_ (or column)
 cat *_variants.csv | cut -d "," -f 2
 ```
 
-```
+```output
 clade
 20I (Alpha; V1)
 20A
@@ -73,7 +73,7 @@ Let's combine it with our previous command to see the result:
 cat *_variants.csv | cut -d "," -f 2 | sort
 ```
 
-```
+```output
 19B
 19B
 20A
@@ -100,7 +100,7 @@ Let's see it in action, by continuing building our command:
 cat *_variants.csv | cut -d "," -f 2 | sort | uniq
 ```
 
-```
+```output
 19B
 20A
 20B
@@ -173,7 +173,7 @@ If you had the following two text files:
 cat animals_1.txt
 ```
 
-```
+```output
 deer
 rabbit
 raccoon
@@ -184,7 +184,7 @@ rabbit
 cat animals_2.txt
 ```
 
-```
+```output
 deer
 fox
 rabbit
@@ -263,7 +263,7 @@ So, we can continue working on our pipeline by adding another step at the end:
 cat *_variants.csv | cut -d "," -f 2 | sort | uniq | grep -v "clade"
 ```
 
-```
+```output
 19B
 20A
 20B
@@ -295,7 +295,7 @@ So, if we add this option, we will get the count of how many times each unique l
 cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade"
 ```
 
-```
+```output
  2 19B
 30 20A
  8 20B
@@ -319,7 +319,7 @@ Now that we've counted each of our variants, we can again sort this result, this
 cat *_variants.csv | cut -d "," -f 2 | sort | uniq -c | grep -v "clade" | sort -r -n
 ```
 
-```
+```output
 87 21K (Omicron)
 66 21J (Delta)
 38 20I (Alpha; V1)
@@ -351,9 +351,155 @@ From the help page it says:
 :::
 
 
+:::{.callout-exercise #hospital-exr}
+#### Exploring hospital A&E incidents
+{{< level 3 >}}
+
+In the `hospital_records` folder you will find several tab-delimited files containing (simulated) records of A&E admissions in England. 
+The files are named by year and NHS England region code. 
+Each line of the TSV files corresponds to one recorded admission in A&E.
+
+Using the commands covered so far, answer the following questions: 
+
+1. How many files are there in total? 
+2. What is the maximum and minimum number of admissions observed across the data?
+3. How many A&E admissions are there for 2020? Remember that there is a header with column names in each file.
+4. How many diagnosis of each type are there? And how many accidents per location?
+5. What was the maximum time in A&E recorded for London (region code Y56)?
+
+:::{.callout-answer}
+
+**Task 1.**
+
+We can find how many files we have by combining `ls` and `wc -l`:
+
+```bash
+ls *.tsv | wc -l
+```
+
+```output
+147
+```
+
+**Task 2.**
+
+Find the maximum and minimum number of admissions by combing `wc -l` with `sort`: 
+
+```bash
+wc -l *.tsv | sort
+```
+
+The output is quite long, but at the top and bottom of the output we can see:
+
+- `5027 sim_ae_data_2021_Y59.tsv` corresponding to 5026 incidents (we subtract 1 to account for the column name header)
+- `9965 sim_ae_data_2024_Y60.tsv` corresponding to 9964 indicents (again subtracting 1)
+
+**Task 3.**
+
+We can find the number of admissions in 2020 by combining three steps: 
+
+- Combine the files using `cat`, and making use of the `*` wildcard. 
+- Do a reverse `grep` for one of the column names (e.g. "location_type"), to remove the column name header from the output.
+- Use `wc` to count the lines, which should correspond to the total number of records in the data. 
+
+```bash
+cat sim_ae_data*2020*.tsv | grep -v "location_type" | wc -l
+```
+
+```output
+54064
+```
+
+**Task 4.**
+
+We can count the number of diagnosis and locations with a combination of: 
+
+- `cat` to combine the files into one stream of text
+- A reverse `grep` to remove column names header
+- `cut` to extract one of the columns
+- `sort` and `uniq -c` to count the unique values in that column
+- optionally we `sort` the final output again, to get the results in ascending order from least to most common type
+
+For location, in column 3:
+
+```bash
+cat *.tsv | grep -v "location_type" | cut -f 3 |  sort | uniq -c | sort
+```
+
+```output
+  21757 Home
+  32454 Not known
+  86773 Other
+ 217888 Public place
+ 349436 Educational establishment
+ 381688 Work
+```
+
+And for diagnosis, in column 4:
+
+```bash
+cat *.tsv | grep -v "location_type" | cut -f 4 |  sort | uniq -c | sort
+```
+
+```output
+  10717 Soft tissue inflammation
+  10752 Sprain/ligament injury
+  10840 Urological conditions (inc cystitis)
+  10866 Poisoning (inc overdose)
+  10898 Facio-maxillary conditions
+  10908 Burns and scalds
+  10922 Foreign body
+  10929 Diagnosis not classifiable
+  10941 Contusion/abrasion
+  10979 Haematological conditions
+  11007 Respiratory conditions
+  11037 Psychiatric conditions
+  21619 Social problems (inc chronic alcoholism and homelessness)
+  21784 Central nervous system conditions (exc stroke)
+  21821 Ophthalmological conditions
+  21876 Nothing abnormal detected
+  21901 Local infection
+  21903 Head injury
+  32458 Other vascular conditions
+  32595 Gastrointestinal conditions
+  32698 Muscle/tendon injury
+  32950 Gynaecological conditions
+  43493 Vascular injury
+  43590 ENT conditions
+  54650 Bites/stings
+  64962 Visceral injury
+  65546 Dermatological conditions
+  86723 Cerebro-vascular conditions
+  87809 Septicaemia
+ 250822 Obstetric conditions
+```
+
+**Task 5.**
+
+To find the maximum time in A&E in Londong, we use a combination of:
+
+- `cat` with a wildcard to combine all records from "Y56" region code
+- `cut` to extract the 5th column in the TSV file
+- A reverse `grep` to exclude the column name "duration_min"
+- `sort` with the `-n` option to sort the values numerically (otherwise they will be alphabetical!)
+- `uniq` to get the unique values
+- `tail -n 1` to get the last value, which should be the maximum observed
+
+```bash
+cat *Y56.tsv | cut -f 5 | grep -v "duration_min" | sort -n | uniq | tail -n 1
+```
+
+```output
+4899
+```
+
+:::
+
+:::
+
 :::{.callout-exercise #zcat-exr}
-#### `zcat` and `grep`
-{{< level 2 >}}
+#### Looking at compressed files with `zcat`
+{{< level 3 >}}
 
 In the `coronavirus` folder, you will find a file named `proteins.fa.gz`. 
 This is a file that contains the amino acid sequences of the proteins in the SARS-CoV-2 coronavirus in a text-based format known as FASTA. 
@@ -367,7 +513,7 @@ The 'z' at the beggining indicates it will work on _zipped_ files.
 2. The content of this file may look a little strange, if you're not familiar with the FASTA file format. 
   Put simply, each protein sequence name starts with the `>` symbol. 
   Combine `zcat` with `grep` to extract the sequence names only. 
-  How many proteins does SARS-CoV-2 have?
+3. How many proteins does SARS-CoV-2 have?
 
 ::: {.callout-answer}
 
@@ -391,7 +537,7 @@ We can look at the sequences' names by running:
 zcat proteins.fa.gz | grep ">"
 ```
 
-```
+```output
 >ORF1ab protein=ORF1ab polyprotein
 >ORF1ab protein=ORF1a polyprotein
 >S protein=surface glycoprotein
@@ -406,15 +552,18 @@ zcat proteins.fa.gz | grep ">"
 >ORF10 protein=ORF10 protein
 ```
 
-We could further count how many sequences, by piping this output to `wc`:
+**Task 3**
+
+We can count how many sequences, by piping the output of the previous task to `wc`:
 
 ```bash
 zcat proteins.fa.gz | grep ">" | wc -l
 ```
 
-```
+```output
 12
 ```
+
 :::
 :::
 
@@ -450,7 +599,7 @@ We could use:
 zcat gene_annotation.gtf.gz | grep -v "#" | cut -f 3 | sort | uniq -c
 ```
 
-```
+```output
  871196 CDS
     119 Selenocysteine
 1624585 exon

@@ -74,8 +74,10 @@ sim_data <- function(n = 10){
 }
 
 # combination of values to simulate realistic data
-year_region <- crossing(region = c("Y60", "Y58", "Y59", "Y61", "Y62", "Y63", "Y5"),
-         year = 2005:2025)
+# the regions are based on the NHS England regions codes
+year_region <- crossing(region = c("Y56", "Y59", "Y58", 
+                                   "Y60", "Y63", "Y61", "Y62"),
+                        year = 2005:2025)
 
 # simulate some data
 set.seed(123)
