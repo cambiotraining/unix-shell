@@ -227,7 +227,7 @@ However, there are other wildcards available, and you can find more information 
 ## Finding Files
 
 Often, it's useful to be able to find files that have a particular pattern in their name. 
-We can use the `find` command to achive this. 
+We can use the `find` command to achieve this. 
 Here is an example, where we try to find all the CSV files that exist under our `data-shell` folder: 
 
 ```bash
