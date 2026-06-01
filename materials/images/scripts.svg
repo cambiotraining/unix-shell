@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="222.58681mm"
+   height="92.735977mm"
+   viewBox="0 0 222.58681 92.735978"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="scripts.svg"
+   inkscape:export-filename="scripts.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.587745"
+     inkscape:cx="511.25594"
+     inkscape:cy="213.69957"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="370.52988"
+       y="320.79797"
+       width="410.97119"
+       height="25.139194"
+       id="rect16103" />
+    <rect
+       x="53.90794"
+       y="154.57474"
+       width="215.24532"
+       height="122.69369"
+       id="rect4416" />
+    <rect
+       x="155.73405"
+       y="139.11726"
+       width="483.4325"
+       height="318.42395"
+       id="rect186" />
+    <rect
+       x="53.90794"
+       y="154.57474"
+       width="185.10326"
+       height="99.507492"
+       id="rect7570" />
+    <rect
+       x="370.52988"
+       y="320.79797"
+       width="410.97119"
+       height="25.139194"
+       id="rect16217" />
+    <rect
+       x="53.90794"
+       y="154.57474"
+       width="237.84727"
+       height="66.161224"
+       id="rect19263" />
+    <rect
+       x="53.90794"
+       y="154.57474"
+       width="236.11292"
+       height="120.76151"
+       id="rect19756" />
+    <rect
+       x="370.52988"
+       y="320.79797"
+       width="410.97119"
+       height="25.139194"
+       id="rect24442" />
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="background"
+     transform="matrix(0.83827493,0,0,1,1.1142203,1.1246912)"
+     style="stroke-width:1.09221"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:#ffffff;stroke:none;stroke-width:0.0764594;-inkscape-stroke:none;stop-color:#000000"
+       id="rect1101"
+       width="265.5296"
+       height="92.735977"
+       x="14.310575"
+       y="29.295603"
+       transform="translate(-15.639757,-30.420294)" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-27.295658,-29.295604)">
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke-width:0.499999;stroke-linecap:round"
+       id="rect1119"
+       width="101.01781"
+       height="44.510151"
+       x="95.189865"
+       y="48.464008" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,55.314409,12.167125)"
+       id="text184"
+       style="font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect186);display:inline;fill:#c2c2c2;stroke-width:1.88976;stroke-linecap:round"><tspan
+         x="155.73438"
+         y="155.57978"
+         id="tspan1168"><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono';fill:#3bc120"
+           id="tspan1166">#!/usr/bin/env bash
+</tspan></tspan><tspan
+         x="155.73438"
+         y="179.1791"
+         id="tspan1172"><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono';fill:#3bc120"
+           id="tspan1170">
+</tspan></tspan><tspan
+         x="155.73438"
+         y="202.77842"
+         id="tspan1178"><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono';fill:#3bc120"
+           id="tspan1174"># print message to the user</tspan><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono'"
+           id="tspan1176">
+</tspan></tspan><tspan
+         x="155.73438"
+         y="226.37774"
+         id="tspan1188"><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono';fill:#4836f6"
+           id="tspan1180">echo</tspan><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono'"
+           id="tspan1182"> </tspan><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono';fill:#f3bf20"
+           id="tspan1184">&quot;Processing file&quot;</tspan><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono'"
+           id="tspan1186">
+</tspan></tspan><tspan
+         x="155.73438"
+         y="249.97706"
+         id="tspan1192"><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono'"
+           id="tspan1190">
+</tspan></tspan><tspan
+         x="155.73438"
+         y="273.57639"
+         id="tspan1198"><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono';fill:#3bc120"
+           id="tspan1194"># count ATOMS in PDB file</tspan><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono'"
+           id="tspan1196">
+</tspan></tspan><tspan
+         x="155.73438"
+         y="297.17573"
+         id="tspan1206"><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono';fill:#4836f6"
+           id="tspan1200">grep</tspan><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono'"
+           id="tspan1202"> &quot;ATOM&quot; methane.pdb | </tspan><tspan
+           style="font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono';fill:#4836f6"
+           id="tspan1204">wc -l</tspan></tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.499999;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 87.598495,50.73902 c -0.0342,0.145651 -0.07796,0.289226 -0.149704,0.421453 -0.02319,0.04274 -0.05165,0.08243 -0.07953,0.122278 -0.133736,0.191154 -0.250072,0.318197 -0.438244,0.4674 -0.03472,0.02756 -0.07547,0.04654 -0.113992,0.06847 -0.07482,0.04258 -0.15459,0.07778 -0.227042,0.124185 -0.0014,8.84e-4 0.0023,-0.002 0.0034,-0.0029 0.0091,-0.0079 0.0166,-0.01827 0.02738,-0.02361 0.02182,-0.01076 0.04495,-0.02026 0.06903,-0.02373 0.04028,-0.0058 0.08136,-0.0054 0.122029,-0.0038 0.155613,0.006 0.298912,0.03966 0.433133,0.121735 0.198038,0.121092 0.391679,0.261872 0.55119,0.431625 0.07016,0.07462 0.133773,0.155133 0.200659,0.2327 0.09934,0.115209 0.198691,0.230418 0.298036,0.345627"
+       id="path4015" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,14.32644,7.8371374)"
+       id="text4414"
+       style="font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect4416);display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="253.13977"
+       y="0"><tspan
+         x="194.8215"
+         y="171.20866"
+         id="tspan1212"><tspan
+           style="font-weight:bold;font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';text-align:end;text-anchor:end;fill:#da53b2;stroke:none"
+           id="tspan1208">shebang</tspan><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1210">
+</tspan></tspan><tspan
+         x="85.86408"
+         y="194.97982"
+         id="tspan1216"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1214">Indicates the program </tspan></tspan><tspan
+         x="72.200048"
+         y="218.75099"
+         id="tspan1220"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1218">that executes the script.
+</tspan></tspan><tspan
+         x="58.479977"
+         y="242.52215"
+         id="tspan1224"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1222">You can usually just copy/</tspan></tspan><tspan
+         x="62.829278"
+         y="266.29331"
+         id="tspan1228"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1226">paste this to your scripts.</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,187.1054,23.158222)"
+       id="text7568"
+       style="font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect7570);display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="253.13977"
+       y="0"><tspan
+         x="53.908203"
+         y="171.20866"
+         id="tspan1236"><tspan
+           style="font-weight:bold;font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#da53b2;stroke:none"
+           id="tspan1230">commands</tspan><tspan
+           style="font-weight:bold"
+           id="tspan1232"> </tspan><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1234">that you </tspan></tspan><tspan
+         x="53.908203"
+         y="194.97982"
+         id="tspan1240"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1238">would usually run on </tspan></tspan><tspan
+         x="53.908203"
+         y="218.75099"
+         id="tspan1244"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1242">the terminal go in the </tspan></tspan><tspan
+         x="53.908203"
+         y="242.52215"
+         id="tspan1248"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1246">body of the script.</tspan></tspan></text>
+    <path
+       style="fill:#da53b2;fill-opacity:1;stroke:#565656;stroke-width:0.499999;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 94.504036,51.735841 c -7.089105,0 -7.089105,0 -7.089105,0"
+       id="path7971" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 198.97835,91.297067 c 2.22382,-3.667257 0.0256,-9.745016 0.58791,-16.910921 0,0 0.25561,-13.117201 -1.45699,-13.580877"
+       id="path10608"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.9389px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';text-align:end;text-anchor:end;fill:#da53b2;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="162.80145"
+       y="116.46568"
+       id="text14647"><tspan
+         sodipodi:role="line"
+         id="tspan14645"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="162.80145"
+         y="116.46568">$ bash count_atoms.sh</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-0.5623457,19.170196)"
+       id="text16101"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:'Consolas Bold';text-align:start;white-space:pre;shape-inside:url(#rect16103);display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="-141.1487"
+       y="0"><tspan
+         x="370.5293"
+         y="337.43327"
+         id="tspan1252"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible Bold';fill:#4c50f1"
+           id="tspan1250">Running the script:</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.9389px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script';text-align:end;text-anchor:end;fill:#da53b2;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="161.77901"
+       y="42.390079"
+       id="text16211"><tspan
+         sodipodi:role="line"
+         id="tspan16209"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Atkinson Hyperlegible Mono';-inkscape-font-specification:'Atkinson Hyperlegible Mono Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="161.77901"
+         y="42.390079">$ nano count_atoms.sh</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-1.5847932,-54.90543)"
+       id="text16215"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:'Consolas Bold';text-align:start;white-space:pre;shape-inside:url(#rect16217);display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="-141.1487"
+       y="0"><tspan
+         x="370.5293"
+         y="337.43327"
+         id="tspan1256"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible Bold';fill:#4c50f1"
+           id="tspan1254">Editing the script:</tspan></tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 168.65912,37.022526 c 0.0164,-0.148718 0.0593,-0.329318 0.11463,-0.469208 0.0179,-0.0452 0.0414,-0.08802 0.0642,-0.13096 0.10976,-0.205854 0.20996,-0.345979 0.3788,-0.516744 0.0311,-0.03154 0.0694,-0.05529 0.10496,-0.08168 0.0691,-0.05127 0.14409,-0.09582 0.21045,-0.150608 8.9e-4,-0.001 -0.002,0.0023 -0.003,0.0033 -0.008,0.009 -0.0144,0.02007 -0.0244,0.02672 -0.0203,0.01331 -0.0422,0.02553 -0.0657,0.03185 -0.0393,0.01061 -0.0802,0.01516 -0.12072,0.01844 -0.15521,0.01277 -0.30151,-0.0034 -0.44464,-0.06872 -0.21115,-0.09643 -0.42032,-0.212855 -0.59913,-0.362157 -0.0786,-0.06562 -0.15146,-0.137909 -0.22719,-0.206859 -0.11244,-0.102424 0.12787,0.121201 0.0154,0.01877"
+       id="path19123"
+       sodipodi:nodetypes="ccccscscscccsc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 168.89719,35.87376 c -2.24124,0.506085 -5.85728,0.748569 -6.92848,2.562835"
+       id="path19125"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.21593672,0,0,0.21593672,159.08959,-0.87240458)"
+       id="text19261"
+       style="font-size:22.8719px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect19263);display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.31549;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="253.13977"
+       y="0"><tspan
+         x="53.908203"
+         y="174.95603"
+         id="tspan1264"><tspan
+           style="font-weight:bold;font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#da53b2;stroke:none"
+           id="tspan1258">.sh</tspan><tspan
+           style="font-weight:bold"
+           id="tspan1260"> </tspan><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1262">is the standard file </tspan></tspan><tspan
+         x="53.908203"
+         y="204.08233"
+         id="tspan1268"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1266">format for shell scripts</tspan></tspan></text>
+    <g
+       id="g19760"
+       transform="matrix(0.76545029,0,0,1,22.191454,0)"
+       style="stroke-width:1.14299">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.571494;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 85.435713,93.771695 c -0.106499,-0.105093 -0.253663,-0.218227 -0.384807,-0.291926 -0.04239,-0.0238 -0.08762,-0.04221 -0.132404,-0.06117 -0.214989,-0.09059 -0.381108,-0.136172 -0.619828,-0.162268 -0.04403,-0.0049 -0.08873,8.41e-4 -0.132964,0.0028 -0.08596,0.0038 -0.172257,0.01647 -0.258308,0.01578 -0.0013,-2.06e-4 0.003,4.87e-4 0.0044,6.15e-4 0.01189,0.0019 0.02383,0.0065 0.03579,0.0054 0.02415,-0.0025 0.04886,-0.0068 0.07107,-0.0167 0.03719,-0.01654 0.07181,-0.0388 0.105329,-0.0618 0.128523,-0.08795 0.231888,-0.192738 0.301804,-0.333679 0.103098,-0.207975 0.192048,-0.430225 0.236707,-0.658851 0.01963,-0.100494 0.03061,-0.202538 0.04592,-0.303804 0.0227,-0.150394 -0.02284,0.174696 -1.26e-4,0.02428"
+         id="path19740"
+         sodipodi:nodetypes="ccccscscscccsc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#565656;stroke-width:0.571494;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 84.665888,93.020352 c 3.361854,-1.192916 6.940164,-7.873151 9.8884,-9.391351"
+         id="path19742"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,8.5056069,49.348505)"
+       id="text19754"
+       style="font-size:18.6667px;font-family:Consolas;-inkscape-font-specification:Consolas;white-space:pre;shape-inside:url(#rect19756);display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="253.13977"
+       y="0"><tspan
+         x="198.4053"
+         y="171.20866"
+         id="tspan1274"><tspan
+           style="font-weight:bold;font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';text-align:end;text-anchor:end;fill:#da53b2;stroke:none"
+           id="tspan1270">comments</tspan><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1272">
+</tspan></tspan><tspan
+         x="111.95987"
+         y="194.97982"
+         id="tspan1278"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1276">Start with a # and are </tspan></tspan><tspan
+         x="79.66649"
+         y="218.75099"
+         id="tspan1282"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1280">ignored by Bash (not run).
+</tspan></tspan><tspan
+         x="139.38122"
+         y="242.52215"
+         id="tspan1286"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1284">Use them to write 
+</tspan></tspan><tspan
+         x="148.99452"
+         y="266.29331"
+         id="tspan1290"><tspan
+           style="font-family:'Atkinson Hyperlegible';-inkscape-font-specification:'Atkinson Hyperlegible';fill:#3b3b3b;stroke:none"
+           id="tspan1288">notes to yourself!</tspan></tspan></text>
+  </g>
+</svg>
