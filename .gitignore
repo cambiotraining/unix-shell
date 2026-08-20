@@ -24,3 +24,6 @@ _site
 
 .DS_Store
 **/*.quarto_ipynb
+
+# Positron bug
+snowflake.log
