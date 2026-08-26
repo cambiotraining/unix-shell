@@ -20,7 +20,7 @@ This allows flexibility in providing tiers of access to different files/folders.
 For example, you may have a shared directory within a research group that all members of the group can see.
 And a more restricted directory that external collaborators can access.
 
-There are three special groups worth being aware of:
+There are two special groups worth being aware of:
 
 - **Private primary group**: every user belongs to a private group, which has the same name as their username.
   This is more of a placeholder group, as only the user themselves belongs to it.
@@ -42,8 +42,11 @@ Take the following hypothetical example:
 ![](images/ls_explained.excalidraw.png)
 
 - All theses files and directories belong to the user `robin`.
-- The directory `student_projects` belongs to a group called `birdlab`, so members of that group can access this directory.
-- The other directory and file belong to the private `robin` group, so only the user `robin` themselves can access them.
+  This means the user has full control over which permissions and groups can access these files.
+- The directory `student_projects` and the file `group_policies.txt` belong to a group called `birdlab`.
+  This means that members of that group can have specific access permissions to them.
+- The other directory, `grant_applications` belong to the private `robin` group.
+  This means other users will only be able to access it if `robin` sets permissions that apply to all users (regardless of their groups).
 
 With the knowledge of who owns a file, let's now consider which permissions are possible to access those files.
 
@@ -94,7 +97,7 @@ The characters can be split into four parts:
      _________________
 d    rwx    rwx    rwx
 |     |      |      |
-|     |      |      All users
+|     |      |      Other users
 |     |      Group
 |     User
 Type
@@ -105,7 +108,7 @@ The first character indicates the type of file:
 
 - `d` indicates a directory
 - `-` indicates a regular file
-- `l` indicates a symbolic link (more on this later)
+- `l` indicates a symbolic link
 
 The next nine characters are the permissions associated with each file or directory.
 These are organised in groups of three, each group referring to a different set of users:
@@ -132,8 +135,8 @@ drwxr--r--  1  robin  robin    4.0K  Jun 6 2025  grant_applications
 
 - `student_projects`:
   - The first character, `d`, indicates this is a directory.
-  - The following three characters - `rwx` - indicates that user (and owner) `robin` has full read, write, execute permissions to their files and directories.
-  - The next three characters - `rwx` - indicates that the group `birdlab` has read and write permissions to this directory.
+  - The following three characters - `rwx` - indicate that the user (and owner) `robin` has full read, write, execute permissions to their files and directories.
+  - The next three characters - `rwx` - indicate that the group `birdlab` has read and write permissions to this directory.
     This means that they can inspect the content of files within it (read permissions), but also modify them, delete them, or create new files and directories within it.
   - The final three characters - `r--` - indicate that all other users with access to this storage will be able to see the directory name, but will not be able to access it (without execute permission, `x`, the users will not be able to `cd` into it).
 
@@ -144,7 +147,7 @@ drwxr--r--  1  robin  robin    4.0K  Jun 6 2025  grant_applications
 - `group_policies.txt`:
   - This is a regular file, indicated by the first `-`
   - As before, the user `robin` has full permissions to this file.
-  - The group `birdlab` as well as any other user have read permissions only, indicated by `r--`
+  - The group `birdlab` as well as any other users have read permissions only, indicated by `r--`
 
 ::: {.callout-important}
 #### Permissions within directories
@@ -199,9 +202,10 @@ Would assign:
 There is also an alternative symbolic notation, which can be easier to memorise to modify a single permission.
 There are plenty of details of this symbolic notation on [`chmod`'s Wikipedia page](https://en.wikipedia.org/wiki/Chmod), so we only give a few examples:
 
-- `chmod u+w some_file.txt` → modify user permissions (`u`) by adding (`+`) write permissions (`w`)
-- `chmod g-w some_file.txt` → modify group permissions (`g`) by removing (`-`) write permissions (`w`)
-- `chmod a-rwx some_file.txt` → modify permissions to other users (`a`) by removing `-` read, write and execute permissions (`rwx`)
+- `chmod u+w some_file.txt` → modify **user** permissions (`u`) by adding (`+`) write permissions (`w`)
+- `chmod g-w some_file.txt` → modify **group** permissions (`g`) by removing (`-`) write permissions (`w`)
+- `chmod o-rwx some_file.txt` → modify permissions to **other users** (`o`), by removing `-` read, write and execute permissions (`rwx`)
+- `chmod a+r some_file.txt` → modify permissions to **all users** (`a`) by adding `+` read (`r`) permissions.
 
 ::: {.callout-important}
 #### Recursive directory permissions
@@ -213,7 +217,7 @@ If that is the intention (which it often is), then there's two things to conside
 - Consider using the symbolic notation with the special uppercase `X` execution symbol.
   This symbol ensures that all directories will get execute permissions (so users can `cd` into them), but it won't apply execute permissions to regular files (unless they already have it).
 
-In short, to give read and write permissions to all the contents in a directory, use:
+In short, to give a group read and write permissions to all the contents in a directory, use:
 
 ```bash
 chmod g+rwX folder_name
@@ -250,8 +254,8 @@ chmod -R g+rwX grant_applications
 
 Two things of note:
 
-- Similarly to the note above about `chmod`, the `chgrp` option also has a `-R` option, allowing to apply the group association recursively to all files and folders within the target folder.
-- Note how we use the uppercase `X` with `chmod`, to ensure directories are given execute permissions, but regular files do not.
+- The `chgrp` option has a `-R` option, allowing to apply the group association recursively to all files and folders within the target folder.
+- We used the uppercase `X` with `chmod`, to ensure directories are given execute permissions, but regular files do not.
 
 ::: {.callout-note}
 #### Creating groups and assigning users
@@ -268,7 +272,7 @@ Finally, the ownership of a file can also be changed with the `chown` command.
 However, an important caveat is that **only the `root` user (via `sudo`) can change file ownership**.
 Even if you are the owner of a file, you cannot change its ownership without `root` privelege.
 
-If you do have those permissions though, here are some examples of common use cases:
+Here are some examples of common use cases:
 
 - `sudo chown new_user README.txt` → the file `README.txt` is now owned by `new_user`; the associated group remains unchanged.
 - `sudo chown new_user:new_group README.txt` → the file `README.txt` is now owned by `new_user` and assigned to `new_group`.

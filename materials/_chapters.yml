@@ -8,19 +8,32 @@ book:
         - materials/03-file_operations.md
         - materials/04-text_manipulation.md
         - materials/05-combining_commands.md
+    - part: "Scripting"
+      chapters:
         - materials/06-scripts.md
+        - materials/07-variables.md
+    - part: "System and Environment"
+      chapters:
+        - materials/xx-permissions.md # chown, chmod
+        - materials/xx-environment.md # .bashrc, export, PATH, aliases
+        - materials/xx-archiving.md # tar, gzip, zip, md5, sha256
+        # - materials/xx-processes.md # ps, top, kill, fg, &
     - part: "Shell Programming"
       chapters:
         - materials/slides02-programming.md
-        - materials/07-variables.md
         - materials/08-loops.md
+        # - materials/08-conditionals.md
+        # - materials/08-functions.md
+    - part: "Working With Data"
+      chapters:
+        # - materials/xx-regex.md
+        - materials/11-sed.md
+        # - materials/xx-awk.md
+        # - materials/xx-coreutils.md # sort, cut, join
     - part: "Remote Work"
-      chapters: 
+      chapters:
         - materials/09-ssh_scp.md
         - materials/10-remote_files.md
-    - part: "Advanced text processing"
-      chapters:
-        - materials/11-sed.md
   appendices:
     - materials/a01-cheatsheet.md
     - materials/a02-wsl.md
