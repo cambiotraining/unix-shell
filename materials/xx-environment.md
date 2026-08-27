@@ -110,7 +110,7 @@ If you close your terminal and start a new session, the variable will no longer 
 To load variables automatically in future sessions, add their definitions to a configuration file such as `.bashrc`/`.zshrc`, which we discuss below.
 :::
 
-## Finding software with the `PATH` variable
+## Finding software with `PATH`
 
 When you type a command, the shell uses the `PATH` variable to find the corresponding executable program.
 For example, when you type `ls`, `cat`, or `grep`, the shell searches a set of predefined directories.
@@ -274,12 +274,12 @@ lss molecules
 -rwxr--r-- 1 participant participant  422 Jun  6  2025 methane.pdb
 ```
 
-## Persisting changes using configuration files
+## Configuration files
 
 The variable, `PATH`, and alias changes in the previous sections affect only the active shell.
 When you close the terminal and start a new session, the shell returns to its default environment.
 
-Configuration files let you load changes whenever you start a new shell.
+**Configuration files let you load changes whenever you start a new shell.**
 The shell itself is a program, and different shells have different configuration files and behaviours.
 You can check which shell you're using with:
 
