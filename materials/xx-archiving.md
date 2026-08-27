@@ -8,72 +8,71 @@
 
 ## Archiving and compression
 
-An **archive file** is essentially a single file that bundles multiple files and directories within it.
-You will have previously encountered directory archives, for example in the popular ZIP format.
-Archive files are useful to distribute and share large numbers of (sometimes large) files, and are a commonplace in computational work.
+An **archive file** bundles multiple files and directories into one file.
+You may already have used directory archives in the popular ZIP format.
+Archives make it easier to distribute and share many files, and they are common in computational work.
 
-Some archive file formats - such as ZIP - also support **data compression**, using an algorithm that reduces the total size of the final archive.
-Although this adds a computational cost in compressing/decompressing the file (which takes time), it can reduce the total size substantially and thus reduce the amount of storage needed for the file.
+Some archive formats, such as ZIP, also support **data compression**.
+A compression algorithm reduces the size of the resulting file.
+Compression and decompression require additional computation, but the smaller file needs less storage and may transfer more quickly.
 
-In computational research, these are the most popular file formats you will encounter:
+These are the formats you are most likely to encounter in computational research:
 
-- `.zip` → an archive format which also supports data compression.
-- `.tar` → an archive format only.
-- `.gz` → the file format for the **gzip** compression algorithm.
-- `.tar.gz` → the combination of the **tar** archive with **gzip** compression, effectively resulting in a compressed archive (much like ZIP)
+- `.zip` is an archive format that also supports compression.
+- `.tar` is an archive format without compression.
+- `.gz` is the format produced by the **gzip** compression algorithm.
+- `.tar.gz` combines a `tar` archive with gzip compression to produce a compressed archive, similar to a ZIP file.
 
-## ZIP commands
+## Creating and extracting ZIP archives
 
-The syntax to package and (optionally) compress a file with the ZIP algorithm is:
+Use this syntax to package files and directories in a ZIP archive:
 
 ```bash
 zip your_archive.zip file1 file2 folder1/ folder2/
 ```
 
-The command also supports several options, of which we highlight:
+The `zip` command supports several useful options:
 
-- `-r` to archive files recursively including directory and subdirectory within any input folders.
-  In the example above, `zip` would not archive the contents of `folder1/` and `folder2/` - it would simply include them as empty directories in the archive.
-  The `-r` option ensures everything within those folders is included.
-- Numbers `-0` to `-9` determine the compression level that ZIP uses.
-  `-0` means no compression is applied, which can be useful if all you want is to archive the files quickly.
-  `-9` is the highest compression level, leading to most space saved, but also longer compute time to compress (and decompress) the file.
-  The default is `-6`, which means a medium compression is applied.
+- `-r` archives files recursively, including files in directories and their subdirectories.
+  Without `-r`, `zip` includes the directory entries but not their contents.
+- Numbers from `-0` to `-9` set the compression level.
+  `-0` skips compression, which can create the archive quickly.
+  `-9` applies the highest compression level, which usually saves the most space but takes longer.
+  The default level is `-6`.
 
-Once you have an archive, you can unpack it using `unzip`:
+Extract a ZIP archive with `unzip`:
 
 ```bash
 unzip your_archive.zip
 ```
 
-To learn more about ZIP look at the excellent [tutorial on the GeeksforGeeks page](https://www.geeksforgeeks.org/linux-unix/zip-command-in-linux-with-examples/).
+For more ZIP examples, see the [GeeksforGeeks tutorial](https://www.geeksforgeeks.org/linux-unix/zip-command-in-linux-with-examples/).
 
-## Tar commands
+## Creating and extracting tar archives
 
-The other popular archiving program is `tar`.
-Its basic syntax is:
+The other common archiving program is `tar`.
+Create an uncompressed archive with:
 
 ```bash
 tar -cvf your_archive.tar file1 file2 folder1/ folder2/
 ```
 
-The options here mean:
+The options mean:
 
-- `-c` create an archive
-- `-v` use verbose output, which lists all the files that are included in the archive
-- `-f` name for the archive file
+- `-c` creates an archive.
+- `-v` enables verbose output, which lists each file as `tar` adds it.
+- `-f` specifies the archive file name.
 
-The `tar` command also supports adding a compression with Gzip, using the option `-x`.
-So, the equivalent command would be:
+You can also add gzip compression with the `-z` option:
 
 ```bash
 tar -czvf your_archive.tar.gz file1 file2 folder1/ folder2/
 ```
 
-- `-z` option indicates we want compression with Gzip.
-- We also use `.tar.gz` file extension to indicate this is now a compressed tar archive.
+- The `-z` option tells `tar` to use gzip compression.
+- The `.tar.gz` extension indicates that the file is a gzip-compressed tar archive.
 
-To extract the files from the archive you use the `-x` (e**x**tract) option:
+Use the `-x` option to extract files from an archive:
 
 ```bash
 # without compression
@@ -83,61 +82,55 @@ tar -xvf your_archive.tar
 tar -xzvf your_archive.tar.gz
 ```
 
-### Gzip commands
+### Compressing individual files with gzip
 
-Above, we've seen how to create an archive that is also compressed using the Gzip algorithm.
-However, you may sometimes want to compress or decompressed single files.
+You can also use gzip to compress an individual file rather than creating an archive.
 
-To compress a single file, use `gzip`:
+Compress a file with `gzip`:
 
 ```bash
 gzip file.txt
 ```
 
-This will automatically create a file named `file.txt.gz`.
-Note that the original is not kept.
-If you want to keep the original file, use the `-k` option.
+This command creates `file.txt.gz` and removes the original `file.txt`.
+Use the `-k` option if you want to keep the original file.
 
-To decompress a file you can use:
+Decompress a gzip file with:
 
 ```bash
 gzip -d file.txt.gz
 ```
 
-Some Unix distributions also provide the shortcut `gunzip` command, which has the same effect as above.
-
-As with the `unzip` command, this will not keep the original file.
-If you want to keep the original, add the `-k` option to the command.
+Some Unix distributions also provide `gunzip`, which has the same effect.
+The decompression command removes the compressed file after it creates the original file.
+Use `-k` to keep the compressed file as well.
 
 ::: {.callout-tip}
-#### Inspecting the content of `.gz` files
+#### Inspecting the contents of `.gz` files
 
-You can inspect the content of text-based gzip-compressed files without actually decompressing them:
+You can inspect text-based gzip files without decompressing them first:
 
-- The `zcat` (or `gzcat` on macOS) command behaves as the standard `cat`.
-- The `less` command supports gzip-compressed files, opening them for view without the need to decompress them first.
+- `zcat` (or `gzcat` on macOS) displays the contents like the standard `cat` command.
+- `less` (or `zless` on macOS) can open gzip-compressed files directly for viewing.
 :::
 
-## File integrity
+## Checking file integrity with hashes
 
-Ensuring file integrity is essential when you download data from public servers, or when you transfer data between filesystems.
-There are several algorithms designed to create a file "fingerprint" (known as a cryptographic hash), which enables you to check if the file you copied or downloaded corresponds to the original file.
+Ensuring file integrity is essential after downloading data from a public server or transferring data between filesystems.
+We can ensure integrity by using a **cryptographic hash**, which acts as a fingerprint for a file.
+Comparing the hash of a copied or downloaded file with the original hash shows whether the file changed during transfer.
 
-There are two commonly-used hash algorithms:
+Two commonly used hash algorithms are:
 
-- MD5, with the command `md5sum`.
-  This is an older fingerprinting algorithm and nowadays considered unsafe for sensitive files (for example, two files may have the same fingerprint, which poses a security issue).
-  However, it is fast and so very popular when the sole objective is to ensure the integrity of a file from relatively trusted sources.
-- SHA-256, with the command `sha256sum`.
-  This is a more secure algorithm, but slower to run and so only used for more sensitive files.
+- **MD5**, generated with `md5sum`.
+  MD5 is an older algorithm and is unsafe for security-sensitive uses because different files can produce the same hash.
+  However, it's fast and still popular for checking files from relatively trusted sources.
+- **SHA-256**, generated with `sha256sum`.
+  SHA-256 provides stronger protection against collisions than MD5, but takes longer to calculate.
 
-Both commands allow you to do two things:
+Both commands can create a hash for a file and check a file against a recorded hash.
 
-- Create a fingerprint for a file
-- Check if a fingerprint matches a given file
-
-Let's take as an example the file `README.txt` our `data-shell` folder.
-To create a MD5 hash for this file:
+For example, from the `data-shell` folder, create an MD5 hash for `README.txt`:
 
 ```bash
 md5sum README.txt
@@ -147,14 +140,14 @@ md5sum README.txt
 500a44678a779f6ca171f960c4eb1c8e  README.txt
 ```
 
-The characters you see before the file name are the MD5 hash (its fingerprint).
-We can save this output to a file using the `>` redirect operator, so that we can check its integrity later:
+The characters before the file name form the MD5 hash.
+Save the command's output to a file with the `>` redirection operator so that you can check the file later:
 
 ```bash
 md5sum README.txt >md5.txt
 ```
 
-Now, to check the file integrity, you can use the `-c` ("check") option with the text file we just created:
+Use the `-c` ("check") option with the recorded hash file to check the file's integrity:
 
 ```bash
 md5sum -c md5.txt
@@ -164,7 +157,7 @@ md5sum -c md5.txt
 README.txt: OK
 ```
 
-Now, let's change the content of the file as a test for the integrity:
+To test the check, change the contents of `README.txt` and run the check again:
 
 ```bash
 echo "testing MD5" >>README.txt
@@ -177,18 +170,17 @@ README.txt: FAILED
 md5sum: WARNING: 1 computed checksum did NOT match
 ```
 
-As you can see, the check now failed, because the modified file no longer matches the original file from which we created the MD5 hash.
-
-The `sha256sum` command works in very much the same way.
-You can also create a fingerprint for multiple files at once, by giving them as an input to the commands (or using the `*` wildcard).
+The check fails because the modified file no longer matches the file used to create the recorded MD5 hash.
+The `sha256sum` command works in the same way.
+You can also create hashes for several files at once by listing their names or using the `*` wildcard.
 
 ::: {.callout-tip collapse=true}
-#### For bioinformatics users: check the integerity of your sequencing files
+#### For bioinformatics users: check the integrity of sequencing files
 
-For those doing bioinformatics, and in particular sequencing using a company, you may have noticed that often a file named `md5.txt` (or something similar) is provided with your FASTQ files.
-The file can be used to check the integrity of your downloaded files using the command we just shown.
+When a sequencing company supplies FASTQ files, it often also provides a file named `md5.txt` or something similar.
+Use this file to check that your downloaded files match the files supplied by the company.
 
-Always do this check - you've paid for your expensive data, so make sure that it is intact after you get it from the company!
+Run the check after downloading your data so that you can detect an incomplete or corrupted transfer before analysing the files.
 :::
 
 ## Exercises
@@ -196,26 +188,26 @@ Always do this check - you've paid for your expensive data, so make sure that it
 ::: {.callout-exercise}
 {{< level 1 >}}
 
-Working from the `~/Desktop/data-shell` directory:
+From the `~/Desktop/data-shell` directory:
 
-1. Create a tar archive of the `hospital_records` directory without compression.
-2. Create a tar gzip-compressed archive of the same directory.
-3. Use the `du` (disk usage) command to compare the sizes of the archive files compared to the original folder
+1. Create an uncompressed tar archive of the `hospital_records` directory.
+2. Create a gzip-compressed tar archive of the same directory.
+3. Use the `du` (disk usage) command to compare the archive sizes with the original directory.
 
 ::::: {.callout-answer}
-1. We create a `tar` archive with:
+1. Create an uncompressed `tar` archive:
 
 ```bash
 tar -cvf hospital_records.tar hospital_records/
 ```
 
-2. We create a `tar.gz` archive with:
+2. Create a gzip-compressed `tar.gz` archive:
 
 ```bash
 tar -czvf hospital_records.tar.gz hospital_records/
 ```
 
-3. We compare their sizes and the size of the original directory
+3. Compare the sizes of the original directory and both archives:
 
 ```bash
 du -h hospital_records*
@@ -227,8 +219,8 @@ du -h hospital_records*
 4.6M  hospital_records.tar.gz
 ```
 
-We can see that the simple `.tar` archive is essentially the same size as the original folder - this is because all `tar` is doing is bundling those files into a single file.
-When compressed with `gzip` we reduce the size by at least an order of magnitude.
+The uncompressed `.tar` archive is about the same size as the original directory because `tar` only bundles the files.
+Gzip compression reduces the archive size substantially in this example.
 :::::
 :::
 

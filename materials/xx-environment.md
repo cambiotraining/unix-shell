@@ -8,27 +8,29 @@
 
 ## Environment variables
 
-In the [arguments and variables chapter](07-variables.md), we briefly discussed **environment variables**: variables that load automatically when we start our shell.
-These variables are defined based on system or user-provided configuration files and may affect how the operating system behaves.
-For example, some programs may rely on environment variables to find critical files or directories needed for their function.
+In the [arguments and variables chapter](07-variables.md), we introduced **environment variables**: variables that the shell loads automatically when it starts.
+System or user configuration files define these variables, and they can affect how the operating system behaves.
+For example, programs may use environment variables to find files or directories that they need.
 
-You can see global variables defined in your current environment with:
+Use `printenv` to display the variables defined in your current environment:
 
 ```bash
 printenv
 ```
 
-Here's some common variables:
+Here are some common environment variables:
 
-- `$HOME` → stores your home directory
-- `$USER` → stores your username
-- `$SHELL` → indicates which interpreter the current shell is using.
-  This is usually `/bin/bash`, but also common is `/bin/zsh` (e.g. on macOS)
-- `$PATH` → stores a list of directory paths where the shell looks for executable programs (we will discuss this in detail below)
-- `$PWD` → this is a dynamic variable, which stores your current working directory; every time you change directory, the value of this variable also changes
+- `$HOME` stores your home directory.
+- `$USER` stores your username.
+- `$SHELL` indicates which interpreter the current shell uses.
+  This is usually `/bin/bash`, but `/bin/zsh` is also common, especially on macOS.
+- `$PATH` stores a list of directories where the shell looks for executable programs.
+  We will discuss this variable in detail below.
+- `$PWD` stores your current working directory.
+  This dynamic variable changes each time you change directory.
 
-You can access the values of these variables using the `echo` command, just as you would any other shell variable.
-For example, try running these:
+Use the `echo` command to access the value of an environment variable, just as you would access any other shell variable.
+For example:
 
 ```bash
 echo "Hello $USER!"
@@ -38,16 +40,16 @@ echo "Currently you're located in: $PWD"
 
 ### Local vs global variables
 
-An important distinction is that between local and global variables.
+A shell variable is local to the shell by default.
+Child processes, such as a shell script that you run from the terminal, cannot access local variables unless you export them.
 
-**Local variables** are only accessible to your shell, but not any child processes.
-For example, say you define the following variable in your shell:
+For example, define the following variable in your shell:
 
 ```bash
 hello_message="Hello $USER!"
 ```
 
-If you run this on the terminal, you will get the expected output:
+You can use the variable in the current shell:
 
 ```bash
 echo $hello_message
@@ -57,16 +59,16 @@ echo $hello_message
 Hello participant!
 ```
 
-However, if you include this code in a shell script (e.g. `print_hello.sh`):
+However, if you include the same variable in a shell script (for example, `print_hello.sh`):
 
 ```bash
-#!/usr/env bash
+#!/usr/bin/env bash
 
 echo "Greeting message:"
 echo $hello_message
 ```
 
-And then execute the shell script:
+Then execute the script from the terminal:
 
 ```bash
 bash print_hello.sh
@@ -77,16 +79,16 @@ Greeting message:
 
 ```
 
-You will notice the output from `$hello_message` is empty.
-That's because `hello_message` was a **local variable** defined on the active environment, but is not inherited by the environment where the script is executed.
+The script prints an empty value because `hello_message` is a local variable in the active shell.
+The script runs in a child process, which does not inherit local variables.
 
-If you want a variable to be defined globally (i.e. it will be inherited by child processes), then you can use the `export` command:
+Use the `export` command to make a variable available to child processes:
 
 ```bash
 export hello_message="Hello $USER!"
 ```
 
-And now:
+Run the script again:
 
 ```bash
 bash print_hello.sh
@@ -97,23 +99,23 @@ Greeting message:
 Hello participant!
 ```
 
-Also note that `hello_message` now appears as a global environment variable if you use the `printenv` command.
+The exported variable also appears in the output from `printenv`.
 
 ::: {.callout-important}
-#### Global variables set with `export` do not persist between sessions
+#### Exported variables last only for the current session
 
-One thing to note is that even when set with `export`, environment variables don't persist between sessions.
-If you kill your terminal and start a new one, any variables defined in the previous session are no longer available.
+Exporting a variable makes it available to child processes, but it does not make the variable permanent.
+If you close your terminal and start a new session, the variable will no longer be available.
 
-If you want global variables to persist across sessions, you should use a configuration file such as `.bashrc`, which we discuss below.
+To load variables automatically in future sessions, add their definitions to a configuration file such as `.bashrc`/`.zshrc`, which we discuss below.
 :::
 
-## Finding software: the `PATH` variable
+## Finding software with the `PATH` variable
 
-The `PATH` variable is what the shell uses to find executable programs whenever you type a command.
-For example, when you type a command such as `ls`/`cat`/`grep`/etc., the shell looks for that program's name in a set of predefined directories.
+When you type a command, the shell uses the `PATH` variable to find the corresponding executable program.
+For example, when you type `ls`, `cat`, or `grep`, the shell searches a set of predefined directories.
 
-We can see what executable a certain program uses using the `which` command:
+Use the `which` command to see which executable the shell finds for a program:
 
 ```bash
 which grep
@@ -123,7 +125,7 @@ which grep
 /usr/bin/grep
 ```
 
-If we look at the `PATH` variable, we will notice that `/usr/bin` is one of the directories used to find executables:
+The `PATH` variable includes `/usr/bin`, so the shell can find `grep` there:
 
 ```bash
 echo $PATH
@@ -133,16 +135,16 @@ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 ```
 
-Your `PATH` will likely look different from ours, however it should follow the convention of having each path separated by a `:` colon.
-When you type a command the shell will look in those directories *in order*, until it finds the executable referring to the command you typed.
-If it doesn't find it, it throws an error: "command not found".
+Your `PATH` will probably differ from this example.
+Each directory appears in a colon-separated list.
+When you type a command, the shell searches these directories in order and runs the first matching executable.
+If the shell finds no match, it throws and error: `command not found`.
 
-### Custom `PATH`
+### Adding a custom directory to `PATH`
 
-It is not uncommon to edit your `PATH` by adding new directories with custom software.
-This may include your own personal scripts, as well as software you install locally, for example in your home directory.
+You can add directories to `PATH` when you want to run personal scripts or locally installed software as regular commands.
 
-Let's take an example by looking at the scripts stored in `my_programs`:
+The `my_programs` directory contains three example scripts:
 
 ```bash
 cd ~/Desktop/data-shell
@@ -153,8 +155,9 @@ ls my_programs
 countfiles  cow  sysinfo
 ```
 
-Although we didn't use a file extension, these are all shell scripts, which you can edit with `nano` or print the content with `cat`.
-Let's run one of them:
+These files have no extension, but they are shell scripts.
+You can edit them with `nano` or display their contents with `cat`.
+Run one of the scripts with `bash`:
 
 ```bash
 bash my_programs/countfiles
@@ -165,11 +168,11 @@ Files in /home/participant/Desktop/data-shell/:
 2
 ```
 
-This counts the number of regular files in the current directory - nice!
+This script counts the regular files (i.e. it excludes directories) in the current directory.
 
-Let's say we wanted to be able to call these scripts as regular commands.
-The first thing we need to do is ensure the files have **execute** permission, otherwise they would always need to be called using the `bash` program.
-We use the `chmod` command we learned about earlier:
+To run these scripts as regular commands, first give the user execute permission.
+Without execute permission, you must run each script through the `bash` program.
+Use the `chmod` command we learned about in the [permissions chapter](xx-permissions.md):
 
 ```bash
 chmod u+x my_programs/*
@@ -182,33 +185,36 @@ ls -l my_programs
 -rwxrw-r-- 1 participant participant 158 Aug 25 11:37 sysinfo
 ```
 
-We can see the user now has `rwx` permissions to these files, meaning they are set as executable files.
-The shell will now use the `#!` shebang within the scripts to determine the program used to launch them (in this case, all of them use `bash`).
+The first three permission characters after the file type are now `rwx`, so the user can read, write, and execute these files.
+When you run an executable script, the `#!` shebang at the start of the file tells the operating system which interpreter to use.
+In this example, the scripts use `bash`.
 
-Now, we edit our `PATH` variable:
+Add the directory containing these scripts to the front of `PATH`:
 
 ```bash
 PATH="$HOME/Desktop/data-shell/my_programs/:$PATH"
 ```
 
-Let's break down the syntax:
+This assignment combines the new directory with the existing value of `PATH`:
 
-- `PATH=` → redefines the variable by assigning it a new value
-- `$HOME/Desktop/data-shell/my_programs/` → adds the new directory to the `PATH`; note that we use `$HOME` to ensure this is defined relative to our user's home directoy
-- `:` → this is the separator used to add other directories to the `PATH` list
-- `$PATH` → we add the current values already present in `PATH`, so that we effectively paste our new directory in front of the previous directories
+- `PATH=` assigns a new value to the variable.
+- `$HOME/Desktop/data-shell/my_programs/` is the directory to add.
+  Using `$HOME` makes the path relative to your home directory.
+- `:` separates directories in the `PATH` list.
+- `$PATH` preserves the directories that were already in `PATH`.
+  Placing the new directory first means the shell searches it before the existing directories.
 
-If you now print the value of the variable, you should see the new directory listed:
+Print `PATH` to confirm that the new directory appears at the front:
 
 ```bash
 echo $PATH
 ```
 
 ```output
-/home/participant/Desktop/data-shell/my_programs:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+/home/participant/Desktop/data-shell/my_programs:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
 
-Now, you can type any of those program names, and they will run just as any other command, for example:
+You can now run any of the scripts by typing its name:
 
 ```bash
 sysinfo
@@ -223,40 +229,37 @@ Uptime:   up 2 hours, 17 minutes
 ```
 
 ::: {.callout-tip}
-#### Custom scripts can be in any language
+#### Custom scripts can use different interpreters
 
-Remember the `#!` shebang we covered in the [shell scripts chapter](06-scripts.md)?
-This was used to specify which program should be used to execute the script.
-We've used `#!/usr/bin/env bash` to use `bash` for our programs.
-However, this could be any other interpreter of your choice, for example:
+The `#!` shebang from the [shell scripts chapter](06-scripts.md) specifies which program should execute a script.
+We used `#!/usr/bin/env bash` for the shell scripts in this chapter, but a shebang can specify another interpreter, such as:
 
-- `#!/usr/bin/env python3` → use Python to execute the script
-- `#!/usr/bin/env Rscript` → use R to execute the script
+- `#!/usr/bin/env python3` uses Python to execute the script.
+- `#!/usr/bin/env Rscript` uses R to execute the script.
 
-And so on... Any program you have to execute scripts can be included in your shebang!
+Any interpreter that can execute scripts can appear in a shebang.
 :::
 
 ## Aliases
 
-In the previous section we've seen how you can add custom scripts or programs to your `PATH`, so that they become available as regular programs.
-Another related concept is that of an `alias`, which you can think of as a shortcut to another command.
+Adding a directory to `PATH` makes its scripts available as regular commands.
+An **alias** provides another way to simplify commands by assigning a short name to a command and its options.
 
-For example, let's say that you often type the `ls` command with the following options:
+For example, you might often use these `ls` options:
 
-- `-l` to list in long format
-- `-h` to display file sizes in human-readable format
-- `-S` to sort files by size
-- `--color=always` to always use colours in the output
+- `-l` lists files in long format.
+- `-h` displays file sizes in a human-readable format.
+- `-S` sorts files by size.
+- `--color=always` always uses colours in the output.
 
-However, typing `ls -l -h -S --color=always` will quickly become tiresome.
-Instead, we can create an alias to this command with a name of our choice.
-For example, let's call it `lss` (for "`ls` sorted by `s`ize"):
+Typing `ls -l -h -S --color=always` each time is repetitive.
+Let's create an alias named `lss` (for "`ls` sorted by `s`ize) for this command:
 
 ```bash
 alias lss="ls -l -h -S --color=always"
 ```
 
-Now, we can type `lss` and get the desired outcome:
+You can now type `lss` to list the contents of `molecules` with these options:
 
 ```bash
 lss molecules
@@ -271,97 +274,129 @@ lss molecules
 -rwxr--r-- 1 participant participant  422 Jun  6  2025 methane.pdb
 ```
 
-## Configuration files: `.bashrc`
+## Persisting changes using configuration files
 
-Everything we've done so far only applies to the active shell.
-As soon as you close your terminal and start a new session, your environment will be back to its default state.
-Custom environment variables, `PATH` edits and aliases will all diseappear.
+The variable, `PATH`, and alias changes in the previous sections affect only the active shell.
+When you close the terminal and start a new session, the shell returns to its default environment.
 
-If you want to make those changes more persistent, you can use configuration files that are loaded when the user starts a new shell.
-The most common of these configuration files is called `.bashrc` and is located in the user's home:
+Configuration files let you load changes whenever you start a new shell.
+The shell itself is a program, and different shells have different configuration files and behaviours.
+You can check which shell you're using with:
 
 ```bash
-head ~/.bashrc
+echo $SHELL
 ```
 
-The contents of the `.bashrc` vary between operating systems and users.
-Some programs will also modify this file upon installation, e.g. by editing the `PATH` variable with their executables.
+For most Linux users their default shell is `bash`, but for macOS users it is `zsh`.
+Depending on which of these two you have, the most common configuration files are:
 
-The important thing to know is that this file effectively **behaves as a shell script**, so any bash commands are valid within it.
-We will edit this file to see its behaviour, but before doing so, we'll **create a backup** in case we make any mistakes:
+- `.bashrc` for a `bash` shell
+- `.zshrc` for a `zsh` shell
+
+::: {.callout-important}
+#### Select your shell
+
+For your convenience, select your shell so the text below shows you the right configuration file:
+
+{{< shell-selector center >}}
+
+All this does is use either `.bashrc` or `.zshrc` in the text that follows.
+But the explanations are identical otherwise.
+:::
+
+You can inspect the contents of your configuration file with:
 
 ```bash
-cp ~/.bashrc ~/.bashrc_unix_course_bkp
+cat ~/{{< shell-file >}}
+```
+
+The contents of `{{< shell-file >}}` vary between operating systems and users.
+Some programs also modify this file during installation, for example by adding their executable directories to `PATH`.
+
+The shell treats `{{< shell-file >}}` as a script, so you can place valid Bash commands in it.
+Before editing the file, create a backup so that you can restore the original if necessary:
+
+```bash
+cp ~/{{< shell-file >}} ~/{{< shell-file >}}_unix_course_bkp
 ```
 
 ::: {.callout-warning}
-We're interrupting the flow of the text here to **make sure you really do backup your `.bashrc`**.
-This is an important configuration file, and changing it may break some of your environment setup.
+Back up `{{< shell-file >}}` before you edit it.
+This configuration file may contain settings that your environment needs, and an incorrect change can prevent commands or other configuration from working.
 
-Don't be scared to make changes to it, but do be extra careful in backing it up before changes!
+You can safely experiment if you keep the backup and restore it when necessary.
 :::
 
-Now, we can open the file with any text editor (we will use `nano`, but any text editor is fine):
+Open the file with a text editor.
+This example uses `nano`, but you can use any text editor:
 
 ```bash
-nano ~/.bashrc
+nano ~/{{< shell-file >}}
 ```
 
-Most of the time it's a good idea to do your edits right at the bottom and leave the rest of the file untouched.
-You can even add a comment to indicate these were changes made by you.
-Let's do a simple edit, by adding a welcome message that prints every time we start a session:
+Add your own changes at the bottom of the file and leave the existing configuration unchanged.
+A comment can identify the lines that you added.
+For example, add a welcome message that prints each time you start a session:
 
 ```bash
 # User edit: add a welcome message
 echo "Hello $USER - welcome back!"
 ```
 
-After saving the `.bashrc`, start a new terminal - you should now see this message being printed on the screen.
-This is because, as you start a new shell, it reads the `.bashrc` and executes all the commands found within it.
+Save `{{< shell-file >}}`, then start a new terminal.
+The new shell reads `{{< shell-file >}}` and executes its commands, so it prints the welcome message.
 
-Hopefully, it is clear how you can therefore use this file to edit your `PATH` or create aliases that persist across sessions.
-You can put this in practice in the exercises that follow.
+You can use the same file to define persistent environment variables, update `PATH`, and create aliases.
+The exercises below let you practise these changes.
 
 ::: {.callout-note}
 #### Hidden files
 
-Files or directories starting with a `.` are hidden by default when using `ls`.
-To see them you can use `ls -a` (list **a**ll files).
+`ls` hides files and directories whose names start with `.` by default.
+Use `ls -a` to list **a**ll files, including hidden files.
 
-Configuration files and directories are often named with a `.` so that they are hidden from the user, avoiding cluttering their view of the filesystem.
+Configuration files and directories often start with `.` to keep them out of the usual filesystem listing.
 :::
 
 ## Exercises
 
-::: {.callout-warning}
-We've said it before, we'll say it again:
+Before starting these exercises, check which shell you're using with:
 
-- Before making changes to `.bashrc`, make sure to **create a backup** so you can revert accidental changes that break your environment.
+```bash
+echo $SHELL
+```
+
+And make your selection accordingly:
+
+{{< shell-selector center >}}
+
+::: {.callout-warning}
+Before you edit `{{< shell-file >}}`, create a backup so that you can undo an accidental change that disrupts your environment.
 :::
 
 ::: {.callout-exercise}
 {{< level 1 >}}
 
-Ealier, we used the `alias` command to create an alias for the `ls` command with certain options turned on:
+Earlier, we used the `alias` command to create an alias for `ls` with several options:
 
 ```bash
 alias lss='ls -l -h -S --color=always'
 ```
 
-- Add this alias to your `~/.bashrc`
-- Confirm that it persists across sessions by starting a new terminal and running `lss ~/Desktop/data-shell`
+- Add this alias to your `~/{{< shell-file >}}`.
+- Confirm that it persists across sessions by starting a new terminal and running `lss ~/Desktop/data-shell`.
 
 ::::: {.callout-answer}
-To add this alias to our `.bashrc` we open it with a text editor (we use `nano`):
+Open `{{< shell-file >}}` with a text editor such as `nano`:
 
 ```bash
-nano ~/.bashrc
+nano ~/{{< shell-file >}}
 ```
 
-We then paste the `alias` command given at the bottom of the file.
-We close and save the file: <kbd>Ctrl + X</kbd> → <kbd>Y</kbd> → <kbd>Enter</kbd>.
+Paste the `alias` command at the bottom of the file.
+Save and close the file with <kbd>Ctrl + X</kbd> → <kbd>Y</kbd> → <kbd>Enter</kbd>.
 
-Finally, after starting a new terminal, we can see that the alias is working:
+Start a new terminal and run the alias:
 
 ```bash
 lss ~/Desktop/data-shell
@@ -382,67 +417,67 @@ drwxr--r-- 4 participant participant 4.0K Jun  6  2025 sequencing
 ::: {.callout-exercise}
 {{< level 2 >}}
 
-As you get more experienced with the command line, you may want to create small scripts or utilities of your own.
-Earlier we used some examples found in the `my_programs` directory, which we then added to the `PATH` so they would become available in our environment as regular programs.
+As you gain experience with the command line, you may want to create scripts or utilities of your own.
+Earlier, we used scripts from the `my_programs` directory and added that directory to `PATH`, which made the scripts available as regular commands.
 
-A practice often recommended is to create a folder in your home directory for these personal utilities, and then add that folder to your `PATH`.
+A common practice is to create a directory in your home directory for personal utilities and add it to `PATH`.
 
-- Create a new directory in your home for personal scripts.
-  How you name this directory is up to you, but make sure it is informative (e.g. `utilities`, `personal-scripts`, or something along those lines).
-- Add a test script to this directory (e.g. you can copy one of the scripts we provide in the directory `my_programs`).
-- Then persistently add this directory to your `PATH` by editing the `~/.bashrc` configuration file.
-- Start a new terminal and confirm that the program is now available to be used.
+- Create a directory in your home directory for personal scripts.
+  Choose an informative name such as `utilities` or `personal-scripts`.
+- Add a test script to the directory.
+  You can copy one of the scripts from `my_programs`.
+- Add the directory to `PATH` persistently by editing `~/{{< shell-file >}}`.
+- Start a new terminal and confirm that you can run the script as a command.
 
-The advantage of doing this is that you now have a folder that you can use as a place for custom scripts and utilities.
-Any time you find yourself doing the same kind of task, think: could I write a small script to save me time in the future?
+This directory gives you a place to keep custom scripts and utilities.
+When you repeat a task, consider whether a small script could save you time.
 
 ::::: {.callout-answer}
-1. We create a directory in our home called `utilities`:
+1. Create a directory called `utilities` in your home directory:
 
 ```bash
 mkdir ~/utilities
 ```
 
-2. We copy one of the example scripts into it as a test:
+2. Copy an example script into it:
 
 ```bash
 cp ~/Desktop/data-shell/my_programs/countfiles ~/utilities/
 ```
 
-3. We edit our configuration file (`nano ~/.bashrc`) by adding the following:
+3. Open `{{< shell-file >}}` with `nano ~/{{< shell-file >}}` and add:
 
 ```bash
 export PATH="$HOME/utilities/:$PATH"
 ```
 
-4. We start a new terminal and test that the `countfiles` command is now available.
+4. Start a new terminal and test that the `countfiles` command is available.
 :::::
 :::
 
 ::: {.callout-exercise}
 {{< level 3 >}}
 
-As we've mentioned several times, modifying your `.bashrc` can sometimes have unintended consequences, e.g. if you accidentally remove something you shouldn't.
+Modifying `{{< shell-file >}}` can have unintended consequences if you accidentally remove or change a setting that your environment needs.
 
-To avoid constantly editing `.bashrc` itself, you can instead have it load custom configurations from a separate file.
-For example, you could add this single line to your `.bashrc`:
+You can reduce this risk by storing your custom configuration in a separate file and asking `{{< shell-file >}}` to load it.
+For example, add this line to `{{< shell-file >}}`:
 
 ```bash
-source $HOME/.bashrc_custom
+source $HOME/{{< shell-file >}}_custom
 ```
 
-This will make `~/.bashrc` read the file called `~/.bashrc_custom` and load up any configurations saved in there.
+This command tells `{{< shell-file >}}` to read `~/{{< shell-file >}}_custom` and apply the configurations in that file.
 
-Then, you can make all your custom changes to that file instead, without ever touching `.bashrc`.
-Because your custom configurations live in a separate file, you reduce the risk of accidentally changing things you shouldn't.
+You can then make your custom changes in `~/{{< shell-file >}}_custom` instead of editing `{{< shell-file >}}` repeatedly.
 
 Try it for yourself:
 
-- Create a new file for your custom configurations: `nano ~/.bashrc_custom`
-- Add any customisations you'd like to it (e.g. `export PATH` changes, custom `alias`, etc.)
-- Add the following line at the end of your `.bashrc`: `source $HOME/.bashrc_custom`
-  - You can also remove any previous configurations you did - they should now live in the new custom file
-- Start a new terminal to confirm your changes have taken effect
+- Create a file for your custom configurations with `nano ~/{{< shell-file >}}_custom`.
+- Add customisations such as `export PATH` changes and aliases.
+- Add `source $HOME/{{< shell-file >}}_custom` at the end of `{{< shell-file >}}`.
+  Move any previous custom configurations to the new file.
+- Start a new terminal and confirm that your changes have taken effect.
 
 :::
 

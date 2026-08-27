@@ -8,25 +8,23 @@
 
 ## Who owns a file?
 
-When you list files with `ls -l` there is important information about **who owns a file** and **who can view or modify it**.
+When you list files with `ls -l`, you see important information about **who owns a file** and **who can view or modify it**.
 
-The ownership and visibility of of a file needs to be considered at two levels:
+File ownership and access control should be considered at two levels:
 
 - Who is the individual user who owns it?
-- Which groups of users can potentially access it?
+- Which groups of users can access it?
 
-On Unix systems, every user belongs to one or more groups.
-This allows flexibility in providing tiers of access to different files/folders.
-For example, you may have a shared directory within a research group that all members of the group can see.
-And a more restricted directory that external collaborators can access.
+On Unix systems, every user belongs to one or more groups, which allows flexible access control across different files and directories.
+For example, a shared directory in a research group might be accessible to all group members, whilst a restricted directory might be accessible only to external collaborators.
 
-There are two special groups worth being aware of:
+Two special groups are worth noting:
 
-- **Private primary group**: every user belongs to a private group, which has the same name as their username.
-  This is more of a placeholder group, as only the user themselves belongs to it.
-- **`sudo` (root)**: users that have permissions to execute administrative commands belong to this group.
+- **Private primary group**: every user belongs to a private group with the same name as their username.
+  This is a placeholder group for the user alone.
+- **`sudo` group**: users who can execute administrative commands belong to this group.
 
-You can see which groups you belong to using:
+To see which groups you belong to, use:
 
 ```bash
 groups
@@ -36,27 +34,26 @@ groups
 participant sudo users
 ```
 
-The output from `ls -l` provides information both about the owner of a file and the group that the file belongs to.
-Take the following hypothetical example:
+The `ls -l` output shows both the file owner and the group associated with it.
+Consider this example:
 
 ![](images/ls_explained.excalidraw.png)
 
-- All theses files and directories belong to the user `robin`.
-  This means the user has full control over which permissions and groups can access these files.
+- All the files and directories belong to the user `robin`, giving them full control over their access permissions.
 - The directory `student_projects` and the file `group_policies.txt` belong to a group called `birdlab`.
-  This means that members of that group can have specific access permissions to them.
-- The other directory, `grant_applications` belong to the private `robin` group.
-  This means other users will only be able to access it if `robin` sets permissions that apply to all users (regardless of their groups).
+  Members of this group can have specific access permissions to these items.
+- The directory `grant_applications` belongs to the private `robin` group.
+  Other users can only access it if `robin` sets permissions for all users.
 
-With the knowledge of who owns a file, let's now consider which permissions are possible to access those files.
+Now we can consider what permissions control access to files.
 
 ::: {.callout-note collapse=true}
 #### The `root` user
 
-On Unix systems, files and directories with restricted access are owned by a special user called `root`.
-These are often essential system files and directories, for example containing system-wide software installs or other important system configuration files.
+On Unix systems, files and directories with restricted access are often owned by a special user called `root`.
+These are typically essential system files and directories, for example, files containing system-wide software installations or important system configuration.
 
-For example, trying to access the following protected directory will result in an error:
+Trying to access a protected directory typically results in an error:
 
 ```bash
 ls -l /root
@@ -66,35 +63,33 @@ ls -l /root
 "/root": Permission denied (os error 13)
 ```
 
-If we examine the root directory where this is located (`ls -l /`), we will see its permissions are very restrictive:
+Examining the root directory (`ls -l /`) shows very restrictive permissions:
 
 ```
 drwx------   6 root root       4096 Mar 23 14:47 root
 ```
 
-To be able to run commands or access files owned by `root` you need to be part of the special group called `sudo`.
-Belonging to that group means you can run commands as if you were `root`, i.e. with unrestricted access.
+To access files or run commands owned by `root`, you must belong to the special `sudo` group.
+This group membership allows you to run commands as `root` with unrestricted access by prepending them with the `sudo` command.
 
-On the terminal, you can run commands as `root` by prepending them with the command `sudo`.
 For example:
 
 ```bash
 sudo ls /root/
 ```
 
-Will prompt for your password, and then should run successfully (assuming you belong to `sudo`).
+This prompts for your password, then runs successfully (assuming you belong to `sudo`).
 :::
 
 ## Permissions: read, write, execute
 
-In the output of `ls -l` there is a series of characters at the beginning of each line.
-These refer to the **type of file** and the **permissions** associated with it.
+At the beginning of each `ls -l` output, a series of characters indicates the **type of file** and the **permissions** associated with it.
 
-The characters can be split into four parts:
+These characters split into four parts:
 
 ```
-        permissions
-     _________________
+       permissions
+    _________________
 d    rwx    rwx    rwx
 |     |      |      |
 |     |      |      Other users
@@ -104,28 +99,28 @@ Type
 of file
 ```
 
-The first character indicates the type of file:
+The first character indicates the file type:
 
-- `d` indicates a directory
-- `-` indicates a regular file
-- `l` indicates a symbolic link
+- `d` → a directory
+- `-` → a regular file
+- `l` → a symbolic link
 
-The next nine characters are the permissions associated with each file or directory.
-These are organised in groups of three, each group referring to a different set of users:
+The next nine characters represent permissions, organised into three groups of three.
+Each group applies to a different set of users:
 
-- Characters 1-3 refer to your own permissions
-- Characters 4-6 are the permissions of users in the group associated with the file/directory
-- Characters 7-9 are the permissions for all other users that have an account on the machine
+- Characters 1--3: your (owner's) permissions
+- Characters 4--6: permissions for users in the group
+- Characters 7--9: permissions for all other users
 
-Each group includes three characters, indicating the following permissions in order:
+Each group of three characters indicates:
 
-- `r` **read** permission: user can see the contents of the file/directory, or make copies of it.
-- `w` **write** permission: user can modify the content of the file or, in the case of a directory, create files within it.
-- `x` **execute** permission: user can directly execute and run a file as a program.
-  For directories, it means the user can change into this directory with `cd`.
+- `r` → **read** permission: you can see the file/directory contents or copy the file
+- `w` → **write** permission: you can modify the file, or create files in a directory
+- `x` → **execute** permission: you can run the file as a program; for directories, this lets you change into them with `cd`
 
-The symbol `-` indicates that the respective permission is not available.
-Let's take the same hypothetical example as before:
+A `-` in any position means that permission is not granted.
+
+Consider this example:
 
 ```
 drwxrwxr--  2  robin  birdlab  4.0K  Jun 6 2025  student_projects
@@ -133,27 +128,29 @@ drwxr--r--  1  robin  robin    4.0K  Jun 6 2025  grant_applications
 -rwxr--r--  1  robin  birdlab  563   Jun 6 2025  group_policies.txt
 ```
 
-- `student_projects`:
-  - The first character, `d`, indicates this is a directory.
-  - The following three characters - `rwx` - indicate that the user (and owner) `robin` has full read, write, execute permissions to their files and directories.
-  - The next three characters - `rwx` - indicate that the group `birdlab` has read and write permissions to this directory.
-    This means that they can inspect the content of files within it (read permissions), but also modify them, delete them, or create new files and directories within it.
-  - The final three characters - `r--` - indicate that all other users with access to this storage will be able to see the directory name, but will not be able to access it (without execute permission, `x`, the users will not be able to `cd` into it).
+**`student_projects`:**
 
-- `grant_applications`:
-  - This is also a directory, indicated by `d`
-  - This directory is only associated with the private user group, `robin`, therefore only the user `robin` themselves can access or modify these files.
+- The first `d` indicates this is a directory.
+- `rwx` (user): `robin` has full read, write, and execute permissions.
+- `rwx` (group): members of `birdlab` can read, write to, and access the directory.
+  They can inspect files, modify them, delete them, and create new entries.
+- `r--` (other): other users can see the directory exists but cannot access it (without `x`, they cannot `cd` into it).
 
-- `group_policies.txt`:
-  - This is a regular file, indicated by the first `-`
-  - As before, the user `robin` has full permissions to this file.
-  - The group `birdlab` as well as any other users have read permissions only, indicated by `r--`
+**`grant_applications`:**
+
+- This is a directory associated with Robin's private group, so only Robin can access or modify it.
+
+**`group_policies.txt`:**
+
+- This is a regular file.
+- `rwx` (user): `robin` has full permissions.
+- `r--` (group and other): members of `birdlab` and other users have read-only access.
 
 ::: {.callout-important}
 #### Permissions within directories
 
-The permissions to a directory are distinct from the permissions of files and directories *within* it.
-Take the following schematic example of a directory and its contents, with their permissions, owner and group highlighted on the right:
+Directory permissions are separate from the permissions of files within them.
+Consider this example of a directory structure with their permissions, owner, and group:
 
 ```
 student_projects    rwxrwx--- robin birdlab
@@ -162,22 +159,21 @@ student_projects    rwxrwx--- robin birdlab
 └── project_b       rwxrwxr-- robin teamB
 ```
 
-- The top-level directory, `student_projects` can be accessed by members of `birdlab` because they have `rwx` permissions.
-- Inside it, users can see both project folders because they have read (`r`) permissions.
-- However permissions of each project directory determine who can access its contents.
-  In this case, `project_a` is owned by `robin` and its group is `teamA` - so only members of this group can acess it (`rwx`).
-  Similarly, for `project_b` only members of `teamB` will be able to access the contents of that directory.
-- Finally, within `project_a` the `TODO.txt` file has `rw-r--r--` permissions, meaning only the owner `robin` can modify it, while others can only read it.
+- Members of `birdlab` can access `student_projects` because they have `rwx` permissions, and they can see both project folders because they have read (`r`) permission.
+- However, the permissions of each project directory determine who can access its contents.
+  `project_a` is owned by `robin` with group `teamA`, so only `teamA` members can access it.
+  The same applies to `project_b` with `teamB`.
+- Within `project_a`, the `TODO.txt` file has `rw-r--r--` permissions, so only Robin can modify it; others can only read it.
 :::
 
 ## Changing permissions: `chmod`
 
-To change the permissions to a file, we can use the command `chmod`.
-There are different types of syntax that can be used to assign permissions with this command, and we'll cover a couple of these.
+To change file permissions, use the `chmod` command.
+Two notations are available: numeric coding and symbolic notation.
 
-The first syntax notation uses a **numeric coding** with numbers mapped to different combinations of permissions:
+The **numeric coding** system maps numbers to permission combinations:
 
-  | number | Permissions                |
+  | Number | Permissions                |
   | -----: | :------------------------- |
   |      7 | `rwx` read, write, execute |
   |      6 | `rw-` read, write          |
@@ -186,7 +182,7 @@ The first syntax notation uses a **numeric coding** with numbers mapped to diffe
   |      3 | `-wx` write, execute       |
   |      2 | `-w-` write only           |
   |      1 | `--x` execute only         |
-  |      0 | `---` none                 |
+  |      0 | `---` no permissions       |
 
 For example:
 
@@ -194,55 +190,42 @@ For example:
 chmod 660 README.txt
 ```
 
-Would assign:
+assigns read and write permissions to both the user and group (two 6s), and no permissions to others (0).
 
-- Read and write permissions to the user (first 6) and the group (second 6)
-- No permissions at all to everyone else (last 0)
+The **symbolic notation** is easier to remember when modifying a single permission:
 
-There is also an alternative symbolic notation, which can be easier to memorise to modify a single permission.
-There are plenty of details of this symbolic notation on [`chmod`'s Wikipedia page](https://en.wikipedia.org/wiki/Chmod), so we only give a few examples:
-
-- `chmod u+w some_file.txt` → modify **user** permissions (`u`) by adding (`+`) write permissions (`w`)
-- `chmod g-w some_file.txt` → modify **group** permissions (`g`) by removing (`-`) write permissions (`w`)
-- `chmod o-rwx some_file.txt` → modify permissions to **other users** (`o`), by removing `-` read, write and execute permissions (`rwx`)
-- `chmod a+r some_file.txt` → modify permissions to **all users** (`a`) by adding `+` read (`r`) permissions.
+- `chmod u+w some_file.txt` → add write to user
+- `chmod g-w some_file.txt` → remove write from group
+- `chmod o-rwx some_file.txt` → remove all permissions from others
+- `chmod a+r some_file.txt` → add read to all users
 
 ::: {.callout-important}
 #### Recursive directory permissions
 
-Often, when changing the permissions of a directory, it's important to consider whether you want to change the permissions **recursively for all files and directories inside it**.
-If that is the intention (which it often is), then there's two things to consider:
+When changing directory permissions, consider whether you want to apply the changes **recursively** to all files and directories within it.
+To do so, use the `-R` option.
 
-- Add the `-R` option, which will apply the permissions recursively
-- Consider using the symbolic notation with the special uppercase `X` execution symbol.
-  This symbol ensures that all directories will get execute permissions (so users can `cd` into them), but it won't apply execute permissions to regular files (unless they already have it).
+When using symbolic notation recursively, consider the special uppercase `X` execution symbol.
+This symbol grants execute permission to directories (so users can `cd` into them), but avoids granting execute to regular files unless they already had it.
 
-In short, to give a group read and write permissions to all the contents in a directory, use:
+To give a group read and write access to all contents in a directory, use:
 
 ```bash
-chmod g+rwX folder_name
+chmod -R g+rwX folder_name
 ```
+
+This ensures directories are executable (accessible) but regular files are not unnecessarily marked as executable.
 :::
 
 ## Changing groups: `chgrp`
 
-You can change the group that a file belongs to using the `chgrp` command.
-The syntax is:
+You can change the group a file belongs to using the `chgrp` command with this syntax:
 
 ```bash
-chgrp   <group_name>   <file or directory name>
+chgrp <group_name> <file or directory name>
 ```
 
-Taking the same example as before:
-
-```
-drwxrwxr--  2  robin  birdlab  4.0K  Jun 6 2025  student_projects
-drwxr--r--  1  robin  robin    4.0K  Jun 6 2025  grant_applications
--rwxr--r--  1  robin  birdlab  563   Jun 6 2025  group_policies.txt
-```
-
-Let's say that Robin wanted to give postdocs access to the `grant_applications` folder.
-Ahead of time, they had created a user group called `postdocs`, so they could give them access with:
+Using the earlier example, if Robin wanted to give postdocs access to the `grant_applications` folder, and a `postdocs` group already existed, they could run:
 
 ```bash
 # Change the group associated with the folder
@@ -252,10 +235,8 @@ chgrp -R postdocs grant_applications
 chmod -R g+rwX grant_applications
 ```
 
-Two things of note:
-
-- The `chgrp` option has a `-R` option, allowing to apply the group association recursively to all files and folders within the target folder.
-- We used the uppercase `X` with `chmod`, to ensure directories are given execute permissions, but regular files do not.
+The `-R` option applies the group assignment recursively to all files and directories within the target.
+The uppercase `X` in `chmod` ensures that directories receive execute permissions (so users can access them), whilst regular files do not.
 
 ::: {.callout-note}
 #### Creating groups and assigning users
@@ -268,15 +249,14 @@ Only users with `sudo` permissions can create or modify groups.
 
 ## Changing ownership: `chown`
 
-Finally, the ownership of a file can also be changed with the `chown` command.
-However, an important caveat is that **only the `root` user (via `sudo`) can change file ownership**.
-Even if you are the owner of a file, you cannot change its ownership without `root` privelege.
+Only the `root` user (via `sudo`) can change file ownership.
+Even if you own a file, you cannot change its ownership without root privileges.
 
-Here are some examples of common use cases:
+Use `chown` with these common patterns:
 
-- `sudo chown new_user README.txt` → the file `README.txt` is now owned by `new_user`; the associated group remains unchanged.
-- `sudo chown new_user:new_group README.txt` → the file `README.txt` is now owned by `new_user` and assigned to `new_group`.
-- `sudo chown -R new_user project` → the directory `project` is now owned by `new_user`, along with all of its contents (i.e. the change is applied recursively, with `-R`).
+- `sudo chown new_user README.txt` → the file is now owned by `new_user`; the group remains unchanged
+- `sudo chown new_user:new_group README.txt` → the file is now owned by `new_user` and assigned to `new_group`
+- `sudo chown -R new_user project` → the directory and all its contents are now owned by `new_user` (the `-R` option applies the change recursively)
 
 ## Exercises
 
@@ -307,18 +287,17 @@ Answer the following questions:
 6. Is there anything that other users (not in the `ornithology` group) can see in this filesystem?
 
 ::::: {.callout-answer}
-1. Based on the first character of each line, we can infer there are two directories (`source` and `documentation`) and all others are regular files.
-   Somewhat non-intuitive is the fact that `analyse_data` has no extension, but the fact it has execute (`x`) permissions suggests it is a program used to run the entire analysis.
-2. To check which groups they are a part of, `tux` can use the `groups` command.
+1. Based on the first character of each line, there are two directories (`source` and `documentation`) and four regular files.
+   The file `analyse_data` has no extension but has execute (`x`) permissions, suggesting it is a program for running the entire analysis.
+2. Tux can use the `groups` command to check their group membership.
 3. No.
-   The group has `r-x` permissions on documentation, so if tux is in `ornithology`, they can list the directory's contents and access files within it (subject to those files' own permissions), but they cannot create, delete, rename, or modify directory entries.
-4. The `source` directory is the most likely place for Tux to contribute code, based on the fact that the `ornithology` group has write permissions on it (`rwx`).
-5. The `version.txt` file has very restrictive permissions, being read-only to both the owner (`robin`) and the group.
-   This is strange, but it suggests `robin` wants to ensure no changes happen to this file even by accident.
-   However, `robin` could change the permissions of the file in the future if they wanted to make changes.
+   The group has `r-x` permissions on `documentation`, so tux can list its contents and access files within it (subject to those files' own permissions), but cannot create, delete, rename, or modify directory entries.
+4. The `source` directory is where tux should primarily work, because the `ornithology` group has write permissions (`rwx`) on it.
+5. The `version.txt` file is read-only for both the owner and group.
+   This suggests Robin wants to prevent accidental changes to this file, though they could modify permissions if needed.
 6. Yes.
-   The `documentation` has `r-x` permissions for other users, so even those not in `ornithology` can see inside it.
-   However, remember that what users can actually see within the folder depends on the permissions of files and directories within it.
+   The `documentation` directory has `r-x` permissions for other users, so those outside the `ornithology` group can see inside it.
+   However, their access to specific files and subdirectories depends on their individual permissions.
 :::::
 :::
 
@@ -346,12 +325,11 @@ Answer the following questions:
 
 ::::: {.callout-answer}
 1. To add write permissions to the file: `chmod u+w version.txt`
-2. Running `chmod 774 analyse_data` would result in the following permissions: `rwxrwxr--`.
-   This means:
-   1. Owner: read, write, execute
-   2. Group: read, write, execute
-   3. Others: read-only
-3. They could change the permissions to `rwx------` with `chmod 700 documentation`
+2. Running `chmod 774 analyse_data` results in permissions `rwxrwxr--`:
+   - Owner: read, write, execute
+   - Group: read, write, execute
+   - Others: read-only
+3. They could use `chmod 700 documentation` to set permissions to `rwx------`, making the directory accessible only to themselves.
 :::::
 :::
 
@@ -372,7 +350,7 @@ student_projects    rwxrwx--- robin birdlab
 What commands could `robin` run to ensure that all members of the `birdlab` group could read and modify all the files within `student_projects`?
 
 ::::: {.callout-answer}
-The user `robin` would have to run two commands: one to change the group, another to change permissions.
+Robin needs to run two commands: one to change the group, and another to change permissions.
 
 This command:
 
@@ -380,7 +358,7 @@ This command:
 chgrp -R birdlab student_projects
 ```
 
-would change the group **recursively**, so that every directory and file within `student_projects` will be assigned to the `birdlab` group.
+changes the group recursively, so every directory and file within `student_projects` is assigned to the `birdlab` group.
 
 This command:
 
@@ -388,11 +366,8 @@ This command:
 chmod -R g+rwX student_projects
 ```
 
-would change file and directory permissions **recursively** to the group (`g+`).
-The use of the uppercase `X` is important, and specifies the following:
-
-- Directories will have `rwx` permissions - remember, the execute permission is important for directories, otherwise users are not able to `cd` into them.
-- Files will have `rw-` permissions (i.e. not executable by default), unless they already had execute an permission, in which case they will get `rwx`.
+changes permissions recursively for the group.
+The uppercase `X` is important: it grants `rwx` to directories (so users can `cd` into them) and `rw-` to regular files by default (or `rwx` if they already had execute permissions).
 :::::
 :::
 
