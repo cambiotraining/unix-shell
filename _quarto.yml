@@ -20,6 +20,7 @@ exercises:
 
 filters:
   - callout-exercise
+  - shell-selector
 
 execute:
   freeze: auto
