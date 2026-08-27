@@ -14,26 +14,26 @@ book:
         - materials/07-variables.md
     - part: "System and Environment"
       chapters:
-        - materials/xx-permissions.md # chown, chmod
-        - materials/xx-environment.md # .bashrc, export, PATH, aliases
-        - materials/xx-archiving.md # tar, gzip, zip, md5, sha256
+        - materials/08-permissions.md # chown, chmod
+        - materials/09-environment.md # .bashrc, export, PATH, aliases
+        - materials/10-archiving.md # tar, gzip, zip, md5, sha256
         # - materials/xx-processes.md # ps, top, kill, fg, &
     - part: "Shell Programming"
       chapters:
         - materials/slides02-programming.md
-        - materials/08-loops.md
+        - materials/11-loops.md
         # - materials/08-conditionals.md
         # - materials/08-functions.md
     - part: "Working With Data"
       chapters:
         # - materials/xx-regex.md
-        - materials/11-sed.md
+        - materials/12-sed.md
         # - materials/xx-awk.md
         # - materials/xx-coreutils.md # sort, cut, join
     - part: "Remote Work"
       chapters:
-        - materials/09-ssh_scp.md
-        - materials/10-remote_files.md
+        - materials/13-ssh_scp.md
+        - materials/14-remote_files.md
   appendices:
     - materials/a01-cheatsheet.md
     - materials/a02-wsl.md
