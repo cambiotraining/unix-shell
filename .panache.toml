@@ -1,0 +1,57 @@
+# ------------------------------------------------------------
+# Flavor
+# ------------------------------------------------------------
+# .qmd files are always treated as "quarto" automatically.
+# .Rmd files are always treated as "rmarkdown" automatically.
+# This sets the default for plain .md files.
+flavor = "pandoc"
+
+# ------------------------------------------------------------
+# File selection
+# ------------------------------------------------------------
+extend-exclude = [
+  ".*/",      # all hidden directories (.git, .github, .claude, .agents, etc.)
+  "renv/",    # R package cache — generated, never hand-edited
+  "tests/**/*",
+]
+
+# Include only the specific files and directories we care about.
+include = [
+  "index.md",
+  "setup.md",
+  "materials/**/*.md",
+  "materials/**/*.qmd",
+  "materials/**/*.Rmd",
+]
+
+# ------------------------------------------------------------
+# Formatting style
+# ------------------------------------------------------------
+[format]
+wrap                 = "sentence"       # semantic line breaks
+math-delimiter-style = "dollars"        # normalise to $...$ / $$...$$
+math-indent          = 0
+tab-stops            = "normalize"
+tab-width            = 2               # applies to Markdown (not code blocks)
+
+# ------------------------------------------------------------
+# Code formatters
+# ------------------------------------------------------------
+[formatters]
+r      = "air"
+python = "ruff"
+bash   = "shfmt"
+
+# ------------------------------------------------------------
+# Code linters
+# ------------------------------------------------------------
+[linters]
+r = "jarl"
+python = "ruff"
+bash = "shellcheck"
+
+# ------------------------------------------------------------
+# Other rules
+# ------------------------------------------------------------
+[lint.rules]
+heading-hierarchy = false  # Disabled as callout boxes may not respect hierarchy
