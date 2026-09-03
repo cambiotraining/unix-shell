@@ -37,7 +37,7 @@ participant sudo users
 The `ls -l` output shows both the file owner and the group associated with it.
 Consider this example:
 
-![](images/ls_explained.excalidraw.png)
+![](images/ls_explained.excalidraw.svg)
 
 - All the files and directories belong to the user `robin`, giving them full control over their access permissions.
 - The directory `student_projects` and the file `group_policies.txt` belong to a group called `birdlab`.
