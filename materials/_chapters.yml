@@ -8,17 +8,18 @@ book:
         - materials/03-file_operations.md
         - materials/04-text_manipulation.md
         - materials/05-combining_commands.md
-    - part: "Scripting"
+    - part: "Scripting Basics"
       chapters:
         - materials/06-scripts.md
         - materials/07-variables.md
+        - materials/08-streams.md
     - part: "System and Environment"
       chapters:
         - materials/08-permissions.md # chown, chmod
         - materials/09-environment.md # .bashrc, export, PATH, aliases
         - materials/10-archiving.md # tar, gzip, zip, md5, sha256
         # - materials/xx-processes.md # ps, top, kill, fg, &
-    - part: "Shell Programming"
+    - part: "Advanced Scripting"
       chapters:
         - materials/slides02-programming.md
         - materials/11-loops.md
