@@ -1,9 +1,11 @@
 # Archiving
 
 ::: {.callout-tip}
-## Learning Objectives
+### Learning Objectives
 
-- TODO
+- Distinguish between archive formats and compression formats and choose the appropriate one for your goals.
+- Create and extract `.zip`, `.tar`, and `.tar.gz` archives with the correct command-line options.
+- Use `gzip` and cryptographic hashes to compress files and verify that data has not changed.
 :::
 
 ## Archiving and compression
@@ -144,7 +146,7 @@ The characters before the file name form the MD5 hash.
 Save the command's output to a file with the `>` redirection operator so that you can check the file later:
 
 ```bash
-md5sum README.txt >md5.txt
+md5sum README.txt > md5.txt
 ```
 
 Use the `-c` ("check") option with the recorded hash file to check the file's integrity:
@@ -160,7 +162,7 @@ README.txt: OK
 To test the check, change the contents of `README.txt` and run the check again:
 
 ```bash
-echo "testing MD5" >>README.txt
+echo "testing MD5" >> README.txt
 
 md5sum -c md5.txt
 ```
@@ -193,7 +195,8 @@ Working from `~/Desktop/data-shell`, do the following for the `hospital_records`
 1. Create an uncompressed tar archive called `hospital_records.tar`
 2. Create a gzip-compressed tar archive called `hospital_records.tar.gz`
 3. Create a zip archive called `hospital_records.zip`
-4. Use the command `du -h hospital_records*` to compare the archive sizes with the original directory. (Note: `du` is the disk usage command)
+4. Use the command `du -h hospital_records*` to compare the archive sizes with the original directory.
+   (Note: `du` is the disk usage command)
 
 ::::: {.callout-answer}
 1. Create an uncompressed `tar` archive:
@@ -221,10 +224,10 @@ du -h hospital_records*
 ```
 
 ```output
-51M	hospital_records
-51M	hospital_records.tar
-4.6M	hospital_records.tar.gz
-4.7M	hospital_records.zip
+51M hospital_records
+51M hospital_records.tar
+4.6M  hospital_records.tar.gz
+4.7M  hospital_records.zip
 ```
 
 The uncompressed `.tar` archive is the same size as the original directory because `tar` only bundles the files.
@@ -235,7 +238,21 @@ Both Gzip and Zip compression reduce the archive size substantially in this exam
 ## Summary
 
 ::: {.callout-tip}
-#### Key points
+### Key Points
 
-- TODO
+- Archive files bundle multiple files into a single file.
+  These files can be compressed to reduce their size.
+
+- `zip`, `tar`, and `gzip` are the most common tools used, summarised in the table below.
+
+  | Command     | Purpose                              | File extension | Extract / Decompress command |
+  | ----------- | ------------------------------------ | -------------- | ---------------------------- |
+  | `zip`       | Compress files into a ZIP archive    | `.zip`         | `unzip`                      |
+  | `tar -cvf`  | Create an uncompressed tar archive   | `.tar`         | `tar -xvf`                   |
+  | `tar -czvf` | Create a gzip-compressed tar archive | `.tar.gz`      | `tar -xzvf`                  |
+  | `gzip`      | Compress an individual file          | `.gz`          | `gzip -d`                    |
+
+- Hash checks let you verify that files are unchanged after download or transfer.
+  - `md5sum` and `sha256sum` generate fingerprints for files.
+  - `md5sum -c` and `sha256sum -c` check a recorded hash file against the current file.
 :::

@@ -48,7 +48,9 @@ This is a schematic representation of these streams:
 It is worth emphasising the distinction between `stdout` and `stderr`.
 Both types of output appear in the terminal, but the shell manages them separately behind the scenes.
 
-We can illustrate this with the redirection operator `>`, which we have already met.
+## Redirecting output streams
+
+We can illustrate the distinction between `stdout` and `stderr` by using the redirection operator `>`, which we have already met.
 For example:
 
 ```bash

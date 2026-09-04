@@ -1,9 +1,11 @@
 # File Permissions
 
-::: {.callout-tip}
-## Learning Objectives
+:::{.callout-tip}
+### Learning Objectives
 
-- TODO
+- Describe how Unix determines file ownership and access permissions.
+- Interpret the permissions listed in the `ls -l` output and explain what they allow.
+- Use `chmod`, `chgrp`, and `chown` to change access and ownership to files and directories.
 :::
 
 ## Who owns a file?
@@ -373,8 +375,21 @@ The uppercase `X` is important: it grants `rwx` to directories (so users can `cd
 
 ## Summary
 
-::: {.callout-tip}
-#### Key points
+:::{.callout-tip}
+### Key Points
 
-- TODO
+- File permissions determine who can read, write, or execute a file or directory. The output of `ls -l` displays this information:
+  - The first character in `ls -l` indicates the file type.
+  - The next nine characters are grouped into owner, group, and other permissions.
+  - `r`, `w`, and `x` represent read, write, and execute access.
+
+- Ownership and groups control access on shared systems.
+  - `ls -l` shows the owner and associated group.
+  - `groups` shows which groups your user belongs to.
+  - Shared projects often rely on group-based permissions.
+
+- Some useful commands to manage access and ownership are:
+  - `chmod` changes permissions with symbolic or numeric notation.
+  - `chgrp` changes the group associated with a file or directory.
+  - `chown` changes the owner, but requires `sudo`.
 :::

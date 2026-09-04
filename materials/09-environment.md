@@ -1,9 +1,11 @@
 # Environment
 
-::: {.callout-tip}
-## Learning Objectives
+:::{.callout-tip}
+### Learning Objectives
 
-- TODO
+- Distinguish between local shell variables and environment variables and explain how `export` changes inheritance.
+- Use `PATH` and `which` to locate commands and add custom script directories.
+- Create and persist aliases and configuration changes in shell startup files.
 :::
 
 ## Environment variables
@@ -483,8 +485,20 @@ Try it for yourself:
 
 ## Summary
 
-::: {.callout-tip}
-#### Key points
+:::{.callout-tip}
+### Key Points
 
-- TODO
+- **Local variables stay in the current shell, while environment variables are inherited by child processes.**
+  - `export` makes a variable available to scripts and commands started from the shell.
+  - `printenv` lists the current environment, and `echo $VAR` displays a variable value.
+
+- **`PATH` tells the shell where to find executable programs.**
+  - `which` shows the program the shell will run.
+  - Adding a directory to `PATH` lets you run custom scripts as commands.
+  - A shebang tells the operating system which interpreter should execute a script.
+
+- **Aliases and shell configuration files make commands easier to use repeatedly.**
+  - `alias` creates a shortcut for a longer command.
+  - `.bashrc` or `.zshrc` loads custom settings when a new shell starts.
+  - Persistent changes help you keep favourite commands, variables, and script paths available.
 :::
