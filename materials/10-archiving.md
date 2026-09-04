@@ -188,11 +188,12 @@ Run the check after downloading your data so that you can detect an incomplete o
 ::: {.callout-exercise}
 {{< level 1 >}}
 
-From the `~/Desktop/data-shell` directory:
+Working from `~/Desktop/data-shell`, do the following for the `hospital_records` directory:
 
-1. Create an uncompressed tar archive of the `hospital_records` directory.
-2. Create a gzip-compressed tar archive of the same directory.
-3. Use the `du` (disk usage) command to compare the archive sizes with the original directory.
+1. Create an uncompressed tar archive called `hospital_records.tar`
+2. Create a gzip-compressed tar archive called `hospital_records.tar.gz`
+3. Create a zip archive called `hospital_records.zip`
+4. Use the command `du -h hospital_records*` to compare the archive sizes with the original directory. (Note: `du` is the disk usage command)
 
 ::::: {.callout-answer}
 1. Create an uncompressed `tar` archive:
@@ -207,20 +208,27 @@ tar -cvf hospital_records.tar hospital_records/
 tar -czvf hospital_records.tar.gz hospital_records/
 ```
 
-3. Compare the sizes of the original directory and both archives:
+3. Create a zip archive (compresses by default):
+
+```bash
+zip hospital_records.zip hospital_records/
+```
+
+4. Compare the sizes of the original directory and the archives:
 
 ```bash
 du -h hospital_records*
 ```
 
 ```output
-51M   hospital_records
-51M   hospital_records.tar
-4.6M  hospital_records.tar.gz
+51M	hospital_records
+51M	hospital_records.tar
+4.6M	hospital_records.tar.gz
+4.7M	hospital_records.zip
 ```
 
-The uncompressed `.tar` archive is about the same size as the original directory because `tar` only bundles the files.
-Gzip compression reduces the archive size substantially in this example.
+The uncompressed `.tar` archive is the same size as the original directory because `tar` only bundles the files.
+Both Gzip and Zip compression reduce the archive size substantially in this example.
 :::::
 :::
 
