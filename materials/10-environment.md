@@ -174,7 +174,7 @@ This script counts the regular files (i.e. it excludes directories) in the curre
 
 To run these scripts as regular commands, first give the user execute permission.
 Without execute permission, you must run each script through the `bash` program.
-Use the `chmod` command we learned about in the [permissions chapter](08-permissions.md):
+Use the `chmod` command we learned about in the [permissions chapter](09-permissions.md):
 
 ```bash
 chmod u+x my_programs/*
