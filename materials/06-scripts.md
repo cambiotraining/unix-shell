@@ -124,6 +124,45 @@ Which prints the result of running those commands on our screen.
 In summary, running a shell script is exactly the same as running the commands one-by-one on the shell.
 However, saving our commands in a script has some advantages: it serves as a **record** of our analysis, making it more **reproducible** and it allows us to **adapt and reuse** our code to run other similar analysis.
 
+## Splitting long commands across lines
+
+In some cases, we may want to split a long command across multiple lines to make it easier to read.
+We can do this by using the backslash `\` character at the end of a line, which tells the shell that the command continues on the next line.
+For example, we could rewrite our previous script as:
+
+```bash
+#!/usr/bin/env bash
+
+# count the number of lines containing the word "ATOM"
+cat cubane.pdb | \
+  grep "ATOM" | \
+  wc -l
+```
+
+In this particular case, the command wasn't extremely long, but in other cases it can be useful to read the different parts of the code more easily.
+There are two things to note:
+
+- The backslash `\` character must be the last character on the line, otherwise it will not work.
+  When we say last, we really mean it: **you must not have an empty space after the backslash** (this is a very common mistake).
+- You may notice we've indented the code above with two spaces - this is not mandatory, and is intended for readibility only.
+  It indicates the commands are connected to each other and are part of the same command, but it is not required for the code to work.
+
+::: {.callout-note collapse=true}
+#### The escape operator `\`
+
+The character we just used to split our command across multiple lines is called the **escape operator**.
+It is used to tell the shell that the next character should be treated differently than it normally would.
+For example, we can use it to escape special characters, such as spaces, so that they are treated as part of a filename rather than as a separator between arguments.
+
+Imagine a user named their file "Thesis Notes.txt" (with a space in the filename).
+If we try to run the command `cat Thesis Notes.txt`, the shell will interpret this as trying to run the command `cat` on two files: "Thesis" and "Notes.txt".
+To avoid this, we can use the escape operator to tell the shell to treat the space as part of the filename, like this:
+
+```bash
+cat Thesis\ Notes.txt
+```
+:::
+
 ## Exercises
 
 :::{.callout-exercise}
