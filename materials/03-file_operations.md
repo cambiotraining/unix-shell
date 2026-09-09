@@ -15,7 +15,7 @@ pagetitle: "Unix course"
 
 ## Creating directories
 
-We now know how to explore files and directories, but how do we create them in the first place?  
+We now know how to explore files and directories, but how do we create them in the first place?
 First, we should see where we are and what we already have.
 Let's go back to our `data-shell` directory and use `ls` to see what it contains:
 
@@ -45,22 +45,61 @@ README.txt  coronavirus  molecules  sequencing  thesis_notes  things.txt
 ```
 
 Note that using the shell to create a directory is no different than using a file explorer.
-If you open the current directory using your operating system's graphical file explorer <i class="fa-solid fa-folder"></i>, the `results` directory will appear there too.  
+If you open the current directory using your operating system's graphical file explorer <i class="fa-solid fa-folder"></i>, the `results` directory will appear there too.
 While the shell and the file explorer are two different ways of interacting with the files, the files and directories themselves are the same.
+
+You may notice that if you try to **create multiple nested directories at once**, the command will fail if the parent directory does not already exist.
+For example, if we try to create a directory called `thesis_notes/papers/reading` without first creating the `thesis_notes/papers` directories, we will get an error:
+
+```bash
+mkdir thesis_notes/papers/reading
+```
+
+```output
+mkdir: No such file or directory
+```
+
+There are two solutions to this problem:
+
+- Create directories one-by-one sequencially, starting with the parent directory:
+
+```bash
+mkdir thesis_notes/papers
+mkdir thesis_notes/papers/reading
+```
+
+- Use the `-p` option with `mkdir`, which will create any parent directories that do not already exist:
+
+```bash
+mkdir -p thesis_notes/papers/reading
+```
+
+The `-p` option can also be useful to **avoid errors when creating a directory that already exists**.
+For example:
+
+```bash
+mkdir thesis_notes
+```
+
+```output
+mkdir: thesis_notes: File exists
+```
+
+However, if you add the `-p` option, the command will succeed without any error messages (it simply ignores the fact that the directory already exists).
 
 ::: {.callout-note collapse=true}
 
 #### Good naming conventions - click here for some tips
 
-Complicated names of files and directories can make your life painful when working on the command line.  
+Complicated names of files and directories can make your life painful when working on the command line.
 Here are some useful tips for naming your files:
 
-1. Don't use spaces.  
+1. Don't use spaces.
    Spaces can make a name more meaningful, but since spaces are used to separate arguments on the command line it is better to avoid them in names of files and directories.
    You can use `-` or `_` instead (e.g. `thesis_notes/` rather than `thesis notes/`).
-2. Don't begin the name with `-` (dash).  
+2. Don't begin the name with `-` (dash).
    Commands treat names starting with `-` as options.
-3. Only use letters, numbers, `.` period, `-` hyphen and `_` underscore.  
+3. Only use letters, numbers, `.` period, `-` hyphen and `_` underscore.
    Many other characters (such as `!`, `@`, `$`, `"`, etc.) have special meanings on the command line and can cause your command to not work as expected or even lead to data loss.
 
 If you need to refer to names of files or directories that have spaces or other special characters, you should surround the name in quotes (`""`).
@@ -89,7 +128,7 @@ things.txt
 ```
 
 This isn't a particularly informative name for our file, so let's change it!
-Interestingly, we also use the `mv` command to change a file's name.  
+Interestingly, we also use the `mv` command to change a file's name.
 Here's how we would do it:
 
 ```bash
@@ -133,6 +172,12 @@ ls thesis_notes/
 books.txt
 ```
 
+For copying directories, we need to use the `-r` option with the `cp` command (`-r` means "recursive"):
+
+```bash
+cp -r molecules molecules_copy
+```
+
 :::{.callout-note}
 
 #### Exercise
@@ -144,22 +189,22 @@ See the [copying directories](#copy-exr) and [copying multiple files](#cp-multip
 ## Removing Files and Directories
 
 The Unix command used to remove or delete files is `rm` ("remove").
-For example, let's remove one of the files we copied earlier:
+For example, let's remove one of the files we just copied:
 
 ```bash
-rm backup/cubane.pdb
+rm molecules_copy/cubane.pdb
 ```
 
-We can confirm the file is gone using `ls backup/`.
+We can confirm the file is gone using `ls molecules_copy/`.
 
-What if we try to remove the whole `backup` directory we created in the previous exercise?
+What if we try to remove the whole `molecules_copy` directory we created in the previous exercise?
 
 ```bash
-rm backup
+rm molecules_copy
 ```
 
 ```output
-rm: cannot remove `backup': Is a directory
+rm: cannot remove `molecules_copy': Is a directory
 ```
 
 We get an error.
@@ -168,7 +213,7 @@ This happens, because `rm` _by default_ only works on files, not directories.
 `rm` can remove a directory _and all its contents_ if we use the recursive option `-r`, and it will do so **without any confirmation prompts**:
 
 ```bash
-rm -r backup
+rm -r molecules_copy
 ```
 
 Given that there is no way to retrieve files deleted using the shell, **`rm -r` should be used with great caution** (you might consider adding the interactive option `rm -r -i`).
@@ -179,8 +224,8 @@ This is a safer option than `rm -r`, because it will never delete the directory 
 ::: {.callout-warning}
 #### Deleting Is Forever
 
-The Unix shell doesn't have a trash bin that we can recover deleted files from (though most graphical interfaces to Unix do).  
-Instead, when we delete files, they are unlinked from the filesystem so that their storage space on disk can be recycled. 
+The Unix shell doesn't have a trash bin that we can recover deleted files from (though most graphical interfaces to Unix do).
+Instead, when we delete files, they are unlinked from the filesystem so that their storage space on disk can be recycled.
 Tools for finding and recovering deleted files do exist, but there's no guarantee they'll work in any particular situation, since the computer may recycle the file's disk space right away.
 
 :::
@@ -221,7 +266,7 @@ cannot be created.
 
 For this exercise, make sure you are in the course materials directory: `cd ~/Desktop/data-shell`
 
-Make a copy of the `sequencing` directory named `backup`.
+Make a copy of the `sequencing` directory named `sequencing_backup`.
 When copying an entire directory, you will need to use the option `-r` with the `cp` command (`-r` means "recursive").
 
 ::: {.callout-answer collapse=true}
@@ -229,7 +274,7 @@ When copying an entire directory, you will need to use the option `-r` with the 
 If we run the command without the `-r` option, this is what happens:
 
 ```bash
-cp sequencing backup
+cp sequencing sequencing_backup
 ```
 
 ```output
@@ -242,17 +287,17 @@ By default, directories (and their contents) are not copied unless we specify th
 This would work:
 
 ```bash
-cp -r sequencing backup
+cp -r sequencing sequencing_backup
 ```
 
-Running `ls` we can see a new folder called `backup`:
+Running `ls` we can see a new folder called `sequencing_backup`:
 
 ```bash
 ls
 ```
 
 ```output
-README.txt  backup  books_copy.txt  coronavirus  molecules  sequencing  thesis_notes
+README.txt  books_copy.txt  coronavirus  molecules  sequencing  sequencing_backup  thesis_notes
 ```
 :::
 :::
@@ -266,7 +311,7 @@ For this exercise, make sure you are in the course materials directory: `cd ~/De
 What does `cp` do when given several filenames and a directory name?
 
 ```bash
-mkdir -p backup
+mkdir backup
 cp molecules/cubane.pdb molecules/ethane.pdb backup/
 ```
 
