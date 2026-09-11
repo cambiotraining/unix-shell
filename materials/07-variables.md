@@ -123,18 +123,6 @@ In conclusion: **always include `{}` when using your variables in scripts**.
 It is also good practice to always include variables within **double `"` quotes**.
 The reasons are more subtle, but see this [StackOverflow post](https://stackoverflow.com/a/27701642/5023162) to learn more about it.
 
-
-### Environment Variables
-
-There are many default variables that are automatically created when we open the terminal.
-These are called **environment variables**, which as a convention are always named with upppercase.
-For example the variable `$HOME` stores the user's home directory.
-Try running:
-
-```bash
-echo $HOME
-```
-
 ### Variables and Commands
 
 Very often we may want to create a variable with the result of _evaluating a command_.
@@ -173,8 +161,8 @@ echo "$ethane_atoms"
 Assuming that we have a user named `robin`, what would be the output of the `echo` command below?
 
 ```bash
-datadir="${HOME}/Desktop/data-shell"
-datafiles=$(ls ${datadir}/molecules)
+datadir="/home/robin/Desktop/data-shell"
+datafiles=$(ls "$datadir/molecules")
 echo "${datafiles}"
 ```
 
