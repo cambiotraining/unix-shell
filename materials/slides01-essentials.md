@@ -21,5 +21,5 @@ The original presentation can be found <a href="https://docs.google.com/presenta
 </style>
 
 <div class="slide-container">
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSZWRZru3xn2Rdrn3fho22NHuAh_9f8Jo4mT_4dN3Q93AF9WNzQ2DkxW64nMprRx3Rk8fP4CBFBBYhV/pub?start=false&loop=false&delayms=60000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSZWRZru3xn2Rdrn3fho22NHuAh_9f8Jo4mT_4dN3Q93AF9WNzQ2DkxW64nMprRx3Rk8fP4CBFBBYhV/pubembed?start=false&loop=false&delayms=60000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
